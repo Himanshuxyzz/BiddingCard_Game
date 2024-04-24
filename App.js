@@ -14,11 +14,11 @@ export default function App() {
       <StatusBar style="auto" />
       <View style={styles.container}>
         <Stack.Navigator>
-          <Stack.Screen
+          {/* <Stack.Screen
             name="createyourprofile"
             component={Start}
             options={{ headerShown: false }}
-          />
+          /> */}
           <Stack.Screen
             name="forgotPassword"
             component={ForgotPassword}

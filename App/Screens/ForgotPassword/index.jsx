@@ -1,5 +1,4 @@
 import {
-  Pressable,
   StyleSheet,
   Text,
   TextInput,
@@ -9,6 +8,10 @@ import {
 import React, { useState } from "react";
 import Colors from "../../Utils/Colors";
 import WhiteText from "../../Components/WhiteText/WhiteText";
+import { Feather } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
+import { Entypo } from "@expo/vector-icons";
+import GradientVarientOneBtn from "../../Components/GradientBtn/GradientVariantOneBtn";
 
 const ForgotPassword = () => {
   const [emailMobile, setEmailMobile] = useState("");
@@ -31,13 +34,8 @@ const ForgotPassword = () => {
           placeholderTextColor={Colors.INPUT_PLACEHOLDER}
           autoCapitalize={"none"}
         />
-        <TouchableOpacity style={styles.btn}>
-          <Text
-            style={{ textAlign: "center", fontSize: 20, color: Colors.PRIMARY }}
-          >
-            Send
-          </Text>
-        </TouchableOpacity>
+
+        <GradientVarientOneBtn btnText={"Send"} style={styles.btn} />
 
         <View
           style={{
@@ -71,14 +69,32 @@ const ForgotPassword = () => {
             flexDirection: "row",
             alignItems: "center",
             justifyContent: "center",
-            marginVertical: 20,
+            marginVertical: 15,
             gap: 10,
           }}
         >
           <View style={{ flex: 1, height: 1, backgroundColor: "gray" }} />
-          <Text style={{ color: Colors.WHITE,fontSize:15 }}>Or</Text>
+          <Text style={{ color: Colors.WHITE, fontSize: 15 }}>Or</Text>
           <View style={{ flex: 1, height: 1, backgroundColor: "gray" }} />
         </View>
+
+        <View style={styles.signUpWith}>
+          <TouchableOpacity>
+            <AntDesign name="mail" size={35} color={Colors.ICON_COLOR} />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Feather name="facebook" size={35} color={Colors.ICON_COLOR} />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Entypo name="instagram" size={35} color={Colors.ICON_COLOR} />
+          </TouchableOpacity>
+        </View>
+
+        <Text style={{ color: Colors.WHITE, fontSize: 18, fontWeight: "500" }}>
+          Don’t have an account?
+        </Text>
+
+        <GradientVarientOneBtn btnText={"Login"} style={styles.btn} />
       </View>
     </View>
   );
@@ -103,11 +119,11 @@ const styles = StyleSheet.create({
   forgotPasswordHeading: {
     fontSize: 30,
     fontWeight: "bold",
-    fontFamily: "Laila-Bold",
+    // fontFamily: "Laila-Bold",
   },
   subHeading: {
     fontSize: 16,
-    fontFamily: "Inter-Medium",
+    // fontFamily: "Inter-Medium",
   },
   input: {
     color: Colors.WHITE,
@@ -121,15 +137,18 @@ const styles = StyleSheet.create({
   },
   btn: {
     minWidth: "90%",
-    padding: 15,
+    borderWidth: "1",
+    borderColor: "#DDBBE6",
     borderRadius: 10,
-    backgroundColor: Colors.WHITE,
-    marginTop: 40,
+    overflow: "hidden",
   },
-  link: {
-    display: "flex",
-    // justifyContent: "center",
+  signUpWith: {
+    flexDirection: "row",
     alignItems: "center",
-    fontSize: 20,
+    gap: "50%",
+    marginBottom: 20,
+  },
+  marginTopFix: {
+    marginTop: 20,
   },
 });
