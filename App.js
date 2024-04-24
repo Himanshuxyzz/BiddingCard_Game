@@ -4,6 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import ForgotPassword from "./App/Screens/ForgotPassword";
 import Colors from "./App/Utils/Colors";
+import Start from "./App/Screens/CreateYourProfile";
 
 const Stack = createNativeStackNavigator();
 
@@ -13,7 +14,16 @@ export default function App() {
       <StatusBar style="auto" />
       <View style={styles.container}>
         <Stack.Navigator>
-          <Stack.Screen name="forgotPassword" component={ForgotPassword} options={{headerShown:false}} />
+          <Stack.Screen
+            name="createyourprofile"
+            component={Start}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="forgotPassword"
+            component={ForgotPassword}
+            options={{ headerShown: false }}
+          />
         </Stack.Navigator>
       </View>
     </NavigationContainer>
