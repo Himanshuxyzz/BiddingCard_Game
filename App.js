@@ -5,6 +5,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import ForgotPassword from "./App/Screens/ForgotPassword";
 import Colors from "./App/Utils/Colors";
 import Start from "./App/Screens/CreateYourProfile";
+import WalletMain from "./App/Screens/WalletScreen";
+import WalletMainVerified from "./App/Screens/WalletScreen/WalletMainVerified";
 
 const Stack = createNativeStackNavigator();
 
@@ -19,9 +21,19 @@ export default function App() {
             component={Start}
             options={{ headerShown: false }}
           /> */}
-          <Stack.Screen
+          {/* <Stack.Screen
             name="forgotPassword"
             component={ForgotPassword}
+            options={{ headerShown: false }}
+          /> */}
+          <Stack.Screen
+            name="WalletMain"
+            component={WalletMain}
+            options={{ headerShown: false }}
+          />
+           <Stack.Screen
+            name="WalletMainVerified"
+            component={WalletMainVerified}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>
