@@ -7,10 +7,14 @@ import {
   Platform,
   Keyboard,
   TouchableWithoutFeedback,
+  TouchableOpacity,
+  Text,
 } from "react-native";
 import React from "react";
 import Colors from "../../Utils/Colors";
 import WhiteText from "../../Components/WhiteText/WhiteText";
+import { OtpInput } from "react-native-otp-entry";
+import GradientVarientOneBtn from "../../Components/GradientBtn/GradientVariantOneBtn";
 
 const OtpVerification = () => {
   return (
@@ -28,35 +32,54 @@ const OtpVerification = () => {
           />
 
           <WhiteText style={styles.subHeading}>
-            Enter Verification code sent in your mail / mobile number
+            Enter Verification code sent in your mail / mobile number.
           </WhiteText>
+          <OtpInput
+            autoFocus={false}
+            numberOfDigits={4}
+            onTextChange={(text) => console.log(text)}
+            focusColor={"white"}
+            onFilled={(text) => console.log(`OTP is ${text}`)}
+            textInputProps={{
+              accessibilityLabel: "One-Time Password",
+            }}
+            theme={{
+              pinCodeContainerStyle: {
+                borderRadius: 99,
+                width: 66,
+                height: 64,
+                backgroundColor: "rgba(255,255,255,0.1)",
+                borderColor: "rgba(199,194,194,0.77)",
+              },
+              pinCodeTextStyle: {
+                fontSize: 20,
+                color: Colors.WHITE,
+                fontWeight: "700",
+              },
+            }}
+          />
 
-          <View style={styles.inputWrapper}>
-            <TextInput
-              style={styles.input}
-              keyboardType="numeric"
-              placeholderTextColor={Colors.INPUT_PLACEHOLDER}
-              autoCapitalize={"none"}
-            />
-            <TextInput
-              style={styles.input}
-              keyboardType="numeric"
-              placeholderTextColor={Colors.INPUT_PLACEHOLDER}
-              autoCapitalize={"none"}
-            />
-            <TextInput
-              style={styles.input}
-              keyboardType="numeric"
-              placeholderTextColor={Colors.INPUT_PLACEHOLDER}
-              autoCapitalize={"none"}
-            />
-            <TextInput
-              style={styles.input}
-              keyboardType="numeric"
-              placeholderTextColor={Colors.INPUT_PLACEHOLDER}
-              autoCapitalize={"none"}
-            />
+          <View
+            style={{ flexDirection: "row", gap: 2.5, alignItems: "center" }}
+          >
+            <Text
+              style={{ color: Colors.WHITE, fontSize: 18, fontWeight: "700" }}
+            >
+              If you didn’t receive a code!
+            </Text>
+            <TouchableOpacity>
+              <Text
+                style={{
+                  color: Colors.LINK_COLOR,
+                  fontSize: 18,
+                  fontWeight: "700",
+                }}
+              >
+                Resend
+              </Text>
+            </TouchableOpacity>
           </View>
+          <GradientVarientOneBtn btnText={"Verify"} style={styles.btn} />
         </View>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
@@ -116,5 +139,12 @@ const styles = StyleSheet.create({
     color: Colors.WHITE,
     padding: 10,
     textAlign: "center",
+  },
+  btn: {
+    minWidth: "90%",
+    borderWidth: "1",
+    borderColor: "#DDBBE6",
+    borderRadius: 10,
+    overflow: "hidden",
   },
 });

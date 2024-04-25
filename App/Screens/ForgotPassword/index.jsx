@@ -58,7 +58,7 @@ const ForgotPassword = ({ navigation }) => {
             <Text
               style={{
                 fontSize: 18,
-                color: "#389AF4",
+                color: Colors.LINK_COLOR,
                 fontWeight: "700",
                 textDecorationLine: "underline",
               }}
