@@ -43,7 +43,6 @@ export default function App() {
             component={ForgotPassword}
             options={{ headerShown: false }}
           /> */}
-          />
            <Stack.Screen
             name="otpVerification"
             component={OtpVerification}
