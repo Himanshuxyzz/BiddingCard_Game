@@ -23,32 +23,33 @@ export default function App() {
       <StatusBar style="light" />
       <View style={styles.container}>
         <Stack.Navigator>
-          <Stack.Screen
+          {/* <Stack.Screen
             name="Start"
             component={Start}
             options={{ headerShown: false }}
-          />
-          <Stack.Screen
+          /> */}
+          {/* <Stack.Screen
             name="Createurprofile"
             component={CreateUrProfile}
             options={{ headerShown: false }}
-          />
-          <Stack.Screen
+          /> */}
+          {/* <Stack.Screen
             name="Addbankdetail"
             component={AddBankDetail}
             options={{ headerShown: false }}
-          />
-          {/* <Stack.Screen
+          /> */}
+          <Stack.Screen
             name="forgotPassword"
             component={ForgotPassword}
             options={{ headerShown: false }}
-          /> */}
+          />
            <Stack.Screen
             name="otpVerification"
             component={OtpVerification}
             options={{ headerShown: false }}
           />
-          {/*<Stack.Screen
+
+          <Stack.Screen
             name="WalletMain"
             component={WalletMain}
             options={{ headerShown: false }}
@@ -58,7 +59,7 @@ export default function App() {
             component={WalletMainVerified}
             options={{ headerShown: false }}
           />
-         */}
+        
         </Stack.Navigator>
       </View>
     </NavigationContainer>

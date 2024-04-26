@@ -10,21 +10,30 @@ import {
   TouchableOpacity,
   Text,
 } from "react-native";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Colors from "../../Utils/Colors";
 import WhiteText from "../../Components/WhiteText/WhiteText";
 import { OtpInput } from "react-native-otp-entry";
 import GradientVarientOneBtn from "../../Components/GradientBtn/GradientVariantOneBtn";
 import { useState } from "react";
+import Modal from "react-native-modal";
 
 let TestOtp = 4321;
 
-const OtpVerification = () => {
+const OtpVerification = ({ navigation }) => {
   const [otpMatched, setOtpMatched] = useState(null);
+  const [otp, setOtp] = useState(null);
+  const [resendText, setResendText] = useState(false);
+  const [isModalVisible, setModalVisible] = useState(false);
+  const otpInputRef = useRef(null);
+
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
 
   const verifyOtp = (otpValue) => {
     const otpNumber = parseInt(otpValue);
-
+    setOtp(otpNumber);
     // Check if the parsed value is a valid number
     if (!isNaN(otpNumber)) {
       // Check if otpNumber matches TestOtp
@@ -36,6 +45,18 @@ const OtpVerification = () => {
       setOtpMatched(false);
     }
   };
+
+  const handleBackModal = () => {
+    setModalVisible(false);
+  };
+
+//   console.log(`otp - ${otp}`);
+//   console.log(`otp is valid or not - ${otpMatched}`);
+//   console.log(`modal is visble or not - ${isModalVisible}`);
+
+//   console.log(
+//     `if otp is ${otp} and otpMatched is also  ${otpMatched} then modal should not be opened `
+//   );
 
   return (
     <KeyboardAvoidingView
@@ -55,11 +76,10 @@ const OtpVerification = () => {
             Enter Verification code sent in your mail / mobile number.
           </WhiteText>
           <OtpInput
+            ref={otpInputRef}
             autoFocus={false}
             numberOfDigits={4}
-            // onTextChange={(text) => console.log(text)}
             focusColor={"white"}
-            // onFilled={(text) => console.log(`OTP is ${text}`)}
             onFilled={(otp) => verifyOtp(otp)}
             textInputProps={{
               accessibilityLabel: "One-Time Password",
@@ -95,12 +115,13 @@ const OtpVerification = () => {
               >
                 If you didn’t receive a code!
               </Text>
-              <TouchableOpacity onPress={() => {}}>
+              <TouchableOpacity onPress={() => setResendText(true)}>
                 <Text
                   style={{
                     color: Colors.LINK_COLOR,
                     fontSize: 18,
                     fontWeight: "700",
+                    textDecorationLine: "underline",
                   }}
                 >
                   Resend
@@ -108,23 +129,154 @@ const OtpVerification = () => {
               </TouchableOpacity>
             </View>
           </View>
-          {/* <View>
-            <Text
+
+          <Text
+            style={{
+              color: Colors.WHITE,
+              fontSize: 14,
+              fontWeight: "700",
+              textAlign: "center",
+              lineHeight: 20,
+              display: resendText ? "flex" : "none",
+            }}
+          >
+            We have sent you <Text>One Time Password</Text> to your mail /
+            mobile number
+          </Text>
+
+          <Modal
+            isVisible={isModalVisible}
+            onBackdropPress={() => handleBackModal()}
+            backdropOpacity={0.9}
+          >
+            <View
               style={{
-                color: Colors.WHITE,
-                fontSize: 18,
-                fontWeight: "700",
+                justifyContent: "center",
+                alignItems: "center",
+                gap: 15,
+                width: "95%",
+                marginLeft: "auto",
+                marginRight: "auto",
               }}
             >
-              We have sent you <Text>One Time Password</Text> to your mail /
-              mobile number
-            </Text>
-          </View> */}
+              <Text
+                style={{ fontSize: 32, fontWeight: "800", color: "#F57676" }}
+              >
+                Try again!
+              </Text>
+              <Text
+                style={{ fontSize: 18, fontWeight: "600", color: Colors.WHITE }}
+              >
+                Oops, Seems like something is{" "}
+                <Text style={{ color: "#F57676" }}>wrong</Text>
+              </Text>
+              <OtpInput
+                autoFocus={false}
+                numberOfDigits={4}
+                // onTextChange={(text) => console.log(text)}
+                focusColor={"white"}
+                // onFilled={(text) => console.log(`OTP is ${text}`)}
+                onFilled={(otp) => verifyOtp(otp)}
+                textInputProps={{
+                  accessibilityLabel: "One-Time Password",
+                }}
+                theme={{
+                  pinCodeContainerStyle: {
+                    borderRadius: 99,
+                    width: 66,
+                    height: 64,
+                    backgroundColor: "rgba(255,255,255,0.1)",
+                    borderColor: "rgba(199,194,194,0.77)",
+                  },
+                  pinCodeTextStyle: {
+                    fontSize: 20,
+                    color: Colors.WHITE,
+                    fontWeight: "700",
+                  },
+                }}
+              />
+              <View
+                style={{
+                  flexDirection: "column",
+                  gap: 2.5,
+                  alignItems: "center",
+                }}
+              >
+                <View
+                  style={{
+                    flexDirection: "row",
+                    gap: 2.5,
+                    alignItems: "center",
+                  }}
+                >
+                  <Text
+                    style={{
+                      color: Colors.WHITE,
+                      fontSize: 18,
+                      fontWeight: "700",
+                    }}
+                  >
+                    If you didn’t receive a code!
+                  </Text>
+                  <TouchableOpacity onPress={() => setResendText(true)}>
+                    <Text
+                      style={{
+                        color: Colors.LINK_COLOR,
+                        fontSize: 18,
+                        fontWeight: "700",
+                        textDecorationLine: "underline",
+                      }}
+                    >
+                      Resend
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+              <TouchableOpacity
+                style={[styles.btn, styles.btnTwoVarientStyle]}
+                onPress={
+                  otp !== null && otp !== ""
+                    ? otpMatched !== null && !otpMatched
+                      ? toggleModal
+                      : () => {
+                          navigation.navigate("WalletMain");
+                          setOtp(null);
+                          otpInputRef.current.clear();
+                          setModalVisible(false);
+                        }
+                    : () => console.log("Please enter a valid OTP")
+                }
+                isDisabled={otp == ""}
+              >
+                <Text
+                  style={{
+                    textAlign: "center",
+                    fontSize: 20,
+                    color: Colors.WHITE,
+                    fontWeight: "600",
+                  }}
+                >
+                  Verify
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </Modal>
 
           <GradientVarientOneBtn
             btnText={"Verify"}
             style={styles.btn}
-            isDisabled={!otpMatched}
+            onPress={
+              otp !== null && otp !== ""
+                ? otpMatched !== null && !otpMatched
+                  ? toggleModal
+                  : () => {
+                      navigation.navigate("WalletMain");
+                      setOtp(null);
+                      otpInputRef.current.clear();
+                    }
+                : () => console.log("Please enter a valid OTP")
+            }
+            isDisabled={otp == ""}
           />
         </View>
       </TouchableWithoutFeedback>
@@ -139,11 +291,11 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     backgroundColor: Colors.PRIMARY,
-    padding: 15,
+    padding: 20,
   },
   subContainer: {
-    width: "90%",
-    marginTop: "14%",
+    width: "95%",
+    marginTop: "15%",
     flex: 1,
     flexDirection: "column",
     gap: 20,
@@ -161,36 +313,15 @@ const styles = StyleSheet.create({
     // fontFamily: "Inter-Medium",
     textAlign: "center",
   },
-  inputWrapper: {
-    minWidth: "90%",
-    minHeight: "10%",
-    borderColor: Colors.WHITE,
-    borderWidth: 1,
-    padding: 5,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    gap: 5,
-  },
-  input: {
-    width: 64,
-    height: 64,
-    borderWidth: 1,
-    borderColor: Colors.WHITE,
-    borderRadius: 99,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    fontSize: 20,
-    fontWeight: "700",
-    color: Colors.WHITE,
-    padding: 10,
-    textAlign: "center",
-  },
   btn: {
     minWidth: "90%",
     borderWidth: "1",
     borderColor: "#DDBBE6",
     borderRadius: 10,
     overflow: "hidden",
+  },
+  btnTwoVarientStyle: {
+    backgroundColor: "#2ED813",
+    padding: 15,
   },
 });
