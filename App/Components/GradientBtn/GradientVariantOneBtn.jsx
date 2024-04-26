@@ -5,14 +5,13 @@ import Colors from "../../Utils/Colors";
 
 const GradientVarientOneBtn = ({ btnText, style, ...props }) => {
   return (
-    <TouchableOpacity style={{ ...style }}>
+    <TouchableOpacity style={{ ...style }} {...props}>
       <LinearGradient
         colors={["#EA59E4", "#C508BD", "#910C8C", "#910C8C"]}
         locations={[0.03, 0.64, 1, 1]}
         start={{ x: 0, y: 0 }} // Start from the top-left corner
         end={{ x: 1, y: 0 }} // End at the top-right corner
         style={{ widthidth: "100%", padding: 15 }}
-        {...props}
       >
         <Text
           style={{

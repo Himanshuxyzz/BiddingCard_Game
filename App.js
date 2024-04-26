@@ -5,25 +5,37 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import ForgotPassword from "./App/Screens/ForgotPassword";
 import Colors from "./App/Utils/Colors";
 import Start from "./App/Screens/CreateYourProfile";
+import CreateUrProfile from "./App/Screens/CreateYourProfile/CreateUrProfile";
+import AddBankDetail from "./App/Screens/CreateYourProfile/AddBankDetail";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <StatusBar style="auto" />
+      <StatusBar style="light" />
       <View style={styles.container}>
         <Stack.Navigator>
-          {/* <Stack.Screen
-            name="createyourprofile"
+          <Stack.Screen
+            name="Start"
             component={Start}
             options={{ headerShown: false }}
-          /> */}
+          />
           <Stack.Screen
+            name="Createurprofile"
+            component={CreateUrProfile}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Addbankdetail"
+            component={AddBankDetail}
+            options={{ headerShown: false }}
+          />
+          {/* <Stack.Screen
             name="forgotPassword"
             component={ForgotPassword}
             options={{ headerShown: false }}
-          />
+          /> */}
         </Stack.Navigator>
       </View>
     </NavigationContainer>
