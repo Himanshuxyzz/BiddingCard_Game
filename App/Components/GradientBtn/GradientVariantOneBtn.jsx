@@ -11,7 +11,7 @@ const GradientVarientOneBtn = ({ btnText, style, isDisabled, ...props }) => {
         locations={[0.03, 0.64, 1, 1]}
         start={{ x: 0, y: 0 }} // Start from the top-left corner
         end={{ x: 1, y: 0 }} // End at the top-right corner
-        style={{ widthidth: "100%", padding: 15 }}
+        style={{ padding: 15 }}
       >
         <Text
           style={{
