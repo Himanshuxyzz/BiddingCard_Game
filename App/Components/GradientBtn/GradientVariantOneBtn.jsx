@@ -3,9 +3,9 @@ import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import Colors from "../../Utils/Colors";
 
-const GradientVarientOneBtn = ({ btnText, style, ...props }) => {
+const GradientVarientOneBtn = ({ btnText, style, isDisabled, ...props }) => {
   return (
-    <TouchableOpacity style={{ ...style }} {...props}>
+    <TouchableOpacity style={{ ...style }} {...props} disabled={isDisabled}>
       <LinearGradient
         colors={["#EA59E4", "#C508BD", "#910C8C", "#910C8C"]}
         locations={[0.03, 0.64, 1, 1]}

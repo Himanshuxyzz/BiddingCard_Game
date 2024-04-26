@@ -10,13 +10,33 @@ import {
   TouchableOpacity,
   Text,
 } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import Colors from "../../Utils/Colors";
 import WhiteText from "../../Components/WhiteText/WhiteText";
 import { OtpInput } from "react-native-otp-entry";
 import GradientVarientOneBtn from "../../Components/GradientBtn/GradientVariantOneBtn";
+import { useState } from "react";
+
+let TestOtp = 4321;
 
 const OtpVerification = () => {
+  const [otpMatched, setOtpMatched] = useState(null);
+
+  const verifyOtp = (otpValue) => {
+    const otpNumber = parseInt(otpValue);
+
+    // Check if the parsed value is a valid number
+    if (!isNaN(otpNumber)) {
+      // Check if otpNumber matches TestOtp
+      setOtpMatched(otpNumber === TestOtp);
+    } else {
+      // Handle case where otpValue is not a valid number
+      console.log("Invalid OTP:", otpValue);
+      // Optionally, you can handle this case by setting otpMatched to false
+      setOtpMatched(false);
+    }
+  };
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "position" : "height"}
@@ -37,9 +57,10 @@ const OtpVerification = () => {
           <OtpInput
             autoFocus={false}
             numberOfDigits={4}
-            onTextChange={(text) => console.log(text)}
+            // onTextChange={(text) => console.log(text)}
             focusColor={"white"}
-            onFilled={(text) => console.log(`OTP is ${text}`)}
+            // onFilled={(text) => console.log(`OTP is ${text}`)}
+            onFilled={(otp) => verifyOtp(otp)}
             textInputProps={{
               accessibilityLabel: "One-Time Password",
             }}
@@ -60,26 +81,51 @@ const OtpVerification = () => {
           />
 
           <View
-            style={{ flexDirection: "row", gap: 2.5, alignItems: "center" }}
+            style={{
+              flexDirection: "column",
+              gap: 2.5,
+              alignItems: "center",
+            }}
           >
-            <Text
-              style={{ color: Colors.WHITE, fontSize: 18, fontWeight: "700" }}
+            <View
+              style={{ flexDirection: "row", gap: 2.5, alignItems: "center" }}
             >
-              If you didn’t receive a code!
-            </Text>
-            <TouchableOpacity>
               <Text
-                style={{
-                  color: Colors.LINK_COLOR,
-                  fontSize: 18,
-                  fontWeight: "700",
-                }}
+                style={{ color: Colors.WHITE, fontSize: 18, fontWeight: "700" }}
               >
-                Resend
+                If you didn’t receive a code!
               </Text>
-            </TouchableOpacity>
+              <TouchableOpacity onPress={() => {}}>
+                <Text
+                  style={{
+                    color: Colors.LINK_COLOR,
+                    fontSize: 18,
+                    fontWeight: "700",
+                  }}
+                >
+                  Resend
+                </Text>
+              </TouchableOpacity>
+            </View>
           </View>
-          <GradientVarientOneBtn btnText={"Verify"} style={styles.btn} />
+          {/* <View>
+            <Text
+              style={{
+                color: Colors.WHITE,
+                fontSize: 18,
+                fontWeight: "700",
+              }}
+            >
+              We have sent you <Text>One Time Password</Text> to your mail /
+              mobile number
+            </Text>
+          </View> */}
+
+          <GradientVarientOneBtn
+            btnText={"Verify"}
+            style={styles.btn}
+            isDisabled={!otpMatched}
+          />
         </View>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
@@ -93,11 +139,11 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     backgroundColor: Colors.PRIMARY,
-    padding: 20,
+    padding: 15,
   },
   subContainer: {
     width: "90%",
-    marginTop: "20%",
+    marginTop: "14%",
     flex: 1,
     flexDirection: "column",
     gap: 20,
