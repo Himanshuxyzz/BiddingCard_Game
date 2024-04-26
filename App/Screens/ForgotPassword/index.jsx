@@ -13,7 +13,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import GradientVarientOneBtn from "../../Components/GradientBtn/GradientVariantOneBtn";
 
-const ForgotPassword = () => {
+const ForgotPassword = ({ navigation }) => {
   const [emailMobile, setEmailMobile] = useState("");
   return (
     <View style={styles.container}>
@@ -35,7 +35,11 @@ const ForgotPassword = () => {
           autoCapitalize={"none"}
         />
 
-        <GradientVarientOneBtn btnText={"Send"} style={styles.btn} />
+        <GradientVarientOneBtn
+          btnText={"Send"}
+          style={styles.btn}
+          onPress={() => navigation.navigate("otpVerification")}
+        />
 
         <View
           style={{
@@ -54,7 +58,7 @@ const ForgotPassword = () => {
             <Text
               style={{
                 fontSize: 18,
-                color: "#389AF4",
+                color: Colors.LINK_COLOR,
                 fontWeight: "700",
                 textDecorationLine: "underline",
               }}
@@ -122,7 +126,7 @@ const styles = StyleSheet.create({
     // fontFamily: "Laila-Bold",
   },
   subHeading: {
-    fontSize: 16,
+    fontSize: 17,
     // fontFamily: "Inter-Medium",
   },
   input: {

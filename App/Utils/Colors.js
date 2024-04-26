@@ -3,4 +3,5 @@ export default {
   WHITE: "#FFFFFF",
   INPUT_PLACEHOLDER:"#B1B1B1",
   ICON_COLOR:"#C508BD",
+  LINK_COLOR:"#389AF4"
 };

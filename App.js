@@ -8,6 +8,13 @@ import Start from "./App/Screens/CreateYourProfile";
 import CreateUrProfile from "./App/Screens/CreateYourProfile/CreateUrProfile";
 import AddBankDetail from "./App/Screens/CreateYourProfile/AddBankDetail";
 
+import OtpVerification from "./App/Screens/ForgotPassword/OtpVerification";
+
+import WalletMain from "./App/Screens/WalletScreen";
+import WalletMainVerified from "./App/Screens/WalletScreen/WalletMainVerified";
+import FirstPage from "./App/Screens/SignUp";
+
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -36,6 +43,23 @@ export default function App() {
             component={ForgotPassword}
             options={{ headerShown: false }}
           /> */}
+          />
+           <Stack.Screen
+            name="otpVerification"
+            component={OtpVerification}
+            options={{ headerShown: false }}
+          />
+          {/*<Stack.Screen
+            name="WalletMain"
+            component={WalletMain}
+            options={{ headerShown: false }}
+          />
+           <Stack.Screen
+            name="WalletMainVerified"
+            component={WalletMainVerified}
+            options={{ headerShown: false }}
+          />
+         */}
         </Stack.Navigator>
       </View>
     </NavigationContainer>
