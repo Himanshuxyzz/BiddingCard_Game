@@ -1,13 +1,13 @@
 import {
   StyleSheet,
   Text,
-  Touchable,
   TouchableOpacity,
   View,
 } from "react-native";
 import React from "react";
+import GradientVarientOneBtn from "../../Components/GradientBtn/GradientVariantOneBtn";
 
-const Start = () => {
+const Start = ({navigation}) => {
   return (
     <View style={styles.container}>
       <Text style={[styles.h1, { color: "#EA59E4" }]}>Almost there!</Text>
@@ -16,7 +16,6 @@ const Start = () => {
           color: "#fff",
           fontSize: 23,
           fontWeight: 600,
-          // textAlign: "center",
         }}
       >
         User123, Would you like to complete your profile?
@@ -30,26 +29,17 @@ const Start = () => {
           marginTop: "4%",
         }}
       >
-        <TouchableOpacity
-          style={{
-            borderWidth: 1,
-            borderColor: "#fff",
-            borderRadius: 20,
-            backgroundColor: "rgba(234, 89, 228, 0.7)",
-          }}
-        >
-          <Text style={styles.buttonText}>Complete Profile</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={{
-            borderWidth: 1,
-            borderColor: "#fff",
-            borderRadius: 20,
-            backgroundColor: "rgba(234, 89, 228, 0.7)",
-          }}
-        >
-          <Text style={styles.buttonText}>Skip</Text>
-        </TouchableOpacity>
+
+        <GradientVarientOneBtn
+          btnText={"Complete Profile"} onPress={() =>navigation.navigate("Createurprofile")}
+          style={styles.btn}
+        />
+
+
+            <GradientVarientOneBtn
+          btnText={"Skip"}
+          style={styles.btn}
+        />
       </View>
     </View>
   );
@@ -72,12 +62,11 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textDecorationLine: "underline",
   },
-  buttonText: {
-    color: "#fff",
-    fontSize: 25,
-    fontWeight: "bold",
-    paddingHorizontal: 15,
-    paddingVertical: 20,
-    textAlign: "center",
+  btn: {
+    minWidth: "90%",
+    borderWidth: "1",
+    borderColor: "#DDBBE6",
+    borderRadius: 10,
+    overflow: "hidden",
   },
 });
