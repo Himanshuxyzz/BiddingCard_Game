@@ -160,7 +160,11 @@ const OtpVerification = ({ navigation }) => {
               }}
             >
               <Text
-                style={{ fontSize: 32, fontWeight: "800", color: "#F57676" }}
+                style={{
+                  fontSize: 32,
+                  fontWeight: "800",
+                  color: Colors.INVALIDTEXT_COLOR,
+                }}
               >
                 Try again!
               </Text>
@@ -168,7 +172,7 @@ const OtpVerification = ({ navigation }) => {
                 style={{ fontSize: 18, fontWeight: "600", color: Colors.WHITE }}
               >
                 Oops, Seems like something is{" "}
-                <Text style={{ color: "#F57676" }}>wrong</Text>
+                <Text style={{ color: Colors.INVALIDTEXT_COLOR }}>wrong</Text>
               </Text>
               <OtpInput
                 autoFocus={false}
@@ -239,7 +243,7 @@ const OtpVerification = ({ navigation }) => {
                     ? otpMatched !== null && !otpMatched
                       ? toggleModal
                       : () => {
-                          navigation.navigate("WalletMain");
+                          navigation.navigate("newPassword");
                           setOtp(null);
                           otpInputRef.current.clear();
                           setModalVisible(false);
@@ -270,7 +274,7 @@ const OtpVerification = ({ navigation }) => {
                 ? otpMatched !== null && !otpMatched
                   ? toggleModal
                   : () => {
-                      navigation.navigate("WalletMain");
+                      navigation.navigate("newPassword");
                       setOtp(null);
                       otpInputRef.current.clear();
                     }
