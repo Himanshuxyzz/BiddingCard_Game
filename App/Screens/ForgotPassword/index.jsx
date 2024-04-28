@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   subContainer: {
-    marginTop: "20%",
+    marginTop: "18%",
     flex: 1,
     flexDirection: "column",
     gap: 20,
@@ -126,14 +126,15 @@ const styles = StyleSheet.create({
     // fontFamily: "Laila-Bold",
   },
   subHeading: {
-    fontSize: 17,
+    fontSize: 20,
     // fontFamily: "Inter-Medium",
+    fontWeight:"700"
   },
   input: {
     color: Colors.WHITE,
     minWidth: "90%",
     height: 57,
-    marginVertical: 12,
+    marginVertical: 15,
     padding: 20,
     backgroundColor: "rgba(255, 255, 255, 0.1)",
     fontSize: 18,
