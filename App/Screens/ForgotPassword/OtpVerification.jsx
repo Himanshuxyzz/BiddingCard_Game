@@ -50,13 +50,13 @@ const OtpVerification = ({ navigation }) => {
     setModalVisible(false);
   };
 
-//   console.log(`otp - ${otp}`);
-//   console.log(`otp is valid or not - ${otpMatched}`);
-//   console.log(`modal is visble or not - ${isModalVisible}`);
+  //   console.log(`otp - ${otp}`);
+  //   console.log(`otp is valid or not - ${otpMatched}`);
+  //   console.log(`modal is visble or not - ${isModalVisible}`);
 
-//   console.log(
-//     `if otp is ${otp} and otpMatched is also  ${otpMatched} then modal should not be opened `
-//   );
+  //   console.log(
+  //     `if otp is ${otp} and otpMatched is also  ${otpMatched} then modal should not be opened `
+  //   );
 
   return (
     <KeyboardAvoidingView
@@ -160,15 +160,19 @@ const OtpVerification = ({ navigation }) => {
               }}
             >
               <Text
-                style={{ fontSize: 32, fontWeight: "800", color: "#F57676" }}
+                style={{
+                  fontSize: 32,
+                  fontWeight: "800",
+                  color: Colors.INVALIDTEXT_COLOR,
+                }}
               >
                 Try again!
               </Text>
               <Text
                 style={{ fontSize: 18, fontWeight: "600", color: Colors.WHITE }}
               >
-                Oops, Seems like something is{" "}
-                <Text style={{ color: "#F57676" }}>wrong</Text>
+                Oops, Seems like something is
+                <Text style={{ color: Colors.INVALIDTEXT_COLOR }}> wrong</Text>
               </Text>
               <OtpInput
                 autoFocus={false}
@@ -239,7 +243,7 @@ const OtpVerification = ({ navigation }) => {
                     ? otpMatched !== null && !otpMatched
                       ? toggleModal
                       : () => {
-                          navigation.navigate("WalletMain");
+                          navigation.navigate("newPassword");
                           setOtp(null);
                           otpInputRef.current.clear();
                           setModalVisible(false);
@@ -270,7 +274,7 @@ const OtpVerification = ({ navigation }) => {
                 ? otpMatched !== null && !otpMatched
                   ? toggleModal
                   : () => {
-                      navigation.navigate("WalletMain");
+                      navigation.navigate("newPassword");
                       setOtp(null);
                       otpInputRef.current.clear();
                     }

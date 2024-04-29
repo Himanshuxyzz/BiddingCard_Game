@@ -16,7 +16,9 @@ import OtpVerification from "./App/Screens/ForgotPassword/OtpVerification";
 import WalletMain from "./App/Screens/WalletScreen";
 import WalletMainVerified from "./App/Screens/WalletScreen/WalletMainVerified";
 import FirstPage from "./App/Screens/SignUp";
-
+import NewPassword from "./App/Screens/ForgotPassword/NewPassword";
+import NotMatchedPassword from "./App/Screens/ForgotPassword/NotMatchedPassword";
+import CorrectPassword from "./App/Screens/ForgotPassword/CorrectPassword";
 
 const Stack = createNativeStackNavigator();
 
@@ -60,6 +62,28 @@ export default function App() {
             name="forgotPassword"
             component={ForgotPassword}
             options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="otpVerification"
+            component={OtpVerification}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="newPassword"
+            component={NewPassword}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="inCorrectPassword"
+            component={NotMatchedPassword}
+            options={{ headerShown: false }}
+          />
+
+          <Stack.Screen
+            name="correctPassword"
+            component={CorrectPassword}
+            options={{ headerShown: false }}
+          />
           /> */}
           {/* <Stack.Screen
             name="otpVerification"
@@ -71,6 +95,12 @@ export default function App() {
             name="WalletMain"
             component={WalletMain}
             options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="WalletMainVerified"
+            component={WalletMainVerified}
+            options={{ headerShown: false }}
+          />
           /> */}
           {/* <Stack.Screen
             name="WalletMainVerified"
@@ -87,6 +117,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.PRIMARY,
-    paddingTop:'12%',
+    paddingTop: "12%",
   },
 });
