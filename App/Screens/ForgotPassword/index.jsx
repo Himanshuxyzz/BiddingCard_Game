@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
   subHeading: {
     fontSize: 20,
     // fontFamily: "Inter-Medium",
-    fontWeight:"700"
+    fontWeight: "700",
   },
   input: {
     color: Colors.WHITE,
