@@ -63,11 +63,11 @@ export default function App() {
 
           {/* Himanshu */}
           <Stack.Screen
-            name="forgotPassword"
-            component={ForgotPassword}
+            name="signup"
+            component={FirstPage}
             options={{ headerShown: false }}
           />
-          <Stack.Screen
+          {/* <Stack.Screen
             name="otpVerification"
             component={OtpVerification}
             options={{ headerShown: false }}
@@ -87,7 +87,7 @@ export default function App() {
             name="correctPassword"
             component={CorrectPassword}
             options={{ headerShown: false }}
-          />
+          /> */}
           
           {/* Himanshu - end */}
 
