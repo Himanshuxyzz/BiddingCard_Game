@@ -15,7 +15,7 @@ import { FontAwesome6 } from "@expo/vector-icons";
 import Modal from "react-native-modal";
 import GradientVarientOneBtn from "../../Components/GradientBtn/GradientVariantOneBtn";
 
-const AddBankDetail = () => {
+const AddBankDetail = ({ navigation }) => {
   const [isModalVisible, setModalVisible] = useState(false);
 
   const toggleModal = () => {
@@ -204,12 +204,22 @@ const AddBankDetail = () => {
             </View>
           </View>
         </Modal>
+        <GradientVarientOneBtn
+          btnText={"Save & Next"}
+          onPress={() => navigation.navigate("Verificationpending")}
+          style={styles.btn}
+        />
         {/* <GradientVarientOneBtn
           btnText={"Save & Next"}
-          onPress={() => navigation.navigate("Addbankdetail")}
+          onPress={() => navigation.navigate("Verificationsuccessful")}
           style={styles.btn}
         /> */}
-        <GradientVarientOneBtn btnText={"Save & Next"} style={styles.btn} />
+        {/* <GradientVarientOneBtn
+          btnText={"Save & Next"}
+          onPress={() => navigation.navigate("Notverified")}
+          style={styles.btn}
+        /> */}
+        {/* <GradientVarientOneBtn btnText={"Save & Next"} style={styles.btn} /> */}
       </ScrollView>
     </View>
   );
