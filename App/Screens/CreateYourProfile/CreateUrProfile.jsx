@@ -1,19 +1,95 @@
 import { useState } from "react";
-import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, Image, View } from "react-native";
 import React from "react";
 import Colors from "../../Utils/Colors";
+import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { Feather } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { FontAwesome6 } from "@expo/vector-icons";
 import Modal from "react-native-modal";
+import * as DocumentPicker from "expo-document-picker";
+import * as ImagePicker from "expo-image-picker";
 import GradientVarientOneBtn from "../../Components/GradientBtn/GradientVariantOneBtn";
 
 const CreateUrProfile = ({ navigation }) => {
-    const [isModalVisible, setModalVisible] = useState(false);
+  const [isModalVisible, setModalVisible] = useState(false);
 
-    const toggleModal = () => {
-      setModalVisible(!isModalVisible);
-    };
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(null); // State to store the selected date
+
+  const showDatePicker = () => {
+    setDatePickerVisibility(true);
+  };
+
+  const hideDatePicker = () => {
+    setDatePickerVisibility(false);
+  };
+
+  const handleConfirm = (date) => {
+    console.warn("A date has been picked: ", date);
+    hideDatePicker();
+    setSelectedDate(date); // Store the selected date in state
+  };
+
+  const pickSomething = async () => {
+    try {
+      const docRes = await DocumentPicker.getDocumentAsync({
+        type: "*/*",
+      });
+      console.log(docRes);
+      setModalVisible(false);
+    } catch (error) {
+      console.log("Error while selecting file: ", error);
+    }
+  };
+  const pickImageOnly = async () => {
+    try {
+      const docRes = await DocumentPicker.getDocumentAsync({
+        type: "image/*",
+      });
+      console.log(docRes);
+      setModalVisible(false);
+    } catch (error) {
+      console.log("Error while selecting file: ", error);
+    }
+  };
+  const [image, setImage] = useState(null);
+
+  const pickImage = async () => {
+    // No permissions request is necessary for launching the image library
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+    setModalVisible(false);
+
+    if (!result.canceled) {
+      setImage(result.assets[0].uri);
+    }
+  };
+  const formatDate = (date) => {
+    if(date != null) {
+ const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+    // console.log(day)
+    // console.log(month)
+    // console.log(year)
+    let finalDate = `${day}-${month}-${year}`
+    return finalDate
+    }
+    return
+  };
+
+  console.log(formatDate(selectedDate))
+
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContent}>
@@ -35,13 +111,27 @@ const CreateUrProfile = ({ navigation }) => {
         <Text style={styles.noteText}>
           * (Please fill Mention as Aadhar card)
         </Text>
-        <View style={styles.inputContainer}>
+        <View style={[styles.inputContainer, { position: "relative" }]}>
           <TextInput
             style={styles.input}
             placeholder="D.O.B"
             placeholderTextColor={Colors.INPUT_PLACEHOLDER}
             autoCapitalize={"none"}
+            value={formatDate(selectedDate)}
           />
+          <TouchableOpacity
+            style={{ position: "absolute", top: 15, left: 140 }}
+            onPress={showDatePicker}
+          >
+            <Feather name="calendar" size={25} color="rgba(177, 177, 177, 1)" />
+          </TouchableOpacity>
+          <DateTimePickerModal
+            isVisible={isDatePickerVisible}
+            mode="date"
+            onConfirm={handleConfirm}
+            onCancel={hideDatePicker}
+          />
+
           <TextInput
             style={styles.input}
             placeholder="Phone no."
@@ -92,6 +182,7 @@ const CreateUrProfile = ({ navigation }) => {
         <View style={styles.dashedBorder}>
           <Feather name="upload-cloud" size={30} color="white" />
           <View style={{ flexDirection: "row", gap: 5 }}>
+            {/* {image && <Image source={{ uri: image }} style={styles.image} />} */}
             <Text style={{ fontSize: 18, color: "#fff", fontWeight: "bold" }}>
               Drag and Drop or
             </Text>
@@ -114,9 +205,7 @@ const CreateUrProfile = ({ navigation }) => {
           isVisible={isModalVisible}
           onBackdropPress={() => setModalVisible(false)}
         >
-          <View
-            style={{justifyContent:"center",alignItems:"center"}}
-          >
+          <View style={{ justifyContent: "center", alignItems: "center" }}>
             {/* <View>
                 <Text style={{color:"red"}}>Close</Text>
             </View> */}
@@ -130,8 +219,8 @@ const CreateUrProfile = ({ navigation }) => {
                 justifyContent: "space-between",
                 alignItems: "center",
                 paddingHorizontal: 15,
-                marginLeft:5,
-                marginRight:5,
+                marginLeft: 5,
+                marginRight: 5,
               }}
             >
               <View
@@ -152,6 +241,7 @@ const CreateUrProfile = ({ navigation }) => {
                     borderRadius: 10,
                     backgroundColor: "rgba(217, 217, 217, 1)",
                   }}
+                  onPress={pickSomething}
                 >
                   <Feather name="upload" size={24} color="black" />
                 </TouchableOpacity>
@@ -175,6 +265,7 @@ const CreateUrProfile = ({ navigation }) => {
                     borderRadius: 10,
                     backgroundColor: "rgba(217, 217, 217, 1)",
                   }}
+                  onPress={pickImage}
                 >
                   <AntDesign name="picture" size={24} color="black" />
                 </TouchableOpacity>
@@ -198,6 +289,7 @@ const CreateUrProfile = ({ navigation }) => {
                     borderRadius: 10,
                     backgroundColor: "rgba(217, 217, 217, 1)",
                   }}
+                  onPress={pickImageOnly}
                 >
                   <Feather name="file-plus" size={24} color="black" />
                 </TouchableOpacity>
@@ -313,9 +405,13 @@ const styles = StyleSheet.create({
     borderStyle: "dashed",
     marginVertical: 20,
     backgroundColor: "rgba(255, 255, 255, 0.1)",
-    justifyContent:"center",
-    alignItems:"center",
-    gap:10
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 10,
+  },
+  image: {
+    width: 70,
+    height: 70,
   },
   btn: {
     minWidth: "90%",
