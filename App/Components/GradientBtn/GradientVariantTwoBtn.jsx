@@ -30,10 +30,3 @@ const GradientVarientTwoBtn = ({ btnText, style, isDisabled, ...props }) => {
 
 export default GradientVarientTwoBtn;
 
-const styles = StyleSheet.create({
-  btn: {
-    minWidth: "90%",
-    borderRadius: 10,
-    overflow: "hidden",
-  },
-});
