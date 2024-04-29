@@ -28,26 +28,27 @@ export default function App() {
       <StatusBar style="light" />
       <View style={styles.container}>
         <Stack.Navigator>
-          <Stack.Screen
+          {/* Esha */}
+          {/* <Stack.Screen
             name="Start"
             component={Start}
             options={{ headerShown: false }}
-          />
-          <Stack.Screen
+          /> */}
+          {/* <Stack.Screen
             name="Createurprofile"
             component={CreateUrProfile}
             options={{ headerShown: false }}
-          />
-          <Stack.Screen
+          /> */}
+          {/* <Stack.Screen
             name="Addbankdetail"
             component={AddBankDetail}
             options={{ headerShown: false }}
-          />
-          <Stack.Screen
+          /> */}
+          {/* <Stack.Screen
             name="Verificationpending"
             component={VerificationPending}
             options={{ headerShown: false }}
-          />
+          /> */}
           {/* <Stack.Screen
             name="Verificationsuccessful"
             component={VerificationSuccessful}
@@ -58,7 +59,10 @@ export default function App() {
             component={NotVerified}
             options={{ headerShown: false }}
           /> */}
-          {/* <Stack.Screen
+          {/* Esha - end */}
+
+          {/* Himanshu */}
+          <Stack.Screen
             name="forgotPassword"
             component={ForgotPassword}
             options={{ headerShown: false }}
@@ -84,13 +88,10 @@ export default function App() {
             component={CorrectPassword}
             options={{ headerShown: false }}
           />
-          /> */}
-          {/* <Stack.Screen
-            name="otpVerification"
-            component={OtpVerification}
-            options={{ headerShown: false }}
-          /> */}
+          
+          {/* Himanshu - end */}
 
+          {/* Sakshi */}
           {/* <Stack.Screen
             name="WalletMain"
             component={WalletMain}
@@ -100,13 +101,9 @@ export default function App() {
             name="WalletMainVerified"
             component={WalletMainVerified}
             options={{ headerShown: false }}
-          />
           /> */}
-          {/* <Stack.Screen
-            name="WalletMainVerified"
-            component={WalletMainVerified}
-            options={{ headerShown: false }}
-          /> */}
+          {/* Sakshi - end */}
+
         </Stack.Navigator>
       </View>
     </NavigationContainer>
