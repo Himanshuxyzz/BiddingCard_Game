@@ -14,12 +14,63 @@ import { AntDesign } from "@expo/vector-icons";
 import { FontAwesome6 } from "@expo/vector-icons";
 import Modal from "react-native-modal";
 import GradientVarientOneBtn from "../../Components/GradientBtn/GradientVariantOneBtn";
+import * as DocumentPicker from "expo-document-picker";
+import * as ImagePicker from "expo-image-picker";
+import WhiteText from "../../Components/WhiteText/WhiteText";
 
 const AddBankDetail = ({ navigation }) => {
   const [isModalVisible, setModalVisible] = useState(false);
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
+  };
+  const [fileSelected, setFileSelected] = useState(null);
+  const pickSomething = async () => {
+    try {
+      const docRes = await DocumentPicker.getDocumentAsync({
+        type: "*/*",
+        multiple: true,
+      });
+      // console.log(docRes.assets[0].name);
+      console.log(docRes);
+      setFileSelected(docRes.assets);
+      setModalVisible(false);
+    } catch (error) {
+      console.log("Error while selecting file: ", error);
+    }
+  };
+  const pickImageOnly = async () => {
+    try {
+      const docRes = await DocumentPicker.getDocumentAsync({
+        type: "image/*",
+      });
+      setFileSelected(docRes && docRes?.assets);
+
+      setModalVisible(false);
+    } catch (error) {
+      console.log("Error while selecting file: ", error);
+    }
+  };
+  const [image, setImage] = useState(null);
+
+  const pickImage = async () => {
+    // No permissions request is necessary for launching the image library
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    // console.log(result);
+    setModalVisible(false);
+
+    if (!result.canceled) {
+      setImage(result.assets[0].uri);
+      // console.log(result)
+
+      setFileSelected(result.assets);
+    }
   };
   return (
     <View style={styles.container}>
@@ -127,6 +178,7 @@ const AddBankDetail = ({ navigation }) => {
                     borderRadius: 10,
                     backgroundColor: "rgba(217, 217, 217, 1)",
                   }}
+                  onPress={pickSomething}
                 >
                   <Feather name="upload" size={24} color="black" />
                 </TouchableOpacity>
@@ -150,6 +202,7 @@ const AddBankDetail = ({ navigation }) => {
                     borderRadius: 10,
                     backgroundColor: "rgba(217, 217, 217, 1)",
                   }}
+                  onPress={pickImage}
                 >
                   <AntDesign name="picture" size={24} color="black" />
                 </TouchableOpacity>
@@ -173,6 +226,7 @@ const AddBankDetail = ({ navigation }) => {
                     borderRadius: 10,
                     backgroundColor: "rgba(217, 217, 217, 1)",
                   }}
+                  onPress={pickImageOnly}
                 >
                   <Feather name="file-plus" size={24} color="black" />
                 </TouchableOpacity>
@@ -196,6 +250,7 @@ const AddBankDetail = ({ navigation }) => {
                     borderRadius: 10,
                     backgroundColor: "rgba(217, 217, 217, 1)",
                   }}
+                  onPress={pickSomething}
                 >
                   <FontAwesome6 name="google-drive" size={24} color="black" />
                 </TouchableOpacity>
@@ -204,6 +259,28 @@ const AddBankDetail = ({ navigation }) => {
             </View>
           </View>
         </Modal>
+        <View
+          style={{
+            flexDirection: "row",
+            flexWrap: "wrap",
+            gap: 20,
+            marginBottom: 20,
+            justifyContent: "center",
+          }}
+        >
+          {fileSelected !== null &&
+            fileSelected !== undefined &&
+            fileSelected?.map((data) => {
+              const uri = data?.uri;
+              const file_Name = uri?.substring(uri?.lastIndexOf("/") + 1);
+              return (
+                <WhiteText key={data?.fileSize} style={{ fontWeight: "700" }}>
+                  {data?.name !== undefined ? data?.name : file_Name}
+                </WhiteText>
+              );
+            })}
+          {/* <WhiteText style={{fontWeight:"700"}}> {fileSelected !== null && fileSelected[0].uri}</WhiteText> */}
+        </View>
         <GradientVarientOneBtn
           btnText={"Save & Next"}
           onPress={() => navigation.navigate("Verificationpending")}
