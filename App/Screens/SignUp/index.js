@@ -11,7 +11,7 @@ const FirstPage = () => {
       <ImageBackground source={image} resizeMode="cover" style={styles.image}>
         <Image source={img} style={styles.img}/>
         <Text style={styles.txt} >BC game</Text>
-        <View style={[styles.wrapper, styles.simpleButton]}>
+        <View style={[styles.wrapper, styles.simpleButton]} sr>
         <Text style={styles.text} >Create Account</Text>
     </View>
     <View style={[styles.wrap]}>

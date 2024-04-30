@@ -63,11 +63,11 @@ export default function App() {
 
           {/* {Bhavesh} */}
            
-           <Stack.Screen
+           {/* <Stack.Screen
             name="WelcomePage"
             component={FirstPage}
             options={{ headerShown: false }}
-          />
+          /> */}
            <Stack.Screen
             name="SignUpPage"
             component={SignUpPage}
