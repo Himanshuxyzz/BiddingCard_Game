@@ -63,26 +63,29 @@ export default function App() {
 
           {/* {Bhavesh} */}
            
-           <Stack.Screen
+           {/* <Stack.Screen
             name="WelcomePage"
             component={FirstPage}
             options={{ headerShown: false }}
-          />
-           <Stack.Screen
+          /> */}
+
+           {/* <Stack.Screen
             name="SignUpPage"
             component={SignUpPage}
             options={{ headerShown: false }}
-          />
+          /> */}
 
           {/* {Bhavesh end} */}
+
           {/* Himanshu */}
-          {/* <Stack.Screen
+
+          <Stack.Screen
             name="forgotPassword"
             component={ForgotPassword}
             options={{ headerShown: false }}
-          /> */}
+          />
           
-          {/* <Stack.Screen
+          <Stack.Screen
             name="otpVerification"
             component={OtpVerification}
             options={{ headerShown: false }}
@@ -102,11 +105,12 @@ export default function App() {
             name="correctPassword"
             component={CorrectPassword}
             options={{ headerShown: false }}
-          /> */}
+          />
           
           {/* Himanshu - end */}
 
           {/* Sakshi */}
+
           {/* <Stack.Screen
             name="WalletMain"
             component={WalletMain}
@@ -117,7 +121,14 @@ export default function App() {
             component={WalletMainVerified}
             options={{ headerShown: false }}
           /> */}
+          
           {/* Sakshi - end */}
+
+          {/* samraat start */}
+           
+
+           {/* samraat end */}
+
 
         </Stack.Navigator>
       </View>
