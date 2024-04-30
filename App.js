@@ -19,7 +19,7 @@ import FirstPage from "./App/Screens/SignUp";
 import NewPassword from "./App/Screens/ForgotPassword/NewPassword";
 import NotMatchedPassword from "./App/Screens/ForgotPassword/NotMatchedPassword";
 import CorrectPassword from "./App/Screens/ForgotPassword/CorrectPassword";
-
+import SignUpPage from './App/Screens/SignUp/SignUpPage'
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -61,12 +61,27 @@ export default function App() {
           /> */}
           {/* Esha - end */}
 
-          {/* Himanshu */}
-          <Stack.Screen
-            name="signup"
+          {/* {Bhavesh} */}
+           
+           <Stack.Screen
+            name="WelcomePage"
             component={FirstPage}
             options={{ headerShown: false }}
           />
+           <Stack.Screen
+            name="SignUpPage"
+            component={SignUpPage}
+            options={{ headerShown: false }}
+          />
+
+          {/* {Bhavesh end} */}
+          {/* Himanshu */}
+          {/* <Stack.Screen
+            name="forgotPassword"
+            component={ForgotPassword}
+            options={{ headerShown: false }}
+          /> */}
+          
           {/* <Stack.Screen
             name="otpVerification"
             component={OtpVerification}
