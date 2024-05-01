@@ -41,7 +41,7 @@ const SignUpPage = () => {
       />
       <GradientVarientOneBtn
           btnText={"Submit"}
-          onPress={() => navigation.navigate("Login")}
+          onPress={() => navigation.navigate("LoginPage.jsx")}
           style={styles.btn}
         />
          <Text style={styles.txt2}>Already have an account?Login</Text>

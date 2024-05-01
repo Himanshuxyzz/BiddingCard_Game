@@ -1,5 +1,5 @@
 
-import { StyleSheet, Text, View ,ImageBackground, Image,Button} from 'react-native'
+import { StyleSheet, Text, View ,ImageBackground, Image,TouchableOpacity} from 'react-native'
 import React from 'react'
 const image = {uri: 'https://s3-alpha-sig.figma.com/img/0dcb/6ab1/493cee69dff21de53748e472f9e454e7?Expires=1714953600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=GWww2vOKhWrrQIWxov9uCwFEZAHz3-s27vkjG1nmKMXmkPqA~dxBOmbWPGxEpVVi-e3A0Pinr6U1Ezqeap269O5fywKvv8t7Z0Gxt99hdW8JhS-ITBYfNGOz4HIYXwhPKYjaUdC42J97KjLsv3DiFyYjudbQbbg-W1r3PgDPg-AHrgcJNYRncBx26E5dJDSA30zKxD-hi0iKorTf~zzUchll-tSc9qHeQDN-XlQ8RG7yPABiNm14EG1GvOce6AZP4SiJ~6jnFbxpGuGho-3aR~xXpKYvGVW-o3IWU00Zf6H3pXIevrqvJxddwd1K93aPyD1kO-PxzqRbPEBSOosIiA__'};
 
@@ -11,12 +11,19 @@ const FirstPage = () => {
       <ImageBackground source={image} resizeMode="cover" style={styles.image}>
         <Image source={img} style={styles.img}/>
         <Text style={styles.txt} >BC game</Text>
-        <View style={[styles.wrapper, styles.simpleButton]} sr>
+        <TouchableOpacity onPress={() => 
+               this.props.navigation.navigate('SignUpPage')}>
+        <View style={[styles.wrapper, styles.simpleButton]} >
+         
         <Text style={styles.text} >Create Account</Text>
     </View>
+    </TouchableOpacity>
+
+    <TouchableOpacity>
     <View style={[styles.wrap]}>
         <Text style={styles.text1} >Log In</Text>
     </View>
+    </TouchableOpacity>
      </ImageBackground>
     
     </View>
