@@ -1,54 +1,74 @@
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import { StyleSheet, TextInput, View } from "react-native";
 import React, { useState } from "react";
 import Colors from "../../Utils/Colors";
 import WhiteText from "../../Components/WhiteText/WhiteText";
 import GradientVarientOneBtn from "../../Components/GradientBtn/GradientVariantOneBtn";
 
+const NewPassword = ({ navigation }) => {
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
-const NotMatchedPassword = () => {
-  const [emailMobile, setEmailMobile] = useState("");
+  const handlePassword = () => {
+    if (newPassword !== undefined && (newPassword || newPassword !== "")) {
+      console.log({ newPass: newPassword, confirmPass: confirmPassword });
+      navigation.navigate(
+        confirmPassword === newPassword
+          ? "correctPassword"
+          : "inCorrectPassword"
+      );
+      setNewPassword("");
+      setConfirmPassword("");
+      return;
+    }
+    console.log("please enter password");
+  };
 
   return (
     <View style={styles.container}>
       <View style={styles.subContainer}>
         <WhiteText style={styles.Heading}>
-          Your password doesnot match
+          Your password doesn't match
         </WhiteText>
 
         <View style={styles.inputContainer}>
           <WhiteText style={styles.subHeading}>Enter New Password</WhiteText>
           <TextInput
-            value={emailMobile}
+            value={newPassword}
             //   onChangeText={(text) => setEmailMobile(text)}
-            onChangeText={setEmailMobile}
+            onChangeText={(text) => setNewPassword(text)}
             style={styles.input}
-            placeholder="8 symbols atleast"
+            placeholder="new password"
             keyboardType="default"
             placeholderTextColor={Colors.INPUT_PLACEHOLDER}
             autoCapitalize={"none"}
+            secureTextEntry
           />
 
           <WhiteText style={styles.subHeading}>Confirm Password</WhiteText>
           <TextInput
-            value={emailMobile}
+            value={confirmPassword}
             //   onChangeText={(text) => setEmailMobile(text)}
-            onChangeText={setEmailMobile}
+            onChangeText={(text) => setConfirmPassword(text)}
             style={styles.input}
-            placeholder="********"
+            placeholder="confirm password"
             placeholderTextColor={Colors.INPUT_PLACEHOLDER}
             autoCapitalize={"none"}
             secureTextEntry
           />
         </View>
 
-        <GradientVarientOneBtn btnText={"Submit"} style={styles.btn} />
-       
+        <GradientVarientOneBtn
+          btnText={"Submit"}
+          style={styles.btn}
+          //   onPress={() => navigation.navigate("correctPassword")}
+          onPress={handlePassword}
+        />
       </View>
     </View>
   );
 };
 
-export default NotMatchedPassword;
+export default NewPassword;
 
 const styles = StyleSheet.create({
   container: {
