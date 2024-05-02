@@ -1,15 +1,25 @@
 import { useState } from "react";
-import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, Image, View } from "react-native";
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  Image,
+  View,
+} from "react-native";
 import React from "react";
 import Colors from "../../Utils/Colors";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { Feather } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { FontAwesome6 } from "@expo/vector-icons";
+import { FontAwesome } from '@expo/vector-icons';
 import Modal from "react-native-modal";
 import * as DocumentPicker from "expo-document-picker";
 import * as ImagePicker from "expo-image-picker";
 import GradientVarientOneBtn from "../../Components/GradientBtn/GradientVariantOneBtn";
+import WhiteText from "../../Components/WhiteText/WhiteText";
 
 const CreateUrProfile = ({ navigation }) => {
   const [isModalVisible, setModalVisible] = useState(false);
@@ -19,11 +29,11 @@ const CreateUrProfile = ({ navigation }) => {
   };
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null); // State to store the selected date
+  const [fileSelected, setFileSelected] = useState(null);
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
   };
-
   const hideDatePicker = () => {
     setDatePickerVisibility(false);
   };
@@ -38,8 +48,11 @@ const CreateUrProfile = ({ navigation }) => {
     try {
       const docRes = await DocumentPicker.getDocumentAsync({
         type: "*/*",
+        multiple: true,
       });
+      // console.log(docRes.assets[0].name);
       console.log(docRes);
+      setFileSelected(docRes.assets);
       setModalVisible(false);
     } catch (error) {
       console.log("Error while selecting file: ", error);
@@ -50,7 +63,8 @@ const CreateUrProfile = ({ navigation }) => {
       const docRes = await DocumentPicker.getDocumentAsync({
         type: "image/*",
       });
-      console.log(docRes);
+      setFileSelected(docRes && docRes?.assets);
+
       setModalVisible(false);
     } catch (error) {
       console.log("Error while selecting file: ", error);
@@ -67,28 +81,33 @@ const CreateUrProfile = ({ navigation }) => {
       quality: 1,
     });
 
-    console.log(result);
+    // console.log(result);
     setModalVisible(false);
 
     if (!result.canceled) {
       setImage(result.assets[0].uri);
+      console.log(result)
+
+      setFileSelected(result.assets);
     }
-  };
-  const formatDate = (date) => {
-    if(date != null) {
- const day = date.getDate();
-    const month = date.getMonth() + 1;
-    const year = date.getFullYear();
-    // console.log(day)
-    // console.log(month)
-    // console.log(year)
-    let finalDate = `${day}-${month}-${year}`
-    return finalDate
-    }
-    return
   };
 
-  console.log(formatDate(selectedDate))
+    const handleClear = (index) => {
+    setFileSelected((prevItems) => prevItems.filter((_, i) => i !== index));
+  };
+
+  const formatDate = (date) => {
+    if (date != null) {
+      const day = date.getDate();
+      const month = date.getMonth() + 1;
+      const year = date.getFullYear();
+      let finalDate = `${day}-${month}-${year}`;
+      return finalDate;
+    }
+    return;
+  };
+
+  // console.log(formatDate(selectedDate))
 
   return (
     <View style={styles.container}>
@@ -313,6 +332,7 @@ const CreateUrProfile = ({ navigation }) => {
                     borderRadius: 10,
                     backgroundColor: "rgba(217, 217, 217, 1)",
                   }}
+                  onPress={pickSomething}
                 >
                   <FontAwesome6 name="google-drive" size={24} color="black" />
                 </TouchableOpacity>
@@ -321,6 +341,47 @@ const CreateUrProfile = ({ navigation }) => {
             </View>
           </View>
         </Modal>
+
+        <View
+          style={{
+            flexDirection: "row",
+            flexWrap: "wrap",
+            gap: 20,
+            marginBottom: 20,
+            justifyContent: "center",
+          }}
+        >
+          {/* {fileSelected !== null &&
+            fileSelected !== undefined &&
+            fileSelected?.map((data) => {
+              const uri = data?.uri;
+              const file_Name = uri?.substring(uri?.lastIndexOf("/") + 1);
+              return (
+                <WhiteText key={data?.uri} style={{ fontWeight: "700" }}>
+                  {data?.name !== undefined ? data?.name : file_Name}
+                </WhiteText>
+              );
+            })} */}
+          {/* <WhiteText style={{fontWeight:"700"}}> {fileSelected !== null && fileSelected[0].uri}</WhiteText> */}
+           {fileSelected !== null &&
+            fileSelected !== undefined &&
+            fileSelected?.map((data, index) => {
+              const uri = data?.uri;
+              const file_Name = uri?.substring(uri?.lastIndexOf("/") + 1);
+              return (
+                <View key={index} style={styles.fileItem}>
+                  <WhiteText style={styles.fileName}>
+                    {data?.name !== undefined ? data?.name : file_Name}
+                  </WhiteText>
+                  <TouchableOpacity onPress={() => handleClear(index)}>
+                    {/* <FontAwesome name="times-circle" size={20} color="red" /> */}
+                    <FontAwesome name="close" size={24} color="red" />
+                  </TouchableOpacity>
+                </View>
+              );
+            })}
+        </View>
+
         <GradientVarientOneBtn
           btnText={"Save & Next"}
           onPress={() => navigation.navigate("Addbankdetail")}
@@ -399,7 +460,7 @@ const styles = StyleSheet.create({
   },
   dashedBorder: {
     width: "100%",
-    height: 150,
+    height: 120,
     borderWidth: 1,
     borderColor: "#D9D9D9",
     borderStyle: "dashed",
@@ -420,4 +481,15 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     overflow: "hidden",
   },
+  fileItem: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    backgroundColor: Colors.INPUT_BACKGROUND,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 10,
+    marginBottom: 10,
+  },
+
 });
