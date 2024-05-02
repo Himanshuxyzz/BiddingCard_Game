@@ -2,7 +2,6 @@ import { ImageBackground, StyleSheet, Text, View, TextInput, TouchableOpacity } 
 import React from 'react'
 import Colors from '../../Utils/Colors'
 import GradientVarientOneBtn from '../../Components/GradientBtn/GradientVariantOneBtn'
-import Verifybtn from '../../Components/GradientBtn/Verifybtn'
 const SignUpPage = ({ navigation }) => {
   return (
 
