@@ -14,6 +14,7 @@ import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { Feather } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { FontAwesome6 } from "@expo/vector-icons";
+import { FontAwesome } from '@expo/vector-icons';
 import Modal from "react-native-modal";
 import * as DocumentPicker from "expo-document-picker";
 import * as ImagePicker from "expo-image-picker";
@@ -90,6 +91,11 @@ const CreateUrProfile = ({ navigation }) => {
       setFileSelected(result.assets);
     }
   };
+
+    const handleClear = (index) => {
+    setFileSelected((prevItems) => prevItems.filter((_, i) => i !== index));
+  };
+
   const formatDate = (date) => {
     if (date != null) {
       const day = date.getDate();
@@ -345,7 +351,7 @@ const CreateUrProfile = ({ navigation }) => {
             justifyContent: "center",
           }}
         >
-          {fileSelected !== null &&
+          {/* {fileSelected !== null &&
             fileSelected !== undefined &&
             fileSelected?.map((data) => {
               const uri = data?.uri;
@@ -355,8 +361,25 @@ const CreateUrProfile = ({ navigation }) => {
                   {data?.name !== undefined ? data?.name : file_Name}
                 </WhiteText>
               );
-            })}
+            })} */}
           {/* <WhiteText style={{fontWeight:"700"}}> {fileSelected !== null && fileSelected[0].uri}</WhiteText> */}
+           {fileSelected !== null &&
+            fileSelected !== undefined &&
+            fileSelected?.map((data, index) => {
+              const uri = data?.uri;
+              const file_Name = uri?.substring(uri?.lastIndexOf("/") + 1);
+              return (
+                <View key={index} style={styles.fileItem}>
+                  <WhiteText style={styles.fileName}>
+                    {data?.name !== undefined ? data?.name : file_Name}
+                  </WhiteText>
+                  <TouchableOpacity onPress={() => handleClear(index)}>
+                    {/* <FontAwesome name="times-circle" size={20} color="red" /> */}
+                    <FontAwesome name="close" size={24} color="red" />
+                  </TouchableOpacity>
+                </View>
+              );
+            })}
         </View>
 
         <GradientVarientOneBtn
@@ -458,4 +481,15 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     overflow: "hidden",
   },
+  fileItem: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    backgroundColor: Colors.INPUT_BACKGROUND,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 10,
+    marginBottom: 10,
+  },
+
 });
