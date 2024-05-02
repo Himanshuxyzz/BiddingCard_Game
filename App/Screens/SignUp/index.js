@@ -5,21 +5,22 @@ const image = {uri: 'https://s3-alpha-sig.figma.com/img/0dcb/6ab1/493cee69dff21d
 
 const img={uri:'https://s3-alpha-sig.figma.com/img/7760/4a5a/de51b82039e07b00c53296efb1a89607?Expires=1714953600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=SsJsuKqfjyg3gccgQkSgTud4E6-9YcS~EM1zXT5KOOE6a6piCyGX6LWuSfHfHJQuUaxrCyZJi20EsSG6INoJh3Bvf8NiGJTfU2NRRypHQ5AnFrg8iGk2nqvVeAY1CMxr5i~JZwtbajzm6Wnd6qqpzofZBXvtCLarz6SL0YYBbgHNANNIGJRYOYnyX4lVIiFc~ywP0DsuQWx3FPu3s-7yWuQR5vEw1svfvCZksZsZTrsuXeLYQ7Xl2DqFPGaF57eSqyV4RLmMBG7RHcGqAlSEERcZdu6-FUiZwDU9Ozpll-UCpQcydMLLIEljiDMpp7Sf8KxA1bPtDsWqISKeJc30lA__'}
 
-const FirstPage = () => {
+const FirstPage = ({navigation}) => {
   return (
     <View style={styles.container}>
       <ImageBackground source={image} resizeMode="cover" style={styles.image}>
         <Image source={img} style={styles.img}/>
         <Text style={styles.txt} >BC game</Text>
         <TouchableOpacity onPress={() => 
-               this.props.navigation.navigate('SignUpPage')}>
+               navigation.navigate('SignUpPage')}>
         <View style={[styles.wrapper, styles.simpleButton]} >
          
         <Text style={styles.text} >Create Account</Text>
     </View>
     </TouchableOpacity>
 
-    <TouchableOpacity>
+    <TouchableOpacity onPress={() => 
+               navigation.navigate('LoginPage')}>
     <View style={[styles.wrap]}>
         <Text style={styles.text1} >Log In</Text>
     </View>

@@ -2,7 +2,7 @@ import { StyleSheet, Text, View,TextInput, TouchableOpacity } from 'react-native
 import React from 'react'
 import Colors from '../../Utils/Colors'
 import GradientVarientOneBtn from '../../Components/GradientBtn/GradientVariantOneBtn'
-const LoginPage = () => {
+const LoginPage = ({navigation}) => {
   return (
     <View style={styles.whole} > 
       
@@ -21,13 +21,13 @@ const LoginPage = () => {
     <TouchableOpacity><Text style={styles.forget}>Forget Password?</Text></TouchableOpacity>
     <GradientVarientOneBtn
         btnText={"Continue"}
-        onPress={() => navigation.navigate("Login")}
+        onPress={() => navigation.navigate("")}
         style={styles.btn}
       />
        <Text style={styles.txt2}>_____________________  Or  ____________________</Text>
        <GradientVarientOneBtn
         btnText={"Create Account"}
-        onPress={() => navigation.navigate("Login")}
+        onPress={() => navigation.navigate("SignUpPage")}
         style={styles.btn1}
       />
   </View>
