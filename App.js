@@ -71,22 +71,22 @@ export default function App() {
 
           {/* {Bhavesh} */}
 
-//           <Stack.Screen
-//             name="WelcomePage"
-//             component={FirstPage}
-//             options={{ headerShown: false }}
-//           />
+           {/* <Stack.Screen
+             name="WelcomePage"
+             component={FirstPage}
+             options={{ headerShown: false }}
+           />
 
-//           <Stack.Screen
-//             name="SignUpPage"
-//             component={SignUpPage}
-//             options={{ headerShown: false }}
-//           />
-//           <Stack.Screen
-//             name="LoginPage"
-//             component={LoginPage}
-//             options={{ headerShown: false }}
-//           />
+           <Stack.Screen
+             name="SignUpPage"
+             component={SignUpPage}
+             options={{ headerShown: false }}
+           />
+           <Stack.Screen
+             name="LoginPage"
+             component={LoginPage}
+             options={{ headerShown: false }}
+           /> */}
           {/* {Bhavesh end} */}
 
           {/* Himanshu */}
