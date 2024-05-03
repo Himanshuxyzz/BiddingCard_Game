@@ -10,6 +10,7 @@ import AddBankDetail from "./App/Screens/CreateYourProfile/AddBankDetail";
 import VerificationPending from "./App/Screens/CreateYourProfile/VerificationPending";
 import VerificationSuccessful from "./App/Screens/CreateYourProfile/VerificationSuccessful";
 import NotVerified from "./App/Screens/CreateYourProfile/NotVerified";
+import Dashboard from "./App/Screens/Dashboard";
 
 import OtpVerification from "./App/Screens/ForgotPassword/OtpVerification";
 
@@ -20,6 +21,7 @@ import NewPassword from "./App/Screens/ForgotPassword/NewPassword";
 import NotMatchedPassword from "./App/Screens/ForgotPassword/NotMatchedPassword";
 import CorrectPassword from "./App/Screens/ForgotPassword/CorrectPassword";
 import SignUpPage from './App/Screens/SignUp/SignUpPage'
+import LoginPage from "./App/Screens/SignUp/LoginPage";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -29,57 +31,67 @@ export default function App() {
       <View style={styles.container}>
         <Stack.Navigator>
           {/* Esha */}
-          {/* <Stack.Screen
+          <Stack.Screen
             name="Start"
             component={Start}
             options={{ headerShown: false }}
-          /> */}
-          {/* <Stack.Screen
+          />
+          <Stack.Screen
             name="Createurprofile"
             component={CreateUrProfile}
             options={{ headerShown: false }}
-          /> */}
-          {/* <Stack.Screen
+          /> 
+         <Stack.Screen
             name="Addbankdetail"
             component={AddBankDetail}
             options={{ headerShown: false }}
-          /> */}
-          {/* <Stack.Screen
+          /> 
+          <Stack.Screen
             name="Verificationpending"
             component={VerificationPending}
             options={{ headerShown: false }}
-          /> */}
-          {/* <Stack.Screen
+          /> 
+          <Stack.Screen
+            name="Maindashboard"
+            component={Dashboard}
+            options={{ headerShown: false }}
+          />
+         
+          <Stack.Screen
             name="Verificationsuccessful"
             component={VerificationSuccessful}
             options={{ headerShown: false }}
-          /> */}
-          {/* <Stack.Screen
+          /> 
+          <Stack.Screen
             name="Notverified"
             component={NotVerified}
             options={{ headerShown: false }}
-          /> */}
+          /> 
           {/* Esha - end */}
 
           {/* {Bhavesh} */}
-           
-           {/* <Stack.Screen
-            name="WelcomePage"
-            component={FirstPage}
-            options={{ headerShown: false }}
-          /> */}
 
-           {/* <Stack.Screen
-            name="SignUpPage"
-            component={SignUpPage}
-            options={{ headerShown: false }}
-          /> */}
+//           <Stack.Screen
+//             name="WelcomePage"
+//             component={FirstPage}
+//             options={{ headerShown: false }}
+//           />
 
+//           <Stack.Screen
+//             name="SignUpPage"
+//             component={SignUpPage}
+//             options={{ headerShown: false }}
+//           />
+//           <Stack.Screen
+//             name="LoginPage"
+//             component={LoginPage}
+//             options={{ headerShown: false }}
+//           />
           {/* {Bhavesh end} */}
 
           {/* Himanshu */}
 
-          <Stack.Screen
+          {/* <Stack.Screen
             name="forgotPassword"
             component={ForgotPassword}
             options={{ headerShown: false }}
@@ -105,8 +117,8 @@ export default function App() {
             name="correctPassword"
             component={CorrectPassword}
             options={{ headerShown: false }}
-          />
-          
+          /> */}
+
           {/* Himanshu - end */}
 
           {/* Sakshi */}
@@ -121,13 +133,13 @@ export default function App() {
             component={WalletMainVerified}
             options={{ headerShown: false }}
           /> */}
-          
+
           {/* Sakshi - end */}
 
           {/* samraat start */}
-           
 
-           {/* samraat end */}
+
+          {/* samraat end */}
 
 
         </Stack.Navigator>
