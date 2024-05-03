@@ -29,11 +29,3 @@ const GradientVarientThirdBtn = ({ btnText, style, isDisabled, ...props }) => {
 };
 
 export default GradientVarientThirdBtn;
-
-const styles = StyleSheet.create({
-  btn: {
-    minWidth: "90%",
-    borderRadius: 10,
-    overflow: "hidden",
-  },
-});
