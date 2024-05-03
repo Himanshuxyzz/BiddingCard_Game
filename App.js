@@ -10,6 +10,7 @@ import AddBankDetail from "./App/Screens/CreateYourProfile/AddBankDetail";
 import VerificationPending from "./App/Screens/CreateYourProfile/VerificationPending";
 import VerificationSuccessful from "./App/Screens/CreateYourProfile/VerificationSuccessful";
 import NotVerified from "./App/Screens/CreateYourProfile/NotVerified";
+import Dashboard from "./App/Screens/Dashboard";
 
 import OtpVerification from "./App/Screens/ForgotPassword/OtpVerification";
 
@@ -44,6 +45,11 @@ export default function App() {
           <Stack.Screen
             name="Verificationpending"
             component={VerificationPending}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Maindashboard"
+            component={Dashboard}
             options={{ headerShown: false }}
           />
           {/* <Stack.Screen
