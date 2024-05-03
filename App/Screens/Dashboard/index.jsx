@@ -8,8 +8,7 @@ import {
 import React from "react";
 import Header from "../../Components/DashboardHeader/Header";
 
-
-const Dashboard = () => {
+const Dashboard = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -21,7 +20,7 @@ const Dashboard = () => {
           style={{ padding: 20, flex: 1, flexDirection: "column", gap: 30 }}
         >
           {/* header */}
-          < Header />
+          <Header />
           {/* header end */}
 
           <View
@@ -42,7 +41,9 @@ const Dashboard = () => {
                 backgroundColor: "background: rgba(228, 148, 235, 1)",
               }}
             >
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("Playonline")}
+              >
                 <Text
                   style={{
                     color: "rgba(255, 255, 255, 1)",
