@@ -11,6 +11,9 @@ import VerificationPending from "./App/Screens/CreateYourProfile/VerificationPen
 import VerificationSuccessful from "./App/Screens/CreateYourProfile/VerificationSuccessful";
 import NotVerified from "./App/Screens/CreateYourProfile/NotVerified";
 import Dashboard from "./App/Screens/Dashboard";
+import PlayOnline from "./App/Screens/Dashboard/PlayOnline";
+import Auction from "./App/Screens/Dashboard/PlayOnline/Auction";
+import Simple from "./App/Screens/Dashboard/PlayOnline/Simple";
 
 import OtpVerification from "./App/Screens/ForgotPassword/OtpVerification";
 
@@ -40,38 +43,54 @@ export default function App() {
             name="Createurprofile"
             component={CreateUrProfile}
             options={{ headerShown: false }}
-          /> 
-         <Stack.Screen
+          />
+          <Stack.Screen
             name="Addbankdetail"
             component={AddBankDetail}
             options={{ headerShown: false }}
-          /> 
+          />
           <Stack.Screen
             name="Verificationpending"
             component={VerificationPending}
             options={{ headerShown: false }}
-          /> 
+          />
           <Stack.Screen
             name="Maindashboard"
             component={Dashboard}
             options={{ headerShown: false }}
           />
-         
+
           <Stack.Screen
             name="Verificationsuccessful"
             component={VerificationSuccessful}
             options={{ headerShown: false }}
-          /> 
+          />
           <Stack.Screen
             name="Notverified"
             component={NotVerified}
             options={{ headerShown: false }}
-          /> 
+          />
+          <Stack.Screen
+            name="Playonline"
+            component={PlayOnline}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Auction"
+            component={Auction}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Simple"
+            component={Simple}
+            options={{ headerShown: false }}
+          />
+
           {/* Esha - end */}
 
           {/* {Bhavesh} */}
 
-           {/* <Stack.Screen
+          {/* <Stack.Screen
              name="WelcomePage"
              component={FirstPage}
              options={{ headerShown: false }}
@@ -138,10 +157,7 @@ export default function App() {
 
           {/* samraat start */}
 
-
           {/* samraat end */}
-
-
         </Stack.Navigator>
       </View>
     </NavigationContainer>
