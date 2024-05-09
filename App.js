@@ -85,8 +85,9 @@ export default function App() {
             component={Simple}
             options={{ headerShown: false }}
           />
+         {/* Esha - end */}
 
-          {/* Esha - end */}
+         
 
           {/* {Bhavesh} */}
 
@@ -106,6 +107,7 @@ export default function App() {
              component={LoginPage}
              options={{ headerShown: false }}
            /> */}
+
           {/* {Bhavesh end} */}
 
           {/* Himanshu */}
