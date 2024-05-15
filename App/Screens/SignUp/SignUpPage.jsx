@@ -1,7 +1,7 @@
 import { ImageBackground, StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native'
 import React,{useState,useRef} from 'react'
 import GradientVarientOneBtn from '../../Components/GradientBtn/GradientVariantOneBtn'
-import { Modal } from 'react-native'
+import { Modal,Image } from 'react-native'
 import WhiteText from '../../Components/WhiteText/WhiteText'
 import { OtpInput } from 'react-native-otp-entry'
 import Colors from '../../Utils/Colors'
@@ -10,6 +10,8 @@ import VerifyBtn from '../../Components/GradientBtn/VerifyBtn'
    
 const SignUpPage = ({ navigation }) => {
 const [ismodalVisible, setModalVisible] = useState(false);
+const [ismodal1Visible, setModal1Visible] = useState(false);
+const [ismodal2Visible, setModal2Visible] = useState(false);
 const otpInputRef = useRef(null);
 const [otp, setOtp] = useState(null);
 const [resendText, setResendText] = useState(false);
@@ -56,7 +58,7 @@ const verifyOtp = (otpValue) => {
         placeholderTextColor={Colors.INPUT_PLACEHOLDER}
       />
       <TouchableOpacity
-        onPress={() => setModalVisible(true)}>
+        onPress={() => setModal2Visible(true)}>
         <Text style={styles.phonebtn} >verify</Text>
       </TouchableOpacity>
       <TextInput
@@ -138,9 +140,9 @@ theme={
               <Text
                 style={{ color: Colors.WHITE, fontSize: 14, fontWeight: "500" }}
               >
-                If you didn’t receive a code!
+                If you didn't receive a code!
               </Text>
-              <TouchableOpacity onPress={() => setResendText(true)}>
+              <TouchableOpacity onPress={() => setResendText(false)}>
                 <Text
                   style={{
                     color: Colors.LINK_COLOR,
@@ -155,21 +157,163 @@ theme={
              
             </View>
           </View>
+          
           <VerifyBtn
         btnText={"Verify"}
         onPress={
-          otp !== null && otp !== ""
-            ? otpMatched !== null && !otpMatched
-              ? toggleModal
-              : () => {
-                  navigation.navigate("LoginPage");
+           () => {
+                 
                   setOtp(null);
                   otpInputRef.current.clear();
-                  setModalVisible(false);
+                  setModal1Visible(true);
                 }
-            : () => console.log("Please enter a valid OTP")
+            
         }
         isDisabled={otp == ""}
+        style={styles.btn}
+      />
+       
+          </View>
+         
+</Modal>
+<Modal
+theme={
+  {colors: {backdrop: 'rgba(255, 255, 255, 0.2)'}
+}}
+  animationType="fade"
+  transparent={true}
+  visible={ismodal2Visible}
+  backdropOpacity={0.9}
+>
+    <View style={styles.main}>
+    <Text
+                style={{
+                  fontSize: 32,
+                  fontWeight: "800",
+                  color: Colors.INVALIDTEXT_COLOR,
+                  paddingLeft:100
+                }}
+              >
+                Try again!
+              </Text>
+              <Text
+                style={{ fontSize: 18, fontWeight: "600", color: Colors.WHITE,paddingLeft:20 }}
+              >
+                Oops, Seems like something is
+                <Text style={{ color: Colors.INVALIDTEXT_COLOR }}> wrong</Text>
+              </Text> 
+          <View  style={styles.otp}>  
+          <OtpInput
+                autoFocus={false}
+                numberOfDigits={4}
+                // onTextChange={(text) => console.log(text)}
+                focusColor={"white"}
+                // onFilled={(text) => console.log(`OTP is ${text}`)}
+                onFilled={(otp) => verifyOtp(otp)}
+                textInputProps={{
+                  accessibilityLabel: "One-Time Password",
+                }}
+                theme={{
+                  pinCodeContainerStyle: {
+                    borderRadius: 99,
+                    width: 66,
+                    height: 64,
+                    backgroundColor: "rgba(255,255,255,0.1)",
+                    borderColor: "rgba(199,194,194,0.77)",
+                  },
+                  pinCodeTextStyle: {
+                    fontSize: 20,
+                    color: Colors.WHITE,
+                    fontWeight: "700",
+                  },
+                }}
+              />
+          </View>
+          <View
+            style={{
+              flexDirection: "column",
+              gap: 2.5,
+              alignItems: "center",
+            }}
+          >
+            <View
+              style={{ flexDirection: "row", gap: 2.5, alignItems: "center",top:40 }}
+            >
+              <Text
+                style={{ color: Colors.WHITE, fontSize: 14, fontWeight: "500" }}
+              >
+                If you didn't receive a code!
+              </Text>
+              <TouchableOpacity onPress={() => setResendText(false)}>
+                <Text
+                  style={{
+                    color: Colors.LINK_COLOR,
+                    fontSize: 18,
+                    fontWeight: "700",
+                    textDecorationLine: "underline",
+                  }}
+                >
+                  Resend
+                </Text>
+              </TouchableOpacity>
+             
+            </View>
+          </View>
+          
+          <VerifyBtn
+        btnText={"Verify"}
+        onPress={
+           () => {
+                 
+                  setModal1Visible(true);
+                }
+            
+        }
+        isDisabled={otp == ""}
+        style={styles.btn}
+      />
+       
+          </View>
+         
+</Modal>
+<Modal
+theme={
+  {colors: {backdrop: 'rgba(255, 255, 255, 0.2)'}
+}}
+  animationType="fade"
+  transparent={true}
+  visible={ismodal1Visible}
+  backdropOpacity={0.3}
+>
+    <View style={styles.main}>
+          <WhiteText style={styles.subHeading}>
+          YAY! OTP verified
+          </WhiteText>  
+          
+          <View
+            style={{
+              flexDirection: "column",
+              gap: 2.5,
+              alignItems: "center",
+            }}
+          >
+            <View
+              style={{ flexDirection: "row", gap: 2.5, alignItems: "center",top:40 }}
+            >
+             
+             <Image
+        style={styles.tinyLogo}
+        source={require('../../../assets/Doneverify.png')}
+      />
+             
+            </View>
+          </View>
+          <VerifyBtn
+        btnText={"Next"}
+        onPress={
+         ()=>{ navigation.navigate("LoginPage");}
+                 
+        }
         style={styles.btn}
       />
        
@@ -319,5 +463,9 @@ const styles = StyleSheet.create({
   btnTwoVarientStyle: {
     backgroundColor: "#2ED813",
     padding: 15,
+  },
+  tinyLogo: {
+    width: 174,
+    height: 140,
   },
 })

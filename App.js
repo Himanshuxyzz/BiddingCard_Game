@@ -10,10 +10,6 @@ import AddBankDetail from "./App/Screens/CreateYourProfile/AddBankDetail";
 import VerificationPending from "./App/Screens/CreateYourProfile/VerificationPending";
 import VerificationSuccessful from "./App/Screens/CreateYourProfile/VerificationSuccessful";
 import NotVerified from "./App/Screens/CreateYourProfile/NotVerified";
-import Dashboard from "./App/Screens/Dashboard";
-import PlayOnline from "./App/Screens/Dashboard/PlayOnline";
-import Auction from "./App/Screens/Dashboard/PlayOnline/Auction";
-import Simple from "./App/Screens/Dashboard/PlayOnline/Simple";
 
 import OtpVerification from "./App/Screens/ForgotPassword/OtpVerification";
 
@@ -25,6 +21,7 @@ import NotMatchedPassword from "./App/Screens/ForgotPassword/NotMatchedPassword"
 import CorrectPassword from "./App/Screens/ForgotPassword/CorrectPassword";
 import SignUpPage from './App/Screens/SignUp/SignUpPage'
 import LoginPage from "./App/Screens/SignUp/LoginPage";
+import Refer from "./App/Screens/Refer&Termsconditions/Refer";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -34,80 +31,62 @@ export default function App() {
       <View style={styles.container}>
         <Stack.Navigator>
           {/* Esha */}
-          <Stack.Screen
+          {/* <Stack.Screen
             name="Start"
             component={Start}
             options={{ headerShown: false }}
-          />
-          <Stack.Screen
+          /> */}
+          {/* <Stack.Screen
             name="Createurprofile"
             component={CreateUrProfile}
             options={{ headerShown: false }}
-          />
-          <Stack.Screen
+          /> */}
+          {/* <Stack.Screen
             name="Addbankdetail"
             component={AddBankDetail}
             options={{ headerShown: false }}
-          />
-          <Stack.Screen
+          /> */}
+          {/* <Stack.Screen
             name="Verificationpending"
             component={VerificationPending}
             options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Maindashboard"
-            component={Dashboard}
-            options={{ headerShown: false }}
-          />
-
-          <Stack.Screen
+          /> */}
+          {/* <Stack.Screen
             name="Verificationsuccessful"
             component={VerificationSuccessful}
             options={{ headerShown: false }}
-          />
-          <Stack.Screen
+          /> */}
+          {/* <Stack.Screen
             name="Notverified"
             component={NotVerified}
             options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Playonline"
-            component={PlayOnline}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Auction"
-            component={Auction}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Simple"
-            component={Simple}
-            options={{ headerShown: false }}
-          />
-         {/* Esha - end */}
-
-         
+          /> */}
+          {/* Esha - end */}
 
           {/* {Bhavesh} */}
 
-          {/* <Stack.Screen
-             name="WelcomePage"
-             component={FirstPage}
-             options={{ headerShown: false }}
-           />
+          <Stack.Screen
+            name="WelcomePage"
+            component={FirstPage}
+            options={{ headerShown: false }}
+          />
 
-           <Stack.Screen
-             name="SignUpPage"
-             component={SignUpPage}
-             options={{ headerShown: false }}
-           />
-           <Stack.Screen
-             name="LoginPage"
-             component={LoginPage}
-             options={{ headerShown: false }}
-           /> */}
-
+          <Stack.Screen
+            name="SignUpPage"
+            component={SignUpPage}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="LoginPage"
+            component={LoginPage}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="ReferPage"
+            component={Refer}
+            options={{ headerShown: false }}
+          />
+          
           {/* {Bhavesh end} */}
 
           {/* Himanshu */}
@@ -159,7 +138,10 @@ export default function App() {
 
           {/* samraat start */}
 
+
           {/* samraat end */}
+
+
         </Stack.Navigator>
       </View>
     </NavigationContainer>
