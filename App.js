@@ -20,6 +20,16 @@ import NewPassword from "./App/Screens/ForgotPassword/NewPassword";
 import NotMatchedPassword from "./App/Screens/ForgotPassword/NotMatchedPassword";
 import CorrectPassword from "./App/Screens/ForgotPassword/CorrectPassword";
 import SignUpPage from './App/Screens/SignUp/SignUpPage'
+import Userdetail from "./App/Screens/UserProfile/Userdetail";
+import ProfileDetail from "./App/Screens/UserProfile/ProfileDetail";
+import EditProfile from "./App/Screens/UserProfile/EditProfile";
+import Phoneotp from "./App/Screens/UserProfile/OTPVerification/Phoneotp";
+import Phoneotptryagain from "./App/Screens/UserProfile/OTPVerification/Phoneotptryagain";
+import OTPverify from "./App/Screens/UserProfile/OTPverify";
+import EmailOTP from "./App/Screens/UserProfile/Emailverify/EmailOTP";
+import Emailotpwrong from "./App/Screens/UserProfile/Emailverify/Emailotpwrong";
+import Emaildone from "./App/Screens/UserProfile/Emailverify/Emaildone";
+import Slide from "./App/Screens/UserProfile/Slidecomponent/Slide";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -63,7 +73,7 @@ export default function App() {
 
           {/* {Bhavesh} */}
            
-           <Stack.Screen
+           {/* <Stack.Screen
             name="WelcomePage"
             component={FirstPage}
             options={{ headerShown: false }}
@@ -72,7 +82,7 @@ export default function App() {
             name="SignUpPage"
             component={SignUpPage}
             options={{ headerShown: false }}
-          />
+          /> */}
 
           {/* {Bhavesh end} */}
           {/* Himanshu */}
@@ -120,9 +130,73 @@ export default function App() {
           {/* Sakshi - end */}
 
           {/* samraat start */}
+           {/* <Stack.Screen 
+           name="userdetail"
+            component={Userdetail}
+               options={{ headerShown: false }}
+           /> */}
+
+           <Stack.Screen 
+            name="Slide"
+            component={Slide}
+            options={{headerShown:false}}
+           />
+
+           <Stack.Screen
+            name="EditProfile"
+            component={EditProfile}
+            options={{ headerShown: false } }
+           />
+
+           <Stack.Screen
+            name="profile Detail"
+            component={ProfileDetail}
+            options={{ headerShown: false }}
+            
+           />
+            <Stack.Screen
+            name="EmailOTP"
+            component={EmailOTP}
+            options={{ headerShown: false } }
+            />
+
+
+           <Stack.Screen
+            name="Phoneotp"
+            component={Phoneotp}
+            options={{ headerShown: false } }
+            />
+            <Stack.Screen
+            name="OTPverify"
+            component={OTPverify}
+            options={{ headerShown: false } }
+            />
+             {/* <Stack.Screen
+            name="Phoneotptryagain"
+            component={Phoneotptryagain}
+            options={{ headerShown: false } }
+            /> */}
+
+           
+            {/* <Stack.Screen
+            name="Emailotpwrong"
+            component={Emailotpwrong}
+            options={{ headerShown: false } }
+            /> */}
+
+            {/* <Stack.Screen
+            name="Emaildone"
+            component={Emaildone}
+            options={{ headerShown: false } }
+            /> */}
+
            
 
-           {/* samraat end */}
+            {/* samraat start */}
+
+         
+
+        
 
 
         </Stack.Navigator>
