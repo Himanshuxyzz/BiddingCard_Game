@@ -11,6 +11,12 @@ import VerificationPending from "./App/Screens/CreateYourProfile/VerificationPen
 import VerificationSuccessful from "./App/Screens/CreateYourProfile/VerificationSuccessful";
 import NotVerified from "./App/Screens/CreateYourProfile/NotVerified";
 
+import Dashboard from "./App/Screens/Dashboard";
+import PlayOnline from "./App/Screens/Dashboard/PlayOnline";
+import Auction from "./App/Screens/Dashboard/PlayOnline/Auction";
+import Simple from "./App/Screens/Dashboard/PlayOnline/Simple";
+import StartBC from "./App/Screens/Dashboard/PlayOnline/Auction/StartBC";
+
 import OtpVerification from "./App/Screens/ForgotPassword/OtpVerification";
 
 import WalletMain from "./App/Screens/WalletScreen";
@@ -19,6 +25,9 @@ import FirstPage from "./App/Screens/SignUp";
 import NewPassword from "./App/Screens/ForgotPassword/NewPassword";
 import NotMatchedPassword from "./App/Screens/ForgotPassword/NotMatchedPassword";
 import CorrectPassword from "./App/Screens/ForgotPassword/CorrectPassword";
+import SignUpPage from "./App/Screens/SignUp/SignUpPage";
+import LoginPage from "./App/Screens/SignUp/LoginPage";
+import Refer from "./App/Screens/Refer&Termsconditions/Refer";
 import SignUpPage from './App/Screens/SignUp/SignUpPage'
 import Userdetail from "./App/Screens/UserProfile/Userdetail";
 import ProfileDetail from "./App/Screens/UserProfile/ProfileDetail";
@@ -39,60 +48,88 @@ export default function App() {
       <View style={styles.container}>
         <Stack.Navigator>
           {/* Esha */}
-          {/* <Stack.Screen
+          <Stack.Screen
             name="Start"
             component={Start}
             options={{ headerShown: false }}
-          /> */}
-          {/* <Stack.Screen
+          />
+          <Stack.Screen
             name="Createurprofile"
             component={CreateUrProfile}
             options={{ headerShown: false }}
-          /> */}
-          {/* <Stack.Screen
+          />
+          <Stack.Screen
             name="Addbankdetail"
             component={AddBankDetail}
             options={{ headerShown: false }}
-          /> */}
-          {/* <Stack.Screen
+          />
+          <Stack.Screen
             name="Verificationpending"
             component={VerificationPending}
             options={{ headerShown: false }}
-          /> */}
-          {/* <Stack.Screen
+          />
+          <Stack.Screen
             name="Verificationsuccessful"
             component={VerificationSuccessful}
             options={{ headerShown: false }}
-          /> */}
-          {/* <Stack.Screen
+          />
+          <Stack.Screen
             name="Notverified"
             component={NotVerified}
             options={{ headerShown: false }}
-          /> */}
+          />
+          <Stack.Screen
+            name="Dashboard"
+            component={Dashboard}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Playonline"
+            component={PlayOnline}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Auction"
+            component={Auction}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Simple"
+            component={Simple}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Startbc"
+            component={StartBC}
+            options={{ headerShown: false }}
+          />
           {/* Esha - end */}
 
           {/* {Bhavesh} */}
            
-           {/* <Stack.Screen
+           <Stack.Screen
             name="WelcomePage"
             component={FirstPage}
             options={{ headerShown: false }}
           />
-           <Stack.Screen
+
+          <Stack.Screen
             name="SignUpPage"
             component={SignUpPage}
             options={{ headerShown: false }}
-          /> */}
+          />
 
           {/* {Bhavesh end} */}
+
           {/* Himanshu */}
+
           {/* <Stack.Screen
             name="forgotPassword"
             component={ForgotPassword}
             options={{ headerShown: false }}
-          /> */}
+          />
           
-          {/* <Stack.Screen
+          <Stack.Screen
             name="otpVerification"
             component={OtpVerification}
             options={{ headerShown: false }}
@@ -113,10 +150,11 @@ export default function App() {
             component={CorrectPassword}
             options={{ headerShown: false }}
           /> */}
-          
+
           {/* Himanshu - end */}
 
           {/* Sakshi */}
+
           {/* <Stack.Screen
             name="WalletMain"
             component={WalletMain}
@@ -127,76 +165,13 @@ export default function App() {
             component={WalletMainVerified}
             options={{ headerShown: false }}
           /> */}
+
           {/* Sakshi - end */}
 
           {/* samraat start */}
-           {/* <Stack.Screen 
-           name="userdetail"
-            component={Userdetail}
-               options={{ headerShown: false }}
-           /> */}
-
-           <Stack.Screen 
-            name="Slide"
-            component={Slide}
-            options={{headerShown:false}}
-           />
-
-           <Stack.Screen
-            name="EditProfile"
-            component={EditProfile}
-            options={{ headerShown: false } }
-           />
-
-           <Stack.Screen
-            name="profile Detail"
-            component={ProfileDetail}
-            options={{ headerShown: false }}
-            
-           />
-            <Stack.Screen
-            name="EmailOTP"
-            component={EmailOTP}
-            options={{ headerShown: false } }
-            />
-
-
-           <Stack.Screen
-            name="Phoneotp"
-            component={Phoneotp}
-            options={{ headerShown: false } }
-            />
-            <Stack.Screen
-            name="OTPverify"
-            component={OTPverify}
-            options={{ headerShown: false } }
-            />
-             {/* <Stack.Screen
-            name="Phoneotptryagain"
-            component={Phoneotptryagain}
-            options={{ headerShown: false } }
-            /> */}
-
-           
-            {/* <Stack.Screen
-            name="Emailotpwrong"
-            component={Emailotpwrong}
-            options={{ headerShown: false } }
-            /> */}
-
-            {/* <Stack.Screen
-            name="Emaildone"
-            component={Emaildone}
-            options={{ headerShown: false } }
-            /> */}
-
            
 
-            {/* samraat start */}
-
-         
-
-        
+           {/* samraat end */}
 
 
         </Stack.Navigator>

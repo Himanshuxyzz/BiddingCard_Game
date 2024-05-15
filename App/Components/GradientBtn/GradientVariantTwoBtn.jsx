@@ -11,12 +11,12 @@ const GradientVarientTwoBtn = ({ btnText, style, isDisabled, ...props }) => {
         locations={[0.03, 1, 1]}
         start={{ x: 0, y: 0 }} // Start from the top-left corner
         end={{ x: 1, y: 0 }} // End at the top-right corner
-        style={{ padding: 20 }}
+        style={{ padding: 16 }}
       >
         <Text
           style={{
             textAlign: "center",
-            fontSize: 24,
+            fontSize: 22,
             color: Colors.WHITE,
             fontWeight: "600",
           }}
