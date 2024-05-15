@@ -14,6 +14,7 @@ import Dashboard from "./App/Screens/Dashboard";
 import PlayOnline from "./App/Screens/Dashboard/PlayOnline";
 import Auction from "./App/Screens/Dashboard/PlayOnline/Auction";
 import Simple from "./App/Screens/Dashboard/PlayOnline/Simple";
+import StartBC from "./App/Screens/Dashboard/PlayOnline/Auction/StartBC";
 
 import OtpVerification from "./App/Screens/ForgotPassword/OtpVerification";
 
@@ -83,6 +84,11 @@ export default function App() {
           <Stack.Screen
             name="Simple"
             component={Simple}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Startbc"
+            component={StartBC}
             options={{ headerShown: false }}
           />
 
