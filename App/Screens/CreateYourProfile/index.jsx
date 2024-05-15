@@ -29,15 +29,15 @@ const Start = ({navigation}) => {
           marginTop: "4%",
         }}
       >
-
         <GradientVarientOneBtn
-          btnText={"Complete Profile"} onPress={() =>navigation.navigate("Createurprofile")}
+          btnText={"Complete Profile"}
+          onPress={() => navigation.navigate("Createurprofile")}
           style={styles.btn}
         />
 
-
-            <GradientVarientOneBtn
+        <GradientVarientOneBtn
           btnText={"Skip"}
+          onPress={() => navigation.navigate("Dashboard")}
           style={styles.btn}
         />
       </View>
