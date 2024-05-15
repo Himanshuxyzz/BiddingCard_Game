@@ -703,7 +703,7 @@ const DATA = [
   // },
 ];
 
-const Auction = ({navigation}{ navigation }) => {
+const Auction = ({navigation}) => {
   const [selected, setSelected] = useState(12);
   const [isMute, setIsMute] = useState(false);
   const [selectedCardId, setSelectedCardId] = useState(null);
