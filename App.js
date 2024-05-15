@@ -39,6 +39,7 @@ import EmailOTP from "./App/Screens/UserProfile/Emailverify/EmailOTP";
 import Emailotpwrong from "./App/Screens/UserProfile/Emailverify/Emailotpwrong";
 import Emaildone from "./App/Screens/UserProfile/Emailverify/Emaildone";
 import Slide from "./App/Screens/UserProfile/Slidecomponent/Slide";
+import SpinWheel from "./App/Screens/Dashboard/PlayOnline/Auction/SpinWheel";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -101,6 +102,10 @@ export default function App() {
           <Stack.Screen
             name="Startbc"
             component={StartBC}
+            options={{ headerShown: false }}
+          />            <Stack.Screen
+            name="SpinWheel"
+            component={SpinWheel}
             options={{ headerShown: false }}
           />
           {/* Esha - end */}
