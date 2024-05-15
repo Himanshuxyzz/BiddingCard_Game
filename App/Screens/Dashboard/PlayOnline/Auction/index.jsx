@@ -14,8 +14,7 @@ import WhiteText from "../../../../Components/WhiteText/WhiteText";
 import { Feather } from "@expo/vector-icons";
 import { Octicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
-
-// todo -> uninstall react-native-reanimted
+import GradientVarientOneBtn from "../../../../Components/GradientBtn/GradientVariantOneBtn";
 
 // month selector button
 
@@ -124,6 +123,7 @@ const ProgressBar = ({ totalSlots, remainingSlots }) => {
   );
 };
 
+// @TODO add property for card has notifications enabled or not also show it in frontend
 const Card = ({
   cardId,
   amount,
@@ -263,7 +263,6 @@ const DATA = [
       cardBottomBorder: "#B1B1B1",
     },
     month: 12,
-    isNotification: true,
   },
   {
     id: 2,
@@ -279,7 +278,6 @@ const DATA = [
       cardBottomBorder: "#B1B1B1",
     },
     month: 12,
-    isNotification: true,
   },
   {
     id: 3,
@@ -295,7 +293,6 @@ const DATA = [
       cardBottomBorder: "#B1B1B1",
     },
     month: 12,
-    isNotification: true,
   },
   {
     id: 4,
@@ -356,7 +353,6 @@ const DATA = [
       cardBgBorder: "#5C3B29",
     },
     month: 12,
-    isNotification: true,
   },
   {
     id: 8,
@@ -372,7 +368,6 @@ const DATA = [
       cardBgBorder: "#5C3B29",
     },
     month: 12,
-    isNotification: true,
   },
   {
     id: 9,
@@ -388,7 +383,6 @@ const DATA = [
       cardBgBorder: "#5C3B29",
     },
     month: 12,
-    isNotification: true,
   },
   {
     id: 10,
@@ -449,7 +443,6 @@ const DATA = [
       cardBgBorder: "#3D0438",
     },
     month: 12,
-    isNotification: true,
   },
   {
     id: 14,
@@ -465,7 +458,6 @@ const DATA = [
       cardBgBorder: "#3D0438",
     },
     month: 12,
-    isNotification: true,
   },
   {
     id: 15,
@@ -481,7 +473,6 @@ const DATA = [
       cardBgBorder: "#3D0438",
     },
     month: 12,
-    isNotification: true,
   },
   // {
   //   id: 16,
@@ -710,7 +701,7 @@ const DATA = [
   // },
 ];
 
-const Auction = () => {
+const Auction = ({ navigation }) => {
   const [selected, setSelected] = useState(12);
   const [isMute, setIsMute] = useState(false);
   const [selectedCardId, setSelectedCardId] = useState(null);
@@ -740,6 +731,12 @@ const Auction = () => {
   return (
     <View style={styles.container}>
       <Header />
+
+      <GradientVarientOneBtn
+        style={{ width: "100%", borderRadius: 10, overflow: "hidden" }}
+        btnText={"skip"}
+        onPress={() => navigation.navigate("SpinWheel")}
+      />
 
       <View style={styles.subContainer}>
         {/* month selector */}

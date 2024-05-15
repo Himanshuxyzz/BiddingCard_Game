@@ -25,6 +25,7 @@ import NotMatchedPassword from "./App/Screens/ForgotPassword/NotMatchedPassword"
 import CorrectPassword from "./App/Screens/ForgotPassword/CorrectPassword";
 import SignUpPage from './App/Screens/SignUp/SignUpPage'
 import LoginPage from "./App/Screens/SignUp/LoginPage";
+import SpinWheel from "./App/Screens/Dashboard/PlayOnline/Auction/SpinWheel";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -85,7 +86,11 @@ export default function App() {
             component={Simple}
             options={{ headerShown: false }}
           />
-
+            <Stack.Screen
+            name="SpinWheel"
+            component={SpinWheel}
+            options={{ headerShown: false }}
+          />
           {/* Esha - end */}
 
           {/* {Bhavesh} */}
