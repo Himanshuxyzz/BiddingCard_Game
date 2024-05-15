@@ -10,10 +10,12 @@ import AddBankDetail from "./App/Screens/CreateYourProfile/AddBankDetail";
 import VerificationPending from "./App/Screens/CreateYourProfile/VerificationPending";
 import VerificationSuccessful from "./App/Screens/CreateYourProfile/VerificationSuccessful";
 import NotVerified from "./App/Screens/CreateYourProfile/NotVerified";
+
 import Dashboard from "./App/Screens/Dashboard";
 import PlayOnline from "./App/Screens/Dashboard/PlayOnline";
 import Auction from "./App/Screens/Dashboard/PlayOnline/Auction";
 import Simple from "./App/Screens/Dashboard/PlayOnline/Simple";
+import StartBC from "./App/Screens/Dashboard/PlayOnline/Auction/StartBC";
 
 import OtpVerification from "./App/Screens/ForgotPassword/OtpVerification";
 
@@ -23,8 +25,20 @@ import FirstPage from "./App/Screens/SignUp";
 import NewPassword from "./App/Screens/ForgotPassword/NewPassword";
 import NotMatchedPassword from "./App/Screens/ForgotPassword/NotMatchedPassword";
 import CorrectPassword from "./App/Screens/ForgotPassword/CorrectPassword";
-import SignUpPage from './App/Screens/SignUp/SignUpPage'
+import SignUpPage from "./App/Screens/SignUp/SignUpPage";
 import LoginPage from "./App/Screens/SignUp/LoginPage";
+import Refer from "./App/Screens/Refer&Termsconditions/Refer";
+import SignUpPage from './App/Screens/SignUp/SignUpPage'
+import Userdetail from "./App/Screens/UserProfile/Userdetail";
+import ProfileDetail from "./App/Screens/UserProfile/ProfileDetail";
+import EditProfile from "./App/Screens/UserProfile/EditProfile";
+import Phoneotp from "./App/Screens/UserProfile/OTPVerification/Phoneotp";
+import Phoneotptryagain from "./App/Screens/UserProfile/OTPVerification/Phoneotptryagain";
+import OTPverify from "./App/Screens/UserProfile/OTPverify";
+import EmailOTP from "./App/Screens/UserProfile/Emailverify/EmailOTP";
+import Emailotpwrong from "./App/Screens/UserProfile/Emailverify/Emailotpwrong";
+import Emaildone from "./App/Screens/UserProfile/Emailverify/Emaildone";
+import Slide from "./App/Screens/UserProfile/Slidecomponent/Slide";
 import SpinWheel from "./App/Screens/Dashboard/PlayOnline/Auction/SpinWheel";
 const Stack = createNativeStackNavigator();
 
@@ -56,12 +70,6 @@ export default function App() {
             options={{ headerShown: false }}
           />
           <Stack.Screen
-            name="Maindashboard"
-            component={Dashboard}
-            options={{ headerShown: false }}
-          />
-
-          <Stack.Screen
             name="Verificationsuccessful"
             component={VerificationSuccessful}
             options={{ headerShown: false }}
@@ -69,6 +77,11 @@ export default function App() {
           <Stack.Screen
             name="Notverified"
             component={NotVerified}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Dashboard"
+            component={Dashboard}
             options={{ headerShown: false }}
           />
           <Stack.Screen
@@ -86,7 +99,11 @@ export default function App() {
             component={Simple}
             options={{ headerShown: false }}
           />
-            <Stack.Screen
+          <Stack.Screen
+            name="Startbc"
+            component={StartBC}
+            options={{ headerShown: false }}
+          />            <Stack.Screen
             name="SpinWheel"
             component={SpinWheel}
             options={{ headerShown: false }}
@@ -94,23 +111,19 @@ export default function App() {
           {/* Esha - end */}
 
           {/* {Bhavesh} */}
-
-          {/* <Stack.Screen
-             name="WelcomePage"
-             component={FirstPage}
-             options={{ headerShown: false }}
-           />
-
+           
            <Stack.Screen
-             name="SignUpPage"
-             component={SignUpPage}
-             options={{ headerShown: false }}
-           />
-           <Stack.Screen
-             name="LoginPage"
-             component={LoginPage}
-             options={{ headerShown: false }}
-           /> */}
+            name="WelcomePage"
+            component={FirstPage}
+            options={{ headerShown: false }}
+          />
+
+          <Stack.Screen
+            name="SignUpPage"
+            component={SignUpPage}
+            options={{ headerShown: false }}
+          />
+
           {/* {Bhavesh end} */}
 
           {/* Himanshu */}
@@ -161,8 +174,11 @@ export default function App() {
           {/* Sakshi - end */}
 
           {/* samraat start */}
+           
 
-          {/* samraat end */}
+           {/* samraat end */}
+
+
         </Stack.Navigator>
       </View>
     </NavigationContainer>

@@ -138,6 +138,7 @@ const Card = ({
   cardBottomBorder,
   isCardSelected,
   onPress,
+  navigation,
 }) => {
   return (
     <Pressable
@@ -228,6 +229,7 @@ const Card = ({
               paddingHorizontal: 24,
               paddingVertical: 8,
             }}
+            onPress={() => navigation.navigate("Startbc",{bcAmount:bcAmount})}
             activeOpacity={0.5}
           >
             <WhiteText style={{ fontWeight: "600", color: "black" }}>
@@ -701,7 +703,7 @@ const DATA = [
   // },
 ];
 
-const Auction = ({ navigation }) => {
+const Auction = ({navigation}{ navigation }) => {
   const [selected, setSelected] = useState(12);
   const [isMute, setIsMute] = useState(false);
   const [selectedCardId, setSelectedCardId] = useState(null);
@@ -794,6 +796,7 @@ const Auction = ({ navigation }) => {
                 setIsMute={setIsMute}
                 isCardSelected={item.cardId === selectedCardId}
                 onPress={() => handleCardPress(item.cardId)}
+                navigation={navigation}
               />
             )}
             keyExtractor={(item) => item.id}
