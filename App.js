@@ -21,6 +21,7 @@ import NotMatchedPassword from "./App/Screens/ForgotPassword/NotMatchedPassword"
 import CorrectPassword from "./App/Screens/ForgotPassword/CorrectPassword";
 import SignUpPage from './App/Screens/SignUp/SignUpPage'
 import LoginPage from "./App/Screens/SignUp/LoginPage";
+import Refer from "./App/Screens/Refer&Termsconditions/Refer";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -78,6 +79,11 @@ export default function App() {
           <Stack.Screen
             name="LoginPage"
             component={LoginPage}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="ReferPage"
+            component={Refer}
             options={{ headerShown: false }}
           />
           
