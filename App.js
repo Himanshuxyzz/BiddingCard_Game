@@ -28,7 +28,6 @@ import CorrectPassword from "./App/Screens/ForgotPassword/CorrectPassword";
 import SignUpPage from "./App/Screens/SignUp/SignUpPage";
 import LoginPage from "./App/Screens/SignUp/LoginPage";
 import Refer from "./App/Screens/Refer&Termsconditions/Refer";
-import SignUpPage from './App/Screens/SignUp/SignUpPage'
 import Userdetail from "./App/Screens/UserProfile/Userdetail";
 import ProfileDetail from "./App/Screens/UserProfile/ProfileDetail";
 import EditProfile from "./App/Screens/UserProfile/EditProfile";
@@ -103,7 +102,8 @@ export default function App() {
             name="Startbc"
             component={StartBC}
             options={{ headerShown: false }}
-          />            <Stack.Screen
+          />   
+          <Stack.Screen
             name="SpinWheel"
             component={SpinWheel}
             options={{ headerShown: false }}
