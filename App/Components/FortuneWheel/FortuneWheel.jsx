@@ -37,7 +37,6 @@ const segmentClr = [
 ];
 
 const FortuneWheel = ({ totalAmount, segmentOptions }) => {
-  console.log(totalAmount);
   const makeWheel = () => {
     const data = Array.from({ length: numberOfSegments }).fill(1);
     const arcs = d3Shape.pie()(data);
@@ -50,10 +49,8 @@ const FortuneWheel = ({ totalAmount, segmentOptions }) => {
 
       return {
         path: instance(arc),
-        //   color: colors[index],
         color: segmentClr[index],
-
-        value: index + 1, //[200, 2200]
+        value: index + 1,
         centroid: instance.centroid(arc),
         name: segmentOptions[index], // Add the custom name for the segment
       };
@@ -101,7 +98,7 @@ const FortuneWheel = ({ totalAmount, segmentOptions }) => {
       // Calculate the final angle after the animation completes
       const finalAngle = targetAngle % 360;
       const winnerIndex = _getWinnerIndex(finalAngle);
-      setWinner(_wheelPaths.current[winnerIndex].value);
+      setWinner(_wheelPaths.current[winnerIndex].name);
       setFinished(true);
 
       // Snap the knob to the nearest segment angle
@@ -196,9 +193,7 @@ const FortuneWheel = ({ totalAmount, segmentOptions }) => {
             <G y={width / 2} x={width / 2}>
               {_wheelPaths.current.map((arc, i) => {
                 const [x, y] = arc.centroid;
-                const number = arc.value.toString();
                 const name = arc.name ? arc.name.split("") : [];
-                console.log(name);
                 // Calculate the vertical position for the text
                 const textY = y - (name.length * 20) / 2; // Center the text vertically
 
