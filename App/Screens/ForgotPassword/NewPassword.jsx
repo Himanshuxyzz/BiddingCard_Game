@@ -2,7 +2,7 @@ import { StyleSheet, Text, TextInput, View } from "react-native";
 import React, { useState } from "react";
 import Colors from "../../Utils/Colors";
 import WhiteText from "../../Components/WhiteText/WhiteText";
-import GradientVarientOneBtn from "../../Components/GradientBtn/GradientVariantOneBtn";
+import GradientVarientOneBtn from "../../Components/Gradient/GradientVariantOneBtn";
 
 const NewPassword = ({ navigation }) => {
   const [newPassword, setNewPassword] = useState("");

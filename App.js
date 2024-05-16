@@ -15,8 +15,7 @@ import Dashboard from "./App/Screens/Dashboard";
 import PlayOnline from "./App/Screens/Dashboard/PlayOnline";
 import Auction from "./App/Screens/Dashboard/PlayOnline/Auction";
 import Simple from "./App/Screens/Dashboard/PlayOnline/Simple";
-import StartBC from "./App/Screens/Dashboard/PlayOnline/Auction/StartBC";
-import UserEntries from "./App/Screens/Dashboard/PlayOnline/Auction/UserEntries";
+import StartBC from "./App/Screens/Dashboard/PlayOnline/Simple/StartBC";
 
 import OtpVerification from "./App/Screens/ForgotPassword/OtpVerification";
 
@@ -39,7 +38,7 @@ import EmailOTP from "./App/Screens/UserProfile/Emailverify/EmailOTP";
 import Emailotpwrong from "./App/Screens/UserProfile/Emailverify/Emailotpwrong";
 import Emaildone from "./App/Screens/UserProfile/Emailverify/Emaildone";
 import Slide from "./App/Screens/UserProfile/Slidecomponent/Slide";
-import SpinWheel from "./App/Screens/Dashboard/PlayOnline/Auction/SpinWheel";
+import SpinWheel from "./App/Screens/Dashboard/PlayOnline/Simple/SpinWheel";
 const Stack = createNativeStackNavigator();
 
 export default function App() {

@@ -1,6 +1,6 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import GradientVarientThirdBtn from '../../Components/GradientBtn/GradientVariantThirdBtn';
+import { Image, StyleSheet, Text, View } from "react-native";
+import React from "react";
+import GradientVarientThirdBtn from "../../Components/Gradient/GradientVariantThirdBtn";
 
 const NotVerified = () => {
   return (
@@ -45,7 +45,7 @@ const NotVerified = () => {
             fontSize: 21,
             textAlign: "center",
             fontWeight: 400,
-            marginBottom:"6%",
+            marginBottom: "6%",
           }}
         >
           Your profile is not verified are you sure you filled correct info?
@@ -56,18 +56,32 @@ const NotVerified = () => {
         <GradientVarientThirdBtn btnText={"Help me"} style={styles.btn} />
       </View>
       <View style={{ flexDirection: "row", gap: 20, marginTop: "4%" }}>
-        <Text style={{ width: "50%", textAlign: "center", color: "#fff",fontSize:13 }}>
+        <Text
+          style={{
+            width: "50%",
+            textAlign: "center",
+            color: "#fff",
+            fontSize: 13,
+          }}
+        >
           Looks like your information is incorrect, recreate your profile
         </Text>
-        <Text style={{ width: "50%", textAlign: "center", color: "#fff",fontSize:13 }}>
+        <Text
+          style={{
+            width: "50%",
+            textAlign: "center",
+            color: "#fff",
+            fontSize: 13,
+          }}
+        >
           We can help you to create your profile
         </Text>
       </View>
     </View>
   );
-}
+};
 
-export default NotVerified
+export default NotVerified;
 
 const styles = StyleSheet.create({
   container: {
