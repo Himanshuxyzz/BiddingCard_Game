@@ -14,11 +14,11 @@ import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { Feather } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { FontAwesome6 } from "@expo/vector-icons";
-import { FontAwesome } from '@expo/vector-icons';
+import { FontAwesome } from "@expo/vector-icons";
 import Modal from "react-native-modal";
 import * as DocumentPicker from "expo-document-picker";
 import * as ImagePicker from "expo-image-picker";
-import GradientVarientOneBtn from "../../Components/GradientBtn/GradientVariantOneBtn";
+import GradientVarientOneBtn from "../../Components/Gradient/GradientVariantOneBtn";
 import WhiteText from "../../Components/WhiteText/WhiteText";
 
 const CreateUrProfile = ({ navigation }) => {
@@ -86,13 +86,13 @@ const CreateUrProfile = ({ navigation }) => {
 
     if (!result.canceled) {
       setImage(result.assets[0].uri);
-      console.log(result)
+      console.log(result);
 
       setFileSelected(result.assets);
     }
   };
 
-    const handleClear = (index) => {
+  const handleClear = (index) => {
     setFileSelected((prevItems) => prevItems.filter((_, i) => i !== index));
   };
 
@@ -363,7 +363,7 @@ const CreateUrProfile = ({ navigation }) => {
               );
             })} */}
           {/* <WhiteText style={{fontWeight:"700"}}> {fileSelected !== null && fileSelected[0].uri}</WhiteText> */}
-           {fileSelected !== null &&
+          {fileSelected !== null &&
             fileSelected !== undefined &&
             fileSelected?.map((data, index) => {
               const uri = data?.uri;
@@ -491,5 +491,4 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 10,
   },
-
 });

@@ -14,7 +14,7 @@ import WhiteText from "../../../../Components/WhiteText/WhiteText";
 import { Feather } from "@expo/vector-icons";
 import { Octicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
-import GradientVarientOneBtn from "../../../../Components/GradientBtn/GradientVariantOneBtn";
+import GradientVarientOneBtn from "../../../../Components/Gradient/GradientVariantOneBtn";
 
 // month selector button
 

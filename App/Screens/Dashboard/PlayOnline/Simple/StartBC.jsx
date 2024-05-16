@@ -10,13 +10,13 @@ import Header from "../../../../Components/DashboardHeader/Header";
 import Colors from "../../../../Utils/Colors";
 import { Feather } from "@expo/vector-icons";
 import { FontAwesome6 } from "@expo/vector-icons";
-import GradientVarientOneBtn from "../../../../Components/GradientBtn/GradientVariantOneBtn";
+import GradientVarientOneBtn from "../../../../Components/Gradient/GradientVariantOneBtn";
 import { useState } from "react";
 
 const StartBC = ({ route, navigation }) => {
   const { bcAmount, totalAmount } = route.params;
   console.log(bcAmount);
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState("test@123");
   const [isPasswordValid, setIsPasswordValid] = useState(true); // Initially assuming password is valid
 
   const handlePassword = () => {

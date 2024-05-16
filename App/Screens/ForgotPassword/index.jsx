@@ -11,7 +11,7 @@ import WhiteText from "../../Components/WhiteText/WhiteText";
 import { Feather } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
-import GradientVarientOneBtn from "../../Components/GradientBtn/GradientVariantOneBtn";
+import GradientVarientOneBtn from "../../Components/Gradient/GradientVariantOneBtn";
 
 const ForgotPassword = ({ navigation }) => {
   const [emailMobile, setEmailMobile] = useState("");

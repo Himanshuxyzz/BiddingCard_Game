@@ -14,7 +14,7 @@ import React, { useEffect, useRef } from "react";
 import Colors from "../../Utils/Colors";
 import WhiteText from "../../Components/WhiteText/WhiteText";
 import { OtpInput } from "react-native-otp-entry";
-import GradientVarientOneBtn from "../../Components/GradientBtn/GradientVariantOneBtn";
+import GradientVarientOneBtn from "../../Components/Gradient/GradientVariantOneBtn";
 import { useState } from "react";
 import Modal from "react-native-modal";
 
