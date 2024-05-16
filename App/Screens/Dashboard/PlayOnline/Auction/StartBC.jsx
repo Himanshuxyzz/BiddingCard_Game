@@ -16,7 +16,7 @@ const StartBC = ({route , navigation}) => {
   return (
     <View style={styles.container}>
       <Header />
-      <Text
+      <Text onPress={() => navigation.navigate("UserEntries")}
         style={{
           color: "#fff",
           marginTop: "10%",

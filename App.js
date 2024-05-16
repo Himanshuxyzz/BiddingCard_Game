@@ -16,6 +16,7 @@ import PlayOnline from "./App/Screens/Dashboard/PlayOnline";
 import Auction from "./App/Screens/Dashboard/PlayOnline/Auction";
 import Simple from "./App/Screens/Dashboard/PlayOnline/Simple";
 import StartBC from "./App/Screens/Dashboard/PlayOnline/Auction/StartBC";
+import UserEntries from "./App/Screens/Dashboard/PlayOnline/Auction/UserEntries";
 
 import OtpVerification from "./App/Screens/ForgotPassword/OtpVerification";
 
@@ -102,17 +103,23 @@ export default function App() {
             name="Startbc"
             component={StartBC}
             options={{ headerShown: false }}
-          />   
+          />
           <Stack.Screen
             name="SpinWheel"
             component={SpinWheel}
             options={{ headerShown: false }}
           />
+          <Stack.Screen
+            name="UserEntries"
+            component={UserEntries}
+            options={{ headerShown: false }}
+          />
+
           {/* Esha - end */}
 
           {/* {Bhavesh} */}
-           
-           <Stack.Screen
+
+          <Stack.Screen
             name="WelcomePage"
             component={FirstPage}
             options={{ headerShown: false }}
@@ -174,11 +181,8 @@ export default function App() {
           {/* Sakshi - end */}
 
           {/* samraat start */}
-           
 
-           {/* samraat end */}
-
-
+          {/* samraat end */}
         </Stack.Navigator>
       </View>
     </NavigationContainer>
