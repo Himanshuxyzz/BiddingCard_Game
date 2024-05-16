@@ -14,7 +14,7 @@ import GradientVarientOneBtn from "../../../../Components/GradientBtn/GradientVa
 import { useState } from "react";
 
 const StartBC = ({ route, navigation }) => {
-  const { bcAmount } = route.params;
+  const { bcAmount, totalAmount } = route.params;
   console.log(bcAmount);
   const [password, setPassword] = useState("");
   const [isPasswordValid, setIsPasswordValid] = useState(true); // Initially assuming password is valid
@@ -27,7 +27,7 @@ const StartBC = ({ route, navigation }) => {
     if (password.length >= 8 && hasSpecialCharacter) {
       setIsPasswordValid(true);
       // Proceed with your logic like navigating to the next screen
-      navigation.navigate("SpinWheel");
+      navigation.navigate("SpinWheel", { totalAmount: totalAmount });
     } else {
       setIsPasswordValid(false);
     }

@@ -4,7 +4,24 @@ import WhiteText from "../../../../Components/WhiteText/WhiteText";
 import Header from "../../../../Components/DashboardHeader/Header";
 import FortuneWheel from "../../../../Components/FortuneWheel/FortuneWheel";
 
-const SpinWheel = () => {
+const segmentOptions = [
+  "Option 1",
+  "Option 2",
+  "Option 3",
+  "Option 4",
+  "Option 5",
+  "Option 6",
+  "Option 7",
+  "Option 8",
+  "Option 9",
+  "Option 10",
+  "Option 11",
+  "Option 12",
+]; // Add your custom names here
+
+const SpinWheel = ({ route, navigation }) => {
+  const { totalAmount } = route.params;
+  console.log(totalAmount);
   const [wheelmessage, setWheelMessage] = useState(
     "Waiting for all the members to join check entries"
   );
@@ -19,7 +36,10 @@ const SpinWheel = () => {
           {wheelmessage}
         </WhiteText>
         {/* Wheel  */}
-        <FortuneWheel />
+        <FortuneWheel
+          totalAmount={totalAmount}
+          segmentOptions={segmentOptions}
+        />
       </View>
     </View>
   );

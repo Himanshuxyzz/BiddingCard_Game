@@ -36,49 +36,30 @@ const segmentClr = [
   "#A2539B",
 ];
 
-const segmentNames = [
-  "Option 1",
-  "Option 2",
-  "Option 3",
-  "Option 4",
-  "Option 5",
-  "Option 6",
-  "Option 7",
-  "Option 8",
-  "Option 9",
-  "Option 10",
-  "Option 11",
-  "Option 12",
-]; // Add your custom names here
+const FortuneWheel = ({ totalAmount, segmentOptions }) => {
+  console.log(totalAmount);
+  const makeWheel = () => {
+    const data = Array.from({ length: numberOfSegments }).fill(1);
+    const arcs = d3Shape.pie()(data);
+    return arcs.map((arc, index) => {
+      const instance = d3Shape
+        .arc()
+        .padAngle(0.01)
+        .outerRadius(width / 2)
+        .innerRadius(0);
 
-const makeWheel = () => {
-  const data = Array.from({ length: numberOfSegments }).fill(1);
-  const arcs = d3Shape.pie()(data);
-  //   const colors = color({
-  //     luminosity: "dark",
-  //     count: numberOfSegments,
-  //   });
+      return {
+        path: instance(arc),
+        //   color: colors[index],
+        color: segmentClr[index],
 
-  return arcs.map((arc, index) => {
-    const instance = d3Shape
-      .arc()
-      .padAngle(0.01)
-      .outerRadius(width / 2)
-      .innerRadius(0);
+        value: index + 1, //[200, 2200]
+        centroid: instance.centroid(arc),
+        name: segmentOptions[index], // Add the custom name for the segment
+      };
+    });
+  };
 
-    return {
-      path: instance(arc),
-      //   color: colors[index],
-      color: segmentClr[index],
-
-      value: index + 1, //[200, 2200]
-      centroid: instance.centroid(arc),
-      name: segmentNames[index], // Add the custom name for the segment
-    };
-  });
-};
-
-const FortuneWheel = () => {
   const _wheelPaths = useRef(makeWheel());
   const _angle = useRef(new Animated.Value(0));
   const [finished, setFinished] = useState(true); // Changed initial state to true
@@ -230,24 +211,12 @@ const FortuneWheel = () => {
                     >
                       <Text
                         x={x}
-                        // y={y - 70}
                         y={textY}
                         fill="black"
                         textAnchor="middle"
                         fontSize={15}
                         fontWeight={700}
                       >
-                        {/* {Array.from({ length: number.length }).map((_, j) => {
-                          return (
-                            <TSpan
-                              x={x}
-                              dy={fontSize}
-                              key={`arc-${i}-slice-${j}`}
-                            >
-                              {number.charAt(j)}
-                            </TSpan>
-                          );
-                        })} */}
                         {name &&
                           name.map((char, index) => {
                             return (
@@ -283,7 +252,7 @@ const FortuneWheel = () => {
           color: "rgba(249, 182, 12, 1)",
         }}
       >
-        BC amount - Rs. 2.04cr
+        BC amount - Rs. {totalAmount && totalAmount}
       </RNText>
 
       {finished && _renderWinner()}
