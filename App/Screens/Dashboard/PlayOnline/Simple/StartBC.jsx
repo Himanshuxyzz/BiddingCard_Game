@@ -16,7 +16,7 @@ import { useState } from "react";
 const StartBC = ({ route, navigation }) => {
   const { bcAmount, totalAmount } = route.params;
   console.log(bcAmount);
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState("test@123");
   const [isPasswordValid, setIsPasswordValid] = useState(true); // Initially assuming password is valid
 
   const handlePassword = () => {
