@@ -13,6 +13,7 @@ import NotVerified from "./App/Screens/CreateYourProfile/NotVerified";
 
 import Dashboard from "./App/Screens/Dashboard";
 import PlayOnline from "./App/Screens/Dashboard/PlayOnline";
+import MakeAClub from "./App/Screens/Dashboard/MakeAClub";
 import Auction from "./App/Screens/Dashboard/PlayOnline/Auction";
 import Simple from "./App/Screens/Dashboard/PlayOnline/Simple";
 import StartBC from "./App/Screens/Dashboard/PlayOnline/Simple/StartBC";
@@ -86,6 +87,11 @@ export default function App() {
           <Stack.Screen
             name="Playonline"
             component={PlayOnline}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Makeaclub"
+            component={MakeAClub}
             options={{ headerShown: false }}
           />
           <Stack.Screen
