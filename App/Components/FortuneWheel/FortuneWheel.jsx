@@ -62,6 +62,7 @@ const FortuneWheel = ({ totalAmount, segmentOptions }) => {
   const [finished, setFinished] = useState(true); // Changed initial state to true
   const [winner, setWinner] = useState(null);
 
+  // get winner logic
   const _getWinnerIndex = (currentAngle) => {
     const deg = Math.abs(Math.round(currentAngle % oneTurn));
 
@@ -82,31 +83,46 @@ const FortuneWheel = ({ totalAmount, segmentOptions }) => {
     console.log("Spin button pressed");
     setFinished(false);
 
-    // const spinDuration = 8000;
-    const spinDuration = 5000 + Math.random() * 2000;
+    // const spinDuration = 5000 + Math.random() * 1000;
+    const spinDuration = 5000;
+
     const randomOffset = Math.random() * 360;
 
     const initialAngle = _angle.current._value;
-    const targetAngle = initialAngle + 360 * 10 + randomOffset;
+    // const targetAngle = initialAngle + 360 * 10 + randomOffset;
+    const targetAngle = initialAngle + 360 * 12 + randomOffset;
+
+    // Define a custom easing function to mimic the motion of a spinning wheel
+    const customEase = (t) => {
+      // Apply a custom easing function with slow start and mid, and linear end
+      return t < 0.5 ? Math.pow(t * 2, 2) / 2 : 0.5 + (t - 0.5) * 2;
+    };
 
     Animated.timing(_angle.current, {
       toValue: targetAngle,
       duration: spinDuration,
-      easing: Easing.linear,
+      // easing: Easing.linear,
+      // @TODO refine the easing logic if doesnt work then do linear again
+      easing: customEase,
       useNativeDriver: true,
     }).start(({ finished }) => {
-      // Calculate the final angle after the animation completes
-      const finalAngle = targetAngle % 360;
-      const winnerIndex = _getWinnerIndex(finalAngle);
-      setWinner(_wheelPaths.current[winnerIndex].name);
+      if (finished) {
+        // Calculate the final angle after the animation completes
+        const finalAngle = targetAngle % 360;
+        const winnerIndex = _getWinnerIndex(finalAngle);
+        setWinner(_wheelPaths.current[winnerIndex].name);
+        // setFinished(true);
+
+        // Snap the knob to the nearest segment angle
+        const segmentIndex = Math.floor(finalAngle / angleBySegment);
+        const nearestAngle = segmentIndex * angleBySegment;
+
+        // Directly set the knob angle without animating the wheel rotation
+        _angle.current.setValue(nearestAngle);
+
+        // _angle.current.setValue(0);
+      }
       setFinished(true);
-
-      // Snap the knob to the nearest segment angle
-      const segmentIndex = Math.floor(finalAngle / angleBySegment);
-      const nearestAngle = segmentIndex * angleBySegment;
-
-      // Directly set the knob angle without animating the wheel rotation
-      _angle.current.setValue(nearestAngle);
     });
   };
 
