@@ -10,7 +10,7 @@ import Header from "../../../../Components/DashboardHeader/Header";
 import Colors from "../../../../Utils/Colors";
 import { Feather } from "@expo/vector-icons";
 import { FontAwesome6 } from "@expo/vector-icons";
-import GradientVarientOneBtn from "../../../../Components/GradientBtn/GradientVariantOneBtn";
+import GradientVarientOneBtn from "../../../../Components/Gradient/GradientVariantOneBtn";
 import { useState } from "react";
 
 const StartBC = ({ route, navigation }) => {

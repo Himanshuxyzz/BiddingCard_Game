@@ -1,13 +1,8 @@
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
-import GradientVarientOneBtn from "../../Components/GradientBtn/GradientVariantOneBtn";
+import GradientVarientOneBtn from "../../Components/Gradient/GradientVariantOneBtn";
 
-const Start = ({navigation}) => {
+const Start = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={[styles.h1, { color: "#EA59E4" }]}>Almost there!</Text>
