@@ -11,6 +11,7 @@ import Header from "../../Components/DashboardHeader/Header";
 const Dashboard = ({ navigation }) => {
   return (
     <View style={styles.container}>
+      {/* <GradientVariantBackground style={{}} /> */}
       <ImageBackground
         source={require("../../../assets/Images/backgroundimage.jpeg")}
         resizeMode="cover"
@@ -31,18 +32,16 @@ const Dashboard = ({ navigation }) => {
               gap: 90,
             }}
           >
-            <View
-              style={{
-                borderWidth: 4,
-                borderColor: "white",
-                paddingVertical: 32,
-                paddingHorizontal: 50,
-                borderRadius: 12,
-                backgroundColor: "background: rgba(228, 148, 235, 1)",
-              }}
-            >
-              <TouchableOpacity
-                onPress={() => navigation.navigate("Playonline")}
+            <TouchableOpacity onPress={() => navigation.navigate("Playonline")}>
+              <View
+                style={{
+                  borderWidth: 4,
+                  borderColor: "white",
+                  paddingVertical: 32,
+                  paddingHorizontal: 50,
+                  borderRadius: 12,
+                  backgroundColor: "background: rgba(228, 148, 235, 1)",
+                }}
               >
                 <Text
                   style={{
@@ -59,17 +58,18 @@ const Dashboard = ({ navigation }) => {
                 >
                   Play Online
                 </Text>
-              </TouchableOpacity>
-            </View>
-            <View
-              style={{
-                paddingVertical: 32,
-                paddingHorizontal: 50,
-                borderRadius: 12,
-                backgroundColor: "background: rgba(228, 148, 235, 1)",
-              }}
-            >
-              <TouchableOpacity>
+              </View>
+            </TouchableOpacity>
+            
+            <TouchableOpacity>
+              <View
+                style={{
+                  paddingVertical: 32,
+                  paddingHorizontal: 50,
+                  borderRadius: 12,
+                  backgroundColor: "background: rgba(228, 148, 235, 1)",
+                }}
+              >
                 <Text
                   style={{
                     color: "rgba(255, 255, 255, 1)",
@@ -79,8 +79,8 @@ const Dashboard = ({ navigation }) => {
                 >
                   Make a Club
                 </Text>
-              </TouchableOpacity>
-            </View>
+              </View>
+            </TouchableOpacity>
           </View>
         </View>
       </ImageBackground>

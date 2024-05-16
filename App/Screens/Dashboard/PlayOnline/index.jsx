@@ -25,15 +25,15 @@ const PlayOnline = ({navigation}) => {
               gap: 90,
             }}
           >
-            <View
-              style={{
-                paddingVertical: 32,
-                paddingHorizontal: 50,
-                borderRadius: 12,
-                backgroundColor: "background: rgba(228, 148, 235, 1)",
-              }}
-            >
-              <TouchableOpacity onPress={() => navigation.navigate("Auction")}>
+            <TouchableOpacity onPress={() => navigation.navigate("Auction")}>
+              <View
+                style={{
+                  paddingVertical: 32,
+                  paddingHorizontal: 50,
+                  borderRadius: 12,
+                  backgroundColor: "background: rgba(228, 148, 235, 1)",
+                }}
+              >
                 <Text
                   style={{
                     color: "rgba(255, 255, 255, 1)",
@@ -43,19 +43,20 @@ const PlayOnline = ({navigation}) => {
                 >
                   Auction BC
                 </Text>
-              </TouchableOpacity>
-            </View>
-            <View
-              style={{
-                borderWidth: 4,
-                borderColor: "white",
-                paddingVertical: 32,
-                paddingHorizontal: 50,
-                borderRadius: 12,
-                backgroundColor: "background: rgba(228, 148, 235, 1)",
-              }}
-            >
-              <TouchableOpacity onPress={() => navigation.navigate("Simple")}>
+              </View>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => navigation.navigate("Simple")}>
+              <View
+                style={{
+                  borderWidth: 4,
+                  borderColor: "white",
+                  paddingVertical: 32,
+                  paddingHorizontal: 50,
+                  borderRadius: 12,
+                  backgroundColor: "background: rgba(228, 148, 235, 1)",
+                }}
+              >
                 <Text
                   style={{
                     color: "rgba(255, 255, 255, 1)",
@@ -71,8 +72,8 @@ const PlayOnline = ({navigation}) => {
                 >
                   Simple BC
                 </Text>
-              </TouchableOpacity>
-            </View>
+              </View>
+            </TouchableOpacity>
           </View>
         </View>
       </ImageBackground>
