@@ -16,7 +16,7 @@ import PlayOnline from "./App/Screens/Dashboard/PlayOnline";
 import Auction from "./App/Screens/Dashboard/PlayOnline/Auction";
 import Simple from "./App/Screens/Dashboard/PlayOnline/Simple";
 import StartBC from "./App/Screens/Dashboard/PlayOnline/Simple/StartBC";
-
+import UserEntries from "./App/Screens/Dashboard/PlayOnline/Simple/UserEntries";
 import OtpVerification from "./App/Screens/ForgotPassword/OtpVerification";
 
 import WalletMain from "./App/Screens/WalletScreen";
