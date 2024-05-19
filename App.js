@@ -40,6 +40,7 @@ import Emailotpwrong from "./App/Screens/UserProfile/Emailverify/Emailotpwrong";
 import Emaildone from "./App/Screens/UserProfile/Emailverify/Emaildone";
 import Slide from "./App/Screens/UserProfile/Slidecomponent/Slide";
 import SpinWheel from "./App/Screens/Dashboard/PlayOnline/Simple/SpinWheel";
+import Result from "./App/Screens/Dashboard/PlayOnline/Simple/Result";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -117,6 +118,11 @@ export default function App() {
           <Stack.Screen
             name="UserEntries"
             component={UserEntries}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Result"
+            component={Result}
             options={{ headerShown: false }}
           />
 
