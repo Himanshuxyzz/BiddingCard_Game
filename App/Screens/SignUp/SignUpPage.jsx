@@ -58,7 +58,7 @@ const verifyOtp = (otpValue) => {
         placeholderTextColor={Colors.INPUT_PLACEHOLDER}
       />
       <TouchableOpacity
-        onPress={() => setModal2Visible(true)}>
+        onPress={() => setModalVisible(true)}>
         <Text style={styles.phonebtn} >verify</Text>
       </TouchableOpacity>
       <TextInput
@@ -311,7 +311,7 @@ theme={
           <VerifyBtn
         btnText={"Next"}
         onPress={
-         ()=>{ navigation.navigate("LoginPage");}
+         ()=>{ navigation.navigate("SignUpPage");}
                  
         }
         style={styles.btn}
