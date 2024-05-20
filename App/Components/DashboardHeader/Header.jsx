@@ -24,7 +24,7 @@ const Header = () => {
             }}
           >
             <Image
-              style={{ width: 40, height: 40 }}
+              style={{ width: 40, height: 40}}
               source={require("../../../assets/Images/usericon.png")}
             />
           </View>

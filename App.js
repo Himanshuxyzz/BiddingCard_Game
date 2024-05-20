@@ -11,6 +11,13 @@ import VerificationPending from "./App/Screens/CreateYourProfile/VerificationPen
 import VerificationSuccessful from "./App/Screens/CreateYourProfile/VerificationSuccessful";
 import NotVerified from "./App/Screens/CreateYourProfile/NotVerified";
 
+import Dashboard from "./App/Screens/Dashboard";
+import PlayOnline from "./App/Screens/Dashboard/PlayOnline";
+import MakeAClub from "./App/Screens/Dashboard/MakeAClub";
+import Auction from "./App/Screens/Dashboard/PlayOnline/Auction";
+import Simple from "./App/Screens/Dashboard/PlayOnline/Simple";
+import StartBC from "./App/Screens/Dashboard/PlayOnline/Simple/StartBC";
+import UserEntries from "./App/Screens/Dashboard/PlayOnline/Simple/UserEntries";
 import OtpVerification from "./App/Screens/ForgotPassword/OtpVerification";
 
 import WalletMain from "./App/Screens/WalletScreen";
@@ -19,11 +26,9 @@ import FirstPage from "./App/Screens/SignUp";
 import NewPassword from "./App/Screens/ForgotPassword/NewPassword";
 import NotMatchedPassword from "./App/Screens/ForgotPassword/NotMatchedPassword";
 import CorrectPassword from "./App/Screens/ForgotPassword/CorrectPassword";
-import SignUpPage from './App/Screens/SignUp/SignUpPage'
+import SignUpPage from "./App/Screens/SignUp/SignUpPage";
 import LoginPage from "./App/Screens/SignUp/LoginPage";
 import Refer from "./App/Screens/Refer&Termsconditions/Refer";
-import ReferModal from "./App/Screens/Refer&Termsconditions/ReferModal";
-import TermnConditions from "./App/Screens/Refer&Termsconditions/TermnConditions";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -37,37 +42,78 @@ export default function App() {
             name="Start"
             component={Start}
             options={{ headerShown: false }}
-          /> */}
-          {/* <Stack.Screen
+          />
+          <Stack.Screen
             name="Createurprofile"
             component={CreateUrProfile}
             options={{ headerShown: false }}
-          /> */}
-          {/* <Stack.Screen
+          />
+          <Stack.Screen
             name="Addbankdetail"
             component={AddBankDetail}
             options={{ headerShown: false }}
-          /> */}
-          {/* <Stack.Screen
+          />
+          <Stack.Screen
             name="Verificationpending"
             component={VerificationPending}
             options={{ headerShown: false }}
-          /> */}
-          {/* <Stack.Screen
+          />
+          <Stack.Screen
             name="Verificationsuccessful"
             component={VerificationSuccessful}
             options={{ headerShown: false }}
-          /> */}
-          {/* <Stack.Screen
+          />
+          <Stack.Screen
             name="Notverified"
             component={NotVerified}
             options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Dashboard"
+            component={Dashboard}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Playonline"
+            component={PlayOnline}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Makeaclub"
+            component={MakeAClub}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Auction"
+            component={Auction}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Simple"
+            component={Simple}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Startbc"
+            component={StartBC}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="SpinWheel"
+            component={SpinWheel}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="UserEntries"
+            component={UserEntries}
+            options={{ headerShown: false }}
           /> */}
+
           {/* Esha - end */}
 
           {/* {Bhavesh} */}
 
-          {/* <Stack.Screen
+           <Stack.Screen
             name="WelcomePage"
             component={FirstPage}
             options={{ headerShown: false }}
@@ -82,20 +128,10 @@ export default function App() {
             name="LoginPage"
             component={LoginPage}
             options={{ headerShown: false }}
-          /> */}
+          />
           <Stack.Screen
-            name="Refer"
+            name="ReferPage"
             component={Refer}
-            options={{ headerShown: false }}
-          />
-           <Stack.Screen
-            name="ReferModal"
-            component={ReferModal}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="TermnConditions"
-            component={TermnConditions}
             options={{ headerShown: false }}
           />
           
@@ -150,10 +186,7 @@ export default function App() {
 
           {/* samraat start */}
 
-
           {/* samraat end */}
-
-
         </Stack.Navigator>
       </View>
     </NavigationContainer>

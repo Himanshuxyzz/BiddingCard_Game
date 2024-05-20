@@ -1,7 +1,7 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
-import GradientVarientTwoBtn from '../../Components/GradientBtn/GradientVariantTwoBtn';
-import Colors from '../../Utils/Colors';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import React from "react";
+import GradientVarientTwoBtn from "../../Components/Gradient/GradientVariantTwoBtn";
+import Colors from "../../Utils/Colors";
 
 const VerificationSuccessful = () => {
   return (
@@ -56,9 +56,9 @@ const VerificationSuccessful = () => {
       </TouchableOpacity>
     </View>
   );
-}
+};
 
-export default VerificationSuccessful
+export default VerificationSuccessful;
 
 const styles = StyleSheet.create({
   container: {
@@ -67,14 +67,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 20,
   },
-  
+
   btn: {
     minWidth: "90%",
     borderWidth: "1",
     borderColor: "#DDBBE6",
     borderRadius: 10,
     overflow: "hidden",
-    marginTop:"7%",
+    marginTop: "7%",
   },
   btnTwoVarientStyle: {
     backgroundColor: "#2ED813",
