@@ -89,7 +89,7 @@ const GradientTextnBorder = ({ btnText }) => {
             fontWeight: "600",
           }}
         >
-          Amount ₹{btnText}
+          {btnText}
         </Text>
       </LinearGradient>
     </LinearGradient>
@@ -164,7 +164,7 @@ const Card = ({
         <WhiteText style={{ color: "black", fontWeight: "600", fontSize: 15 }}>
           ID: {cardId}
         </WhiteText>
-        <GradientTextnBorder btnText={amount} />
+        <GradientTextnBorder btnText={"Total BC Amount"} />
       </View>
 
       <View style={{ paddingHorizontal: 10, gap: 10 }}>
@@ -208,10 +208,10 @@ const Card = ({
             gap: 8,
           }}
         >
-          <Feather name="arrow-left" size={24} color={cardBgBorder} />
+          {/* <Feather name="arrow-left" size={24} color={cardBgBorder} />
           <WhiteText style={{ color: cardBg, fontWeight: "600", fontSize: 15 }}>
             ₹{bcAmount}
-          </WhiteText>
+          </WhiteText> */}
         </View>
 
         <View
@@ -223,22 +223,22 @@ const Card = ({
         >
           <TouchableOpacity
             style={{
-              backgroundColor: cardBg,
-              borderWidth: 1,
+              backgroundColor: "rgba(46, 216, 19, 0.9)",
+              // borderWidth: 1,
               borderRadius: 8,
               paddingHorizontal: 24,
               paddingVertical: 8,
             }}
             onPress={() =>
-              navigation.navigate("Startbc", {
+              navigation.navigate("StartAuctionbc", {
                 bcAmount: bcAmount,
                 totalAmount: amount,
               })
             }
             activeOpacity={0.5}
           >
-            <WhiteText style={{ fontWeight: "600", color: "black" }}>
-              Start
+            <WhiteText style={{ fontWeight: "600", color: "#fff" }}>
+              Add money
             </WhiteText>
           </TouchableOpacity>
 
@@ -261,11 +261,11 @@ const DATA = [
     cardId: 10001,
     bcAmount: "5 cr",
     totalSlots: 12,
-    remainingSlots: 3,
+    remainingSlots: 12,
     participatingAmount: "60 lacs",
     cardAccent: {
-      cardBg: "#FCC200",
-      cardBottom: "#F2E5BB",
+      cardBg: "rgba(255, 255, 255, 1)",
+      cardBottom: "rgba(255, 255, 255, 1)",
       cardBgBorder: "#D97D13",
       cardBottomBorder: "#B1B1B1",
     },
@@ -276,211 +276,211 @@ const DATA = [
     cardId: 10002,
     bcAmount: "2 cr",
     totalSlots: 20,
-    remainingSlots: 11,
+    remainingSlots: 20,
     participatingAmount: "10 lacs",
     cardAccent: {
-      cardBg: "#FCC200",
-      cardBottom: "#F2E5BB",
+      cardBg: "rgba(255, 255, 255, 1)",
+      cardBottom: "rgba(255, 255, 255, 1)",
       cardBgBorder: "#D97D13",
       cardBottomBorder: "#B1B1B1",
     },
     month: 12,
   },
-  {
-    id: 3,
-    cardId: 10003,
-    bcAmount: "1 cr",
-    totalSlots: 20,
-    remainingSlots: 3,
-    participatingAmount: "5 lacs",
-    cardAccent: {
-      cardBg: "#FCC200",
-      cardBottom: "#F2E5BB",
-      cardBgBorder: "#D97D13",
-      cardBottomBorder: "#B1B1B1",
-    },
-    month: 12,
-  },
-  {
-    id: 4,
-    cardId: 10004,
-    bcAmount: "90 lacs",
-    totalSlots: 20,
-    remainingSlots: 5,
-    participatingAmount: "4.5 lacs",
-    cardAccent: {
-      cardBg: "#C0C0C0",
-      cardBottom: "#F3E9E9",
-      cardBottomBorder: "#B1B1B1",
-      cardBgBorder: "#8C8383",
-    },
-    month: 20,
-  },
-  {
-    id: 5,
-    cardId: 10005,
-    bcAmount: "80 lacs",
-    totalSlots: 20,
-    remainingSlots: 16,
-    participatingAmount: "4 lacs",
-    cardAccent: {
-      cardBg: "#C0C0C0",
-      cardBottom: "#F3E9E9",
-      cardBottomBorder: "#B1B1B1",
-      cardBgBorder: "#8C8383",
-    },
-    month: 20,
-  },
-  {
-    id: 6,
-    cardId: 10006,
-    bcAmount: "76.8 lacs",
-    totalSlots: 12,
-    remainingSlots: 9,
-    participatingAmount: "6.4 lacs",
-    cardAccent: {
-      cardBg: "#C0C0C0",
-      cardBottom: "#F3E9E9",
-      cardBottomBorder: "#B1B1B1",
-      cardBgBorder: "#8C8383",
-    },
-    month: 20,
-  },
-  {
-    id: 7,
-    cardId: 10007,
-    bcAmount: "9 lacs",
-    totalSlots: 20,
-    remainingSlots: 15,
-    participatingAmount: "45000",
-    cardAccent: {
-      cardBg: "#D8914B",
-      cardBottom: "#EED8C2",
-      cardBottomBorder: "#B1B1B1",
-      cardBgBorder: "#5C3B29",
-    },
-    month: 12,
-  },
-  {
-    id: 8,
-    cardId: 10008,
-    bcAmount: "6 lacs",
-    totalSlots: 12,
-    remainingSlots: 3,
-    participatingAmount: "50000",
-    cardAccent: {
-      cardBg: "#D8914B",
-      cardBottom: "#EED8C2",
-      cardBottomBorder: "#B1B1B1",
-      cardBgBorder: "#5C3B29",
-    },
-    month: 12,
-  },
-  {
-    id: 9,
-    cardId: 10009,
-    bcAmount: "1.2 lacs",
-    totalSlots: 12,
-    remainingSlots: 2,
-    participatingAmount: "12000",
-    cardAccent: {
-      cardBg: "#D8914B",
-      cardBottom: "#EED8C2",
-      cardBottomBorder: "#B1B1B1",
-      cardBgBorder: "#5C3B29",
-    },
-    month: 12,
-  },
-  {
-    id: 10,
-    cardId: 10010,
-    bcAmount: "95000",
-    totalSlots: 20,
-    remainingSlots: 3,
-    participatingAmount: "4750",
-    cardAccent: {
-      cardBg: "#669FD3",
-      cardBottom: "#80BEF6",
-      cardBottomBorder: "#B1B1B1",
-      cardBgBorder: "#0C3D68",
-    },
-    month: 20,
-  },
-  {
-    id: 11,
-    cardId: 10011,
-    bcAmount: "90000",
-    totalSlots: 12,
-    remainingSlots: 2,
-    participatingAmount: "7500",
-    cardAccent: {
-      cardBg: "#669FD3",
-      cardBottom: "#80BEF6",
-      cardBottomBorder: "#B1B1B1",
-      cardBgBorder: "#0C3D68",
-    },
-    month: 20,
-  },
-  {
-    id: 12,
-    cardId: 10012,
-    bcAmount: "60000",
-    totalSlots: 20,
-    remainingSlots: 8,
-    participatingAmount: "3000",
-    cardAccent: {
-      cardBg: "#669FD3",
-      cardBottom: "#80BEF6",
-      cardBottomBorder: "#B1B1B1",
-      cardBgBorder: "#0C3D68",
-    },
-    month: 20,
-  },
-  {
-    id: 13,
-    cardId: 10013,
-    bcAmount: "9000",
-    totalSlots: 12,
-    remainingSlots: 9,
-    participatingAmount: "750",
-    cardAccent: {
-      cardBg: "#A2539B",
-      cardBottom: "#BC96B9",
-      cardBottomBorder: "#B1B1B1",
-      cardBgBorder: "#3D0438",
-    },
-    month: 12,
-  },
-  {
-    id: 14,
-    cardId: 10014,
-    bcAmount: "7200",
-    totalSlots: 12,
-    remainingSlots: 4,
-    participatingAmount: "600",
-    cardAccent: {
-      cardBg: "#A2539B",
-      cardBottom: "#BC96B9",
-      cardBottomBorder: "#B1B1B1",
-      cardBgBorder: "#3D0438",
-    },
-    month: 12,
-  },
-  {
-    id: 15,
-    cardId: 10015,
-    bcAmount: "6000",
-    totalSlots: 20,
-    remainingSlots: 1,
-    participatingAmount: "500",
-    cardAccent: {
-      cardBg: "#A2539B",
-      cardBottom: "#BC96B9",
-      cardBottomBorder: "#B1B1B1",
-      cardBgBorder: "#3D0438",
-    },
-    month: 12,
-  },
+  // {
+  //   id: 3,
+  //   cardId: 10003,
+  //   bcAmount: "1 cr",
+  //   totalSlots: 20,
+  //   remainingSlots: 3,
+  //   participatingAmount: "5 lacs",
+  //   cardAccent: {
+  //     cardBg: "#FCC200",
+  //     cardBottom: "#F2E5BB",
+  //     cardBgBorder: "#D97D13",
+  //     cardBottomBorder: "#B1B1B1",
+  //   },
+  //   month: 12,
+  // },
+  // {
+  //   id: 4,
+  //   cardId: 10004,
+  //   bcAmount: "90 lacs",
+  //   totalSlots: 20,
+  //   remainingSlots: 5,
+  //   participatingAmount: "4.5 lacs",
+  //   cardAccent: {
+  //     cardBg: "#C0C0C0",
+  //     cardBottom: "#F3E9E9",
+  //     cardBottomBorder: "#B1B1B1",
+  //     cardBgBorder: "#8C8383",
+  //   },
+  //   month: 20,
+  // },
+  // {
+  //   id: 5,
+  //   cardId: 10005,
+  //   bcAmount: "80 lacs",
+  //   totalSlots: 20,
+  //   remainingSlots: 16,
+  //   participatingAmount: "4 lacs",
+  //   cardAccent: {
+  //     cardBg: "#C0C0C0",
+  //     cardBottom: "#F3E9E9",
+  //     cardBottomBorder: "#B1B1B1",
+  //     cardBgBorder: "#8C8383",
+  //   },
+  //   month: 20,
+  // },
+  // {
+  //   id: 6,
+  //   cardId: 10006,
+  //   bcAmount: "76.8 lacs",
+  //   totalSlots: 12,
+  //   remainingSlots: 9,
+  //   participatingAmount: "6.4 lacs",
+  //   cardAccent: {
+  //     cardBg: "#C0C0C0",
+  //     cardBottom: "#F3E9E9",
+  //     cardBottomBorder: "#B1B1B1",
+  //     cardBgBorder: "#8C8383",
+  //   },
+  //   month: 20,
+  // },
+  // {
+  //   id: 7,
+  //   cardId: 10007,
+  //   bcAmount: "9 lacs",
+  //   totalSlots: 20,
+  //   remainingSlots: 15,
+  //   participatingAmount: "45000",
+  //   cardAccent: {
+  //     cardBg: "#D8914B",
+  //     cardBottom: "#EED8C2",
+  //     cardBottomBorder: "#B1B1B1",
+  //     cardBgBorder: "#5C3B29",
+  //   },
+  //   month: 12,
+  // },
+  // {
+  //   id: 8,
+  //   cardId: 10008,
+  //   bcAmount: "6 lacs",
+  //   totalSlots: 12,
+  //   remainingSlots: 3,
+  //   participatingAmount: "50000",
+  //   cardAccent: {
+  //     cardBg: "#D8914B",
+  //     cardBottom: "#EED8C2",
+  //     cardBottomBorder: "#B1B1B1",
+  //     cardBgBorder: "#5C3B29",
+  //   },
+  //   month: 12,
+  // },
+  // {
+  //   id: 9,
+  //   cardId: 10009,
+  //   bcAmount: "1.2 lacs",
+  //   totalSlots: 12,
+  //   remainingSlots: 2,
+  //   participatingAmount: "12000",
+  //   cardAccent: {
+  //     cardBg: "#D8914B",
+  //     cardBottom: "#EED8C2",
+  //     cardBottomBorder: "#B1B1B1",
+  //     cardBgBorder: "#5C3B29",
+  //   },
+  //   month: 12,
+  // },
+  // {
+  //   id: 10,
+  //   cardId: 10010,
+  //   bcAmount: "95000",
+  //   totalSlots: 20,
+  //   remainingSlots: 3,
+  //   participatingAmount: "4750",
+  //   cardAccent: {
+  //     cardBg: "#669FD3",
+  //     cardBottom: "#80BEF6",
+  //     cardBottomBorder: "#B1B1B1",
+  //     cardBgBorder: "#0C3D68",
+  //   },
+  //   month: 20,
+  // },
+  // {
+  //   id: 11,
+  //   cardId: 10011,
+  //   bcAmount: "90000",
+  //   totalSlots: 12,
+  //   remainingSlots: 2,
+  //   participatingAmount: "7500",
+  //   cardAccent: {
+  //     cardBg: "#669FD3",
+  //     cardBottom: "#80BEF6",
+  //     cardBottomBorder: "#B1B1B1",
+  //     cardBgBorder: "#0C3D68",
+  //   },
+  //   month: 20,
+  // },
+  // {
+  //   id: 12,
+  //   cardId: 10012,
+  //   bcAmount: "60000",
+  //   totalSlots: 20,
+  //   remainingSlots: 8,
+  //   participatingAmount: "3000",
+  //   cardAccent: {
+  //     cardBg: "#669FD3",
+  //     cardBottom: "#80BEF6",
+  //     cardBottomBorder: "#B1B1B1",
+  //     cardBgBorder: "#0C3D68",
+  //   },
+  //   month: 20,
+  // },
+  // {
+  //   id: 13,
+  //   cardId: 10013,
+  //   bcAmount: "9000",
+  //   totalSlots: 12,
+  //   remainingSlots: 9,
+  //   participatingAmount: "750",
+  //   cardAccent: {
+  //     cardBg: "#A2539B",
+  //     cardBottom: "#BC96B9",
+  //     cardBottomBorder: "#B1B1B1",
+  //     cardBgBorder: "#3D0438",
+  //   },
+  //   month: 12,
+  // },
+  // {
+  //   id: 14,
+  //   cardId: 10014,
+  //   bcAmount: "7200",
+  //   totalSlots: 12,
+  //   remainingSlots: 4,
+  //   participatingAmount: "600",
+  //   cardAccent: {
+  //     cardBg: "#A2539B",
+  //     cardBottom: "#BC96B9",
+  //     cardBottomBorder: "#B1B1B1",
+  //     cardBgBorder: "#3D0438",
+  //   },
+  //   month: 12,
+  // },
+  // {
+  //   id: 15,
+  //   cardId: 10015,
+  //   bcAmount: "6000",
+  //   totalSlots: 20,
+  //   remainingSlots: 1,
+  //   participatingAmount: "500",
+  //   cardAccent: {
+  //     cardBg: "#A2539B",
+  //     cardBottom: "#BC96B9",
+  //     cardBottomBorder: "#B1B1B1",
+  //     cardBgBorder: "#3D0438",
+  //   },
+  //   month: 12,
+  // },
   // {
   //   id: 16,
   //   cardId: 10016,
@@ -780,9 +780,17 @@ const Auction = ({ navigation }) => {
         {/* cards container */}
 
         <View style={styles.cardContainer}>
-          <WhiteText style={{ fontSize: 25, fontWeight: "600" }}>
-            Your Club BC
-          </WhiteText>
+          <Text style={{ fontSize: 25, fontWeight: "600" }}>
+            Upcoming Events
+          </Text>
+
+          <View
+            style={{
+              borderColor: "rgba(177, 177, 177, 1)",
+              borderWidth: 1,
+              marginBottom: "8%",
+            }}
+          ></View>
 
           {/* card list container */}
           <FlatList

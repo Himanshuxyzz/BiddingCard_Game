@@ -19,6 +19,7 @@ import Simple from "./App/Screens/Dashboard/PlayOnline/Simple";
 import StartBC from "./App/Screens/Dashboard/PlayOnline/Simple/StartBC";
 import SpinWheel from "./App/Screens/Dashboard/PlayOnline/Simple/SpinWheel";
 import UserEntries from "./App/Screens/Dashboard/PlayOnline/Simple/UserEntries";
+import StartAuctionBC from "./App/Screens/Dashboard/PlayOnline/Auction/StartAuctionBC";
 import OtpVerification from "./App/Screens/ForgotPassword/OtpVerification";
 
 import WalletMain from "./App/Screens/WalletScreen";
@@ -109,12 +110,17 @@ export default function App() {
             component={UserEntries}
             options={{ headerShown: false }}
           />
+          <Stack.Screen
+            name="StartAuctionbc"
+            component={StartAuctionBC}
+            options={{ headerShown: false }}
+          />
 
           {/* Esha - end */}
 
           {/* {Bhavesh} */}
 
-           {/* <Stack.Screen
+          {/* <Stack.Screen
             name="WelcomePage"
             component={FirstPage}
             options={{ headerShown: false }}
@@ -135,7 +141,7 @@ export default function App() {
             component={Refer}
             options={{ headerShown: false }}
           /> */}
-          
+
           {/* {Bhavesh end} */}
 
           {/* Himanshu */}
