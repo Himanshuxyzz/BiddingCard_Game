@@ -17,6 +17,7 @@ import MakeAClub from "./App/Screens/Dashboard/MakeAClub";
 import Auction from "./App/Screens/Dashboard/PlayOnline/Auction";
 import Simple from "./App/Screens/Dashboard/PlayOnline/Simple";
 import StartBC from "./App/Screens/Dashboard/PlayOnline/Simple/StartBC";
+import SpinWheel from "./App/Screens/Dashboard/PlayOnline/Simple/SpinWheel";
 import UserEntries from "./App/Screens/Dashboard/PlayOnline/Simple/UserEntries";
 import OtpVerification from "./App/Screens/ForgotPassword/OtpVerification";
 
@@ -38,7 +39,7 @@ export default function App() {
       <View style={styles.container}>
         <Stack.Navigator>
           {/* Esha */}
-          {/* <Stack.Screen
+          <Stack.Screen
             name="Start"
             component={Start}
             options={{ headerShown: false }}
@@ -107,13 +108,13 @@ export default function App() {
             name="UserEntries"
             component={UserEntries}
             options={{ headerShown: false }}
-          /> */}
+          />
 
           {/* Esha - end */}
 
           {/* {Bhavesh} */}
 
-           <Stack.Screen
+           {/* <Stack.Screen
             name="WelcomePage"
             component={FirstPage}
             options={{ headerShown: false }}
@@ -133,7 +134,7 @@ export default function App() {
             name="ReferPage"
             component={Refer}
             options={{ headerShown: false }}
-          />
+          /> */}
           
           {/* {Bhavesh end} */}
 
