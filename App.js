@@ -29,17 +29,6 @@ import CorrectPassword from "./App/Screens/ForgotPassword/CorrectPassword";
 import SignUpPage from "./App/Screens/SignUp/SignUpPage";
 import LoginPage from "./App/Screens/SignUp/LoginPage";
 import Refer from "./App/Screens/Refer&Termsconditions/Refer";
-import Userdetail from "./App/Screens/UserProfile/Userdetail";
-import ProfileDetail from "./App/Screens/UserProfile/ProfileDetail";
-import EditProfile from "./App/Screens/UserProfile/EditProfile";
-import Phoneotp from "./App/Screens/UserProfile/OTPVerification/Phoneotp";
-import Phoneotptryagain from "./App/Screens/UserProfile/OTPVerification/Phoneotptryagain";
-import OTPverify from "./App/Screens/UserProfile/OTPverify";
-import EmailOTP from "./App/Screens/UserProfile/Emailverify/EmailOTP";
-import Emailotpwrong from "./App/Screens/UserProfile/Emailverify/Emailotpwrong";
-import Emaildone from "./App/Screens/UserProfile/Emailverify/Emaildone";
-import Slide from "./App/Screens/UserProfile/Slidecomponent/Slide";
-import SpinWheel from "./App/Screens/Dashboard/PlayOnline/Simple/SpinWheel";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -49,7 +38,7 @@ export default function App() {
       <View style={styles.container}>
         <Stack.Navigator>
           {/* Esha */}
-          <Stack.Screen
+          {/* <Stack.Screen
             name="Start"
             component={Start}
             options={{ headerShown: false }}
@@ -118,13 +107,13 @@ export default function App() {
             name="UserEntries"
             component={UserEntries}
             options={{ headerShown: false }}
-          />
+          /> */}
 
           {/* Esha - end */}
 
           {/* {Bhavesh} */}
 
-          <Stack.Screen
+           <Stack.Screen
             name="WelcomePage"
             component={FirstPage}
             options={{ headerShown: false }}
@@ -135,7 +124,17 @@ export default function App() {
             component={SignUpPage}
             options={{ headerShown: false }}
           />
-
+          <Stack.Screen
+            name="LoginPage"
+            component={LoginPage}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="ReferPage"
+            component={Refer}
+            options={{ headerShown: false }}
+          />
+          
           {/* {Bhavesh end} */}
 
           {/* Himanshu */}

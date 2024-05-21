@@ -61,8 +61,9 @@ const SignUpPage = ({ navigation }) => {
         placeholder="Phone no."
         placeholderTextColor={Colors.INPUT_PLACEHOLDER}
       />
-      <TouchableOpacity onPress={() => setModal2Visible(true)}>
-        <Text style={styles.phonebtn}>verify</Text>
+      <TouchableOpacity
+        onPress={() => setModal2Visible(true)}>
+        <Text style={styles.phonebtn} >verify</Text>
       </TouchableOpacity>
       <TextInput
         style={styles.input1}
@@ -308,14 +309,17 @@ const SignUpPage = ({ navigation }) => {
             </View>
           </View>
           <VerifyBtn
-            btnText={"Next"}
-            onPress={() => {
-              navigation.navigate("LoginPage");
-            }}
-            style={styles.btn}
-          />
-        </View>
-      </Modal>
+        btnText={"Next"}
+        onPress={
+         ()=>{ navigation.navigate("LoginPage");}
+                 
+        }
+        style={styles.btn}
+      />
+       
+          </View>
+         
+</Modal>
     </View>
   );
 };
