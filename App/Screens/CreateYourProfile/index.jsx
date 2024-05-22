@@ -1,13 +1,8 @@
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
-import GradientVarientOneBtn from "../../Components/GradientBtn/GradientVariantOneBtn";
+import GradientVarientOneBtn from "../../Components/Gradient/GradientVariantOneBtn";
 
-const Start = ({navigation}) => {
+const Start = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={[styles.h1, { color: "#EA59E4" }]}>Almost there!</Text>
@@ -29,15 +24,15 @@ const Start = ({navigation}) => {
           marginTop: "4%",
         }}
       >
-
         <GradientVarientOneBtn
-          btnText={"Complete Profile"} onPress={() =>navigation.navigate("Createurprofile")}
+          btnText={"Complete Profile"}
+          onPress={() => navigation.navigate("Createurprofile")}
           style={styles.btn}
         />
 
-
-            <GradientVarientOneBtn
+        <GradientVarientOneBtn
           btnText={"Skip"}
+          onPress={() => navigation.navigate("Dashboard")}
           style={styles.btn}
         />
       </View>

@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import WhiteText from "../../Components/WhiteText/WhiteText";
 import Colors from "../../Utils/Colors";
-import GradientVarientOneBtn from "../../Components/GradientBtn/GradientVariantOneBtn";
+import GradientVarientOneBtn from "../../Components/Gradient/GradientVariantOneBtn";
 
 const CorrectPassword = () => {
   return (
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     flex: 1,
     padding: 20,
-    gap:20
+    gap: 20,
   },
   Heading: {
     fontSize: 30,

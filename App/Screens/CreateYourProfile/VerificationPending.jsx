@@ -1,7 +1,7 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import GradientVarientOneBtn from '../../Components/GradientBtn/GradientVariantOneBtn';
-import GradientVarientTwoBtn from '../../Components/GradientBtn/GradientVariantTwoBtn';
+import { Image, StyleSheet, Text, View } from "react-native";
+import React from "react";
+import GradientVarientOneBtn from "../../Components/Gradient/GradientVariantOneBtn";
+import GradientVarientTwoBtn from "../../Components/Gradient/GradientVariantTwoBtn";
 
 const VerificationPending = () => {
   return (
@@ -28,7 +28,7 @@ const VerificationPending = () => {
         style={{
           width: "90%",
           paddingVertical: 50,
-          paddingHorizontal:20,
+          paddingHorizontal: 20,
           borderWidth: 1,
           borderColor: "rgba(255, 255, 255, 1)",
           borderStyle: "solid",
@@ -49,9 +49,9 @@ const VerificationPending = () => {
       <GradientVarientTwoBtn btnText={"Back to Login"} style={styles.btn} />
     </View>
   );
-}
+};
 
-export default VerificationPending
+export default VerificationPending;
 
 const styles = StyleSheet.create({
   container: {
@@ -66,6 +66,6 @@ const styles = StyleSheet.create({
     borderColor: "#DDBBE6",
     borderRadius: 15,
     overflow: "hidden",
-    marginTop:"7%",
+    marginTop: "7%",
   },
 });
