@@ -8,10 +8,10 @@ const GradientVarientOneBtn = ({ btnText, style, isDisabled, ...props }) => {
     <TouchableOpacity style={{ ...style }} {...props} disabled={isDisabled}>
       <LinearGradient
         colors={["#EA59E4", "#C508BD", "#910C8C", "#910C8C"]}
-        locations={[0.03, 0.64, 1, 1]}
+        locations={[0.05, 0.64, 2, 1]}
         start={{ x: 0, y: 0 }} // Start from the top-left corner
         end={{ x: 1, y: 0 }} // End at the top-right corner
-        style={{ padding: 15 }}
+        style={{ padding: 20,  borderColor: "#DDBBE6", borderWidth: 1, borderRadius: 10  }}
       >
         <Text
           style={{
