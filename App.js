@@ -39,6 +39,19 @@ import CorrectPassword from "./App/Screens/ForgotPassword/CorrectPassword";
 import SignUpPage from "./App/Screens/SignUp/SignUpPage";
 import LoginPage from "./App/Screens/SignUp/LoginPage";
 import Refer from "./App/Screens/Refer&Termsconditions/Refer";
+import Userdetail from "./App/Screens/UserProfile/Userdetail";
+import ProfileDetail from "./App/Screens/UserProfile/ProfileDetail";
+import EditProfile from "./App/Screens/UserProfile/EditProfile";
+import Phoneotp from "./App/Screens/UserProfile/OTPVerification/Phoneotp";
+import Phoneotptryagain from "./App/Screens/UserProfile/OTPVerification/Phoneotptryagain";
+import OTPverify from "./App/Screens/UserProfile/OTPverify";
+import EmailOTP from "./App/Screens/UserProfile/Emailverify/EmailOTP";
+import Emailotpwrong from "./App/Screens/UserProfile/Emailverify/Emailotpwrong";
+import Emaildone from "./App/Screens/UserProfile/Emailverify/Emaildone";
+import Slide from "./App/Screens/UserProfile/Slidecomponent/Slide";
+import SpinWheel from "./App/Screens/Dashboard/PlayOnline/Simple/SpinWheel";
+import Result from "./App/Screens/Dashboard/PlayOnline/Simple/Result";
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -119,10 +132,16 @@ export default function App() {
             options={{ headerShown: false }}
           />
           <Stack.Screen
+            name="Result"
+            component={Result}
+            options={{ headerShown: false }}
+          />
+           <Stack.Screen
             name="StartAuctionbc"
             component={StartAuctionBC}
             options={{ headerShown: false }}
           /> */}
+
 
           {/* Esha - end */}
 
