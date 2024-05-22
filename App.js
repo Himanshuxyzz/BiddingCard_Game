@@ -17,11 +17,21 @@ import MakeAClub from "./App/Screens/Dashboard/MakeAClub";
 import Auction from "./App/Screens/Dashboard/PlayOnline/Auction";
 import Simple from "./App/Screens/Dashboard/PlayOnline/Simple";
 import StartBC from "./App/Screens/Dashboard/PlayOnline/Simple/StartBC";
+import SpinWheel from "./App/Screens/Dashboard/PlayOnline/Simple/SpinWheel";
 import UserEntries from "./App/Screens/Dashboard/PlayOnline/Simple/UserEntries";
+import StartAuctionBC from "./App/Screens/Dashboard/PlayOnline/Auction/StartAuctionBC";
 import OtpVerification from "./App/Screens/ForgotPassword/OtpVerification";
 
-import WalletMain from "./App/Screens/WalletScreen";
+
+
 import WalletMainVerified from "./App/Screens/WalletScreen/WalletMainVerified";
+import NotVerifiedWallet from "./App/Screens/WalletScreen/NotVerifiedWallet";
+import AddToWallet from "./App/Screens/WalletScreen/AddToWallet";
+import BankDetails from "./App/Screens/WalletScreen/BankDetails";
+import BankDetailsSecond from "./App/Screens/WalletScreen/BankDetailsSecond";
+import BankPassword from "./App/Screens/WalletScreen/BankPassword";
+import TransferSuccessPopup from "./App/Screens/WalletScreen/TransferSucessPopup";
+import WalletMainBackground from "./App/Components/Wallet/WalletMainBackground";
 import FirstPage from "./App/Screens/SignUp";
 import NewPassword from "./App/Screens/ForgotPassword/NewPassword";
 import NotMatchedPassword from "./App/Screens/ForgotPassword/NotMatchedPassword";
@@ -41,6 +51,7 @@ import Emaildone from "./App/Screens/UserProfile/Emailverify/Emaildone";
 import Slide from "./App/Screens/UserProfile/Slidecomponent/Slide";
 import SpinWheel from "./App/Screens/Dashboard/PlayOnline/Simple/SpinWheel";
 import Result from "./App/Screens/Dashboard/PlayOnline/Simple/Result";
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -50,7 +61,7 @@ export default function App() {
       <View style={styles.container}>
         <Stack.Navigator>
           {/* Esha */}
-          <Stack.Screen
+          {/* <Stack.Screen
             name="Start"
             component={Start}
             options={{ headerShown: false }}
@@ -125,12 +136,18 @@ export default function App() {
             component={Result}
             options={{ headerShown: false }}
           />
+           <Stack.Screen
+            name="StartAuctionbc"
+            component={StartAuctionBC}
+            options={{ headerShown: false }}
+          /> */}
+
 
           {/* Esha - end */}
 
           {/* {Bhavesh} */}
 
-          <Stack.Screen
+          {/* <Stack.Screen
             name="WelcomePage"
             component={FirstPage}
             options={{ headerShown: false }}
@@ -141,6 +158,16 @@ export default function App() {
             component={SignUpPage}
             options={{ headerShown: false }}
           />
+          <Stack.Screen
+            name="LoginPage"
+            component={LoginPage}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="ReferPage"
+            component={Refer}
+            options={{ headerShown: false }}
+          /> */}
 
           {/* {Bhavesh end} */}
 
@@ -176,19 +203,45 @@ export default function App() {
 
           {/* Himanshu - end */}
 
-          {/* Sakshi */}
+           {/* Sakshi */}
 
-          {/* <Stack.Screen
-            name="WalletMain"
-            component={WalletMain}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
+           <Stack.Screen
             name="WalletMainVerified"
             component={WalletMainVerified}
             options={{ headerShown: false }}
-          /> */}
+          />
 
+          {/* <Stack.Screen 
+                name="NotVerifiedWallet"
+                component={NotVerifiedWallet}
+                options={{ headerShown: false }}
+                /> */}
+          <Stack.Screen
+            name="AddToWallet"
+            component={AddToWallet}
+            options={{ headerShown: false }}
+          />
+
+          <Stack.Screen
+            name="BankDetails"
+            component={BankDetails}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="BankDetailsSecond"
+            component={BankDetailsSecond}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="BankPassword"
+            component={BankPassword}
+            options={{ headerShown: false }}
+          />
+            <Stack.Screen
+            name="TransferSuccessPopup"
+            component={TransferSuccessPopup}
+            options={{ headerShown: false }}
+          />
           {/* Sakshi - end */}
 
           {/* samraat start */}
