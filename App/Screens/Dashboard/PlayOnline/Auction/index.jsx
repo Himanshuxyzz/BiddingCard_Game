@@ -261,7 +261,7 @@ const DATA = [
     cardId: 10001,
     bcAmount: "5 cr",
     totalSlots: 12,
-    remainingSlots: 12,
+    remainingSlots: "" ,
     participatingAmount: "60 lacs",
     cardAccent: {
       cardBg: "rgba(255, 255, 255, 1)",
@@ -276,7 +276,7 @@ const DATA = [
     cardId: 10002,
     bcAmount: "2 cr",
     totalSlots: 20,
-    remainingSlots: 20,
+    remainingSlots: "",
     participatingAmount: "10 lacs",
     cardAccent: {
       cardBg: "rgba(255, 255, 255, 1)",
