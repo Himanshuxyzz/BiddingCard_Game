@@ -20,6 +20,9 @@ import StartBC from "./App/Screens/Dashboard/PlayOnline/Simple/StartBC";
 import SpinWheel from "./App/Screens/Dashboard/PlayOnline/Simple/SpinWheel";
 import UserEntries from "./App/Screens/Dashboard/PlayOnline/Simple/UserEntries";
 import StartAuctionBC from "./App/Screens/Dashboard/PlayOnline/Auction/StartAuctionBC";
+import WaitingPage from "./App/Screens/Dashboard/PlayOnline/Auction/WaitingPage";
+import TimeRemaining from "./App/Screens/Dashboard/PlayOnline/Auction/TimeRemaining";
+import Bidding from "./App/Screens/Dashboard/PlayOnline/Auction/Bidding";
 import OtpVerification from "./App/Screens/ForgotPassword/OtpVerification";
 
 import WalletMain from "./App/Screens/WalletScreen";
@@ -113,6 +116,21 @@ export default function App() {
           <Stack.Screen
             name="StartAuctionbc"
             component={StartAuctionBC}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="WaitingPage"
+            component={WaitingPage}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="TimeRemaining"
+            component={TimeRemaining}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Bidding"
+            component={Bidding}
             options={{ headerShown: false }}
           />
 

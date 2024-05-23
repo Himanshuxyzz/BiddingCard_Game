@@ -11,14 +11,39 @@ import Colors from "../../../../Utils/Colors";
 import { Feather } from "@expo/vector-icons";
 import { FontAwesome6 } from "@expo/vector-icons";
 import GradientVarientOneBtn from "../../../../Components/Gradient/GradientVariantOneBtn";
+import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { useState } from "react";
 
 const StartAuctionBC = ({ route, navigation }) => {
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(null); // State to store the selected date
   const { bcAmount, totalAmount } = route.params;
   console.log(bcAmount);
   const [password, setPassword] = useState("test@123");
   const [isPasswordValid, setIsPasswordValid] = useState(true); // Initially assuming password is valid
 
+  const showDatePicker = () => {
+    setDatePickerVisibility(true);
+  };
+  const hideDatePicker = () => {
+    setDatePickerVisibility(false);
+  };
+
+  const handleConfirm = (date) => {
+    console.warn("A date has been picked: ", date);
+    hideDatePicker();
+    setSelectedDate(date); // Store the selected date in state
+  };
+  const formatDate = (date) => {
+    if (date != null) {
+      const day = date.getDate();
+      const month = date.getMonth() + 1;
+      const year = date.getFullYear();
+      let finalDate = `${day}-${month}-${year}`;
+      return finalDate;
+    }
+    return;
+  };
   const handlePassword = () => {
     const hasSpecialCharacter = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(
       password
@@ -27,7 +52,7 @@ const StartAuctionBC = ({ route, navigation }) => {
     if (password.length >= 8 && hasSpecialCharacter) {
       setIsPasswordValid(true);
       // Proceed with your logic like navigating to the next screen
-    //   navigation.navigate("SpinWheel", { totalAmount: totalAmount });
+        navigation.navigate("WaitingPage");
     } else {
       setIsPasswordValid(false);
     }
@@ -54,8 +79,8 @@ const StartAuctionBC = ({ route, navigation }) => {
       <View
         style={{
           width: 330,
-          height: 440,
-          marginTop: "10%",
+          height: 520,
+          marginTop: "2%",
           backgroundColor: "rgba(228, 148, 235, 1)",
           borderRadius: 12,
           alignItems: "center",
@@ -77,17 +102,57 @@ const StartAuctionBC = ({ route, navigation }) => {
           //   onChangeText={(text) => setEmailMobile(text)}
           //   onChangeText={setEmailMobile}
           style={styles.input}
-          //   placeholder="Email id/ Mobile number"
+          placeholder="Enter Amount per person"
           keyboardType="default"
           placeholderTextColor={Colors.INPUT_PLACEHOLDER}
           autoCapitalize={"none"}
         />
-        <Feather
-          style={{ top: 85, right: 40, position: "absolute" }}
-          name="lock"
+        <TextInput
+          value={""}
+          //   onChangeText={(text) => setEmailMobile(text)}
+          //   onChangeText={setEmailMobile}
+          style={styles.input}
+          placeholder="Number of people"
+          keyboardType="default"
+          placeholderTextColor={Colors.INPUT_PLACEHOLDER}
+          autoCapitalize={"none"}
+        />
+        {/* <TextInput
+          value={""}
+          //   onChangeText={(text) => setEmailMobile(text)}
+          //   onChangeText={setEmailMobile}
+          style={styles.input}
+          placeholder="Choose a date"
+          keyboardType="default"
+          placeholderTextColor={Colors.INPUT_PLACEHOLDER}
+          autoCapitalize={"none"}
+        /> */}
+        <TextInput
+          style={styles.input}
+          placeholder="D.O.B"
+          placeholderTextColor={Colors.INPUT_PLACEHOLDER}
+          autoCapitalize={"none"}
+          value={formatDate(selectedDate)}
+        />
+        <DateTimePickerModal
+          isVisible={isDatePickerVisible}
+          mode="date"
+          onConfirm={handleConfirm}
+          onCancel={hideDatePicker}
+        />
+
+        <TouchableOpacity
+          style={{ position: "absolute", top: 235, right: 45 }}
+          onPress={showDatePicker}
+        >
+          <Feather name="calendar" size={28} color="rgba(177, 177, 177, 1)" />
+        </TouchableOpacity>
+        {/* <Feather
+          style={{ top: 235, right: 40, position: "absolute" }}
+          name="calendar"
           size={28}
           color="black"
-        />
+        /> */}
         <View
           style={{ alignItems: "start", width: "100%", paddingHorizontal: 30 }}
         >
@@ -114,7 +179,7 @@ const StartAuctionBC = ({ route, navigation }) => {
           secureTextEntry // To hide the password
         />
         <FontAwesome6
-          style={{ position: "absolute", top: 190, right: 40 }}
+          style={{ position: "absolute", top: 330, right: 40 }}
           name="eye-slash"
           size={28}
           color="rgba(177, 177, 177, 1)"
@@ -146,10 +211,11 @@ const StartAuctionBC = ({ route, navigation }) => {
             Forgot Password?
           </Text>
         </TouchableOpacity>
+        
         <GradientVarientOneBtn
           onPress={handlePassword}
           btnText={"Submit"}
-          //   onPress={() => navigation.navigate("Addbankdetail")}
+        //  onPress={() => navigation.navigate("WaitingPage")}
           style={styles.btn}
         />
       </View>
@@ -173,10 +239,10 @@ const styles = StyleSheet.create({
     minWidth: "85%",
     maxWidth: "90%",
     height: 57,
-    marginVertical: 15,
+    marginVertical: 10,
     padding: 20,
     backgroundColor: "#fff",
-    fontSize: 23,
+    fontSize: 20,
     borderRadius: 10,
     position: "relative",
     fontWeight: 800,
@@ -188,6 +254,6 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     borderColor: "#fff",
     borderWidth: 1,
-    marginTop: "10%",
+    marginTop: "8%",
   },
 });
