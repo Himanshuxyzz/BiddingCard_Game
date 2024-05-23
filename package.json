@@ -40,7 +40,8 @@
     "react-native-svg": "15.2.0",
     "react-native-web": "~0.19.6",
     "react-otp-input": "^3.1.1",
-    "watchman": "^1.0.0"
+    "watchman": "^1.0.0",
+    "lottie-react-native": "6.7.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
