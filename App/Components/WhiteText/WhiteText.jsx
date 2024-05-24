@@ -4,11 +4,11 @@ import Colors from "../../Utils/Colors";
 
 const WhiteText = ({ children, style, ...props }) => {
   return (
-    <View>
+    <>
       <Text style={{ color: Colors.WHITE, ...style }} {...props}>
         {children}
       </Text>
-    </View>
+    </>
   );
 };
 
