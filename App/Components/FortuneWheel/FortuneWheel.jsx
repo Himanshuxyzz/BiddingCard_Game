@@ -18,13 +18,8 @@ import { Svg, Path, G, Text, TSpan } from "react-native-svg";
 import * as d3Shape from "d3-shape";
 
 const { width } = Dimensions.get("window");
-const numberOfSegments = 12;
 const wheelSize = width * 0.95;
-const fontSize = 26;
 const oneTurn = 360;
-const angleBySegment = oneTurn / numberOfSegments;
-const angleOffset = angleBySegment / 2;
-const knobFill = "rgba(255, 197, 197, 1)";
 
 const segmentClr = [
   "#8B2F8A",
@@ -46,6 +41,12 @@ const FortuneWheel = forwardRef(
     { totalAmount, segmentOptions, onSpinStart, onSpinEnd, setFinishedState },
     ref
   ) => {
+    const [segments, setSegments] = useState(segmentOptions);
+    const numberOfSegments = segments.length;
+    const angleBySegment = oneTurn / numberOfSegments;
+    const angleOffset = angleBySegment / 2;
+    const knobFill = "rgba(255, 197, 197, 1)";
+
     const makeWheel = () => {
       const data = Array.from({ length: numberOfSegments }).fill(1);
       const arcs = d3Shape.pie()(data);
@@ -61,7 +62,7 @@ const FortuneWheel = forwardRef(
           color: segmentClr[index],
           value: index + 1,
           centroid: instance.centroid(arc),
-          name: segmentOptions[index],
+          name: segments[index],
         };
       });
     };
@@ -76,6 +77,11 @@ const FortuneWheel = forwardRef(
         setFinishedState(finished);
       }
     }, [finished, setFinishedState]);
+
+    useEffect(() => {
+      // Update wheel segments when segmentOptions change
+      _wheelPaths.current = makeWheel();
+    }, [segmentOptions]);
 
     const _getWinnerIndex = (currentAngle) => {
       const deg = Math.abs(Math.round(currentAngle % oneTurn));
@@ -98,7 +104,7 @@ const FortuneWheel = forwardRef(
       const spinDuration = 5000;
       const randomOffset = Math.random() * 360;
       const initialAngle = _angle.current._value;
-      const targetAngle = initialAngle + 360 * 12 + randomOffset;
+      const targetAngle = initialAngle + 360 * numberOfSegments + randomOffset;
 
       const customEase = (t) => {
         return t < 0.5 ? Math.pow(t * 2, 2) / 2 : 0.5 + (t - 0.5) * 2;
@@ -107,18 +113,31 @@ const FortuneWheel = forwardRef(
       Animated.timing(_angle.current, {
         toValue: targetAngle,
         duration: spinDuration,
-        easing: customEase,
+        easing: Easing.ease,
         useNativeDriver: true,
       }).start(({ finished }) => {
         if (finished) {
           const finalAngle = targetAngle % 360;
           const winnerIndex = _getWinnerIndex(finalAngle);
-          setWinner(_wheelPaths.current[winnerIndex].name);
+          setWinner(segments[winnerIndex]);
+          const remainingSegments = [...segments];
+         if (remainingSegments.length === 1) {
+           // If only one segment left, set winner and keep it on the wheel
+           onSpinEnd(remainingSegments[0]);
+           setFinished(true);
+         } else {
+           const removedSegment = remainingSegments.splice(winnerIndex, 1)[0];
+           // Delay before removing the winner from the wheel
+           setTimeout(() => {
+             setSegments(remainingSegments);
+             onSpinEnd(removedSegment);
+             setFinished(true);
+           }, 1600); // Adjust the delay time as needed for a smoother animation
+         }
+
           const segmentIndex = Math.floor(finalAngle / angleBySegment);
           const nearestAngle = segmentIndex * angleBySegment;
           _angle.current.setValue(nearestAngle);
-          onSpinEnd(_wheelPaths.current[winnerIndex].name);
-          setFinished(true);
         }
       });
     };
