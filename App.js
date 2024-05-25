@@ -42,6 +42,10 @@ import CorrectPassword from "./App/Screens/ForgotPassword/CorrectPassword";
 import SignUpPage from "./App/Screens/SignUp/SignUpPage";
 import LoginPage from "./App/Screens/SignUp/LoginPage";
 import Refer from "./App/Screens/Refer&Termsconditions/Refer";
+import ReferModal from './App/Screens/Refer&Termsconditions/ReferModal'
+import TermnConditions from './App/Screens/Refer&Termsconditions/TermnConditions'
+import Notification from "./App/Screens/Notifications/Notification"
+import Notification1 from "./App/Screens/Notifications/Notification1";
 import Userdetail from "./App/Screens/UserProfile/Userdetail";
 import ProfileDetail from "./App/Screens/UserProfile/ProfileDetail";
 import EditProfile from "./App/Screens/UserProfile/EditProfile";
@@ -179,10 +183,30 @@ export default function App() {
             name="LoginPage"
             component={LoginPage}
             options={{ headerShown: false }}
-          />
+          /> 
           <Stack.Screen
             name="ReferPage"
             component={Refer}
+            options={{ headerShown: false }}
+          />
+           <Stack.Screen
+            name="ReferModal"
+            component={ReferModal}
+            options={{ headerShown: false }}
+          /> 
+           <Stack.Screen
+            name="TermnConditions"
+            component={TermnConditions}
+            options={{ headerShown: false }}
+          /> 
+           <Stack.Screen
+            name="Notification"
+            component={Notification}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Notification1"
+            component={Notification1}
             options={{ headerShown: false }}
           /> */}
 

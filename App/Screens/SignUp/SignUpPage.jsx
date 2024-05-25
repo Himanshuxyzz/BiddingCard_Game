@@ -62,7 +62,7 @@ const SignUpPage = ({ navigation }) => {
         placeholderTextColor={Colors.INPUT_PLACEHOLDER}
       />
       <TouchableOpacity
-        onPress={() => setModal2Visible(true)}>
+        onPress={() => setModalVisible(true)}>
         <Text style={styles.phonebtn} >verify</Text>
       </TouchableOpacity>
       <TextInput

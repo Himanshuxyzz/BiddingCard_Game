@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View,Image,TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View,Image,TouchableOpacity,Linking } from 'react-native'
 import React from 'react'
 import GradientVarientOneBtn from '../../Components/Gradient/GradientVariantOneBtn'
 
@@ -10,10 +10,21 @@ const Refer = ({navigation}) => {
       <Text style={{color:'#FFFFFF', fontWeight:600,paddingLeft: 90,top:20}}> Refer now & earn up to <Text style={{color:'#F9B60C'}}> ₹50</Text></Text>
       
       <Text  style={{color:'#FFFFFF',fontWeight:600,paddingLeft:60,top:25}}> Send a referral link to your friends via  </Text>
+      <View style={{alignItems:'flex-start',justifyContent:'space-evenly', flexDirection:'row', padding:30,paddingBottom:20,paddingTop:40}}>
+      <TouchableOpacity onPress={() => Linking.openURL('https://www.whatsapp.com')} >
        
-       <Image source={require('../../../assets/whatsapp2.png')} style={{marginLeft:100,top:50}}/>
-       <Image source={require('../../../assets/facebook1.png')} style={{marginLeft:100,left:60,bottom:20,top:18}}/>
-       <Image source={require('../../../assets/message2.png')} style={{marginLeft:100,left:120,bottom:50,top:-13}}/>
+       <Image source={require('../../../assets/whatsapp2.png')} />
+       </TouchableOpacity>
+       <TouchableOpacity onPress={() => Linking.openURL('https://www.facebook.com')} >
+
+       <Image source={require('../../../assets/facebook1.png')} />
+       </TouchableOpacity>
+
+       <TouchableOpacity onPress={() => Linking.openURL('https://play.google.com/store/apps/details?id=com.google.android.apps.messaging&hl=en&gl=US')} >
+
+       <Image source={require('../../../assets/message2.png')} />
+       </TouchableOpacity>
+       </View>
     </View>
     <Image  onPress={() => navigation.navigate("")} source={require('../../../assets/back1.png')} style={{marginLeft:20,bottom:190}}/>
 
