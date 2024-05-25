@@ -121,19 +121,19 @@ const FortuneWheel = forwardRef(
           const winnerIndex = _getWinnerIndex(finalAngle);
           setWinner(segments[winnerIndex]);
           const remainingSegments = [...segments];
-         if (remainingSegments.length === 1) {
-           // If only one segment left, set winner and keep it on the wheel
-           onSpinEnd(remainingSegments[0]);
-           setFinished(true);
-         } else {
-           const removedSegment = remainingSegments.splice(winnerIndex, 1)[0];
-           // Delay before removing the winner from the wheel
-           setTimeout(() => {
-             setSegments(remainingSegments);
-             onSpinEnd(removedSegment);
-             setFinished(true);
-           }, 1600); // Adjust the delay time as needed for a smoother animation
-         }
+          if (remainingSegments.length === 1) {
+            // If only one segment left, set winner and keep it on the wheel
+            onSpinEnd(remainingSegments[0]);
+            setFinished(true);
+          } else {
+            const removedSegment = remainingSegments.splice(winnerIndex, 1)[0];
+            // Delay before removing the winner from the wheel
+            setTimeout(() => {
+              setSegments(remainingSegments);
+              onSpinEnd(removedSegment);
+              setFinished(true);
+            }, 1600); // Adjust the delay time as needed for a smoother animation
+          }
 
           const segmentIndex = Math.floor(finalAngle / angleBySegment);
           const nearestAngle = segmentIndex * angleBySegment;
