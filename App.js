@@ -17,11 +17,24 @@ import MakeAClub from "./App/Screens/Dashboard/MakeAClub";
 import Auction from "./App/Screens/Dashboard/PlayOnline/Auction";
 import Simple from "./App/Screens/Dashboard/PlayOnline/Simple";
 import StartBC from "./App/Screens/Dashboard/PlayOnline/Simple/StartBC";
+import SpinWheel from "./App/Screens/Dashboard/PlayOnline/Simple/SpinWheel";
 import UserEntries from "./App/Screens/Dashboard/PlayOnline/Simple/UserEntries";
+import StartAuctionBC from "./App/Screens/Dashboard/PlayOnline/Auction/StartAuctionBC";
+import WaitingPage from "./App/Screens/Dashboard/PlayOnline/Auction/WaitingPage";
+import TimeRemaining from "./App/Screens/Dashboard/PlayOnline/Auction/TimeRemaining";
+import Bidding from "./App/Screens/Dashboard/PlayOnline/Auction/Bidding";
 import OtpVerification from "./App/Screens/ForgotPassword/OtpVerification";
 
-import WalletMain from "./App/Screens/WalletScreen";
+
+
 import WalletMainVerified from "./App/Screens/WalletScreen/WalletMainVerified";
+import NotVerifiedWallet from "./App/Screens/WalletScreen/NotVerifiedWallet";
+import AddToWallet from "./App/Screens/WalletScreen/AddToWallet";
+import BankDetails from "./App/Screens/WalletScreen/BankDetails";
+import BankDetailsSecond from "./App/Screens/WalletScreen/BankDetailsSecond";
+import BankPassword from "./App/Screens/WalletScreen/BankPassword";
+import TransferSuccessPopup from "./App/Screens/WalletScreen/TransferSucessPopup";
+import WalletMainBackground from "./App/Components/Wallet/WalletMainBackground";
 import FirstPage from "./App/Screens/SignUp";
 import NewPassword from "./App/Screens/ForgotPassword/NewPassword";
 import NotMatchedPassword from "./App/Screens/ForgotPassword/NotMatchedPassword";
@@ -33,6 +46,17 @@ import ReferModal from './App/Screens/Refer&Termsconditions/ReferModal'
 import TermnConditions from './App/Screens/Refer&Termsconditions/TermnConditions'
 import Notification from "./App/Screens/Notifications/Notification"
 import Notification1 from "./App/Screens/Notifications/Notification1";
+import Userdetail from "./App/Screens/UserProfile/Userdetail";
+import ProfileDetail from "./App/Screens/UserProfile/ProfileDetail";
+import EditProfile from "./App/Screens/UserProfile/EditProfile";
+import Phoneotp from "./App/Screens/UserProfile/OTPVerification/Phoneotp";
+import Phoneotptryagain from "./App/Screens/UserProfile/OTPVerification/Phoneotptryagain";
+import OTPverify from "./App/Screens/UserProfile/OTPverify";
+import EmailOTP from "./App/Screens/UserProfile/Emailverify/EmailOTP";
+import Emailotpwrong from "./App/Screens/UserProfile/Emailverify/Emailotpwrong";
+import Emaildone from "./App/Screens/UserProfile/Emailverify/Emaildone";
+import Slide from "./App/Screens/UserProfile/Slidecomponent/Slide";
+import Result from "./App/Screens/Dashboard/PlayOnline/Simple/Result";
 
 const Stack = createNativeStackNavigator();
 
@@ -43,7 +67,7 @@ export default function App() {
       <View style={styles.container}>
         <Stack.Navigator>
           {/* Esha */}
-          {/* <Stack.Screen
+          <Stack.Screen
             name="Start"
             component={Start}
             options={{ headerShown: false }}
@@ -112,13 +136,39 @@ export default function App() {
             name="UserEntries"
             component={UserEntries}
             options={{ headerShown: false }}
-          /> */}
+          />
+          <Stack.Screen
+            name="Result"
+            component={Result}
+            options={{ headerShown: false }}
+          />
+           <Stack.Screen
+            name="StartAuctionbc"
+            component={StartAuctionBC}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="WaitingPage"
+            component={WaitingPage}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="TimeRemaining"
+            component={TimeRemaining}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Bidding"
+            component={Bidding}
+            options={{ headerShown: false }}
+          />
+
 
           {/* Esha - end */}
 
           {/* {Bhavesh} */}
 
-           {/* <Stack.Screen
+          {/* <Stack.Screen
             name="WelcomePage"
             component={FirstPage}
             options={{ headerShown: false }}
@@ -133,8 +183,8 @@ export default function App() {
             name="LoginPage"
             component={LoginPage}
             options={{ headerShown: false }}
-          /> */}
-          {/* <Stack.Screen
+          /> 
+          <Stack.Screen
             name="ReferPage"
             component={Refer}
             options={{ headerShown: false }}
@@ -143,12 +193,12 @@ export default function App() {
             name="ReferModal"
             component={ReferModal}
             options={{ headerShown: false }}
-          /> */}
-           {/* <Stack.Screen
+          /> 
+           <Stack.Screen
             name="TermnConditions"
             component={TermnConditions}
             options={{ headerShown: false }}
-          /> */}
+          /> 
            <Stack.Screen
             name="Notification"
             component={Notification}
@@ -158,7 +208,8 @@ export default function App() {
             name="Notification1"
             component={Notification1}
             options={{ headerShown: false }}
-          />
+          /> */}
+
           {/* {Bhavesh end} */}
 
           {/* Himanshu */}
@@ -193,19 +244,45 @@ export default function App() {
 
           {/* Himanshu - end */}
 
-          {/* Sakshi */}
+           {/* Sakshi */}
 
-          {/* <Stack.Screen
-            name="WalletMain"
-            component={WalletMain}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
+           <Stack.Screen
             name="WalletMainVerified"
             component={WalletMainVerified}
             options={{ headerShown: false }}
-          /> */}
+          />
 
+          {/* <Stack.Screen 
+                name="NotVerifiedWallet"
+                component={NotVerifiedWallet}
+                options={{ headerShown: false }}
+                /> */}
+          <Stack.Screen
+            name="AddToWallet"
+            component={AddToWallet}
+            options={{ headerShown: false }}
+          />
+
+          <Stack.Screen
+            name="BankDetails"
+            component={BankDetails}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="BankDetailsSecond"
+            component={BankDetailsSecond}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="BankPassword"
+            component={BankPassword}
+            options={{ headerShown: false }}
+          />
+            <Stack.Screen
+            name="TransferSuccessPopup"
+            component={TransferSuccessPopup}
+            options={{ headerShown: false }}
+          />
           {/* Sakshi - end */}
 
           {/* samraat start */}

@@ -739,12 +739,6 @@ const Simple = ({ navigation }) => {
     <View style={styles.container}>
       <Header />
 
-      <GradientVarientOneBtn
-        style={{ width: "100%", borderRadius: 10, overflow: "hidden" }}
-        btnText={"skip"}
-        onPress={() => navigation.navigate("SpinWheel")}
-      />
-
       <View style={styles.subContainer}>
         {/* month selector */}
         <View style={styles.monthSelector}>
