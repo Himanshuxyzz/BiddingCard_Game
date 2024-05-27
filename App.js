@@ -33,7 +33,7 @@ import AddToWallet from "./App/Screens/WalletScreen/AddToWallet";
 import BankDetails from "./App/Screens/WalletScreen/BankDetails";
 import BankDetailsSecond from "./App/Screens/WalletScreen/BankDetailsSecond";
 import BankPassword from "./App/Screens/WalletScreen/BankPassword";
-import TransferSuccessPopup from "./App/Screens/WalletScreen/TransferSucessPopup";
+
 import WalletMainBackground from "./App/Components/Wallet/WalletMainBackground";
 import FirstPage from "./App/Screens/SignUp";
 import NewPassword from "./App/Screens/ForgotPassword/NewPassword";
@@ -62,6 +62,7 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
+    
     <NavigationContainer>
       <StatusBar style="light" />
       <View style={styles.container}>
@@ -245,7 +246,7 @@ export default function App() {
           {/* Himanshu - end */}
 
            {/* Sakshi */}
-
+           
            <Stack.Screen
             name="WalletMainVerified"
             component={WalletMainVerified}
@@ -278,11 +279,8 @@ export default function App() {
             component={BankPassword}
             options={{ headerShown: false }}
           />
-            <Stack.Screen
-            name="TransferSuccessPopup"
-            component={TransferSuccessPopup}
-            options={{ headerShown: false }}
-          />
+           
+         
           {/* Sakshi - end */}
 
           {/* samraat start */}
@@ -291,6 +289,7 @@ export default function App() {
         </Stack.Navigator>
       </View>
     </NavigationContainer>
+   
   );
 }
 

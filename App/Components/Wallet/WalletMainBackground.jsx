@@ -5,13 +5,14 @@ import WhiteText from '../WhiteText/WhiteText'; // Importing the existing WhiteT
 
 const WalletMainBackground = ({
   title = "Wallet",
-  balance = "₹ 6000",
   onBackPress,
   containerStyle,
   headerStyle,
   balanceSectionStyle,
   iconStyle,
   balanceValueStyle,
+  balance,
+  children,
 }) => {
   return (
     <View style={[styles.container, containerStyle]}>
@@ -30,8 +31,9 @@ const WalletMainBackground = ({
           color="#FFC5C5"
           style={[styles.icon, iconStyle]}
         />
-        <Text style={[styles.balanceValue, balanceValueStyle]}>{balance}</Text>
+        <Text style={[styles.balanceValue, balanceValueStyle]}> ₹{balance}</Text>
       </View>
+      {children}
     </View>
   );
 };
@@ -59,7 +61,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     position: "absolute",
     top: -100,
-    right: -190,
+    right: -180,
   },
   backButton: {
     position: "absolute",

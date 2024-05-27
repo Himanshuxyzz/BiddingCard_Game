@@ -3,29 +3,40 @@ import { StyleSheet, Text, TextInput, View, Alert } from 'react-native';
 import WalletMainBackground from '../../Components/Wallet/WalletMainBackground';
 import GradientVarientOneBtn from '../../Components/Gradient/GradientVariantOneBtn';
 
-const BankDetails = ({ navigation }) => {
+const BankDetails = ({ navigation, route }) => {
+  const currentBalance = parseInt(route.params?.currentBalance, 10) || 0;
   const [accountHolderName, setAccountHolderName] = useState('');
   const [accountNumber, setAccountNumber] = useState('');
   const [ifscCode, setIfscCode] = useState('');
   const [amount, setAmount] = useState('');
+  const [accountNumberError, setAccountNumberError] = useState(false);
 
   const handleTransfer = () => {
-    if (!accountHolderName ||!accountNumber || !ifscCode || !amount) {
+    if (!accountHolderName || !accountNumber || !ifscCode || !amount) {
       Alert.alert('Error', 'Please fill in all fields');
       return;
     }
 
-    
+    if (accountNumber.length !== 11) {
+      setAccountNumberError(true);
+      return;
+    } else {
+      setAccountNumberError(false);
+    }
+
     navigation.navigate("BankDetailsSecond", {
       accountHolderName,
       accountNumber,
       ifscCode,
-      amount
+      amount,
+      balance: currentBalance,
+      
     });
   };
+
   return (
     <View style={styles.container}>
-      <WalletMainBackground onBackPress={() => navigation.navigate("AddToWallet")} />
+         <WalletMainBackground balance={currentBalance} onBackPress={() => navigation.goBack()} />
       <View style={styles.formContainer}>
         <Text style={styles.title}>Sending money from Bank to Wallet</Text>
         <TextInput
@@ -34,21 +45,33 @@ const BankDetails = ({ navigation }) => {
           placeholderTextColor="#ccc"
           value={accountHolderName}
           onChangeText={setAccountHolderName}
+          autoCapitalize="characters"
         />
         <TextInput
-          style={styles.input}
-          placeholder="Account n."
+          style={[styles.input, accountNumberError && { borderColor: 'red' }]}
+          placeholder="Account Number"
           placeholderTextColor="#ccc"
           value={accountNumber}
-          onChangeText={setAccountNumber}
+          onChangeText={(text) => {
+            setAccountNumber(text);
+            if (text.length !== 11) {
+              setAccountNumberError(true);
+            } else {
+              setAccountNumberError(false);
+            }
+          }}
           keyboardType="numeric"
         />
+        {accountNumberError && (
+          <Text style={styles.errorText}>Please enter a valid 11-digit account number</Text>
+        )}
         <TextInput
           style={styles.input}
-          placeholder="IFSC code"
+          placeholder="IFSC Code"
           placeholderTextColor="#ccc"
           value={ifscCode}
           onChangeText={setIfscCode}
+          autoCapitalize="characters"
         />
         <TextInput
           style={styles.input}
@@ -58,7 +81,7 @@ const BankDetails = ({ navigation }) => {
           onChangeText={setAmount}
           keyboardType="numeric"
         />
-         <GradientVarientOneBtn 
+        <GradientVarientOneBtn 
           btnText={"Proceed Securely"}
           onPress={handleTransfer}
         />
@@ -74,43 +97,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#2A2E2E',
   },
-  walletContainer: {
-    backgroundColor: '#2A2E2E',
-    padding: 20,
-  },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 20,
-  },
-  backButton: {
-    marginRight: 10,
-  },
-  balanceContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    flex: 1,
-  },
-  balanceText: {
-    fontSize: 18,
-    color: 'white',
-    marginLeft: 10,
-    flex: 1,
-  },
-  balanceAmount: {
-    fontSize: 18,
-    color: '#ECB425',
-    fontWeight: 'bold',
-  },
   formContainer: {
-    // flex: 1,
     backgroundColor: '#FFFFFF',
     borderRadius: 20,
     padding: 20,
     alignItems: 'center',
-    marginTop: 80
-    
-    
+    marginTop: 80,
   },
   title: {
     fontSize: 20,
@@ -120,7 +112,7 @@ const styles = StyleSheet.create({
   },
   input: {
     width: '100%',
-    height:50,
+    height: 50,
     borderColor: '#ccc',
     borderWidth: 1,
     borderRadius: 5,
@@ -129,6 +121,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
     backgroundColor: '#fff',
   },
-  
- 
+  errorText: {
+    color: 'red',
+    marginBottom: 10,
+  },
 });
