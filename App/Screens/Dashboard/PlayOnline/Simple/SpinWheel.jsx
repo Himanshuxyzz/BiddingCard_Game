@@ -6,6 +6,7 @@ import {
   Easing,
   Text,
   TouchableOpacity,
+  Button,
 } from "react-native";
 import { BlurView } from "expo-blur";
 import LottieView from "lottie-react-native";
@@ -13,6 +14,7 @@ import WhiteText from "../../../../Components/WhiteText/WhiteText";
 import Header from "../../../../Components/DashboardHeader/Header";
 import FortuneWheel from "../../../../Components/FortuneWheel/FortuneWheel";
 import GradientVarientOneBtn from "../../../../Components/Gradient/GradientVariantOneBtn";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import Colors from "../../../../Utils/Colors";
 
 const initialSegmentOptions = [
@@ -70,13 +72,131 @@ const SpinWheel = ({ route, navigation }) => {
 
   const handleSpinStart = () => setWinner(null);
 
-  const handleSpinEnd = (winner) => {
+  // getNextMonthTime
+  const getNextMonthDate = (currentDate) => {
+    const nextMonthDate = new Date(currentDate);
+    nextMonthDate.setMonth(currentDate.getMonth() + 1);
+
+    // Handle cases where the next month has fewer days than the current month
+    if (nextMonthDate.getMonth() !== (currentDate.getMonth() + 1) % 12) {
+      nextMonthDate.setDate(0); // Set to last day of previous month
+    }
+
+    return nextMonthDate;
+  };
+
+  // storing the date and time
+  const updateLastSpinTime = async () => {
+    try {
+      const currentDate = new Date();
+      const nextMonthDate = getNextMonthDate(currentDate);
+
+      await AsyncStorage.setItem("lastSpinTime", currentDate.toISOString());
+      await AsyncStorage.setItem("nextSpinTime", nextMonthDate.toISOString());
+
+      console.log(
+        "Last spin time updated successfully:",
+        currentDate.toISOString()
+      );
+      console.log(
+        "Next spin time updated successfully:",
+        nextMonthDate.toISOString()
+      );
+    } catch (error) {
+      console.error("Error updating last spin time:", error);
+    }
+  };
+
+  const getNextSpinTime = async () => {
+    try {
+      const nextSpinTimeString = await AsyncStorage.getItem("nextSpinTime");
+      if (nextSpinTimeString) {
+        const nextSpinTime = new Date(nextSpinTimeString);
+        if (!isNaN(nextSpinTime)) {
+          return nextSpinTime;
+        } else {
+          console.error("Invalid nextSpinTime date:", nextSpinTimeString);
+        }
+      } else {
+        console.log("No next spin time found.");
+      }
+    } catch (error) {
+      console.error("Error retrieving next spin time:", error);
+    }
+    return null;
+  };
+
+  useEffect(() => {
+    const checkSpinTime = async () => {
+      const nextSpinTime = await getNextSpinTime();
+      if (nextSpinTime && new Date() >= nextSpinTime) {
+        // Time to spin the wheel again
+        spinWheel();
+      }
+    };
+
+    checkSpinTime();
+  }, []);
+
+  // @TODO to make countdown timer and display it in  ui
+
+  const [countdown, setCountdown] = useState("");
+
+  const calculateCountdown = (targetDate) => {
+    const now = new Date();
+    const difference = targetDate - now;
+
+    if (difference <= 0) {
+      return "0d:0h:0min";
+    }
+
+    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(
+      (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+
+    return `${days}d:${hours}h:${minutes}min`;
+  };
+
+  useEffect(() => {
+    let timerInterval;
+
+    const updateCountdown = async () => {
+      try {
+        const nextSpinTime = await getNextSpinTime();
+        if (nextSpinTime) {
+          setCountdown(calculateCountdown(nextSpinTime));
+
+          timerInterval = setInterval(() => {
+            setCountdown(calculateCountdown(nextSpinTime));
+          }, 60000); // Update every minute
+        }
+      } catch (error) {
+        console.error("Error retrieving next spin time:", error);
+      }
+    };
+
+    updateCountdown();
+
+    return () => {
+      if (timerInterval) {
+        clearInterval(timerInterval);
+      }
+    };
+  }, []);
+
+  const handleSpinEnd = async (winner) => {
     setWinner(winner);
     // Remove the winner from the segmentOptions
     setSegmentOptions((prevOptions) =>
       prevOptions.filter((option) => option !== winner)
     );
-    setTimeout(() => setFinished(true), 1000);
+    setTimeout(() => setFinished(true), 500);
+    const nextSpinTime = await updateLastSpinTime(); // Update last spin time and get next spin time
+    if (nextSpinTime) {
+      setCountdown(calculateCountdown(nextSpinTime)); // Update the countdown immediately
+    }
   };
 
   const spinWheel = () => wheelRef.current?.spinWheel();
@@ -144,6 +264,20 @@ const SpinWheel = ({ route, navigation }) => {
     }
   }, [timer]);
 
+  // Function to clear AsyncStorage
+  const clearAsyncStorage = async () => {
+    try {
+      await AsyncStorage.clear();
+      console.log("AsyncStorage cleared successfully.");
+    } catch (error) {
+      console.error("Error clearing AsyncStorage:", error);
+    }
+  };
+
+  const handleClearStorage = () => {
+    clearAsyncStorage();
+  };
+
   return (
     <View style={styles.container}>
       <Header />
@@ -152,10 +286,16 @@ const SpinWheel = ({ route, navigation }) => {
           <WhiteText style={styles.waitingText}>{gameFlow.msg}</WhiteText>
         ) : (
           <Animated.View style={{ opacity }}>
-            <WhiteText style={styles.timerText}>{formatTime(timer)}</WhiteText>
-            <WhiteText style={styles.timeRemainingText}>
-              Time Remaining
-            </WhiteText>
+            {!finished && (
+              <>
+                <WhiteText style={styles.timerText}>
+                  {formatTime(timer)}
+                </WhiteText>
+                <WhiteText style={styles.timeRemainingText}>
+                  Time Remaining
+                </WhiteText>
+              </>
+            )}
           </Animated.View>
         )}
         <View style={styles.wheelContainer}>
@@ -219,6 +359,7 @@ const SpinWheel = ({ route, navigation }) => {
         <TouchableOpacity onPress={spinWheel}>
           <WhiteText>Spin</WhiteText>
         </TouchableOpacity>
+        <Button title="Clear Storage" onPress={handleClearStorage} />
         <View style={styles.buttonContainer}>
           <GradientVarientOneBtn
             onPress={() => navigation.navigate("UserEntries")}
@@ -231,6 +372,8 @@ const SpinWheel = ({ route, navigation }) => {
             btnText={"Result"}
           />
         </View>
+        {/* Display the countdown timer */}
+        <WhiteText style={styles.countdownText}>{countdown}</WhiteText>
       </View>
     </View>
   );
@@ -334,5 +477,12 @@ const styles = StyleSheet.create({
   blurView: {
     width: "95%",
     height: "50%",
+  },
+  countdownText: {
+    fontWeight: "600",
+    fontSize: 25,
+    textAlign: "center",
+    color: Colors.RED,
+    marginTop: 20,
   },
 });
