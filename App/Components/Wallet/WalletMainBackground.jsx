@@ -12,6 +12,8 @@ const WalletMainBackground = ({
   iconStyle,
   balanceValueStyle,
   balance,
+  amountAdded,
+  amountDeducted,
   children,
 }) => {
   return (
@@ -31,8 +33,18 @@ const WalletMainBackground = ({
           color="#FFC5C5"
           style={[styles.icon, iconStyle]}
         />
-        <Text style={[styles.balanceValue, balanceValueStyle]}> ₹{balance}</Text>
+        <Text style={[styles.balanceValue, balanceValueStyle]}>₹{balance}</Text>
       </View>
+      {amountAdded > 0 && (
+        <View style={[styles.amountSection, styles.amountAdded]}>
+          <Text style={styles.amountText}>Added: ₹{amountAdded}</Text>
+        </View>
+      )}
+      {amountDeducted > 0 && (
+        <View style={[styles.amountSection, styles.amountDeducted]}>
+          <Text style={styles.amountText}>Deducted: ₹{amountDeducted}</Text>
+        </View>
+      )}
       {children}
     </View>
   );
@@ -83,8 +95,6 @@ const styles = StyleSheet.create({
     top: 100,
     left: 20,
   },
- 
-
   icon: {
     top: -20,
     right: 150,
@@ -96,5 +106,24 @@ const styles = StyleSheet.create({
     fontSize: 18,
     top: -20,
     right: -150,
+  },
+  amountSection: {
+    flexDirection: "row",
+    alignItems: "center",
+    position: "absolute",
+    top: 140,
+    left: 20,
+  },
+  amountAdded: {
+    color: "green",
+  },
+  amountDeducted: {
+    top: 160,
+    color: "red",
+  },
+  amountText: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "white",
   },
 });

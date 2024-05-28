@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { BlurView } from 'expo-blur';
 import GradientVarientOneBtn from "../../Components/Gradient/GradientVariantOneBtn";
@@ -9,16 +9,25 @@ import WhiteText from "../../Components/WhiteText/WhiteText";
 const WalletMainVerified = ({ navigation, route }) => {
   const [currentBalance, setCurrentBalance] = useState(6000); // Initial mock balance
   const amountAdded = parseInt(route.params?.amountAdded, 10) || 0;
+  const amountDeducted = parseInt(route.params?.amountDeducted, 10) || 0;
 
   useEffect(() => {
     if (amountAdded > 0) {
       setCurrentBalance(prevBalance => prevBalance + amountAdded);
     }
-  }, [amountAdded]);
+    if (amountDeducted > 0) {
+      setCurrentBalance(prevBalance => prevBalance - amountDeducted);
+    }
+  }, [amountAdded, amountDeducted]);
 
   return (
     <View style={styles.container}>
-      <WalletMainBackground balance={currentBalance} onBackPress={() => navigation.goBack()} />
+      <WalletMainBackground 
+        balance={currentBalance} 
+        onBackPress={() => navigation.goBack()} 
+        amountAdded={amountAdded} 
+        amountDeducted={amountDeducted}
+      />
       
       <BlurView intensity={10} tint="light" style={styles.subcontainer}>
         <View>
@@ -30,7 +39,7 @@ const WalletMainVerified = ({ navigation, route }) => {
           <GradientVarientOneBtn
             btnText={"Withdrawal"}
             style={styles.btn1}
-            onPress={() => { /* Handle withdrawal */ }}
+            onPress={() => navigation.navigate("Withdraw", { currentBalance })}
           />
           <View style={styles.bottom}>
             <AntDesign name="Safety" size={54} color="green" style={styles.icon} />
