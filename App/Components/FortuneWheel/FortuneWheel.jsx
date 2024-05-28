@@ -132,7 +132,7 @@ const FortuneWheel = forwardRef(
               setSegments(remainingSegments);
               onSpinEnd(removedSegment);
               setFinished(true);
-            }, 1600); // Adjust the delay time as needed for a smoother animation
+            }, 2000); // Adjust the delay time as needed for a smoother animation
           }
 
           const segmentIndex = Math.floor(finalAngle / angleBySegment);

@@ -49,7 +49,11 @@ const TimeRemaining = ({navigation}) => {
             btnText={"Entries"}
             style={styles.btn}
           />
-          <GradientVarientOneBtn btnText={"Result"} style={styles.btn} />
+          <GradientVarientOneBtn
+            onPress={() => navigation.navigate("Result")}
+            btnText={"Result"}
+            style={styles.btn}
+          />
         </View>
       </View>
     </View>
