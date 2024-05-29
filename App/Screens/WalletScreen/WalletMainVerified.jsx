@@ -7,7 +7,7 @@ import WalletMainBackground from '../../Components/Wallet/WalletMainBackground';
 import WhiteText from "../../Components/WhiteText/WhiteText";
 
 const WalletMainVerified = ({ navigation, route }) => {
-  const [currentBalance, setCurrentBalance] = useState(6000); // Initial mock balance
+  const [currentBalance, setCurrentBalance] = useState(10000); // Initial mock balance
   const amountAdded = parseInt(route.params?.amountAdded, 10) || 0;
   const amountDeducted = parseInt(route.params?.amountDeducted, 10) || 0;
 

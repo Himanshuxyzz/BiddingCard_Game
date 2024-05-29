@@ -12,7 +12,7 @@ const WithdrawDetails = ({ navigation, route }) => {
   const bank = route.params?.bank;
 
   const [userDetails, setUserDetails] = useState({
-    name: 'Raj Singh',
+    name: 'Garima',
     bankName: bank?.name || 'ICIC Bank',
     accountNumber: 'XXXX XXXX 4387',
     logo: bank?.logo || 'https://via.placeholder.com/40',

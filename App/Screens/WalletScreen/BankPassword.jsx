@@ -77,7 +77,7 @@ const BankPassword = ({ navigation, route }) => {
               source={require('../../../assets/Images/money.png')} 
               style={styles.successImage}
             />
-            <Text style={styles.modalText}>Transferred to wallet</Text>
+            <Text style={styles.modalText}>Transferred to Wallet</Text>
             <Text style={styles.modalAmount}>₹{amount}</Text>
             <Text style={styles.modalAccount}>A/c No. {accountNumber}</Text>
           </View>

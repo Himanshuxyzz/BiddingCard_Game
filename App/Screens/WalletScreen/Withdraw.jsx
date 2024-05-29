@@ -41,7 +41,7 @@ const Withdraw = ({ navigation, route }) => {
           onPress={handleWithdraw}
         />
         <Text style={styles.note}>
-          you can only withdraw 50% from your BC in once{'\n'}wanna know why read <Text style={styles.link}>Terms & Conditions</Text>
+          you can only withdraw 50% from your BC in once{'\n'}wanna know why read <Text style={styles.link} onPress={navigation.navigate("TermnConditions")}>Terms & Conditions</Text>
         </Text>
       </View>
     </View>
