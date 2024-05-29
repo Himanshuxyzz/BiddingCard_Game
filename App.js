@@ -33,7 +33,12 @@ import AddToWallet from "./App/Screens/WalletScreen/AddToWallet";
 import BankDetails from "./App/Screens/WalletScreen/BankDetails";
 import BankDetailsSecond from "./App/Screens/WalletScreen/BankDetailsSecond";
 import BankPassword from "./App/Screens/WalletScreen/BankPassword";
-import TransferSuccessPopup from "./App/Screens/WalletScreen/TransferSucessPopup";
+import InsufficientBalance from "./App/Screens/WalletScreen/InsufficientBalance";
+import Withdraw from "./App/Screens/WalletScreen/Withdraw";
+import WithdrawAccount from "./App/Screens/WalletScreen/WithdrawAccount";
+import WithdrawDetails from "./App/Screens/WalletScreen/WithdrawDetails";
+import WithdrawPassword from "./App/Screens/WalletScreen/WithdrawPassword";
+
 import WalletMainBackground from "./App/Components/Wallet/WalletMainBackground";
 import FirstPage from "./App/Screens/SignUp";
 import NewPassword from "./App/Screens/ForgotPassword/NewPassword";
@@ -58,16 +63,18 @@ import Emaildone from "./App/Screens/UserProfile/Emailverify/Emaildone";
 import Slide from "./App/Screens/UserProfile/Slidecomponent/Slide";
 import Result from "./App/Screens/Dashboard/PlayOnline/Simple/Result";
 
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
+    
     <NavigationContainer>
       <StatusBar style="light" />
       <View style={styles.container}>
         <Stack.Navigator>
           {/* Esha */}
-          <Stack.Screen
+          {/* <Stack.Screen
             name="Start"
             component={Start}
             options={{ headerShown: false }}
@@ -161,7 +168,7 @@ export default function App() {
             name="Bidding"
             component={Bidding}
             options={{ headerShown: false }}
-          />
+          /> */}
 
 
           {/* Esha - end */}
@@ -245,18 +252,18 @@ export default function App() {
           {/* Himanshu - end */}
 
            {/* Sakshi */}
-
-           <Stack.Screen
+           
+           {/* <Stack.Screen
             name="WalletMainVerified"
             component={WalletMainVerified}
             options={{ headerShown: false }}
           />
 
-          {/* <Stack.Screen 
+          <Stack.Screen 
                 name="NotVerifiedWallet"
                 component={NotVerifiedWallet}
                 options={{ headerShown: false }}
-                /> */}
+                />
           <Stack.Screen
             name="AddToWallet"
             component={AddToWallet}
@@ -277,12 +284,35 @@ export default function App() {
             name="BankPassword"
             component={BankPassword}
             options={{ headerShown: false }}
-          />
-            <Stack.Screen
-            name="TransferSuccessPopup"
-            component={TransferSuccessPopup}
+          /> 
+           {<Stack.Screen
+            name="InsufficientBalance"
+            component={InsufficientBalance}
             options={{ headerShown: false }}
           />
+           }
+           <Stack.Screen
+            name="Withdraw"
+            component={Withdraw}
+            options={{ headerShown: false }}
+          />
+           
+           <Stack.Screen
+            name="WithdrawAccount"
+            component={WithdrawAccount}
+            options={{ headerShown: false }}
+          />
+           <Stack.Screen
+            name="WithdrawDetails"
+            component={WithdrawDetails}
+            options={{ headerShown: false }}
+          />
+            <Stack.Screen
+            name="WithdrawPassword"
+            component={WithdrawPassword}
+            options={{ headerShown: false }}
+          />
+            */}
           {/* Sakshi - end */}
 
           {/* samraat start */}
@@ -291,6 +321,7 @@ export default function App() {
         </Stack.Navigator>
       </View>
     </NavigationContainer>
+   
   );
 }
 

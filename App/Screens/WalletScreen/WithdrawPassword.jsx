@@ -4,13 +4,13 @@ import { Ionicons } from '@expo/vector-icons';
 import WalletMainBackground from '../../Components/Wallet/WalletMainBackground';
 import GradientVariantOneBtn from '../../Components/Gradient/GradientVariantOneBtn';
 
-const BankPassword = ({ navigation, route }) => {
+const WithdrawPassword = ({ navigation, route }) => {
   const [enteredPassword, setEnteredPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [isModalVisible, setModalVisible] = useState(false);
-  const amount = parseInt(route.params?.amount, 10) || 1000; // Mock amount
+  const amount = parseFloat(route.params?.amountToBeReturned, 10) || 0;
   const accountNumber = route.params?.accountNumber || 'XXXX';
-  const balance = route.params?.balance || 0;
+  const balance = route.params?.currentBalance || 0;
 
   const handleContinue = async () => {
     const validatePassword = async () => {
@@ -24,7 +24,7 @@ const BankPassword = ({ navigation, route }) => {
       setModalVisible(true);
       setTimeout(() => {
         setModalVisible(false);
-        navigation.navigate('WalletMainVerified', { amountAdded: amount });
+        navigation.navigate('WalletMainVerified', { amountDeducted: amount });
       }, 2000);
     } else {
       Alert.alert('Error', 'Wrong password');
@@ -35,7 +35,7 @@ const BankPassword = ({ navigation, route }) => {
     <View style={styles.container}>
       <WalletMainBackground onBackPress={() => navigation.goBack()} balance={balance} />
       <View style={styles.contentContainer}>
-        <Text style={styles.title}>Total Amount sent to your wallet</Text>
+        <Text style={styles.title}>Withdrawal Amount</Text>
         <Text style={styles.amount}>₹{amount}</Text>
         <View style={styles.inputContainer}>
           <Ionicons name="key-outline" size={24} color="white" style={styles.icon} />
@@ -77,7 +77,7 @@ const BankPassword = ({ navigation, route }) => {
               source={require('../../../assets/Images/money.png')} 
               style={styles.successImage}
             />
-            <Text style={styles.modalText}>Transferred to Wallet</Text>
+            <Text style={styles.modalText}>Withdraw Successful</Text>
             <Text style={styles.modalAmount}>₹{amount}</Text>
             <Text style={styles.modalAccount}>A/c No. {accountNumber}</Text>
           </View>
@@ -87,7 +87,7 @@ const BankPassword = ({ navigation, route }) => {
   );
 };
 
-export default BankPassword;
+export default WithdrawPassword;
 
 const styles = StyleSheet.create({
   container: {

@@ -5,13 +5,16 @@ import WhiteText from '../WhiteText/WhiteText'; // Importing the existing WhiteT
 
 const WalletMainBackground = ({
   title = "Wallet",
-  balance = "₹ 6000",
   onBackPress,
   containerStyle,
   headerStyle,
   balanceSectionStyle,
   iconStyle,
   balanceValueStyle,
+  balance,
+  amountAdded,
+  amountDeducted,
+  children,
 }) => {
   return (
     <View style={[styles.container, containerStyle]}>
@@ -30,8 +33,19 @@ const WalletMainBackground = ({
           color="#FFC5C5"
           style={[styles.icon, iconStyle]}
         />
-        <Text style={[styles.balanceValue, balanceValueStyle]}>{balance}</Text>
+        <Text style={[styles.balanceValue, balanceValueStyle]}>₹{balance}</Text>
       </View>
+      {amountAdded > 0 && (
+        <View style={[styles.amountSection, styles.amountAdded]}>
+          <Text style={styles.amountText}>Added: ₹{amountAdded}</Text>
+        </View>
+      )}
+      {amountDeducted > 0 && (
+        <View style={[styles.amountSection, styles.amountDeducted]}>
+          <Text style={styles.amountText}>Deducted: ₹{amountDeducted}</Text>
+        </View>
+      )}
+      {children}
     </View>
   );
 };
@@ -59,7 +73,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     position: "absolute",
     top: -100,
-    right: -190,
+    right: -180,
   },
   backButton: {
     position: "absolute",
@@ -81,8 +95,6 @@ const styles = StyleSheet.create({
     top: 100,
     left: 20,
   },
- 
-
   icon: {
     top: -20,
     right: 150,
@@ -94,5 +106,24 @@ const styles = StyleSheet.create({
     fontSize: 18,
     top: -20,
     right: -150,
+  },
+  amountSection: {
+    flexDirection: "row",
+    alignItems: "center",
+    position: "absolute",
+    top: 140,
+    left: 20,
+  },
+  amountAdded: {
+    color: "green",
+  },
+  amountDeducted: {
+    top: 160,
+    color: "red",
+  },
+  amountText: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "white",
   },
 });

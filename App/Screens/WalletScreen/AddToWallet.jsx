@@ -1,31 +1,25 @@
+// AddToWallet.jsx
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import WalletMainBackground from '../../Components/Wallet/WalletMainBackground'; 
 
-
-
-
-
-const AddToWallet = ({ navigation }) => {
-  const handleProceed = () => {
-    
-    console.log('Proceed pressed');
-  };
+const AddToWallet = ({ navigation, route }) => {
+  const currentBalance = parseInt(route.params?.currentBalance, 10) || 0;
 
   return (
     <View style={styles.container}>
-      <WalletMainBackground onBackPress={() => navigation.goBack()} />
+      <WalletMainBackground balance={currentBalance} onBackPress={() => navigation.goBack()} />
       <View style={styles.contentContainer}>
         <Text style={styles.title}>Select Bank Account</Text>
         <View style={styles.bankCard}>
           <Image
-           source={require("../../../assets/Images/HdfcL.png")}
+            source={require("../../../assets/Images/HdfcL.png")}
             style={styles.bankLogo}
           />
           <View style={styles.bankInfo}>
             <Text style={styles.bankName}>HDFC Bank</Text>
-            <TouchableOpacity style={styles.proceedButton} onPress={() => navigation.navigate("BankDetails")}>
+            <TouchableOpacity style={styles.proceedButton}  onPress={() => navigation.navigate("BankDetails", { currentBalance })}>
               <Text style={styles.proceedText}>Proceed</Text>
               <AntDesign name="right" size={14} color="#000" />
             </TouchableOpacity>
