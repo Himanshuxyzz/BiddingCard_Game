@@ -186,6 +186,31 @@ const SpinWheel = ({ route, navigation }) => {
     };
   }, []);
 
+  // winner list
+  const [winnersList, setWinnersList] = useState([]); // State to manage winners list
+
+  // Function to update winners list
+  const updateWinnersList = async (newWinner) => {
+    try {
+      // Get current winners list from AsyncStorage
+      const currentWinnersList = await AsyncStorage.getItem("winnersList");
+      let updatedList = [];
+
+      if (currentWinnersList) {
+        updatedList = JSON.parse(currentWinnersList);
+      }
+
+      // Add new winner to the list
+      updatedList.push(newWinner);
+
+      // Update state and AsyncStorage with the updated list
+      setWinnersList(updatedList);
+      await AsyncStorage.setItem("winnersList", JSON.stringify(updatedList));
+    } catch (error) {
+      console.error("Error updating winners list:", error);
+    }
+  };
+
   const handleSpinEnd = async (winner) => {
     setWinner(winner);
     // Remove the winner from the segmentOptions
@@ -193,6 +218,7 @@ const SpinWheel = ({ route, navigation }) => {
       prevOptions.filter((option) => option !== winner)
     );
     setTimeout(() => setFinished(true), 500);
+    await updateWinnersList(winner); // Add the winner to the list and update AsyncStorage
     const nextSpinTime = await updateLastSpinTime(); // Update last spin time and get next spin time
     if (nextSpinTime) {
       setCountdown(calculateCountdown(nextSpinTime)); // Update the countdown immediately
@@ -302,6 +328,12 @@ const SpinWheel = ({ route, navigation }) => {
     clearAsyncStorage();
   };
 
+  // @TODO to add winners in result screen and also the bc participants in the enteries ✅
+
+  // @TODO - to make sure spin only happens for either 12 or 20 getting from the bc card
+
+  // @TODO - to fix the lottie animation not getting triggered when countdown does exist
+
   return (
     <View style={styles.container}>
       <Header />
@@ -394,12 +426,17 @@ const SpinWheel = ({ route, navigation }) => {
         <Button title="Clear Storage" onPress={handleClearStorage} />
         <View style={styles.buttonContainer}>
           <GradientVarientOneBtn
-            onPress={() => navigation.navigate("UserEntries")}
+            onPress={() =>
+              navigation.navigate("UserEntries", {
+                userEntries: initialSegmentOptions,
+                winnerList: winnersList,
+              })
+            }
             style={styles.button}
             btnText={"Entries"}
           />
           <GradientVarientOneBtn
-            onPress={() => navigation.navigate("Result")}
+            onPress={() => navigation.navigate("Result", { winnersList })}
             style={styles.button}
             btnText={"Result"}
           />
@@ -499,7 +536,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     width: "90%",
-    marginTop: 60,
+    marginTop: "15%",
+    marginBottom: 20,
   },
   button: {
     borderColor: "#fff",
@@ -515,7 +553,7 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     fontSize: 30,
     textAlign: "center",
-    color: Colors.RED,
+    // color: Colors.RED,
     marginTop: 20,
   },
 });
