@@ -1,69 +1,72 @@
 import { FlatList, Image, StyleSheet, Text, View } from "react-native";
 import React from "react";
+import Colors from "../../../../Utils/Colors";
+import { Ionicons } from "@expo/vector-icons";
 
-const UserEntries = () => {
-  const users = [
-    {
-      id: 1,
-      name: "User1",
-      img: "../../../../../assets/Images/usericon.png",
-    },
-    {
-      id: 2,
-      name: "User2",
-      img: "../../../../../assets/Images/usericon.png",
-    },
-    {
-      id: 3,
-      name: "User3",
-      img: "../../../../../assets/Images/usericon.png",
-    },
-    {
-      id: 4,
-      name: "User4",
-      img: "../../../../../assets/Images/usericon.png",
-    },
-    {
-      id: 5,
-      name: "User5",
-      img: "../../../../../assets/Images/usericon.png",
-    },
-    {
-      id: 6,
-      name: "User6",
-      img: "../../../../../assets/Images/usericon.png",
-    },
-    {
-      id: 7,
-      name: "User7",
-      img: "../../../../../assets/Images/usericon.png",
-    },
-    {
-      id: 8,
-      name: "User8",
-      img: "../../../../../assets/Images/usericon.png",
-    },
-    {
-      id: 9,
-      name: "User9",
-      img: "../../../../../assets/Images/usericon.png",
-    },
-    {
-      id: 10,
-      name: "User10",
-      img: "../../../../../assets/Images/usericon.png",
-    },
-    {
-      id: 11,
-      name: "User11",
-      img: "../../../../../assets/Images/usericon.png",
-    },
-    {
-      id: 12,
-      name: "User12",
-      img: "../../../../../assets/Images/usericon.png",
-    },
-  ];
+
+// @TODO - to retrieve the winner lsit from the async storage or backend whatever then check if the particular segment option is present in winner lsit then style it
+
+const UserEntries = ({ navigation, route }) => {
+  const { winnerList, userEntries } = route.params;
+  const renderItem = ({ item }) => {
+    const isWinner =
+      winnerList && winnerList.length > 0 && winnerList.includes(item);
+    // console.log(isWinner);
+
+    return (
+      <View
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "space-between",
+          width: "90%",
+          margin: "auto",
+        }}
+      >
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <View
+            style={{
+              borderRadius: "50%",
+              padding: 2,
+              backgroundColor: "rgba(255, 252, 255, 0.20)",
+            }}
+          >
+            <Image
+              style={{ width: 40, height: 40 }}
+              source={require("../../../../../assets/Images/usericon.png")}
+            />
+          </View>
+          <Text
+            style={[
+              styles.item,
+              isWinner
+                ? {
+                    color: "rgba(249, 182, 12, 1)",
+                  }
+                : { color: Colors.WHITE },
+            ]}
+          >
+            {item}
+          </Text>
+        </View>
+
+        {isWinner && (
+          <Ionicons
+            name="shield-checkmark-outline"
+            size={26}
+            color="rgba(249, 182, 12, 1)"
+          />
+        )}
+      </View>
+    );
+  };
+
   return (
     <View style={styles.container}>
       <Text
@@ -74,30 +77,15 @@ const UserEntries = () => {
           textAlign: "center",
         }}
       >
-        Entries(10)
+        Entries({userEntries.length})
       </Text>
-      <FlatList
-        data={users}
-        renderItem={({ item }) => (
-          <View style={{ flexDirection: "row", alignItems: "center" }}>
-            <View
-              style={{
-                borderRadius: "50%",
-                padding: 2,
-                backgroundColor: "rgba(255, 252, 255, 0.20)",
-              }}
-            >
-              <Image
-                style={{ width: 40, height: 40 }}
-                source={require("../../../../../assets/Images/usericon.png")}
-              />
-            </View>
-            <Text style={styles.item}>{item.name}</Text>
-          </View>
-        )}
-        //   renderItem={({item})=><Text style={styles.item} >{item.name}</Text>}
-        keyExtractor={(item) => item.id}
-      />
+      {userEntries.length > 0 && (
+        <FlatList
+          data={userEntries}
+          renderItem={renderItem}
+          keyExtractor={(item, index) => index}
+        />
+      )}
     </View>
   );
 };
@@ -106,18 +94,18 @@ export default UserEntries;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#2A2E2E",
     flex: 1,
-    // alignItems: "center",
-    flexDirection: "column",
-    gap: 20,
+    gap: 10,
+    backgroundColor: "#2A2E2E",
     padding: 20,
+  },
+  subContainer: {
+    flex: 1,
   },
   item: {
     fontSize: 24,
     fontWeight: "bold",
     padding: 20,
-    color: "#fff",
-    marginHorizontal: "6%",
+    // color: "rgba(249, 182, 12, 1)",
   },
 });

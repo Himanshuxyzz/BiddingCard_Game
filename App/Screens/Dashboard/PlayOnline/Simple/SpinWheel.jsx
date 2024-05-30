@@ -186,6 +186,31 @@ const SpinWheel = ({ route, navigation }) => {
     };
   }, []);
 
+  // winner list
+  const [winnersList, setWinnersList] = useState([]); // State to manage winners list
+
+  // Function to update winners list
+  const updateWinnersList = async (newWinner) => {
+    try {
+      // Get current winners list from AsyncStorage
+      const currentWinnersList = await AsyncStorage.getItem("winnersList");
+      let updatedList = [];
+
+      if (currentWinnersList) {
+        updatedList = JSON.parse(currentWinnersList);
+      }
+
+      // Add new winner to the list
+      updatedList.push(newWinner);
+
+      // Update state and AsyncStorage with the updated list
+      setWinnersList(updatedList);
+      await AsyncStorage.setItem("winnersList", JSON.stringify(updatedList));
+    } catch (error) {
+      console.error("Error updating winners list:", error);
+    }
+  };
+
   const handleSpinEnd = async (winner) => {
     setWinner(winner);
     // Remove the winner from the segmentOptions
@@ -193,6 +218,7 @@ const SpinWheel = ({ route, navigation }) => {
       prevOptions.filter((option) => option !== winner)
     );
     setTimeout(() => setFinished(true), 500);
+    await updateWinnersList(winner); // Add the winner to the list and update AsyncStorage
     const nextSpinTime = await updateLastSpinTime(); // Update last spin time and get next spin time
     if (nextSpinTime) {
       setCountdown(calculateCountdown(nextSpinTime)); // Update the countdown immediately
@@ -222,28 +248,52 @@ const SpinWheel = ({ route, navigation }) => {
   };
 
   useEffect(() => {
-    if (!hasJoinedMembersTriggered.current) {
-      const handleFirstEvent = () => {
-        setGameFlow({
-          state: "allMembersJoined",
-          msg: "All members joined. Game starts in 15 mins.",
-        });
-        animateStateChange();
-        setIsModalVisible(true);
-        startTimer(60);
-        hasJoinedMembersTriggered.current = true;
-      };
+    const checkInitialSpinTimes = async () => {
+      const lastSpinTime = await AsyncStorage.getItem("lastSpinTime");
+      const nextSpinTime = await AsyncStorage.getItem("nextSpinTime");
 
-      const timeoutId = setTimeout(handleFirstEvent, 4000);
-      return () => {
-        clearTimeout(timeoutId);
-        clearInterval(timerIntervalRef.current);
-      };
-    }
+      if (lastSpinTime && nextSpinTime) {
+        const nextSpinDate = new Date(nextSpinTime);
+        const currentTime = new Date();
+
+        if (currentTime < nextSpinDate) {
+          setGameFlow({
+            state: "halted",
+            msg: "Next spin time is in the future. Game is halted.",
+          });
+          return;
+        }
+      }
+
+      if (!hasJoinedMembersTriggered.current) {
+        const handleFirstEvent = () => {
+          setGameFlow({
+            state: "allMembersJoined",
+            msg: "All members joined. Game starts in 15 mins.",
+          });
+          animateStateChange();
+          setIsModalVisible(true);
+          startTimer(60);
+          hasJoinedMembersTriggered.current = true;
+        };
+
+        const timeoutId = setTimeout(handleFirstEvent, 4000);
+        return () => {
+          clearTimeout(timeoutId);
+          clearInterval(timerIntervalRef.current);
+        };
+      }
+    };
+
+    checkInitialSpinTimes();
   }, []);
 
   useEffect(() => {
-    if (!hasTimerExpiredTriggered.current && timer === 0) {
+    if (
+      !hasTimerExpiredTriggered.current &&
+      timer === 0 &&
+      gameFlow.state !== "halted"
+    ) {
       setGameFlow({
         state: "PreSpinState",
         msg: "Let's see who is lucky today.",
@@ -262,7 +312,7 @@ const SpinWheel = ({ route, navigation }) => {
 
       hasTimerExpiredTriggered.current = true;
     }
-  }, [timer]);
+  }, [timer, gameFlow.state]);
 
   // Function to clear AsyncStorage
   const clearAsyncStorage = async () => {
@@ -278,10 +328,24 @@ const SpinWheel = ({ route, navigation }) => {
     clearAsyncStorage();
   };
 
+  // @TODO to add winners in result screen and also the bc participants in the enteries ✅
+
+  // @TODO - to make sure spin only happens for either 12 or 20 getting from the bc card
+
+  // @TODO - to fix the lottie animation not getting triggered when countdown does exist
+
   return (
     <View style={styles.container}>
       <Header />
       <View style={styles.subContainer}>
+        {countdown && (
+          <>
+            <WhiteText style={styles.countdownText}>{countdown}</WhiteText>
+            <WhiteText style={styles.timeRemainingText}>
+              Time Remaining
+            </WhiteText>
+          </>
+        )}
         {gameFlow.state === "waitingForMembers" ? (
           <WhiteText style={styles.waitingText}>{gameFlow.msg}</WhiteText>
         ) : (
@@ -355,25 +419,30 @@ const SpinWheel = ({ route, navigation }) => {
             </Animated.View>
           )}
         </View>
-        <WhiteText style={styles.winnerText}>Winner is: {winner}</WhiteText>
+        {/* <WhiteText style={styles.winnerText}>Winner is: {winner}</WhiteText> */}
         <TouchableOpacity onPress={spinWheel}>
           <WhiteText>Spin</WhiteText>
         </TouchableOpacity>
         <Button title="Clear Storage" onPress={handleClearStorage} />
         <View style={styles.buttonContainer}>
           <GradientVarientOneBtn
-            onPress={() => navigation.navigate("UserEntries")}
+            onPress={() =>
+              navigation.navigate("UserEntries", {
+                userEntries: initialSegmentOptions,
+                winnerList: winnersList,
+              })
+            }
             style={styles.button}
             btnText={"Entries"}
           />
           <GradientVarientOneBtn
-            onPress={() => navigation.navigate("Result")}
+            onPress={() => navigation.navigate("Result", { winnersList })}
             style={styles.button}
             btnText={"Result"}
           />
         </View>
-        {/* Display the countdown timer */}
-        <WhiteText style={styles.countdownText}>{countdown}</WhiteText>
+        {/* Display the countdown timer move this countdown on the above also  */}
+        {/* <WhiteText style={styles.countdownText}>{countdown}</WhiteText> */}
       </View>
     </View>
   );
@@ -398,6 +467,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 10,
     alignItems: "center",
+    justifyContent: "center",
   },
   waitingText: {
     fontWeight: "600",
@@ -466,7 +536,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     width: "90%",
-    marginVertical: 10,
+    marginTop: "15%",
+    marginBottom: 20,
   },
   button: {
     borderColor: "#fff",
@@ -480,9 +551,9 @@ const styles = StyleSheet.create({
   },
   countdownText: {
     fontWeight: "600",
-    fontSize: 25,
+    fontSize: 30,
     textAlign: "center",
-    color: Colors.RED,
+    // color: Colors.RED,
     marginTop: 20,
   },
 });

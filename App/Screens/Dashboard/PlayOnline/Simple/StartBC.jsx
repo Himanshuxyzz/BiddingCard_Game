@@ -33,10 +33,12 @@ const StartBC = ({ route, navigation }) => {
     }
   };
 
+  // @TODO to make the password eye feautre working 
+
   return (
     <View style={styles.container}>
       <Header />
-      <Text onPress={() => navigation.navigate("UserEntries")}
+      <Text
         style={{
           color: "#fff",
           marginTop: "10%",
