@@ -169,7 +169,11 @@ const SignUpPage = ({ navigation }) => {
             onPress={() => {
               setOtp(null);
               otpInputRef.current.clear();
-              setModal1Visible(true);
+               if( otp === TestOtp){
+                    setModal1Visible(true)
+                  } else{
+                    setModal2Visible(true)
+                  } 
             }}
             isDisabled={otp == ""}
             style={styles.btn}
@@ -311,7 +315,7 @@ const SignUpPage = ({ navigation }) => {
           <VerifyBtn
         btnText={"Next"}
         onPress={
-         ()=>{ navigation.navigate("LoginPage");}
+         ()=>{ setModal1Visible(false),setModal2Visible(false),setModalVisible(false)}
                  
         }
         style={styles.btn}

@@ -1,5 +1,16 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, TextInput, View, Alert } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+  Alert,
+  ScrollView,
+  KeyboardAvoidingView,
+  Platform,
+  TouchableWithoutFeedback,
+  Keyboard
+} from 'react-native';
 import WalletMainBackground from '../../Components/Wallet/WalletMainBackground';
 import GradientVariantOneBtn from '../../Components/Gradient/GradientVariantOneBtn';
 
@@ -23,28 +34,35 @@ const Withdraw = ({ navigation, route }) => {
   };
 
   return (
-    <View style={styles.container}>
-      <WalletMainBackground balance={currentBalance} onBackPress={() => navigation.navigate('WalletMainVerified')} />
-      <View style={styles.contentContainer}>
-        <Text style={styles.title}>Withdraw Amount</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="₹ 0"
-          placeholderTextColor="#ccc"
-          value={amount}
-          onChangeText={(text) => setAmount(text.replace(/[^0-9]/g, ''))} // only digits allowed
-          keyboardType="numeric"
-        />
-        <GradientVariantOneBtn
-          style={styles.submitButton}
-          btnText="Submit"
-          onPress={handleWithdraw}
-        />
-        <Text style={styles.note}>
-          you can only withdraw 50% from your BC in once{'\n'}wanna know why read <Text style={styles.link} onPress={navigation.navigate("TermnConditions")}>Terms & Conditions</Text>
-        </Text>
-      </View>
-    </View>
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+    >
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <ScrollView contentContainerStyle={styles.scrollContainer}>
+          <WalletMainBackground balance={currentBalance} onBackPress={() => navigation.navigate('WalletMainVerified')} />
+          <View style={styles.contentContainer}>
+            <Text style={styles.title}>Withdraw Amount</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="₹ 0"
+              placeholderTextColor="#ccc"
+              value={amount}
+              onChangeText={(text) => setAmount(text.replace(/[^0-9]/g, ''))} // only digits allowed
+              keyboardType="numeric"
+            />
+            <GradientVariantOneBtn
+              style={styles.submitButton}
+              btnText="Submit"
+              onPress={handleWithdraw}
+            />
+            <Text style={styles.note}>
+              you can only withdraw 50% from your BC in once{'\n'}wanna know why read <Text style={styles.link}>Terms & Conditions</Text>
+            </Text>
+          </View>
+        </ScrollView>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -55,10 +73,16 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#2A2E2E',
   },
-  contentContainer: {
-    flex: 1,
+  scrollContainer: {
+    flexGrow: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  contentContainer: {
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
   },
   title: {
     fontSize: 20,
