@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     position: "absolute",
     top: -100,
-    right: -180,
+    right: -140,
   },
   backButton: {
     position: "absolute",
@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 18,
     top: -20,
-    right: -150,
+    right: -110,
   },
   amountSection: {
     flexDirection: "row",

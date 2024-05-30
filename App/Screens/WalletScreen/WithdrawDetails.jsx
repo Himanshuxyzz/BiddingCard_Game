@@ -34,8 +34,9 @@ const WithdrawDetails = ({ navigation, route }) => {
     <View style={styles.container}>
       <WalletMainBackground balance={currentBalance} onBackPress={() => navigation.navigate("WithdrawAccount")} />
       <View style={styles.contentContainer}>
-        <Text style={styles.title}>Sending money from wallet to Bank</Text>
+       
         <View style={styles.userDetailsContainer}>
+        <Text style={styles.title}>Sending money from wallet to Bank</Text>
           <Text style={styles.userName}>{userDetails.name}</Text>
           <Text style={styles.bankDetails}>
             {userDetails.bankName} A/c No. {userDetails.accountNumber}
@@ -56,6 +57,7 @@ const WithdrawDetails = ({ navigation, route }) => {
         <GradientVariantOneBtn 
           btnText={"Proceed Securely"}
           onPress={handleProceed}
+          style={styles.btn}
         />
       </View>
     </View>
@@ -107,7 +109,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 20,
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: 150,
   },
   amountDetailText: {
     fontSize: 16,
@@ -127,4 +129,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#D80032',
   },
+  btn:{
+    bottom :120,
+  }
 });
