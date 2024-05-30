@@ -18,13 +18,13 @@ const Header = () => {
         <View style={{ flexDirection: "row", alignItems: "center", gap: 15 }}>
           <View
             style={{
-              borderRadius: "50%",
+              borderRadius: 9999,
               padding: 2,
               backgroundColor: "rgba(255, 252, 255, 0.20)",
             }}
           >
             <Image
-              style={{ width: 40, height: 40}}
+              style={{ width: 40, height: 40 }}
               source={require("../../../assets/Images/usericon.png")}
             />
           </View>
@@ -36,7 +36,7 @@ const Header = () => {
           <View
             style={{
               borderWidth: 1,
-              borderRadius: "15",
+              borderRadius: 15,
               paddingHorizontal: 5.5,
               paddingVertical: 4,
               backgroundColor: "#fff",
