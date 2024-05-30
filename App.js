@@ -74,7 +74,7 @@ export default function App() {
       <View style={styles.container}>
         <Stack.Navigator>
           {/* Esha */}
-          {/* <Stack.Screen
+          <Stack.Screen
             name="Start"
             component={Start}
             options={{ headerShown: false }}
@@ -168,7 +168,7 @@ export default function App() {
             name="Bidding"
             component={Bidding}
             options={{ headerShown: false }}
-          /> */}
+          />
 
 
           {/* Esha - end */}

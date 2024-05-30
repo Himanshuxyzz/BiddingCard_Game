@@ -229,11 +229,14 @@ const Card = ({
               paddingHorizontal: 24,
               paddingVertical: 8,
             }}
+            // onPress={() =>
+            //   navigation.navigate("Startbc", {
+            //     bcAmount: bcAmount,
+            //     totalAmount: amount,
+            //   })
+            // }
             onPress={() =>
-              navigation.navigate("Startbc", {
-                bcAmount: bcAmount,
-                totalAmount: amount,
-              })
+              navigation.navigate("SpinWheel", { totalAmount: amount })
             }
             activeOpacity={0.5}
           >

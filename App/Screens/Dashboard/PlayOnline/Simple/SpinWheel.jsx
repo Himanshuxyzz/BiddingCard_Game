@@ -420,10 +420,12 @@ const SpinWheel = ({ route, navigation }) => {
           )}
         </View>
         {/* <WhiteText style={styles.winnerText}>Winner is: {winner}</WhiteText> */}
-        <TouchableOpacity onPress={spinWheel}>
+        <TouchableOpacity style={{ zIndex: 9999 }} onPress={spinWheel}>
           <WhiteText>Spin</WhiteText>
         </TouchableOpacity>
-        <Button title="Clear Storage" onPress={handleClearStorage} />
+        <TouchableOpacity style={{ zIndex: 9999 }} onPress={handleClearStorage}>
+          <WhiteText>Clear storage</WhiteText>
+        </TouchableOpacity>
         <View style={styles.buttonContainer}>
           <GradientVarientOneBtn
             onPress={() =>
@@ -538,6 +540,7 @@ const styles = StyleSheet.create({
     width: "90%",
     marginTop: "15%",
     marginBottom: 20,
+    zIndex: 99999,
   },
   button: {
     borderColor: "#fff",

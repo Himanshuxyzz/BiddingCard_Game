@@ -45,7 +45,7 @@ const renderItem = ({ item }) => {
     >
       <View
         style={{
-          borderRadius: "50%",
+          borderRadius: 9999,
           padding: 2,
           backgroundColor: "rgba(255, 252, 255, 0.20)",
         }}
