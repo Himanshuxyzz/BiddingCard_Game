@@ -334,6 +334,8 @@ const SpinWheel = ({ route, navigation }) => {
 
   // @TODO - to fix the lottie animation not getting triggered when countdown does exist
 
+  // @TODO - to persist the wheel state
+
   return (
     <View style={styles.container}>
       <Header />
