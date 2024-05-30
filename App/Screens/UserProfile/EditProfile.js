@@ -13,10 +13,12 @@ import { LinearGradient } from 'expo-linear-gradient'
 const EditProfile = ({navigation}) => {
   return (
     <View style={styles.container}>
-    {/* <ScrollView> */}
-    <View style={styles.backimg}>
-    <Image source={require('../../../assets/lets-icons_back.png')}/>  
-    </View>
+    <ScrollView>
+    <TouchableOpacity 
+    style={styles.backimg}
+    onPress={() => navigation.navigate("Slide")}>
+      <Image source={require('../../../assets/lets-icons_back.png')}/>  
+    </TouchableOpacity>
     <View style={styles.tstprofile}>
       <Text style={styles.tstprofile}>User Profile</Text>
     </View>
@@ -80,7 +82,7 @@ const EditProfile = ({navigation}) => {
           <Text style={{color:"#FFFFFF" , fontSize:15,fontWeight:"700", marginVertical:0, textAlign:"center"}}>Terms & Conditions</Text>
         </View>
         <TouchableOpacity
-         onPress={() => navigation.navigate('profile Detail')}
+         onPress={() => navigation.navigate('ProfileDetail')}
         >
         <LinearGradient
          colors = {['#EA59E4','#C508BD','#910C8C']}
@@ -94,7 +96,7 @@ const EditProfile = ({navigation}) => {
     </View>
     <View>
     </View>
-    {/* </ScrollView> */}
+    </ScrollView>
   </View>
   )
 }

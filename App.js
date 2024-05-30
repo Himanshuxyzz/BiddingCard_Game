@@ -28,18 +28,28 @@ import CorrectPassword from "./App/Screens/ForgotPassword/CorrectPassword";
 import SignUpPage from "./App/Screens/SignUp/SignUpPage";
 import LoginPage from "./App/Screens/SignUp/LoginPage";
 import Refer from "./App/Screens/Refer&Termsconditions/Refer";
-import SignUpPage from './App/Screens/SignUp/SignUpPage'
-import Userdetail from "./App/Screens/UserProfile/Userdetail";
+// import SignUpPage from './App/Screens/SignUp/SignUpPage'
+// import Userdetail from "./App/Screens/UserProfile/Userdetail";
 import ProfileDetail from "./App/Screens/UserProfile/ProfileDetail";
 import EditProfile from "./App/Screens/UserProfile/EditProfile";
-import Phoneotp from "./App/Screens/UserProfile/OTPVerification/Phoneotp";
-import Phoneotptryagain from "./App/Screens/UserProfile/OTPVerification/Phoneotptryagain";
-import OTPverify from "./App/Screens/UserProfile/OTPverify";
-import EmailOTP from "./App/Screens/UserProfile/Emailverify/EmailOTP";
-import Emailotpwrong from "./App/Screens/UserProfile/Emailverify/Emailotpwrong";
-import Emaildone from "./App/Screens/UserProfile/Emailverify/Emaildone";
+// import Phoneotp from "./App/Screens/UserProfile/OTPVerification/Phoneotp";
+// import Phoneotptryagain from "./App/Screens/UserProfile/OTPVerification/Phoneotptryagain";
+// import OTPverify from "./App/Screens/UserProfile/OTPverify";
+// import EmailOTP from "./App/Screens/UserProfile/Emailverify/EmailOTP";
+// import Emailotpwrong from "./App/Screens/UserProfile/Emailverify/Emailotpwrong";
+// import Emaildone from "./App/Screens/UserProfile/Emailverify/Emaildone";
 import Slide from "./App/Screens/UserProfile/Slidecomponent/Slide";
+import BankAccount from "./App/Screens/UserProfile/BankAccount";
+import Logout from "./App/Screens/UserProfile/Logout";
+import Quicktask from "./App/Screens/UserProfile/Support/Quicktask";
+import GenerateQuery from "./App/Screens/UserProfile/Support/GenerateQuery";
+import CancelQuery from "./App/Screens/UserProfile/Support/CancelQuery";
+import Backtdash from "./App/Screens/UserProfile/Support/Backtdash";
+import Parent from "./App/Screens/UserProfile/Practics/Parent";
+import Mainpage from "./App/Screens/UserProfile/Mainpage";
+import Redirect from "./App/Screens/UserProfile/Redirect";
 const Stack = createNativeStackNavigator();
+
 
 export default function App() {
   return (
@@ -47,129 +57,210 @@ export default function App() {
       <StatusBar style="light" />
       <View style={styles.container}>
         <Stack.Navigator>
-          {/* Esha */}
-          <Stack.Screen
+          {/* esha starting page */}
+          
+          {/* <Stack.Screen
             name="Start"
             component={Start}
             options={{ headerShown: false }}
-          />
-          <Stack.Screen
+          />  */}
+
+          {/* <Stack.Screen
             name="Createurprofile"
             component={CreateUrProfile}
             options={{ headerShown: false }}
-          />
-          <Stack.Screen
+          />  */}
+          {/* <Stack.Screen
             name="Addbankdetail"
             component={AddBankDetail}
             options={{ headerShown: false }}
-          />
-          <Stack.Screen
+          />  */}
+           {/* <Stack.Screen
             name="Verificationpending"
             component={VerificationPending}
             options={{ headerShown: false }}
-          />
-          <Stack.Screen
+          />  */}
+           {/* <Stack.Screen
             name="Verificationsuccessful"
             component={VerificationSuccessful}
             options={{ headerShown: false }}
-          />
-          <Stack.Screen
+          />  */}
+          {/* <Stack.Screen
             name="Notverified"
             component={NotVerified}
             options={{ headerShown: false }}
-          />
-          <Stack.Screen
+          />  */}
+          {/* <Stack.Screen
             name="Dashboard"
             component={Dashboard}
             options={{ headerShown: false }}
-          />
-          <Stack.Screen
+          />  */}
+           {/* <Stack.Screen
             name="Playonline"
             component={PlayOnline}
             options={{ headerShown: false }}
-          />
-          <Stack.Screen
+          />  */}
+          {/* <Stack.Screen
             name="Auction"
             component={Auction}
             options={{ headerShown: false }}
-          />
-          <Stack.Screen
+          />  */}
+           {/* <Stack.Screen
             name="Simple"
             component={Simple}
             options={{ headerShown: false }}
-          />
-          <Stack.Screen
+          />  */}
+           {/* <Stack.Screen
             name="Startbc"
             component={StartBC}
             options={{ headerShown: false }}
-          />
+          />  */}
           {/* Esha - end */}
 
           {/* {Bhavesh} */}
            
-           <Stack.Screen
+            {/* <Stack.Screen
             name="WelcomePage"
             component={FirstPage}
             options={{ headerShown: false }}
-          />
+          />  */}
 
-          <Stack.Screen
+           {/* <Stack.Screen
             name="SignUpPage"
             component={SignUpPage}
             options={{ headerShown: false }}
-          />
+          />  */}
 
           {/* {Bhavesh end} */}
 
           {/* Himanshu */}
 
-          {/* <Stack.Screen
+           {/* <Stack.Screen
             name="forgotPassword"
             component={ForgotPassword}
             options={{ headerShown: false }}
-          />
+          /> */}
           
-          <Stack.Screen
+          {/* <Stack.Screen
             name="otpVerification"
             component={OtpVerification}
             options={{ headerShown: false }}
-          />
-          <Stack.Screen
+          /> */}
+          {/* <Stack.Screen
             name="newPassword"
             component={NewPassword}
             options={{ headerShown: false }}
-          />
-          <Stack.Screen
+          /> */}
+          {/* <Stack.Screen
             name="inCorrectPassword"
             component={NotMatchedPassword}
             options={{ headerShown: false }}
-          />
+          /> */}
 
-          <Stack.Screen
+          {/* <Stack.Screen
             name="correctPassword"
             component={CorrectPassword}
             options={{ headerShown: false }}
-          /> */}
+          />  */}
 
           {/* Himanshu - end */}
 
           {/* Sakshi */}
 
-          {/* <Stack.Screen
+           {/* <Stack.Screen
             name="WalletMain"
             component={WalletMain}
             options={{ headerShown: false }}
-          />
-          <Stack.Screen
+          /> */}
+          {/* <Stack.Screen
             name="WalletMainVerified"
             component={WalletMainVerified}
             options={{ headerShown: false }}
-          /> */}
+          />  */}
 
           {/* Sakshi - end */}
 
           {/* samraat start */}
+
+             {/* <Stack.Screen
+              name="Mainpage"
+              component={Mainpage}
+              options={{headerShown : false}}
+             /> */}
+          {/* <Stack.Screen
+            name="Slide"
+            component={Slide}
+            options={{ headerShown: false }}
+          />  */}
+
+          <Stack.Screen
+            name="Parent"
+            component={Parent}
+            options={{headerShown: false}}
+           />
+
+            <Stack.Screen
+            name="EditProfile"
+            component={EditProfile}
+            options={{ headerShown: false }}
+          /> 
+          <Stack.Screen
+            name="ProfileDetail"
+            component={ProfileDetail}
+            options={{ headerShown: false }}
+          /> 
+
+          {/* <Stack.Screen
+            name="Redirect"
+            component={Redirect}
+            options={{ headerShown: false }}
+          /> */}
+            {/* <Drawer.Screen
+                  name='Redirect'
+                 component={Redirect} 
+                 options={{headerShown :false}
+                
+                 } 
+            /> */}
+         
+        
+          <Stack.Screen 
+            name="BankAccount"
+            component={BankAccount}
+            options={{headerShown :false}}
+          />
+
+        
+
+          <Stack.Screen 
+            name="Quicktask"
+            component={Quicktask}
+            options={{headerShown : false}}
+          />
+     
+          <Stack.Screen
+            name="GenerateQuery"
+            component={GenerateQuery }
+            options={{headerShown:false}}
+          />
+         
+          <Stack.Screen
+            name="CancelQuery"
+            component={CancelQuery}
+            options={{headerShown:false}}
+          />
+          <Stack.Screen
+            name="Backtdash"
+            component={Backtdash}
+            options={{headerShown:false}}
+          />
+          <Stack.Screen 
+            name="Logout"
+            component={Logout}
+            options={{headerShown :false}}
+          /> 
            
+          
 
            {/* samraat end */}
 
