@@ -6,9 +6,24 @@ const Notification = ({navigation}) => {
   const toggleModal = () => {
     setModalVisible(!ismodalVisible);
   };
-
+    const [notification, setNotification] = useState([
+      "Create a club with your friends and start playing.",
+      "Your profile has been created.come and play",
+      "Oops! something is incomplete",
+      "Create a club with your friends and start playing Your................"
+    ])
+    const deleteByIndex= index=>{
+      setNotification(oldValues=>{
+        return oldValues.filter(notification=>notification !== index)
+      })
+    }
+//  const goToMessageScreen = () => { 
+//     navigation.navigate('Notification1', { 
+//       paramKey:message, 
+//     }); 
+//   }; 
   return (
-    <View style={{backgroundColor:'black',height:900}}>
+    <View style={{backgroundColor:'black',height:900,}} >
     <TouchableOpacity  onPress={() => navigation.navigate('Notification1')} >
  
  <Image style={{marginLeft:20,top: 35,}}
@@ -16,9 +31,12 @@ const Notification = ({navigation}) => {
 
 </TouchableOpacity>
    <Text style={{fontWeight:600,fontSize:25,color:'white',left:80,}}>Notifications</Text>
-   <View style={{alignItems:'flex-start',flexDirection:'row',maxWidth:300}}>
+    {notification.map((notification,index)=>{})}
+   <View key={notification} style={{alignItems:'flex-start',flexDirection:'row',maxWidth:300}}>
     <Text style={{color:'rgba(73, 82, 254, 1)',fontWeight:700,fontSize:80,}}>.</Text>
-    <Text  style={{color:'white',fontWeight:600,fontSize:20,paddingTop:60,paddingLeft:20}}>Create a club with your friends and start playing.</Text>
+    <TouchableOpacity onPress={()=>navigation.navigate('Notification1')} >
+    <Text    style={{color:'white',fontWeight:600,fontSize:20,paddingTop:60,paddingLeft:20}}>{notification}</Text>
+    </TouchableOpacity>
     <TouchableOpacity onPress={() => setModalVisible(true)}>
     <Image  style={{top:65,}} source={require('../../../assets/threedot.png')}/>
 </TouchableOpacity>
@@ -26,22 +44,22 @@ const Notification = ({navigation}) => {
    </View>
    <View style={{alignItems:'flex-start',flexDirection:'row',maxWidth:300}}>
     <Text style={{color:'rgba(73, 82, 254, 1)',fontWeight:700,fontSize:80,}}>.</Text>
-    <Text style={{color:'white',fontWeight:600,fontSize:20,paddingTop:60,paddingLeft:20}}>Your profile has been created.
-come and play</Text>
+    <Text style={{color:'white',fontWeight:600,fontSize:20,paddingTop:60,paddingLeft:20}}>{notification}</Text>
 <TouchableOpacity onPress={() => setModalVisible(true)}>
     <Image  style={{top:65,}} source={require('../../../assets/threedot.png')}/>
 </TouchableOpacity>
    </View>
    <View style={{alignItems:'flex-start',flexDirection:'row',maxWidth:300}}>
     <Text style={{color:'rgba(73, 82, 254, 1)',fontWeight:700,fontSize:80,}}>.</Text>
-    <Text style={{color:'white',fontWeight:600,fontSize:20,paddingTop:60,paddingLeft:20}}>Oops! something is incomplete</Text>
+    <Text style={{color:'white',fontWeight:600,fontSize:20,paddingTop:60,paddingLeft:20}}>{notification}</Text>
     <TouchableOpacity onPress={() => setModalVisible(true)}>
     <Image  style={{top:65,}} source={require('../../../assets/threedot.png')}/>
 </TouchableOpacity>
    </View>
    <View style={{alignItems:'flex-start',flexDirection:'row',maxWidth:300}}>
     <Text style={{color:'rgba(73, 82, 254, 1)',fontWeight:700,fontSize:80,}}>.</Text>
-    <Text onPress={() => navigation.navigate('Notification1')} style={{color:'white',fontWeight:600,fontSize:20,paddingTop:60,paddingLeft:20}}>Create a club with your friends and start playing Your................ </Text>
+    <Text onPress={() => navigation.navigate('Notification1')} style={{color:'white',fontWeight:600,fontSize:20,paddingTop:60,paddingLeft:20}}>{notification} </Text>
+    
     <Modal
         theme={{ colors: { backdrop: "rgba(217, 217, 217, 1)" } }}
         animationType="fade"
@@ -68,7 +86,9 @@ come and play</Text>
               }}
             >
               <Image source={require('../../../assets/delete.png')} style={{right:100,top:20}}/>
+              <TouchableOpacity  onClick={()=> deleteByIndex(index)}>
          <Text style={{color:'red', }}>Delete notifications</Text>
+         </TouchableOpacity>
          <Image source={require('../../../assets/notification.png')} style={{right:100,top:20}}/>
          <Text style={{color:'white',left:30}}>Turn off this notification type</Text>
             </View>
@@ -79,7 +99,6 @@ come and play</Text>
          
 </Modal>
    </View>
-   
   </View>
   
   )
@@ -99,9 +118,9 @@ const styles = StyleSheet.create({
       main: {
         backgroundColor: "#D9D9D9",
         minHeight: 180,
-        top: 575,
+        top: 580,
         maxWidth: 340,
-        left: 12,
+        left: 5,
         right: 80,
         borderRadius: 20,
       },
