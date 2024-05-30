@@ -11,6 +11,7 @@ const Start = ({ navigation }) => {
           color: "#fff",
           fontSize: 23,
           fontWeight: 600,
+          textAlign:"center"
         }}
       >
         User123, Would you like to complete your profile?

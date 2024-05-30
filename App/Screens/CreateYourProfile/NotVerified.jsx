@@ -11,7 +11,7 @@ const NotVerified = () => {
           fontSize: 33,
           fontWeight: "bold",
           textAlign: "center",
-          marginTop: "10%",
+          marginTop: "6%",
           textDecorationLine: "underline",
         }}
       >
@@ -19,7 +19,7 @@ const NotVerified = () => {
       </Text>
       <View style={{ marginTop: "15%", marginBottom: "7%" }}>
         <Image
-          style={{ width: 350, height: 350 }}
+          style={{ maxWidth:"85%",minWidth:"85%", height: 300 }}
           source={require("../../../assets/Images/not_verified.png")}
         />
       </View>
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
 
   btn: {
     width: "50%",
-    borderWidth: "1",
+    borderWidth: 1,
     borderColor: "#DDBBE6",
     borderRadius: 10,
     overflow: "hidden",

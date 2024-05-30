@@ -11,10 +11,10 @@ const WaitingPage = ({navigation}) => {
         onPress={() => navigation.navigate("TimeRemaining")}
         style={{
           color: "rgba(234, 89, 228, 1)",
-          fontSize: 30,
+          fontSize: 28,
           fontWeight: "bold",
           textAlign: "center",
-          marginTop: "15%",
+          marginTop: "8%",
         }}
       >
         Waiting for the Member to join
@@ -28,7 +28,7 @@ const WaitingPage = ({navigation}) => {
         }}
       >
         <Image
-          style={{ width: 450, height: 550 }}
+          style={{ maxWidth:"90%",minWidth:"90%", height: 500 }}
           source={require("../../../../../assets/Images/waitingpage.png")}
         />
       </View>

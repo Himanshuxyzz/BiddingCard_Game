@@ -52,7 +52,7 @@ const StartAuctionBC = ({ route, navigation }) => {
     if (password.length >= 8 && hasSpecialCharacter) {
       setIsPasswordValid(true);
       // Proceed with your logic like navigating to the next screen
-        navigation.navigate("WaitingPage");
+      navigation.navigate("WaitingPage");
     } else {
       setIsPasswordValid(false);
     }
@@ -171,7 +171,7 @@ const StartAuctionBC = ({ route, navigation }) => {
         <TextInput
           value={password}
           onChangeText={(text) => setPassword(text)}
-          style={styles.input}
+          style={[styles.input, { paddingVertical: 10 }]}
           placeholder="Password"
           keyboardType="default"
           placeholderTextColor={Colors.INPUT_PLACEHOLDER}
@@ -211,11 +211,11 @@ const StartAuctionBC = ({ route, navigation }) => {
             Forgot Password?
           </Text>
         </TouchableOpacity>
-        
+
         <GradientVarientOneBtn
           onPress={handlePassword}
           btnText={"Submit"}
-        //  onPress={() => navigation.navigate("WaitingPage")}
+          //  onPress={() => navigation.navigate("WaitingPage")}
           style={styles.btn}
         />
       </View>
@@ -240,12 +240,12 @@ const styles = StyleSheet.create({
     maxWidth: "90%",
     height: 57,
     marginVertical: 10,
-    padding: 20,
+    paddingHorizontal: 20,
     backgroundColor: "#fff",
     fontSize: 20,
     borderRadius: 10,
     position: "relative",
-    fontWeight: 800,
+    fontWeight: "800",
   },
   btn: {
     minWidth: "60%",
