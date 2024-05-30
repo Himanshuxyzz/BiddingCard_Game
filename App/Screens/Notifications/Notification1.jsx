@@ -1,17 +1,17 @@
 import { StyleSheet,Text, View, TouchableOpacity, Image, Modal } from 'react-native'
 import { React} from 'react'
-
 const Notification1 = ({ navigation }) => {
-
 
     return (
         <View style={{ backgroundColor: 'black', height: 900 }}>
+        <TouchableOpacity  onPress={() => navigation.navigate('Notification')} >
+ 
+ <Image style={{Left:20,top: 35,}}
+ source={require('../../../assets/back1.png')} />
 
-            < TouchableOpacity onPress={() => navigation.navigate('Notification')} >
-                 <Image style={{ left: 20, top: 35, }} source={require('../../../assets/back1.png')} />
-            </TouchableOpacity>
+</TouchableOpacity>
 
-            <Text onPress={() => navigation.navigate('Notification')}  style={{ fontWeight: 600, fontSize: 25, color: 'white', left: 80, }}>Notifications</Text>
+            <Text   style={{ fontWeight: 600, fontSize: 25, color: 'white', left: 80, }}>Notifications</Text>
             <Modal
                 theme={{ colors: { backdrop: "rgba(217, 217, 217, 0)" } }}
                 transparent={true}
@@ -36,7 +36,7 @@ const Notification1 = ({ navigation }) => {
                                 top: 40,
                             }}
                         >
-                            <Text style={{ width: 265, height: 192, fontWeight: 600, fontSize: 20, left: 10, lineHeight: 24 }}>Create a club with your friends and start playing Your profile has been created come and play Oops! something is incomplete.</Text>
+                            <Text style={{color:'black', width: 265, height: 192, fontWeight: 600, fontSize: 20, left: 10, lineHeight: 24 }}></Text>
                         </View>
                     </View>
 

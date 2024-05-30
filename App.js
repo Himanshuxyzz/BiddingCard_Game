@@ -175,7 +175,7 @@ export default function App() {
 
           {/* {Bhavesh} */}
 
-          {/* <Stack.Screen
+           <Stack.Screen
             name="WelcomePage"
             component={FirstPage}
             options={{ headerShown: false }}
@@ -190,7 +190,7 @@ export default function App() {
             name="LoginPage"
             component={LoginPage}
             options={{ headerShown: false }}
-          /> 
+          />
           <Stack.Screen
             name="ReferPage"
             component={Refer}
@@ -205,7 +205,7 @@ export default function App() {
             name="TermnConditions"
             component={TermnConditions}
             options={{ headerShown: false }}
-          /> 
+          />
            <Stack.Screen
             name="Notification"
             component={Notification}
@@ -215,8 +215,7 @@ export default function App() {
             name="Notification1"
             component={Notification1}
             options={{ headerShown: false }}
-          /> */}
-
+          /> 
           {/* {Bhavesh end} */}
 
           {/* Himanshu */}
