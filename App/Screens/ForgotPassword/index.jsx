@@ -98,7 +98,7 @@ const ForgotPassword = ({ navigation }) => {
           Don’t have an account?
         </Text>
 
-        <GradientVarientOneBtn btnText={"Login"} style={styles.btn} />
+        <GradientVarientOneBtn btnText={"Sign up"} style={styles.btn} />
       </View>
     </View>
   );
