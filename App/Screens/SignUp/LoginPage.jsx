@@ -23,7 +23,7 @@ const LoginPage = ({ navigation }) => {
         placeholder="Password"
         placeholderTextColor={Colors.INPUT_PLACEHOLDER}
       />
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("forgotPassword")}>
         <Text style={styles.forget}>Forget Password?</Text>
       </TouchableOpacity>
       <GradientVarientOneBtn
