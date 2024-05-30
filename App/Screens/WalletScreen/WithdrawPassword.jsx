@@ -1,5 +1,19 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, TextInput, View, Alert, TouchableOpacity, Modal, Image } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+  Alert,
+  TouchableOpacity,
+  Modal,
+  Image,
+  ScrollView,
+  KeyboardAvoidingView,
+  TouchableWithoutFeedback,
+  Keyboard,
+  Platform,
+} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import WalletMainBackground from '../../Components/Wallet/WalletMainBackground';
 import GradientVariantOneBtn from '../../Components/Gradient/GradientVariantOneBtn';
@@ -32,58 +46,65 @@ const WithdrawPassword = ({ navigation, route }) => {
   };
 
   return (
-    <View style={styles.container}>
-      <WalletMainBackground onBackPress={() => navigation.goBack()} balance={balance} />
-      <View style={styles.contentContainer}>
-        <Text style={styles.title}>Withdrawal Amount</Text>
-        <Text style={styles.amount}>₹{amount}</Text>
-        <View style={styles.inputContainer}>
-          <Ionicons name="key-outline" size={24} color="white" style={styles.icon} />
-          <TextInput
-            style={styles.input}
-            placeholder="Enter Password"
-            placeholderTextColor="#ccc"
-            secureTextEntry={!showPassword}
-            value={enteredPassword}
-            onChangeText={setEnteredPassword}
-          />
-          <TouchableOpacity
-            style={styles.eyeIcon}
-            onPress={() => setShowPassword(!showPassword)}
-          >
-            <Ionicons name={showPassword ? "eye-outline" : "eye-off-outline"} size={24} color="white" />
-          </TouchableOpacity>
-        </View>
-        <TouchableOpacity onPress={() => navigation.navigate('forgotPassword')}>
-          <Text style={styles.forgotPassword}>Forgot Password?</Text>
-        </TouchableOpacity>
-        <GradientVariantOneBtn
-          btnText="Continue"
-          onPress={handleContinue}
-        />
-      </View>
-
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={isModalVisible}
-        onRequestClose={() => {
-          setModalVisible(!isModalVisible);
-        }}
-      >
-        <View style={styles.modalContainer}>
-          <View style={styles.modalContent}>
-            <Image
-              source={require('../../../assets/Images/money.png')} 
-              style={styles.successImage}
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+    >
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <ScrollView contentContainerStyle={styles.scrollContainer}>
+          <WalletMainBackground onBackPress={() => navigation.goBack()} balance={balance} />
+          <View style={styles.contentContainer}>
+            <Text style={styles.title}>Withdrawal Amount</Text>
+            <Text style={styles.amount}>₹{amount}</Text>
+            <View style={styles.inputContainer}>
+              <Ionicons name="key-outline" size={24} color="white" style={styles.icon} />
+              <TextInput
+                style={styles.input}
+                placeholder="Enter Password"
+                placeholderTextColor="#ccc"
+                secureTextEntry={!showPassword}
+                value={enteredPassword}
+                onChangeText={setEnteredPassword}
+              />
+              <TouchableOpacity
+                style={styles.eyeIcon}
+                onPress={() => setShowPassword(!showPassword)}
+              >
+                <Ionicons name={showPassword ? "eye-outline" : "eye-off-outline"} size={24} color="white" />
+              </TouchableOpacity>
+            </View>
+            <TouchableOpacity onPress={() => navigation.navigate('forgotPassword')}>
+              <Text style={styles.forgotPassword}>Forgot Password?</Text>
+            </TouchableOpacity>
+            <GradientVariantOneBtn
+              btnText="Continue"
+              onPress={handleContinue}
             />
-            <Text style={styles.modalText}>Withdraw Successful</Text>
-            <Text style={styles.modalAmount}>₹{amount}</Text>
-            <Text style={styles.modalAccount}>A/c No. {accountNumber}</Text>
           </View>
-        </View>
-      </Modal>
-    </View>
+
+          <Modal
+            animationType="slide"
+            transparent={true}
+            visible={isModalVisible}
+            onRequestClose={() => {
+              setModalVisible(!isModalVisible);
+            }}
+          >
+            <View style={styles.modalContainer}>
+              <View style={styles.modalContent}>
+                <Image
+                  source={require('../../../assets/Images/money.png')}
+                  style={styles.successImage}
+                />
+                <Text style={styles.modalText}>Withdraw Successful</Text>
+                <Text style={styles.modalAmount}>₹{amount}</Text>
+                <Text style={styles.modalAccount}>A/c No. {accountNumber}</Text>
+              </View>
+            </View>
+          </Modal>
+        </ScrollView>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -94,8 +115,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#333',
   },
+  scrollContainer: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   contentContainer: {
-    flex: 1,
+    width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,

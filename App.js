@@ -252,17 +252,17 @@ export default function App() {
 
            {/* Sakshi */}
            
-           {/* <Stack.Screen
+           <Stack.Screen
             name="WalletMainVerified"
             component={WalletMainVerified}
             options={{ headerShown: false }}
           />
-
+{/* 
           <Stack.Screen 
                 name="NotVerifiedWallet"
                 component={NotVerifiedWallet}
                 options={{ headerShown: false }}
-                />
+                /> */}
           <Stack.Screen
             name="AddToWallet"
             component={AddToWallet}
@@ -284,12 +284,12 @@ export default function App() {
             component={BankPassword}
             options={{ headerShown: false }}
           /> 
-           {<Stack.Screen
+           {/* {<Stack.Screen
             name="InsufficientBalance"
             component={InsufficientBalance}
             options={{ headerShown: false }}
           />
-           }
+           } */}
            <Stack.Screen
             name="Withdraw"
             component={Withdraw}
@@ -311,7 +311,7 @@ export default function App() {
             component={WithdrawPassword}
             options={{ headerShown: false }}
           />
-            */}
+           
           {/* Sakshi - end */}
 
           {/* samraat start */}
