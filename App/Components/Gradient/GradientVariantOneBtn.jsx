@@ -23,7 +23,7 @@ const GradientVarientOneBtn = ({ btnText, style, isDisabled, ...props }) => {
             textAlign: "center",
             fontSize: 20,
             color: Colors.WHITE,
-            fontWeight: "600",
+            fontWeight: "bold",
           }}
         >
           {btnText}
