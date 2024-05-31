@@ -62,6 +62,8 @@ import Emailotpwrong from "./App/Screens/UserProfile/Emailverify/Emailotpwrong";
 import Emaildone from "./App/Screens/UserProfile/Emailverify/Emaildone";
 import Slide from "./App/Screens/UserProfile/Slidecomponent/Slide";
 import Result from "./App/Screens/Dashboard/PlayOnline/Simple/Result";
+import AuthNavigator from "./App/Navigators/AuthNavigator";
+import VerificationNavigator from "./App/Navigators/VerificationNavigator";
 
 
 const Stack = createNativeStackNavigator();
@@ -72,9 +74,9 @@ export default function App() {
     <NavigationContainer>
       <StatusBar style="light" />
       <View style={styles.container}>
-        <Stack.Navigator>
+        {/* <Stack.Navigator> */}
           {/* Esha */}
-          <Stack.Screen
+          {/* <Stack.Screen
             name="Start"
             component={Start}
             options={{ headerShown: false }}
@@ -168,14 +170,14 @@ export default function App() {
             name="Bidding"
             component={Bidding}
             options={{ headerShown: false }}
-          />
+          /> */}
 
 
           {/* Esha - end */}
 
           {/* {Bhavesh} */}
 
-           <Stack.Screen
+           {/* <Stack.Screen
             name="WelcomePage"
             component={FirstPage}
             options={{ headerShown: false }}
@@ -215,7 +217,7 @@ export default function App() {
             name="Notification1"
             component={Notification1}
             options={{ headerShown: false }}
-          /> 
+          />  */}
           {/* {Bhavesh end} */}
 
           {/* Himanshu */}
@@ -252,18 +254,18 @@ export default function App() {
 
            {/* Sakshi */}
            
-           <Stack.Screen
+           {/* <Stack.Screen
             name="WalletMainVerified"
             component={WalletMainVerified}
             options={{ headerShown: false }}
-          />
+          /> */}
 {/* 
           <Stack.Screen 
                 name="NotVerifiedWallet"
                 component={NotVerifiedWallet}
                 options={{ headerShown: false }}
                 /> */}
-          <Stack.Screen
+          {/* <Stack.Screen
             name="AddToWallet"
             component={AddToWallet}
             options={{ headerShown: false }}
@@ -283,20 +285,20 @@ export default function App() {
             name="BankPassword"
             component={BankPassword}
             options={{ headerShown: false }}
-          /> 
+          />  */}
            {/* {<Stack.Screen
             name="InsufficientBalance"
             component={InsufficientBalance}
             options={{ headerShown: false }}
           />
            } */}
-           <Stack.Screen
+           {/* <Stack.Screen
             name="Withdraw"
             component={Withdraw}
             options={{ headerShown: false }}
-          />
+          /> */}
            
-           <Stack.Screen
+           {/* <Stack.Screen
             name="WithdrawAccount"
             component={WithdrawAccount}
             options={{ headerShown: false }}
@@ -310,13 +312,19 @@ export default function App() {
             name="WithdrawPassword"
             component={WithdrawPassword}
             options={{ headerShown: false }}
-          />
+          /> */}
            
           {/* Sakshi - end */}
 
           {/* samraat start */}
 
           {/* samraat end */}
+        {/* </Stack.Navigator> */}
+        <Stack.Navigator screenOptions={{headerShown:false}}>
+          <Stack.Screen name="Auth" component={AuthNavigator}/>
+          {/* To navigate to verification after completing authentication process */}
+          <Stack.Screen name="Verification" component={VerificationNavigator}/>
+
         </Stack.Navigator>
       </View>
     </NavigationContainer>

@@ -4,11 +4,15 @@ import WhiteText from "../../Components/WhiteText/WhiteText";
 import Colors from "../../Utils/Colors";
 import GradientVarientOneBtn from "../../Components/Gradient/GradientVariantOneBtn";
 
-const CorrectPassword = () => {
+const CorrectPassword = ({ navigation }) => {
   return (
     <View style={styles.successContainer}>
       <WhiteText style={styles.Heading}>New Password Created</WhiteText>
-      <GradientVarientOneBtn style={styles.btn} btnText={"Back to Log in"} />
+      <GradientVarientOneBtn
+        onPress={() => navigation.navigate("LoginPage")}
+        style={styles.btn}
+        btnText={"Back to Log in"}
+      />
     </View>
   );
 };
@@ -32,7 +36,7 @@ const styles = StyleSheet.create({
   },
   btn: {
     minWidth: "90%",
-    borderWidth: "1",
+    borderWidth: 1,
     borderColor: "#DDBBE6",
     borderRadius: 10,
     overflow: "hidden",
