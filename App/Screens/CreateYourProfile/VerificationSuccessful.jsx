@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import GradientVarientTwoBtn from "../../Components/Gradient/GradientVariantTwoBtn";
 import Colors from "../../Utils/Colors";
@@ -6,6 +6,7 @@ import Colors from "../../Utils/Colors";
 const VerificationSuccessful = () => {
   return (
     <View style={styles.container}>
+      <ScrollView contentContainerStyle={styles.scrollContent}>
       <Text
         style={{
           color: "rgba(46, 216, 19, 1)",
@@ -20,13 +21,13 @@ const VerificationSuccessful = () => {
       </Text>
       <View style={{ marginTop: "15%", marginBottom: "10%" }}>
         <Image
-          style={{ minWidth:"85%",maxWidth:"85%", height: 300 }}
+          style={{ minWidth:"100%",maxWidth:"100%", height: 350 }}
           source={require("../../../assets/Images/verified.png")}
         />
       </View>
       <View
         style={{
-          width: "85%",
+          width: "95%",
           paddingVertical: 50,
           paddingHorizontal: 20,
         }}
@@ -54,6 +55,7 @@ const VerificationSuccessful = () => {
           Verify
         </Text>
       </TouchableOpacity>
+     </ScrollView>
     </View>
   );
 };
@@ -65,6 +67,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#2A2E2E",
     alignItems: "center",
+    // padding: 20,
+  },
+  scrollContent: {
+    flexGrow: 1,
+    justifyContent: "center",
     padding: 20,
   },
 

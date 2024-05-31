@@ -130,9 +130,9 @@ const CreateUrProfile = ({ navigation }) => {
         <Text style={styles.noteText}>
           * (Please fill Mention as Aadhar card)
         </Text>
-        <View style={[styles.inputContainer, { position: "relative" }]}>
+        <View style={styles.inputContainer}>
           <TextInput
-            style={styles.input}
+            style={[styles.input,{ position: "relative" }]}
             placeholder="D.O.B"
             placeholderTextColor={Colors.INPUT_PLACEHOLDER}
             autoCapitalize={"none"}

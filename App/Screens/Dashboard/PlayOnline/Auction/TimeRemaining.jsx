@@ -9,14 +9,14 @@ const TimeRemaining = ({navigation}) => {
       <Header />
       <View
         style={{
-          marginTop: "15%",
+          marginTop: "10%",
           // justifyContent: "center",
           alignItems: "center",
           // flex: 1,
         }}
       >
         <Image
-          style={{ width: 300, height: 400 }}
+          style={{ maxWidth:"90%",minWidth:"90%", height: 350 }}
           source={require("../../../../../assets/Images/Timeremain.png")}
         />
       </View>
@@ -69,11 +69,11 @@ const styles = StyleSheet.create({
     // alignItems: "center",
     flexDirection: "column",
     // gap: 20,
-    padding: 30,
+    padding: 20,
   },
   btn: {
-    width: "50%",
-    borderWidth: "1",
+    width: "47%",
+    borderWidth: 1,
     borderColor: "#DDBBE6",
     borderRadius: 10,
     overflow: "hidden",

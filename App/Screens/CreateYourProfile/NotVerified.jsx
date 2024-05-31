@@ -1,17 +1,18 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import GradientVarientThirdBtn from "../../Components/Gradient/GradientVariantThirdBtn";
 
 const NotVerified = () => {
   return (
     <View style={styles.container}>
+       <ScrollView contentContainerStyle={styles.scrollContent}>
       <Text
         style={{
           color: "rgba(255, 0, 0, 1)",
           fontSize: 33,
           fontWeight: "bold",
           textAlign: "center",
-          marginTop: "6%",
+          marginTop: "4%",
           textDecorationLine: "underline",
         }}
       >
@@ -77,6 +78,7 @@ const NotVerified = () => {
           We can help you to create your profile
         </Text>
       </View>
+      </ScrollView>
     </View>
   );
 };
@@ -87,10 +89,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#2A2E2E",
+    // alignItems: "center",
+    // padding: 30,
+  },
+  scrollContent: {
+    flexGrow: 1,
+    justifyContent: "center",
     alignItems: "center",
     padding: 30,
   },
-
   btn: {
     width: "50%",
     borderWidth: 1,
