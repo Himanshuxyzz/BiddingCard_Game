@@ -20,13 +20,13 @@ const VerificationSuccessful = () => {
       </Text>
       <View style={{ marginTop: "15%", marginBottom: "10%" }}>
         <Image
-          style={{ width: 300, height: 300 }}
+          style={{ minWidth:"85%",maxWidth:"85%", height: 300 }}
           source={require("../../../assets/Images/verified.png")}
         />
       </View>
       <View
         style={{
-          width: "90%",
+          width: "85%",
           paddingVertical: 50,
           paddingHorizontal: 20,
         }}
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
 
   btn: {
     minWidth: "90%",
-    borderWidth: "1",
+    borderWidth: 1,
     borderColor: "#DDBBE6",
     borderRadius: 10,
     overflow: "hidden",

@@ -107,7 +107,7 @@ const StartBC = ({ route, navigation }) => {
         <TextInput
           value={password}
           onChangeText={(text) => setPassword(text)}
-          style={styles.input}
+          style={[styles.input,{paddingVertical:10}]}
           placeholder="Password"
           keyboardType="default"
           placeholderTextColor={Colors.INPUT_PLACEHOLDER}
@@ -115,7 +115,7 @@ const StartBC = ({ route, navigation }) => {
           secureTextEntry // To hide the password
         />
         <FontAwesome6
-          style={{ position: "absolute", top: 190, right: 40 }}
+          style={{ position: "absolute", top: 195, right: 40 }}
           name="eye-slash"
           size={28}
           color="rgba(177, 177, 177, 1)"
@@ -169,18 +169,33 @@ const styles = StyleSheet.create({
     gap: 20,
     padding: 20,
   },
+  // input: {
+  //   color: Colors.BLACK,
+  //   minWidth: "85%",
+  //   maxWidth: "85%",
+  //   height: 57,
+  //   marginVertical: 15,
+  //   padding: 20,
+  //   backgroundColor: "#fff",
+  //   fontSize: 23,
+  //   borderRadius: 10,
+  //   position: "relative",
+  //   fontWeight: 800,
+  // },
+  
   input: {
-    color: Colors.BLACK,
-    minWidth: "85%",
-    maxWidth: "90%",
-    height: 57,
-    marginVertical: 15,
-    padding: 20,
-    backgroundColor: "#fff",
-    fontSize: 23,
-    borderRadius: 10,
-    position: "relative",
-    fontWeight: 800,
+color: Colors.BLACK,
+minWidth:"85%",
+maxWidth:"85%",
+height:57,
+marginVertical:15,
+paddingHorizontal:20,
+backgroundColor:"#fff",
+fontSize:20,
+borderRadius:10,
+position:"relative",
+fontWeight:"800",
+
   },
   btn: {
     minWidth: "60%",

@@ -20,15 +20,15 @@ const VerificationPending = () => {
       </Text>
       <View style={{ marginTop: "4%" }}>
         <Image
-          style={{ width: 350, height: 400 }}
+          style={{ minWidth: "90%", maxWidth:"90%" ,height:400}}
           source={require("../../../assets/Images/verificationpending.png")}
         />
       </View>
       <View
         style={{
           width: "90%",
-          paddingVertical: 50,
-          paddingHorizontal: 20,
+          paddingVertical: 30,
+          paddingHorizontal: 40,
           borderWidth: 1,
           borderColor: "rgba(255, 255, 255, 1)",
           borderStyle: "solid",
