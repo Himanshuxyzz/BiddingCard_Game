@@ -10,6 +10,21 @@ import StartBC from "../Screens/Dashboard/PlayOnline/Simple/StartBC";
 import SpinWheel from "../Screens/Dashboard/PlayOnline/Simple/SpinWheel";
 import UserEntries from "../Screens/Dashboard/PlayOnline/Simple/UserEntries";
 import Result from "../Screens/Dashboard/PlayOnline/Simple/Result";
+import StartAuctionBC from "../Screens/Dashboard/PlayOnline/Auction/StartAuctionBC";
+import WaitingPage from "../Screens/Dashboard/PlayOnline/Auction/WaitingPage";
+import TimeRemaining from "../Screens/Dashboard/PlayOnline/Auction/TimeRemaining";
+import Bidding from "../Screens/Dashboard/PlayOnline/Auction/Bidding";
+import WalletMainVerified from "../Screens/WalletScreen/WalletMainVerified";
+import NotVerifiedWallet from "../Screens/WalletScreen/NotVerifiedWallet";
+import AddToWallet from "../Screens/WalletScreen/AddToWallet";
+import BankDetails from "../Screens/WalletScreen/BankDetails";
+import BankDetailsSecond from "../Screens/WalletScreen/BankDetailsSecond";
+import BankPassword from "../Screens/WalletScreen/BankPassword";
+import InsufficientBalance from "../Screens/WalletScreen/InsufficientBalance";
+import Withdraw from "../Screens/WalletScreen/Withdraw";
+import WithdrawAccount from "../Screens/WalletScreen/WithdrawAccount";
+import WithdrawDetails from "../Screens/WalletScreen/WithdrawDetails";
+import WithdrawPassword from "../Screens/WalletScreen/WithdrawPassword";
 
 const Stack = createNativeStackNavigator();
 
@@ -25,12 +40,12 @@ const MainDashboardNavigator = () => {
         component={Dashboard}
         options={{ headerShown: false }}
       />
-
       <Stack.Screen
         name="Playonline"
         component={PlayOnline}
         options={{ headerShown: false }}
       />
+
       {/* esha end */}
 
       {/* himanshu */}
@@ -60,6 +75,7 @@ const MainDashboardNavigator = () => {
         component={UserEntries}
         options={{ headerShown: false }}
       />
+      
       <Stack.Screen
         name="Result"
         component={Result}
@@ -80,7 +96,93 @@ const MainDashboardNavigator = () => {
         options={{ headerShown: false }}
       />
 
+      <Stack.Screen
+        name="StartAuctionbc"
+        component={StartAuctionBC}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="WaitingPage"
+        component={WaitingPage}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="TimeRemaining"
+        component={TimeRemaining}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Bidding"
+        component={Bidding}
+        options={{ headerShown: false }}
+      />
+
       {/* esha end */}
+
+      {/* Sakshi */}
+      <Stack.Screen
+        name="WalletMainVerified"
+        component={WalletMainVerified}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="NotVerifiedWallet"
+        component={NotVerifiedWallet}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="AddToWallet"
+        component={AddToWallet}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="BankDetails"
+        component={BankDetails}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="BankDetailsSecond"
+        component={BankDetailsSecond}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="BankPassword"
+        component={BankPassword}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="InsufficientBalance"
+        component={InsufficientBalance}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Withdraw"
+        component={Withdraw}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="WithdrawAccount"
+        component={WithdrawAccount}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="WithdrawDetails"
+        component={WithdrawDetails}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="WithdrawPassword"
+        component={WithdrawPassword}
+        options={{ headerShown: false }}
+      />
+
+      {/* Sakshi end*/}
     </Stack.Navigator>
   );
 };
