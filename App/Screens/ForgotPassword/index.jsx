@@ -147,8 +147,9 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   subHeading: {
-    fontSize: 28,
+    fontSize: 25,
     fontWeight: "500",
+    textAlign: "center",
   },
   input: {
     color: Colors.WHITE,

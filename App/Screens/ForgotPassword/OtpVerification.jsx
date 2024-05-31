@@ -68,47 +68,61 @@ const OtpVerification = ({ navigation }) => {
           <WhiteText style={styles.Heading}>Verification</WhiteText>
 
           <Image
-            style={{ width: 259, height: 249 }}
+            style={{
+              minWidth: "80%",
+              maxWidth: "80%",
+              minHeight: "35%",
+              maxHeight: "35%",
+              marginHorizontal: "auto",
+            }}
             source={require("../../../assets/Images/OtpVeriScreenbg.png")}
           />
 
           <WhiteText style={styles.subHeading}>
             Enter Verification code sent in your mail / mobile number.
           </WhiteText>
-          <OtpInput
-            ref={otpInputRef}
-            autoFocus={false}
-            numberOfDigits={4}
-            focusColor={"white"}
-            onFilled={(otp) => verifyOtp(otp)}
-            textInputProps={{
-              accessibilityLabel: "One-Time Password",
+          <View
+            style={{
+              maxWidth: "90%",
+              minWidth: "85%",
+              marginHorizontal: "auto",
             }}
-            theme={{
-              pinCodeContainerStyle: {
-                borderRadius: 99,
-                width: 66,
-                height: 64,
-                backgroundColor: "rgba(255,255,255,0.1)",
-                borderColor: "rgba(199,194,194,0.77)",
-              },
-              pinCodeTextStyle: {
-                fontSize: 20,
-                color: Colors.WHITE,
-                fontWeight: "700",
-              },
-            }}
-          />
+          >
+            <OtpInput
+              ref={otpInputRef}
+              autoFocus={false}
+              numberOfDigits={4}
+              focusColor={"white"}
+              onFilled={(otp) => verifyOtp(otp)}
+              textInputProps={{
+                accessibilityLabel: "One-Time Password",
+              }}
+              theme={{
+                pinCodeContainerStyle: {
+                  borderRadius: 99,
+                  width: 66,
+                  height: 64,
+                  backgroundColor: "rgba(255,255,255,0.1)",
+                  borderColor: "rgba(199,194,194,0.77)",
+                },
+                pinCodeTextStyle: {
+                  fontSize: 20,
+                  color: Colors.WHITE,
+                  fontWeight: "700",
+                },
+              }}
+            />
+          </View>
 
           <View
             style={{
               flexDirection: "column",
-              gap: 2.5,
+              gap: 3,
               alignItems: "center",
             }}
           >
             <View
-              style={{ flexDirection: "row", gap: 2.5, alignItems: "center" }}
+              style={{ flexDirection: "row", gap: 5, alignItems: "center" }}
             >
               <Text
                 style={{ color: Colors.WHITE, fontSize: 18, fontWeight: "700" }}
@@ -174,42 +188,51 @@ const OtpVerification = ({ navigation }) => {
                 Oops, Seems like something is
                 <Text style={{ color: Colors.INVALIDTEXT_COLOR }}> wrong</Text>
               </Text>
-              <OtpInput
-                autoFocus={false}
-                numberOfDigits={4}
-                // onTextChange={(text) => console.log(text)}
-                focusColor={"white"}
-                // onFilled={(text) => console.log(`OTP is ${text}`)}
-                onFilled={(otp) => verifyOtp(otp)}
-                textInputProps={{
-                  accessibilityLabel: "One-Time Password",
+              <View
+                style={{
+                  maxWidth: "90%",
+                  minWidth: "90%",
+                  marginHorizontal: "auto",
                 }}
-                theme={{
-                  pinCodeContainerStyle: {
-                    borderRadius: 99,
-                    width: 66,
-                    height: 64,
-                    backgroundColor: "rgba(255,255,255,0.1)",
-                    borderColor: "rgba(199,194,194,0.77)",
-                  },
-                  pinCodeTextStyle: {
-                    fontSize: 20,
-                    color: Colors.WHITE,
-                    fontWeight: "700",
-                  },
-                }}
-              />
+              >
+                <OtpInput
+                  autoFocus={false}
+                  numberOfDigits={4}
+                  // onTextChange={(text) => console.log(text)}
+                  focusColor={"white"}
+                  // onFilled={(text) => console.log(`OTP is ${text}`)}
+                  onFilled={(otp) => verifyOtp(otp)}
+                  textInputProps={{
+                    accessibilityLabel: "One-Time Password",
+                  }}
+                  theme={{
+                    pinCodeContainerStyle: {
+                      borderRadius: 99,
+                      width: 64,
+                      height: 64,
+                      backgroundColor: "rgba(255,255,255,0.1)",
+                      borderColor: "rgba(199,194,194,0.77)",
+                    },
+                    pinCodeTextStyle: {
+                      fontSize: 20,
+                      color: Colors.WHITE,
+                      fontWeight: "700",
+                    },
+                  }}
+                />
+              </View>
+
               <View
                 style={{
                   flexDirection: "column",
-                  gap: 2.5,
+                  gap: 3,
                   alignItems: "center",
                 }}
               >
                 <View
                   style={{
                     flexDirection: "row",
-                    gap: 2.5,
+                    gap: 5,
                     alignItems: "center",
                   }}
                 >
@@ -308,21 +331,21 @@ const styles = StyleSheet.create({
   Heading: {
     fontSize: 30,
     fontWeight: "bold",
-    // fontFamily: "Laila-Bold",
   },
   subHeading: {
     padding: 10,
-    fontSize: 20,
-    fontWeight: "700",
-    // fontFamily: "Inter-Medium",
+    fontSize: 22,
+    fontWeight: "500",
     textAlign: "center",
   },
   btn: {
     minWidth: "90%",
-    borderWidth: "1",
+    maxWidth: "90%",
+    borderWidth: 1,
     borderColor: "#DDBBE6",
     borderRadius: 10,
     overflow: "hidden",
+    marginTop: 20,
   },
   btnTwoVarientStyle: {
     backgroundColor: "#2ED813",
