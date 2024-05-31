@@ -28,7 +28,7 @@ const LoginPage = ({ navigation }) => {
       </TouchableOpacity>
       <GradientVarientOneBtn
         btnText={"Continue"}
-        onPress={() => navigation.navigate("")}
+        onPress={() => navigation.navigate("Verification")}
         style={styles.btn}
       />
       <Text style={styles.txt2}>
