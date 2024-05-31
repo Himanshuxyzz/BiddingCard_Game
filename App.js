@@ -64,6 +64,7 @@ import Slide from "./App/Screens/UserProfile/Slidecomponent/Slide";
 import Result from "./App/Screens/Dashboard/PlayOnline/Simple/Result";
 import AuthNavigator from "./App/Navigators/AuthNavigator";
 import VerificationNavigator from "./App/Navigators/VerificationNavigator";
+import MainDashboardNavigator from "./App/Navigators/MainDashboardNavigator";
 
 
 const Stack = createNativeStackNavigator();
@@ -324,6 +325,7 @@ export default function App() {
           <Stack.Screen name="Auth" component={AuthNavigator}/>
           {/* To navigate to verification after completing authentication process */}
           <Stack.Screen name="Verification" component={VerificationNavigator}/>
+          <Stack.Screen name="MainDashboard" component={MainDashboardNavigator}/>
 
         </Stack.Navigator>
       </View>

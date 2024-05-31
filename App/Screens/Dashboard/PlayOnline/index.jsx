@@ -19,12 +19,6 @@ const PlayOnline = ({ navigation }) => {
               <Text style={styles.buttonText}>Simple BC</Text>
             </View>
           </TouchableOpacity>
-
-          <TouchableOpacity onPress={() => navigation.navigate("Auction")}>
-            <View style={styles.button}>
-              <Text style={styles.buttonText}>Auction BC</Text>
-            </View>
-          </TouchableOpacity>
         </View>
       </View>
     </View>

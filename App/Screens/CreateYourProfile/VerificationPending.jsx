@@ -3,7 +3,7 @@ import React from "react";
 import GradientVarientOneBtn from "../../Components/Gradient/GradientVariantOneBtn";
 import GradientVarientTwoBtn from "../../Components/Gradient/GradientVariantTwoBtn";
 
-const VerificationPending = () => {
+const VerificationPending = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text
@@ -20,7 +20,7 @@ const VerificationPending = () => {
       </Text>
       <View style={{ marginTop: "4%" }}>
         <Image
-          style={{ minWidth: "90%", maxWidth:"90%" ,height:400}}
+          style={{ minWidth: "90%", maxWidth: "90%", height: 400 }}
           source={require("../../../assets/Images/verificationpending.png")}
         />
       </View>
@@ -46,7 +46,11 @@ const VerificationPending = () => {
           know once it’s Done!
         </Text>
       </View>
-      <GradientVarientTwoBtn btnText={"Back to Login"} style={styles.btn} />
+      <GradientVarientTwoBtn
+        onPress={() => navigation.navigate("LoginPage")}
+        btnText={"Back to Login"}
+        style={styles.btn}
+      />
     </View>
   );
 };
