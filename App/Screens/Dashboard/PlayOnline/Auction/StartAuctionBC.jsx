@@ -1,9 +1,14 @@
 import {
+  KeyboardAvoidingView,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
+  TouchableWithoutFeedback,
   View,
+  Platform,
+  Keyboard,
+  ScrollView,
 } from "react-native";
 import React from "react";
 import Header from "../../../../Components/DashboardHeader/Header";
@@ -59,65 +64,72 @@ const StartAuctionBC = ({ route, navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
-      <Header />
-      <Text
-        onPress={() => navigation.navigate("UserEntries")}
-        style={{
-          color: "#fff",
-          marginTop: "10%",
-          fontSize: 33,
-          fontWeight: "bold",
-          textDecorationLine: "underline",
-        }}
-      >
-        Start Your BC
-      </Text>
-      <Text style={{ color: "#fff", fontSize: 18, fontWeight: 600 }}>
-        Money is added from the wallet
-      </Text>
-      <View
-        style={{
-          width: 330,
-          height: 520,
-          marginTop: "2%",
-          backgroundColor: "rgba(228, 148, 235, 1)",
-          borderRadius: 12,
-          alignItems: "center",
-        }}
-      >
-        <Text
-          style={{
-            textAlign: "center",
-            fontSize: 25,
-            fontWeight: "bold",
-            color: "#fff",
-            marginTop: "8%",
-          }}
-        >
-          Select Amount
-        </Text>
-        <TextInput
-          value={""}
-          //   onChangeText={(text) => setEmailMobile(text)}
-          //   onChangeText={setEmailMobile}
-          style={styles.input}
-          placeholder="Enter Amount per person"
-          keyboardType="default"
-          placeholderTextColor={Colors.INPUT_PLACEHOLDER}
-          autoCapitalize={"none"}
-        />
-        <TextInput
-          value={""}
-          //   onChangeText={(text) => setEmailMobile(text)}
-          //   onChangeText={setEmailMobile}
-          style={styles.input}
-          placeholder="Number of people"
-          keyboardType="default"
-          placeholderTextColor={Colors.INPUT_PLACEHOLDER}
-          autoCapitalize={"none"}
-        />
-        {/* <TextInput
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={styles.main}
+      keyboardVerticalOffset={Platform.select({ ios: 60, android: 60 })}
+    >
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <ScrollView contentContainerStyle={styles.scrollContainer}>
+          <View style={styles.container}>
+            <Header />
+            <Text
+              onPress={() => navigation.navigate("UserEntries")}
+              style={{
+                color: "#fff",
+                marginTop: "10%",
+                fontSize: 33,
+                fontWeight: "bold",
+                textDecorationLine: "underline",
+              }}
+            >
+              Start Your BC
+            </Text>
+            <Text style={{ color: "#fff", fontSize: 18, fontWeight: 600 }}>
+              Money is added from the wallet
+            </Text>
+            <View
+              style={{
+                width: 330,
+                height: 520,
+                marginTop: "2%",
+                backgroundColor: "rgba(228, 148, 235, 1)",
+                borderRadius: 12,
+                alignItems: "center",
+              }}
+            >
+              <Text
+                style={{
+                  textAlign: "center",
+                  fontSize: 25,
+                  fontWeight: "bold",
+                  color: "#fff",
+                  marginTop: "8%",
+                }}
+              >
+                Select Amount
+              </Text>
+              <TextInput
+                value={""}
+                //   onChangeText={(text) => setEmailMobile(text)}
+                //   onChangeText={setEmailMobile}
+                style={styles.input}
+                placeholder="Enter Amount per person"
+                keyboardType="default"
+                placeholderTextColor={Colors.INPUT_PLACEHOLDER}
+                autoCapitalize={"none"}
+              />
+              <TextInput
+                value={""}
+                //   onChangeText={(text) => setEmailMobile(text)}
+                //   onChangeText={setEmailMobile}
+                style={styles.input}
+                placeholder="Number of people"
+                keyboardType="default"
+                placeholderTextColor={Colors.INPUT_PLACEHOLDER}
+                autoCapitalize={"none"}
+              />
+              {/* <TextInput
           value={""}
           //   onChangeText={(text) => setEmailMobile(text)}
           //   onChangeText={setEmailMobile}
@@ -127,112 +139,136 @@ const StartAuctionBC = ({ route, navigation }) => {
           placeholderTextColor={Colors.INPUT_PLACEHOLDER}
           autoCapitalize={"none"}
         /> */}
-        <TextInput
-          style={styles.input}
-          placeholder="D.O.B"
-          placeholderTextColor={Colors.INPUT_PLACEHOLDER}
-          autoCapitalize={"none"}
-          value={formatDate(selectedDate)}
-        />
-        <DateTimePickerModal
-          isVisible={isDatePickerVisible}
-          mode="date"
-          onConfirm={handleConfirm}
-          onCancel={hideDatePicker}
-        />
+              <TextInput
+                style={styles.input}
+                placeholder="D.O.B"
+                placeholderTextColor={Colors.INPUT_PLACEHOLDER}
+                autoCapitalize={"none"}
+                value={formatDate(selectedDate)}
+              />
+              <DateTimePickerModal
+                isVisible={isDatePickerVisible}
+                mode="date"
+                onConfirm={handleConfirm}
+                onCancel={hideDatePicker}
+              />
 
-        <TouchableOpacity
-          style={{ position: "absolute", top: 235, right: 45 }}
-          onPress={showDatePicker}
-        >
-          <Feather name="calendar" size={28} color="rgba(177, 177, 177, 1)" />
-        </TouchableOpacity>
-        {/* <Feather
+              <TouchableOpacity
+                style={{ position: "absolute", top: 235, right: 45 }}
+                onPress={showDatePicker}
+              >
+                <Feather
+                  name="calendar"
+                  size={28}
+                  color="rgba(177, 177, 177, 1)"
+                />
+              </TouchableOpacity>
+              {/* <Feather
           style={{ top: 235, right: 40, position: "absolute" }}
           name="calendar"
           size={28}
           color="black"
         /> */}
-        <View
-          style={{ alignItems: "start", width: "100%", paddingHorizontal: 30 }}
-        >
-          <Text
-            style={{
-              color: "#fff",
-              fontSize: 15,
-              fontWeight: "bold",
-              textAlign: "left",
-            }}
-          >
-            Wallet balance -{" "}
-            <Text style={{ color: "rgba(176, 255, 164, 1)" }}>₹ 6000</Text>
-          </Text>
-        </View>
-        <TextInput
-          value={password}
-          onChangeText={(text) => setPassword(text)}
-          style={[styles.input, { paddingVertical: 10 }]}
-          placeholder="Password"
-          keyboardType="default"
-          placeholderTextColor={Colors.INPUT_PLACEHOLDER}
-          autoCapitalize="none"
-          secureTextEntry // To hide the password
-        />
-        <FontAwesome6
-          style={{ position: "absolute", top: 330, right: 40 }}
-          name="eye-slash"
-          size={28}
-          color="rgba(177, 177, 177, 1)"
-        />
-        {!isPasswordValid && (
-          <Text
-            style={{
-              color: "red",
-              margin: 5,
-              textAlign: "center",
-              fontSize: 15,
-              paddingHorizontal: 20,
-            }}
-          >
-            Password must have atleast 8 characters & one special character.
-          </Text>
-        )}
-        <TouchableOpacity
-          style={{ alignItems: "start", width: "100%", paddingHorizontal: 30 }}
-        >
-          <Text
-            style={{
-              fontSize: 18,
-              fontWeight: "600",
-              color: "rgba(6, 75, 139, 1)",
-              textDecorationLine: "underline",
-            }}
-          >
-            Forgot Password?
-          </Text>
-        </TouchableOpacity>
+              <View
+                style={{
+                  alignItems: "start",
+                  width: "100%",
+                  paddingHorizontal: 30,
+                }}
+              >
+                <Text
+                  style={{
+                    color: "#fff",
+                    fontSize: 15,
+                    fontWeight: "bold",
+                    textAlign: "left",
+                  }}
+                >
+                  Wallet balance -{" "}
+                  <Text style={{ color: "rgba(176, 255, 164, 1)" }}>
+                    ₹ 6000
+                  </Text>
+                </Text>
+              </View>
+              <TextInput
+                value={password}
+                onChangeText={(text) => setPassword(text)}
+                style={[styles.input, { paddingVertical: 10 }]}
+                placeholder="Password"
+                keyboardType="default"
+                placeholderTextColor={Colors.INPUT_PLACEHOLDER}
+                autoCapitalize="none"
+                secureTextEntry // To hide the password
+              />
+              <FontAwesome6
+                style={{ position: "absolute", top: 330, right: 40 }}
+                name="eye-slash"
+                size={28}
+                color="rgba(177, 177, 177, 1)"
+              />
+              {!isPasswordValid && (
+                <Text
+                  style={{
+                    color: "red",
+                    margin: 5,
+                    textAlign: "center",
+                    fontSize: 15,
+                    paddingHorizontal: 20,
+                  }}
+                >
+                  Password must have atleast 8 characters & one special
+                  character.
+                </Text>
+              )}
+              <TouchableOpacity
+                style={{
+                  alignItems: "start",
+                  width: "100%",
+                  paddingHorizontal: 30,
+                }}
+              >
+                <Text
+                  style={{
+                    fontSize: 18,
+                    fontWeight: "600",
+                    color: "rgba(6, 75, 139, 1)",
+                    textDecorationLine: "underline",
+                  }}
+                >
+                  Forgot Password?
+                </Text>
+              </TouchableOpacity>
 
-        <GradientVarientOneBtn
-          onPress={handlePassword}
-          btnText={"Submit"}
-          //  onPress={() => navigation.navigate("WaitingPage")}
-          style={styles.btn}
-        />
-      </View>
-    </View>
+              <GradientVarientOneBtn
+                onPress={handlePassword}
+                btnText={"Submit"}
+                //  onPress={() => navigation.navigate("WaitingPage")}
+                style={styles.btn}
+              />
+            </View>
+          </View>
+        </ScrollView>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 };
 
 export default StartAuctionBC;
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "#2A2E2E",
+  main: {
     flex: 1,
+    backgroundColor: "#2A2E2E",
+  },
+  scrollContainer: {
+    flexGrow: 1,
+  },
+  container: {
+    flex: 1,
+    padding: 20,
     alignItems: "center",
     flexDirection: "column",
-    gap: 20,
-    padding: 20,
+    gap:20,
   },
   input: {
     color: Colors.BLACK,

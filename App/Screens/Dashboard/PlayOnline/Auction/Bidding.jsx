@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     backgroundColor: "rgba(168, 168, 168, 0.5)",
     fontSize: 23,
-    borderRadius: 25,
+    borderRadius: 10,
   },
   bid: {
     position: "absolute",

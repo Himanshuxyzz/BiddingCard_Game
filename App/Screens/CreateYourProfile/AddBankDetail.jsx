@@ -304,21 +304,21 @@ const AddBankDetail = ({ navigation }) => {
               );
             })}
         </View>
-        <GradientVarientOneBtn
+        {/* <GradientVarientOneBtn
           btnText={"Save & Next"}
           onPress={() => navigation.navigate("Verificationpending")}
           style={styles.btn}
-        />
+        /> */}
         {/* <GradientVarientOneBtn
           btnText={"Save & Next"}
           onPress={() => navigation.navigate("Verificationsuccessful")}
           style={styles.btn}
         /> */}
-        {/* <GradientVarientOneBtn
+        <GradientVarientOneBtn
           btnText={"Save & Next"}
           onPress={() => navigation.navigate("Notverified")}
           style={styles.btn}
-        /> */}
+        />
         {/* <GradientVarientOneBtn btnText={"Save & Next"} style={styles.btn} /> */}
       </ScrollView>
     </View>
