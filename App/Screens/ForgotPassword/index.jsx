@@ -21,19 +21,21 @@ const ForgotPassword = ({ navigation }) => {
         <WhiteText style={styles.forgotPasswordHeading}>
           Forgot Password
         </WhiteText>
-        <WhiteText style={styles.subHeading}>
-          Enter Email id/ Mobile number
-        </WhiteText>
-        <TextInput
-          value={emailMobile}
-          //   onChangeText={(text) => setEmailMobile(text)}
-          onChangeText={setEmailMobile}
-          style={styles.input}
-          placeholder="Email id/ Mobile number"
-          keyboardType="default"
-          placeholderTextColor={Colors.INPUT_PLACEHOLDER}
-          autoCapitalize={"none"}
-        />
+        <View style={{ gap: 20 }}>
+          <WhiteText style={styles.subHeading}>
+            Enter Email id/ Mobile number
+          </WhiteText>
+          <TextInput
+            value={emailMobile}
+            //   onChangeText={(text) => setEmailMobile(text)}
+            onChangeText={setEmailMobile}
+            style={styles.input}
+            placeholder="Email id/ Mobile number"
+            keyboardType="default"
+            placeholderTextColor={Colors.INPUT_PLACEHOLDER}
+            autoCapitalize={"none"}
+          />
+        </View>
 
         <GradientVarientOneBtn
           btnText={"Send"}
@@ -50,16 +52,16 @@ const ForgotPassword = ({ navigation }) => {
           }}
         >
           <Text
-            style={{ color: Colors.WHITE, fontSize: 18, fontWeight: "700" }}
+            style={{ color: Colors.WHITE, fontSize: 18, fontWeight: "bold" }}
           >
             Back to
           </Text>
-          <TouchableOpacity onPress={() => {}}>
+          <TouchableOpacity onPress={() => navigation.navigate("LoginPage")}>
             <Text
               style={{
                 fontSize: 18,
                 color: Colors.LINK_COLOR,
-                fontWeight: "700",
+                fontWeight: "bold",
                 textDecorationLine: "underline",
               }}
             >
@@ -75,11 +77,20 @@ const ForgotPassword = ({ navigation }) => {
             justifyContent: "center",
             marginVertical: 15,
             gap: 10,
+            maxWidth: "90%",
           }}
         >
-          <View style={{ flex: 1, height: 1, backgroundColor: "gray" }} />
-          <Text style={{ color: Colors.WHITE, fontSize: 15 }}>Or</Text>
-          <View style={{ flex: 1, height: 1, backgroundColor: "gray" }} />
+          <View
+            style={{ flex: 1, height: 1.5, backgroundColor: Colors.WHITE }}
+          />
+          <Text
+            style={{ color: Colors.WHITE, fontSize: 17, fontWeight: "bold" }}
+          >
+            Or
+          </Text>
+          <View
+            style={{ flex: 1, height: 1.5, backgroundColor: Colors.WHITE }}
+          />
         </View>
 
         <View style={styles.signUpWith}>
@@ -94,11 +105,21 @@ const ForgotPassword = ({ navigation }) => {
           </TouchableOpacity>
         </View>
 
-        <Text style={{ color: Colors.WHITE, fontSize: 18, fontWeight: "500" }}>
+        <Text
+          style={{
+            color: "rgba(177, 177, 177, 1)",
+            fontSize: 18,
+            fontWeight: "bold",
+          }}
+        >
           Don’t have an account?
         </Text>
 
-        <GradientVarientOneBtn btnText={"Sign up"} style={styles.btn} />
+        <GradientVarientOneBtn
+          onPress={() => navigation.navigate("SignUpPage")}
+          btnText={"Sign up"}
+          style={styles.btn}
+        />
       </View>
     </View>
   );
@@ -121,14 +142,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   forgotPasswordHeading: {
-    fontSize: 30,
+    fontSize: 35,
     fontWeight: "bold",
-    // fontFamily: "Laila-Bold",
+    marginBottom: 20,
   },
   subHeading: {
-    fontSize: 20,
-    // fontFamily: "Inter-Medium",
-    fontWeight: "700",
+    fontSize: 25,
+    fontWeight: "500",
+    textAlign: "center",
   },
   input: {
     color: Colors.WHITE,
@@ -142,7 +163,7 @@ const styles = StyleSheet.create({
   },
   btn: {
     minWidth: "90%",
-    borderWidth: "1",
+    borderWidth: 1,
     borderColor: "#DDBBE6",
     borderRadius: 10,
     overflow: "hidden",
@@ -150,8 +171,10 @@ const styles = StyleSheet.create({
   signUpWith: {
     flexDirection: "row",
     alignItems: "center",
-    gap: "50%",
+    justifyContent: "space-between",
     marginBottom: 20,
+    minWidth: "65%",
+    maxWidth: "70%",
   },
   marginTopFix: {
     marginTop: 20,

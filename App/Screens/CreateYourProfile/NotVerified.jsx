@@ -2,7 +2,7 @@ import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import GradientVarientThirdBtn from "../../Components/Gradient/GradientVariantThirdBtn";
 
-const NotVerified = () => {
+const NotVerified = ({ navigation }) => {
   return (
     <View style={styles.container}>
        <ScrollView contentContainerStyle={styles.scrollContent}>
@@ -20,7 +20,7 @@ const NotVerified = () => {
       </Text>
       <View style={{ marginTop: "15%", marginBottom: "7%" }}>
         <Image
-          style={{ maxWidth:"85%",minWidth:"85%", height: 300 }}
+          style={{ maxWidth: "85%", minWidth: "85%", height: 300 }}
           source={require("../../../assets/Images/not_verified.png")}
         />
       </View>
@@ -53,7 +53,11 @@ const NotVerified = () => {
         </Text>
       </View>
       <View style={{ flexDirection: "row", gap: 20 }}>
-        <GradientVarientThirdBtn btnText={"Recreate"} style={styles.btn} />
+        <GradientVarientThirdBtn
+          onPress={() => navigation.navigate("Createurprofile")}
+          btnText={"Recreate"}
+          style={styles.btn}
+        />
         <GradientVarientThirdBtn btnText={"Help me"} style={styles.btn} />
       </View>
       <View style={{ flexDirection: "row", gap: 20, marginTop: "4%" }}>

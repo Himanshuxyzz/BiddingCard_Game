@@ -4,7 +4,7 @@ import Colors from "../../Utils/Colors";
 import WhiteText from "../../Components/WhiteText/WhiteText";
 import GradientVarientOneBtn from "../../Components/Gradient/GradientVariantOneBtn";
 
-const NewPassword = ({ navigation }) => {
+const NotMatchedPassword = ({ navigation }) => {
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
@@ -68,7 +68,7 @@ const NewPassword = ({ navigation }) => {
   );
 };
 
-export default NewPassword;
+export default NotMatchedPassword;
 
 const styles = StyleSheet.create({
   container: {
@@ -83,7 +83,6 @@ const styles = StyleSheet.create({
   },
   subHeading: {
     fontSize: 20,
-    // fontFamily: "Inter-Medium",
     fontWeight: "700",
   },
   Heading: {
@@ -108,7 +107,7 @@ const styles = StyleSheet.create({
   },
   btn: {
     minWidth: "90%",
-    borderWidth: "1",
+    borderWidth: 1,
     borderColor: "#DDBBE6",
     borderRadius: 10,
     overflow: "hidden",

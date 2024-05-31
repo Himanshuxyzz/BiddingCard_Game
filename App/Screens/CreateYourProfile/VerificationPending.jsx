@@ -3,7 +3,7 @@ import React from "react";
 import GradientVarientOneBtn from "../../Components/Gradient/GradientVariantOneBtn";
 import GradientVarientTwoBtn from "../../Components/Gradient/GradientVariantTwoBtn";
 
-const VerificationPending = () => {
+const VerificationPending = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContent}>
@@ -47,9 +47,13 @@ const VerificationPending = () => {
             know once it’s Done!
           </Text>
         </View>
-        <GradientVarientTwoBtn btnText={"Back to Login"} style={styles.btn} />
+          <GradientVarientTwoBtn
+        onPress={() => navigation.navigate("LoginPage")}
+        btnText={"Back to Login"}
+        style={styles.btn}
+      />
       </ScrollView>
-    </View>
+      </View>
   );
 };
 

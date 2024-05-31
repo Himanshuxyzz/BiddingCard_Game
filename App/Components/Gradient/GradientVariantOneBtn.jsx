@@ -12,7 +12,7 @@ const GradientVarientOneBtn = ({ btnText, style, isDisabled, ...props }) => {
         start={{ x: 0, y: 0 }} // Start from the top-left corner
         end={{ x: 1, y: 0 }} // End at the top-right corner
         style={{
-          padding: 15,
+          padding: 18,
           borderColor: "#DDBBE6",
           borderWidth: 1,
           borderRadius: 10,
@@ -23,7 +23,7 @@ const GradientVarientOneBtn = ({ btnText, style, isDisabled, ...props }) => {
             textAlign: "center",
             fontSize: 20,
             color: Colors.WHITE,
-            fontWeight: "600",
+            fontWeight: "bold",
           }}
         >
           {btnText}
