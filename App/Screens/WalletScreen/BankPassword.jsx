@@ -7,7 +7,7 @@ import GradientVariantOneBtn from '../../Components/Gradient/GradientVariantOneB
 const { height: screenHeight } = Dimensions.get('window');
 
 const BankPassword = ({ navigation, route }) => {
-  const [enteredPassword, setEnteredPassword] = useState('');
+  const [enteredPassword, setEnteredPassword] = useState('password123');
   const [showPassword, setShowPassword] = useState(false);
   const [isModalVisible, setModalVisible] = useState(false);
   const amount = parseInt(route.params?.amount, 10) || 1000; // Mock amount
