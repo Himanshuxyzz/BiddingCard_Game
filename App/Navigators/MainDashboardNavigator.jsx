@@ -4,16 +4,16 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Dashboard from "../Screens/Dashboard";
 import PlayOnline from "../Screens/Dashboard/PlayOnline";
 import MakeAClub from "../Screens/Dashboard/MakeAClub";
-import Auction from "../Screens/Dashboard/PlayOnline/Auction";
+import Auction from "../Screens/Dashboard/MakeAClub/Auction";
 import Simple from "../Screens/Dashboard/PlayOnline/Simple";
 import StartBC from "../Screens/Dashboard/PlayOnline/Simple/StartBC";
 import SpinWheel from "../Screens/Dashboard/PlayOnline/Simple/SpinWheel";
 import UserEntries from "../Screens/Dashboard/PlayOnline/Simple/UserEntries";
 import Result from "../Screens/Dashboard/PlayOnline/Simple/Result";
-import StartAuctionBC from "../Screens/Dashboard/PlayOnline/Auction/StartAuctionBC";
-import WaitingPage from "../Screens/Dashboard/PlayOnline/Auction/WaitingPage";
-import TimeRemaining from "../Screens/Dashboard/PlayOnline/Auction/TimeRemaining";
-import Bidding from "../Screens/Dashboard/PlayOnline/Auction/Bidding";
+import StartAuctionBC from "../Screens/Dashboard/MakeAClub/Auction/StartAuctionBC";
+import WaitingPage from "../Screens/Dashboard/MakeAClub/Auction/WaitingPage";
+import TimeRemaining from "../Screens/Dashboard/MakeAClub/Auction/TimeRemaining";
+import Bidding from "../Screens/Dashboard/MakeAClub/Auction/Bidding";
 import WalletMainVerified from "../Screens/WalletScreen/WalletMainVerified";
 import NotVerifiedWallet from "../Screens/WalletScreen/NotVerifiedWallet";
 import AddToWallet from "../Screens/WalletScreen/AddToWallet";
@@ -75,7 +75,7 @@ const MainDashboardNavigator = () => {
         component={UserEntries}
         options={{ headerShown: false }}
       />
-      
+
       <Stack.Screen
         name="Result"
         component={Result}
