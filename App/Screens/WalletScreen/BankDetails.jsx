@@ -5,9 +5,9 @@ import GradientVarientOneBtn from '../../Components/Gradient/GradientVariantOneB
 
 const BankDetails = ({ navigation, route }) => {
   const currentBalance = parseInt(route.params?.currentBalance, 10) || 0;
-  const [accountHolderName, setAccountHolderName] = useState('');
-  const [accountNumber, setAccountNumber] = useState('');
-  const [ifscCode, setIfscCode] = useState('');
+  const [accountHolderName, setAccountHolderName] = useState('Test');
+  const [accountNumber, setAccountNumber] = useState('12345678901');
+  const [ifscCode, setIfscCode] = useState('ABC123');
   const [amount, setAmount] = useState('');
   const [accountNumberError, setAccountNumberError] = useState(false);
 
