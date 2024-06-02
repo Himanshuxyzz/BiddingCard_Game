@@ -28,9 +28,9 @@ import WithdrawPassword from "../Screens/WalletScreen/WithdrawPassword";
 import CustomSimple from "../Screens/Dashboard/MakeAClub/Simple";
 import CustomStartBc from "../Screens/Dashboard/MakeAClub/Simple/CustomStartBc";
 import CustomSpinWheel from "../Screens/Dashboard/MakeAClub/Simple/CustomSpinWheel";
-import AuctionEntries from "../Screens/Dashboard/PlayOnline/Auction/AuctionEntries";
-import AuctionResult from "../Screens/Dashboard/PlayOnline/Auction/AuctionResult";
-import WinnerPage from "../Screens/Dashboard/PlayOnline/Auction/WinnerPage";
+import AuctionResult from "../Screens/Dashboard/MakeAClub/Auction/AuctionResult";
+import AuctionEntries from "../Screens/Dashboard/MakeAClub/Auction/AuctionEntries";
+import WinnerPage from "../Screens/Dashboard/MakeAClub/Auction/WinnerPage";
 
 const Stack = createNativeStackNavigator();
 
