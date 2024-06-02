@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { AntDesign, Ionicons } from '@expo/vector-icons';
-import WhiteText from '../WhiteText/WhiteText'; 
+import WhiteText from '../WhiteText/WhiteText'; // Importing the existing WhiteText component
 
 const WalletMainBackground = ({
   title = "Wallet",
