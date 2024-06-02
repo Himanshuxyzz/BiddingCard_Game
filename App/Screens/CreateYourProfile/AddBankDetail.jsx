@@ -21,6 +21,10 @@ import WhiteText from "../../Components/WhiteText/WhiteText";
 
 const AddBankDetail = ({ navigation }) => {
   const [isModalVisible, setModalVisible] = useState(false);
+  const [accountNumber, setAccountNumber] = useState('');
+  const [accountNumberError, setAccountNumberError] = useState('');
+  const [ifscCode, setIfscCode] = useState('');
+  const [ifscCodeError, setIfscCodeError] = useState('');
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
@@ -32,7 +36,6 @@ const AddBankDetail = ({ navigation }) => {
         type: "*/*",
         multiple: true,
       });
-      // console.log(docRes.assets[0].name);
       console.log(docRes);
       setFileSelected(docRes.assets);
       setModalVisible(false);
@@ -46,7 +49,6 @@ const AddBankDetail = ({ navigation }) => {
         type: "image/*",
       });
       setFileSelected(docRes && docRes?.assets);
-
       setModalVisible(false);
     } catch (error) {
       console.log("Error while selecting file: ", error);
@@ -55,7 +57,6 @@ const AddBankDetail = ({ navigation }) => {
   const [image, setImage] = useState(null);
 
   const pickImage = async () => {
-    // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
@@ -63,18 +64,33 @@ const AddBankDetail = ({ navigation }) => {
       quality: 1,
     });
 
-    // console.log(result);
     setModalVisible(false);
 
     if (!result.canceled) {
       setImage(result.assets[0].uri);
-      // console.log(result)
-
       setFileSelected(result.assets);
     }
   };
   const handleClear = (index) => {
     setFileSelected((prevItems) => prevItems.filter((_, i) => i !== index));
+  };
+
+  const handleAccountNumberChange = (text) => {
+    if (/^\d{16}$/.test(text)) {
+      setAccountNumberError('');
+    } else {
+      setAccountNumberError('Account number must be 16 digits.');
+    }
+    setAccountNumber(text);
+  };
+
+  const handleIfscCodeChange = (text) => {
+    if (/^[A-Z]{4}0[A-Z0-9]{6}$/.test(text)) {
+      setIfscCodeError('');
+    } else {
+      setIfscCodeError('Invalid IFSC code.');
+    }
+    setIfscCode(text);
   };
 
   return (
@@ -97,17 +113,23 @@ const AddBankDetail = ({ navigation }) => {
             keyboardType="default"
             placeholderTextColor={Colors.INPUT_PLACEHOLDER}
             autoCapitalize={"none"}
+            value={accountNumber}
+            onChangeText={handleAccountNumberChange}
           />
         </View>
+        {accountNumberError ? <Text style={styles.errorText}>{accountNumberError}</Text> : null}
         <View style={styles.inputContainer}>
           <TextInput
             style={[styles.input, { width: "100%" }]}
             placeholder="IFSC Number"
-            keyboardType="numeric"
+            keyboardType="default"
             placeholderTextColor={Colors.INPUT_PLACEHOLDER}
             autoCapitalize={"none"}
+            value={ifscCode}
+            onChangeText={handleIfscCodeChange}
           />
         </View>
+        {ifscCodeError ? <Text style={styles.errorText}>{ifscCodeError}</Text> : null}
         <TextInput
           style={[styles.input, { width: "100%" }]}
           placeholder="Branch Name"
@@ -273,19 +295,6 @@ const AddBankDetail = ({ navigation }) => {
             justifyContent: "center",
           }}
         >
-          {/* {fileSelected !== null &&
-            fileSelected !== undefined &&
-            fileSelected?.map((data) => {
-              const uri = data?.uri;
-              const file_Name = uri?.substring(uri?.lastIndexOf("/") + 1);
-              return (
-                <WhiteText key={data?.fileSize} style={{ fontWeight: "700" }}>
-                  {data?.name !== undefined ? data?.name : file_Name}
-                </WhiteText>
-              );
-            })} */}
-          {/* <WhiteText style={{fontWeight:"700"}}> {fileSelected !== null && fileSelected[0].uri}</WhiteText> */}
-
           {fileSelected !== null &&
             fileSelected !== undefined &&
             fileSelected?.map((data, index) => {
@@ -297,29 +306,17 @@ const AddBankDetail = ({ navigation }) => {
                     {data?.name !== undefined ? data?.name : file_Name}
                   </WhiteText>
                   <TouchableOpacity onPress={() => handleClear(index)}>
-                    {/* <FontAwesome name="times-circle" size={20} color="red" /> */}
                     <FontAwesome name="close" size={24} color="red" />
                   </TouchableOpacity>
                 </View>
               );
             })}
         </View>
-        {/* <GradientVarientOneBtn
-          btnText={"Save & Next"}
-          onPress={() => navigation.navigate("Verificationpending")}
-          style={styles.btn}
-        /> */}
-        {/* <GradientVarientOneBtn
+        <GradientVarientOneBtn
           btnText={"Save & Next"}
           onPress={() => navigation.navigate("Verificationsuccessful")}
           style={styles.btn}
-        /> */}
-        <GradientVarientOneBtn
-          btnText={"Save & Next"}
-          onPress={() => navigation.navigate("Notverified")}
-          style={styles.btn}
         />
-        {/* <GradientVarientOneBtn btnText={"Save & Next"} style={styles.btn} /> */}
       </ScrollView>
     </View>
   );
@@ -420,5 +417,10 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: 10,
     marginBottom: 10,
+  },
+  errorText: {
+    color: 'red',
+    marginBottom: 10,
+    marginLeft: 15,
   },
 });

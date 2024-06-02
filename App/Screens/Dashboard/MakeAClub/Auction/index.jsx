@@ -181,10 +181,10 @@ const Card = ({
           }}
         >
           <WhiteText style={{ color: "#FF0000", fontWeight: "600" }}>
-            {remainingSlots} Slots left
+            Slots left
           </WhiteText>
           <WhiteText style={{ color: "black", fontWeight: "600" }}>
-            {totalSlots} slots
+            {totalSlots} months
           </WhiteText>
         </View>
       </View>
@@ -261,7 +261,7 @@ const DATA = [
     cardId: 10001,
     bcAmount: "5 cr",
     totalSlots: 12,
-    remainingSlots: "" ,
+    remainingSlots: 12,
     participatingAmount: "60 lacs",
     cardAccent: {
       cardBg: "rgba(255, 255, 255, 1)",
@@ -276,7 +276,7 @@ const DATA = [
     cardId: 10002,
     bcAmount: "2 cr",
     totalSlots: 20,
-    remainingSlots: "",
+    remainingSlots: 20,
     participatingAmount: "10 lacs",
     cardAccent: {
       cardBg: "rgba(255, 255, 255, 1)",
@@ -739,15 +739,15 @@ const Auction = ({ navigation }) => {
     <View style={styles.container}>
       <Header />
 
-      <GradientVarientOneBtn
+      {/* <GradientVarientOneBtn
         style={{ width: "100%", borderRadius: 10, overflow: "hidden" }}
         btnText={"skip"}
         onPress={() => navigation.navigate("SpinWheel")}
-      />
+      /> */}
 
       <View style={styles.subContainer}>
         {/* month selector */}
-        <View style={styles.monthSelector}>
+        {/* <View style={styles.monthSelector}>
           <WhiteText style={{ fontSize: 25, fontWeight: "600" }}>
             Month
           </WhiteText>
@@ -763,7 +763,7 @@ const Auction = ({ navigation }) => {
             selected={selected}
             onPress={() => handleFilterDataByMonth(20)}
           />
-        </View>
+        </View> */}
 
         {/* here i've added height explicitly in order to fix the issue with flatlist in which it does takes full height and push the below content outside the view */}
         <View style={{ height: 45 }}>
@@ -780,17 +780,17 @@ const Auction = ({ navigation }) => {
         {/* cards container */}
 
         <View style={styles.cardContainer}>
-          <Text style={{ fontSize: 25, fontWeight: "600" }}>
-            Upcoming Events
+          <Text style={{ fontSize: 25, fontWeight: "600",color:"#fff", }}>
+            Create your Auction Card
           </Text>
 
-          <View
+          {/* <View
             style={{
               borderColor: "rgba(177, 177, 177, 1)",
               borderWidth: 1,
               marginBottom: "8%",
             }}
-          ></View>
+          ></View> */}
 
           {/* card list container */}
           <FlatList
@@ -815,7 +815,7 @@ const Auction = ({ navigation }) => {
             keyExtractor={(item) => item.id}
             contentContainerStyle={[
               styles.cardWrapper,
-              { height: filterData ? filterData.length * 200 : "auto" },
+              { height: filterData ? filterData.length * 300 : "auto" },
             ]}
           />
         </View>

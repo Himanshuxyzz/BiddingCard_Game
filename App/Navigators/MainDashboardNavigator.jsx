@@ -28,6 +28,9 @@ import WithdrawPassword from "../Screens/WalletScreen/WithdrawPassword";
 import CustomSimple from "../Screens/Dashboard/MakeAClub/Simple";
 import CustomStartBc from "../Screens/Dashboard/MakeAClub/Simple/CustomStartBc";
 import CustomSpinWheel from "../Screens/Dashboard/MakeAClub/Simple/CustomSpinWheel";
+import AuctionEntries from "../Screens/Dashboard/PlayOnline/Auction/AuctionEntries";
+import AuctionResult from "../Screens/Dashboard/PlayOnline/Auction/AuctionResult";
+import WinnerPage from "../Screens/Dashboard/PlayOnline/Auction/WinnerPage";
 
 const Stack = createNativeStackNavigator();
 
@@ -135,6 +138,21 @@ const MainDashboardNavigator = () => {
       <Stack.Screen
         name="Bidding"
         component={Bidding}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="AuctionEntries"
+        component={AuctionEntries}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="AuctionResult"
+        component={AuctionResult}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="WinnerPage"
+        component={WinnerPage}
         options={{ headerShown: false }}
       />
 
