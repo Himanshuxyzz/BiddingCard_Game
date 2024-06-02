@@ -15,6 +15,7 @@ import { FontAwesome6 } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import Modal from "react-native-modal";
 import GradientVarientOneBtn from "../../Components/Gradient/GradientVariantOneBtn";
+import GradientVarientThirdBtn from "../../Components/Gradient/GradientVariantThirdBtn";
 import * as DocumentPicker from "expo-document-picker";
 import * as ImagePicker from "expo-image-picker";
 import WhiteText from "../../Components/WhiteText/WhiteText";
@@ -117,7 +118,9 @@ const AddBankDetail = ({ navigation }) => {
             onChangeText={handleAccountNumberChange}
           />
         </View>
-        {accountNumberError ? <Text style={styles.errorText}>{accountNumberError}</Text> : null}
+        {accountNumberError ? (
+          <Text style={styles.errorText}>{accountNumberError}</Text>
+        ) : null}
         <View style={styles.inputContainer}>
           <TextInput
             style={[styles.input, { width: "100%" }]}
@@ -129,7 +132,9 @@ const AddBankDetail = ({ navigation }) => {
             onChangeText={handleIfscCodeChange}
           />
         </View>
-        {ifscCodeError ? <Text style={styles.errorText}>{ifscCodeError}</Text> : null}
+        {ifscCodeError ? (
+          <Text style={styles.errorText}>{ifscCodeError}</Text>
+        ) : null}
         <TextInput
           style={[styles.input, { width: "100%" }]}
           placeholder="Branch Name"
@@ -314,9 +319,19 @@ const AddBankDetail = ({ navigation }) => {
         </View>
         <GradientVarientOneBtn
           btnText={"Save & Next"}
-          onPress={() => navigation.navigate("Verificationsuccessful")}
+          onPress={() => navigation.navigate("Verificationpending")}
           style={styles.btn}
         />
+        {/* <GradientVarientOneBtn
+          btnText={"Save & Next"}
+          onPress={() => navigation.navigate("Verificationsuccessful")}
+          style={styles.btn}
+        /> */}
+        {/* <GradientVarientOneBtn
+          btnText={"Save & Next"}
+          onPress={() => navigation.navigate("Notverified")}
+          style={styles.btn}
+        /> */}
       </ScrollView>
     </View>
   );
