@@ -1,15 +1,16 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
-import GradientVarientTwoBtn from '../../Components/GradientBtn/GradientVariantTwoBtn';
-import Colors from '../../Utils/Colors';
+import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import React from "react";
+import GradientVarientTwoBtn from "../../Components/Gradient/GradientVariantTwoBtn";
+import Colors from "../../Utils/Colors";
 
-const VerificationSuccessful = () => {
+const VerificationSuccessful = ({ navigation }) => {
   return (
     <View style={styles.container}>
+      <ScrollView contentContainerStyle={styles.scrollContent}>
       <Text
         style={{
           color: "rgba(46, 216, 19, 1)",
-          fontSize: 30,
+          fontSize: 34,
           fontWeight: "bold",
           textAlign: "center",
           marginTop: "10%",
@@ -20,13 +21,18 @@ const VerificationSuccessful = () => {
       </Text>
       <View style={{ marginTop: "15%", marginBottom: "10%" }}>
         <Image
-          style={{ width: 300, height: 300 }}
+          style={{
+            minWidth: "85%",
+            maxWidth: "85%",
+            minHeight: "40%",
+            marginHorizontal: "auto",
+          }}
           source={require("../../../assets/Images/verified.png")}
         />
       </View>
       <View
         style={{
-          width: "90%",
+          width: "95%",
           paddingVertical: 50,
           paddingHorizontal: 20,
         }}
@@ -42,7 +48,10 @@ const VerificationSuccessful = () => {
           Your profile is verified, Lets play!
         </Text>
       </View>
-      <TouchableOpacity style={[styles.btn, styles.btnTwoVarientStyle]}>
+      <TouchableOpacity
+        style={[styles.btn, styles.btnTwoVarientStyle]}
+        onPress={() => navigation.navigate("")}
+      >
         <Text
           style={{
             textAlign: "center",
@@ -51,30 +60,36 @@ const VerificationSuccessful = () => {
             fontWeight: "600",
           }}
         >
-          Verify
+          Dashboard
         </Text>
       </TouchableOpacity>
+     </ScrollView>
     </View>
   );
-}
+};
 
-export default VerificationSuccessful
+export default VerificationSuccessful;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#2A2E2E",
     alignItems: "center",
+    // padding: 20,
+  },
+  scrollContent: {
+    flexGrow: 1,
+    justifyContent: "center",
     padding: 20,
   },
-  
+
   btn: {
     minWidth: "90%",
-    borderWidth: "1",
+    borderWidth: 1,
     borderColor: "#DDBBE6",
     borderRadius: 10,
     overflow: "hidden",
-    marginTop:"7%",
+    marginTop: "7%",
   },
   btnTwoVarientStyle: {
     backgroundColor: "#2ED813",

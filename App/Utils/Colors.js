@@ -6,4 +6,5 @@ export default {
   LINK_COLOR:"#389AF4",
   INVALIDTEXT_COLOR:"#F57676",
   BLACK: "#000000",
+  RED:"#FF0000",
 };

@@ -14,7 +14,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { FontAwesome6 } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import Modal from "react-native-modal";
-import GradientVarientOneBtn from "../../Components/GradientBtn/GradientVariantOneBtn";
+import GradientVarientOneBtn from "../../Components/Gradient/GradientVariantOneBtn";
 import * as DocumentPicker from "expo-document-picker";
 import * as ImagePicker from "expo-image-picker";
 import WhiteText from "../../Components/WhiteText/WhiteText";
@@ -73,9 +73,9 @@ const AddBankDetail = ({ navigation }) => {
       setFileSelected(result.assets);
     }
   };
-    const handleClear = (index) => {
-      setFileSelected((prevItems) => prevItems.filter((_, i) => i !== index));
-    };
+  const handleClear = (index) => {
+    setFileSelected((prevItems) => prevItems.filter((_, i) => i !== index));
+  };
 
   return (
     <View style={styles.container}>
@@ -303,23 +303,22 @@ const AddBankDetail = ({ navigation }) => {
                 </View>
               );
             })}
-
         </View>
-        <GradientVarientOneBtn
+        {/* <GradientVarientOneBtn
           btnText={"Save & Next"}
           onPress={() => navigation.navigate("Verificationpending")}
           style={styles.btn}
-        />
+        /> */}
         {/* <GradientVarientOneBtn
           btnText={"Save & Next"}
           onPress={() => navigation.navigate("Verificationsuccessful")}
           style={styles.btn}
         /> */}
-        {/* <GradientVarientOneBtn
+        <GradientVarientOneBtn
           btnText={"Save & Next"}
           onPress={() => navigation.navigate("Notverified")}
           style={styles.btn}
-        /> */}
+        />
         {/* <GradientVarientOneBtn btnText={"Save & Next"} style={styles.btn} /> */}
       </ScrollView>
     </View>
