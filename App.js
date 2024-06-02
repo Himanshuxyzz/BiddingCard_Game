@@ -14,16 +14,16 @@ import NotVerified from "./App/Screens/CreateYourProfile/NotVerified";
 import Dashboard from "./App/Screens/Dashboard";
 import PlayOnline from "./App/Screens/Dashboard/PlayOnline";
 import MakeAClub from "./App/Screens/Dashboard/MakeAClub";
-import Auction from "./App/Screens/Dashboard/PlayOnline/Auction";
+import Auction from "./App/Screens/Dashboard/MakeAClub/Auction";
 import Simple from "./App/Screens/Dashboard/PlayOnline/Simple";
 
 import StartBC from "./App/Screens/Dashboard/PlayOnline/Simple/StartBC";
 import SpinWheel from "./App/Screens/Dashboard/PlayOnline/Simple/SpinWheel";
 import UserEntries from "./App/Screens/Dashboard/PlayOnline/Simple/UserEntries";
-import StartAuctionBC from "./App/Screens/Dashboard/PlayOnline/Auction/StartAuctionBC";
-import WaitingPage from "./App/Screens/Dashboard/PlayOnline/Auction/WaitingPage";
-import TimeRemaining from "./App/Screens/Dashboard/PlayOnline/Auction/TimeRemaining";
-import Bidding from "./App/Screens/Dashboard/PlayOnline/Auction/Bidding";
+import StartAuctionBC from "./App/Screens/Dashboard/MakeAClub/Auction/StartAuctionBC";
+import WaitingPage from "./App/Screens/Dashboard/MakeAClub/Auction/WaitingPage";
+import TimeRemaining from "./App/Screens/Dashboard/MakeAClub/Auction/TimeRemaining";
+import Bidding from "./App/Screens/Dashboard/MakeAClub/Auction/Bidding";
 import OtpVerification from "./App/Screens/ForgotPassword/OtpVerification";
 
 
@@ -65,6 +65,7 @@ import Slide from "./App/Screens/UserProfile/Slidecomponent/Slide";
 import Result from "./App/Screens/Dashboard/PlayOnline/Simple/Result";
 import AuthNavigator from "./App/Navigators/AuthNavigator";
 import VerificationNavigator from "./App/Navigators/VerificationNavigator";
+import MainDashboardNavigator from "./App/Navigators/MainDashboardNavigator";
 
 
 const Stack = createNativeStackNavigator();
@@ -326,6 +327,7 @@ export default function App() {
           <Stack.Screen name="Auth" component={AuthNavigator}/>
           {/* To navigate to verification after completing authentication process */}
           <Stack.Screen name="Verification" component={VerificationNavigator}/>
+          <Stack.Screen name="MainDashboard" component={MainDashboardNavigator}/>
 
         </Stack.Navigator>
       </View>

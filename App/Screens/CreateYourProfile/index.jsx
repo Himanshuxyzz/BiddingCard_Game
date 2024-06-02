@@ -33,7 +33,7 @@ const Start = ({ navigation }) => {
 
         <GradientVarientOneBtn
           btnText={"Skip"}
-          onPress={() => navigation.navigate("Dashboard")}
+          onPress={() => navigation.navigate("MainDashboard")}
           style={styles.btn}
         />
       </View>

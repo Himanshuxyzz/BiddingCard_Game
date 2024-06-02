@@ -1,9 +1,11 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 const Header = () => {
+  const navigation = useNavigation();
   return (
     <View>
       {/* header */}
@@ -33,23 +35,30 @@ const Header = () => {
           </Text>
         </View>
         <View style={{ flexDirection: "row", alignItems: "center", gap: 15 }}>
-          <View
-            style={{
-              borderWidth: 1,
-              borderRadius: 15,
-              paddingHorizontal: 5.5,
-              paddingVertical: 4,
-              backgroundColor: "#fff",
-              width: 50,
-              height: 40,
-            }}
+          <TouchableOpacity
+            onPress={() => navigation.navigate("WalletMainVerified")}
           >
-            <MaterialCommunityIcons
-              name="wallet-outline"
-              size={30}
-              color="gray"
-            />
-          </View>
+            <View
+              style={{
+                borderWidth: 1,
+                borderRadius: 15,
+                paddingHorizontal: 5.5,
+                paddingVertical: 4,
+                backgroundColor: "#fff",
+                width: 50,
+                height: 40,
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <MaterialCommunityIcons
+                name="wallet-outline"
+                size={30}
+                color="gray"
+              />
+            </View>
+          </TouchableOpacity>
+
           <Ionicons name="ellipsis-vertical" size={28} color="#fff" />
         </View>
       </View>
