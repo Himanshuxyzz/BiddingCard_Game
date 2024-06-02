@@ -181,7 +181,7 @@ const Games = () => {
     <View style={[styles.container, activeTab === 'Own Clubs' && styles.ownClubsContainer]}>
       <View style={styles.headerContainer}>
         <TouchableOpacity onPress={() => console.log('Back pressed')}>
-          <Icon name="arrow-left" size={24} color="#FF92CB" />
+          <Icon name="arrow-left" size={24} color="#FF92CB" style={{left:30}} />
         </TouchableOpacity>
         <Text style={styles.header}>My Games</Text>
         <TouchableOpacity onPress={() => console.log('Profile pressed')}>
