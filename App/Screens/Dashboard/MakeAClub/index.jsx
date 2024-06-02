@@ -14,7 +14,7 @@ const MakeAClub = ({ navigation }) => {
         {/* header end */}
 
         <View style={styles.buttonContainer}>
-          <TouchableOpacity onPress={() => navigation.navigate("")}>
+          <TouchableOpacity onPress={() => navigation.navigate("CustomSimple")}>
             {/* this will be different simple bc so make sure to ensure everything */}
             <View style={styles.button}>
               <Text style={styles.buttonText}>Simple BC</Text>
