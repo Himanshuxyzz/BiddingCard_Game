@@ -48,6 +48,7 @@ const Mainpage = ({navigation}) => {
           </TouchableOpacity>
           <TouchableOpacity 
             onPress={() => console.log('Make a Club')}
+            
             style={styles.make_club}>
             <Text style={styles.play_text}>Make a Club</Text>
           </TouchableOpacity>

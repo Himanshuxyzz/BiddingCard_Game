@@ -8,6 +8,9 @@ import EditProfile from '../../EditProfile'
 import BankAccount from '../../BankAccount'
 import Quicktask from '../Quicktask'
 
+
+
+
 const Drawer = createDrawerNavigator()
 
 const Drawercomponent = () => {
@@ -22,14 +25,16 @@ const Drawercomponent = () => {
        textAlign:"center",
        color:"rgba(255,255,255,1)",fontSize:20,fontWeight:"bold",padding:10}}}>
           <Drawer.Screen
-         name='Mainpage'
+         name='Home'
          component={Mainpage}   
          />
+        
 
        <Drawer.Screen
         name='User Profile'
         component={EditProfile}
         />
+     
 
         <Drawer.Screen
         name='Wallet'
@@ -39,10 +44,7 @@ const Drawercomponent = () => {
         name='BankAccount'
         component={BankAccount}
         />
-          <Drawer.Screen
-        name='Refer & Earn'
-        component={BankAccount}
-        />
+      
            <Drawer.Screen
         name='Support'
         component={Quicktask}

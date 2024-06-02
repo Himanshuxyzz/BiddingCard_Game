@@ -69,7 +69,8 @@ const BankAccount = ({navigation}) => {
           </View>
       </View>
       <TouchableOpacity
-      onPress={()=> navigation.navigate("Mainpage")}>
+      onPress={()=> navigation.navigate("Home")}
+      >
         <LinearGradient
          colors = {['#EA59E4','#C508BD','#910C8C']}
          style={styles.btnstyle}

@@ -127,6 +127,8 @@ const ProfileDetail = ({navigation}) => {
          </View>
          <TouchableOpacity
             onPress={() => navigation.navigate("Mainpage")}
+          
+           
           >
           <LinearGradient
            colors = {['#EA59E4','#C508BD','#910C8C']}

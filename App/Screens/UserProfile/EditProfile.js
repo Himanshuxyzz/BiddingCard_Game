@@ -16,8 +16,9 @@ const EditProfile = ({navigation}) => {
     <ScrollView>
     <TouchableOpacity 
     style={styles.backimg}
-    onPress={() => navigation.navigate("Slide")}>
-      <Image source={require('../../../assets/lets-icons_back.png')}/>  
+    onPress={() => navigation.navigate("Home")}>
+      <Image 
+      source={require('../../../assets/lets-icons_back.png')}/>  
     </TouchableOpacity>
     <View style={styles.tstprofile}>
       <Text style={styles.tstprofile}>User Profile</Text>

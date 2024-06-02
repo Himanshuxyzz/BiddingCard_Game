@@ -55,6 +55,7 @@ const GenerateQuery = ({navigation}) => {
           </View>
           <TouchableOpacity
             onPress={() => navigation.navigate('CancelQuery') }
+            
           >
           <LinearGradient
            colors = {['#EA59E4','#C508BD','#910C8C']}

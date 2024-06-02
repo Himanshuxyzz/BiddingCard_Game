@@ -46,9 +46,11 @@ import GenerateQuery from "./App/Screens/UserProfile/Support/GenerateQuery";
 import CancelQuery from "./App/Screens/UserProfile/Support/CancelQuery";
 import Backtdash from "./App/Screens/UserProfile/Support/Backtdash";
 import Parent from "./App/Screens/UserProfile/Practics/Parent";
-import Mainpage from "./App/Screens/UserProfile/Mainpage";
 import Redirect from "./App/Screens/UserProfile/Redirect";
+
+import Customedrawer from "./App/Screens/UserProfile/Support/Dreawer/Customedrawer";
 const Stack = createNativeStackNavigator();
+
 
 
 export default function App() {
@@ -182,16 +184,19 @@ export default function App() {
 
           {/* samraat start */}
 
-             {/* <Stack.Screen
-              name="Mainpage"
-              component={Mainpage}
-              options={{headerShown : false}}
-             /> */}
           {/* <Stack.Screen
             name="Slide"
             component={Slide}
             options={{ headerShown: false }}
           />  */}
+
+        
+          {/* <Stack.Screen
+            name="Redirect"
+            component={Redirect}
+            options={{headerShown: false}}
+           /> */}
+       
 
           <Stack.Screen
             name="Parent"
@@ -209,27 +214,17 @@ export default function App() {
             component={ProfileDetail}
             options={{ headerShown: false }}
           /> 
-
-          {/* <Stack.Screen
-            name="Redirect"
-            component={Redirect}
-            options={{ headerShown: false }}
-          /> */}
-            {/* <Drawer.Screen
-                  name='Redirect'
-                 component={Redirect} 
-                 options={{headerShown :false}
-                
-                 } 
-            /> */}
-         
         
           <Stack.Screen 
             name="BankAccount"
             component={BankAccount}
             options={{headerShown :false}}
           />
-
+          
+          <Stack.Screen
+            name="Customedrawer"
+            component={Customedrawer}
+          />
         
 
           <Stack.Screen 
@@ -258,7 +253,9 @@ export default function App() {
             name="Logout"
             component={Logout}
             options={{headerShown :false}}
-          /> 
+          />   
+        
+
            
           
 

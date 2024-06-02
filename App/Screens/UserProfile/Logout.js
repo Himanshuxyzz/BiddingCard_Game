@@ -16,7 +16,7 @@ const Logout = ({navigation}) => {
          <Image style={{alignSelf:"center", marginVertical:100}} source={require('../../../assets/logout_ion.png')}/>
          <Text style={Styles.textcontent}>Oh no! You’re leaving........ Are you sure?</Text>
          <TouchableOpacity
-      onPress={()=> navigation.navigate("Mainpage")}>
+      onPress={()=> navigation.navigate("Home")}>
         <LinearGradient
          colors = {['rgba(234, 89, 228, 0.4)','rgba(197, 8, 189, 0.4)','rgba(145, 12, 140, 0.5)']}
          style={Styles.btnstyle}
@@ -26,7 +26,10 @@ const Logout = ({navigation}) => {
         </LinearGradient>
       </TouchableOpacity>
       <TouchableOpacity
-      onPress={()=> navigation.navigate("Mainpage")}>
+      // onPress={()=> navigation.navigate("Mainpage")} 
+      onPress={() => navigation.navigate("Home")}
+    
+      >
         <LinearGradient
          colors = {['rgba(234, 89, 228, 0.4)','rgba(197, 8, 189, 0.4)','rgba(145, 12, 140, 0.5)']}
          style={Styles.btnstyle2}
