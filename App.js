@@ -16,7 +16,6 @@ import PlayOnline from "./App/Screens/Dashboard/PlayOnline";
 import MakeAClub from "./App/Screens/Dashboard/MakeAClub";
 import Auction from "./App/Screens/Dashboard/MakeAClub/Auction";
 import Simple from "./App/Screens/Dashboard/PlayOnline/Simple";
-
 import StartBC from "./App/Screens/Dashboard/PlayOnline/Simple/StartBC";
 import SpinWheel from "./App/Screens/Dashboard/PlayOnline/Simple/SpinWheel";
 import UserEntries from "./App/Screens/Dashboard/PlayOnline/Simple/UserEntries";
@@ -27,7 +26,7 @@ import Bidding from "./App/Screens/Dashboard/MakeAClub/Auction/Bidding";
 import OtpVerification from "./App/Screens/ForgotPassword/OtpVerification";
 
 
- 
+
 import WalletMainVerified from "./App/Screens/WalletScreen/WalletMainVerified";
 import NotVerifiedWallet from "./App/Screens/WalletScreen/NotVerifiedWallet";
 import AddToWallet from "./App/Screens/WalletScreen/AddToWallet";
@@ -287,20 +286,20 @@ export default function App() {
             name="BankPassword"
             component={BankPassword}
             options={{ headerShown: false }}
-          />  
-            {<Stack.Screen
+          />  */}
+           {/* {<Stack.Screen
             name="InsufficientBalance"
             component={InsufficientBalance}
             options={{ headerShown: false }}
           />
-           } 
-    <Stack.Screen
+           } */}
+           {/* <Stack.Screen
             name="Withdraw"
             component={Withdraw}
             options={{ headerShown: false }}
-          /> 
+          /> */}
            
-            <Stack.Screen
+           {/* <Stack.Screen
             name="WithdrawAccount"
             component={WithdrawAccount}
             options={{ headerShown: false }}
@@ -315,7 +314,6 @@ export default function App() {
             component={WithdrawPassword}
             options={{ headerShown: false }}
           /> */}
-           
            
           {/* Sakshi - end */}
 
