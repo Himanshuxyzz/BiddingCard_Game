@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Image,
   KeyboardAvoidingView,
@@ -14,27 +14,110 @@ import {
 } from "react-native";
 import Header from "../../../../Components/DashboardHeader/Header";
 import Colors from "../../../../Utils/Colors";
+import WhiteText from "../../../../Components/WhiteText/WhiteText";
 
-const Bidding = () => {
+const Bidding = ({ navigation }) => {
+  const [isModalVisible, setIsModalVisible] = useState(true);
+  const [ModalMessage, setModalMessage] = useState("Start your first bid");
+  const [countdown, setCountdown] = useState(13);
+  const [timerColor, setTimerColor] = useState("#2ED813");
+  const [modalCountdown, setModalCountdown] = useState(3);
+
+  useEffect(() => {
+    const modalTimers = [];
+
+    const firstModalTimer = setTimeout(() => {
+      setIsModalVisible(false);
+    }, 8000);
+    modalTimers.push(firstModalTimer);
+
+    const secondModalTimer = setTimeout(() => {
+      setModalMessage("user2 Bid amount - ₹20092000");
+      setIsModalVisible(true);
+      setModalCountdown(3);
+    }, 15000);
+    modalTimers.push(secondModalTimer);
+
+    return () => {
+      modalTimers.forEach(timer => clearTimeout(timer));
+    };
+  }, []);
+
+  useEffect(() => {
+    if (countdown === 0) {
+      return;
+    }
+
+    const timerId = setTimeout(() => {
+      setCountdown((prev) => prev - 1);
+    }, 1000);
+
+    if (countdown <= 5) {
+      setTimerColor("red");
+    } else {
+      setTimerColor("#2ED813");
+    }
+
+    return () => clearTimeout(timerId);
+  }, [countdown]);
+
+  useEffect(() => {
+    if (ModalMessage !== "user2 Bid amount - ₹20092000") {
+      return;
+    }
+
+    if (modalCountdown === 0) {
+      setIsModalVisible(false);
+      navigation.navigate("WinnerPage", { winner: "User2" });
+      return;
+    }
+
+    const modalTimerId = setTimeout(() => {
+      setModalCountdown((prev) => prev - 1);
+    }, 1000);
+
+    return () => clearTimeout(modalTimerId);
+  }, [modalCountdown, ModalMessage, navigation]);
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={styles.main}
-      keyboardVerticalOffset={Platform.select({ ios: 60, android: 60 })}
+      keyboardVerticalOffset={Platform.select({ ios: 60, android: 45 })}
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <ScrollView contentContainerStyle={styles.scrollContainer}>
           <View style={styles.container}>
             <Header />
-            <Text style={styles.title}>Action Amount 2.04cr</Text>
-            <View style={styles.imageContainer}>
-              <Image
-                style={styles.image}
-                source={require("../../../../../assets/Images/bid.png")}
-              />
-            </View>
-            <View style={styles.overlay}>
-              <Text style={styles.overlayText}>Start your first bid</Text>
+
+            {isModalVisible && (
+              <View style={styles.modalContainer}>
+                <View style={styles.modal}>
+                  {ModalMessage !== "user2 Bid amount - ₹20092000" ? (
+                    <>
+                      <WhiteText style={styles.modalText}>
+                        {ModalMessage}
+                      </WhiteText>
+                    </>
+                  ) : (
+                    <>
+                      <WhiteText style={styles.modalText}>
+                        {ModalMessage}
+                      </WhiteText>
+                      <WhiteText style={{ fontSize: 20, marginTop: "3%" }}>
+                        last 0{modalCountdown} sec left
+                      </WhiteText>
+                    </>
+                  )}
+                </View>
+              </View>
+            )}
+
+            <View style={styles.subContainer}>
+              <WhiteText style={styles.title}>Action Amount 2.04cr </WhiteText>
+              <View style={styles.bidChatConainer}>
+                <BidMessage timerColor={timerColor} countdown={countdown} />
+              </View>
             </View>
             <View style={styles.inputWrapper}>
               <TextInput
@@ -55,6 +138,85 @@ const Bidding = () => {
   );
 };
 
+const BidMessage = ({
+  userProfileImage,
+  userName,
+  bidAmt,
+  timerColor,
+  countdown,
+}) => {
+  return (
+    <View
+      style={{
+        flexDirection: "row",
+        alignItems: "center",
+        gap: 20,
+        minWidth: "100%",
+        maxWidth: "100%",
+        height: 50,
+      }}
+    >
+      <View
+        style={{
+          padding: 10,
+          flexBasis: "80%",
+          backgroundColor: "rgba(187, 187, 187, 0.2)",
+          borderRadius: 8,
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: 10,
+        }}
+      >
+        <Image
+          style={{
+            width: 36,
+            height: 36,
+            borderRadius: 999,
+            backgroundColor: "rgba(255, 255, 255, 0.3)",
+          }}
+          source={require("../../../../../assets/samraat_icon.png")}
+        />
+
+        <View style={{ width: "80%", gap: 8 }}>
+          <Text
+            style={{
+              fontSize: 15,
+              fontWeight: "bold",
+              color: "rgba(255, 255, 255, 0.7)",
+            }}
+          >
+            Goyal
+          </Text>
+          <View
+            style={{ flexDirection: "row", justifyContent: "space-between" }}
+          >
+            <WhiteText style={{ fontWeight: "bold", fontSize: 16 }}>
+              ₹20095001
+            </WhiteText>
+            <WhiteText>10:35:00 am</WhiteText>
+          </View>
+        </View>
+      </View>
+      <View
+        style={{
+          borderWidth: 3,
+          padding: 10,
+          flexGrow: 1,
+          alignItems: "center",
+          justifyContent: "center",
+          borderRadius: 999,
+          borderColor: timerColor,
+          width: 60,
+          height: 60,
+        }}
+      >
+        <Text style={[styles.timer, { color: timerColor }]}>{countdown}s</Text>
+      </View>
+    </View>
+  );
+};
+
 export default Bidding;
 
 const styles = StyleSheet.create({
@@ -68,42 +230,43 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    position: "relative",
+    gap: 20,
+    alignItems: "center",
+  },
+  subContainer: {
+    flex: 1,
+    alignItems: "center",
+    gap: 20,
   },
   title: {
     color: "rgba(217, 125, 19, 1)",
     fontSize: 25,
     fontWeight: "bold",
     textAlign: "center",
-    marginTop: "20%",
   },
-  imageContainer: {
-    marginTop: "30%",
-    alignItems: "center",
-  },
-  image: {
-    width: 350,
-    height: 350,
-  },
-  overlay: {
+  modalContainer: {
     position: "absolute",
-    top: 230,
-    left: 40,
-    alignItems: "center",
+    width: "100%",
+    height: "100%",
     justifyContent: "center",
-    width: "90%",
-    height: "35%",
-    backgroundColor: "rgba(0, 0, 0, 0.4)",
-    borderRadius: 12,
+    alignItems: "center",
   },
-  overlayText: {
-    color: "#fff",
+  modal: {
+    width: "100%",
+    height: "35%",
+    borderRadius: 12,
+    backgroundColor: "rgba(0, 0, 0, 0.4)",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  modalText: {
     fontSize: 23,
     fontWeight: "bold",
   },
   inputWrapper: {
     position: "relative",
-    marginTop: "30%",
+    marginBottom: 10,
+    width: "100%",
   },
   input: {
     color: Colors.WHITE,
@@ -112,7 +275,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     backgroundColor: "rgba(168, 168, 168, 0.5)",
     fontSize: 23,
-    borderRadius: 10,
+    borderRadius: 25,
   },
   bid: {
     position: "absolute",
@@ -126,5 +289,18 @@ const styles = StyleSheet.create({
     paddingHorizontal: "4%",
     bottom: 10,
     right: 10,
+  },
+  bidChatConainer: {
+    flex: 1,
+    padding: 10,
+    width: "100%",
+  },
+  timerWrapper: {
+    alignItems: "center",
+    marginTop: 20,
+  },
+  timer: {
+    fontSize: 20,
+    fontWeight: "bold",
   },
 });

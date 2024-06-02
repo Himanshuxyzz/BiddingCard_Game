@@ -26,6 +26,10 @@ const StartAuctionBC = ({ route, navigation }) => {
   console.log(bcAmount);
   const [password, setPassword] = useState("test@123");
   const [isPasswordValid, setIsPasswordValid] = useState(true); // Initially assuming password is valid
+  const [AmountPerPerson, setAmountPerPerson] = useState("");
+   const [NoOfPeople, setNoOfPeople] = useState("");
+  const [hidePassword, setHidePassword] = useState(true);
+
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
@@ -63,11 +67,15 @@ const StartAuctionBC = ({ route, navigation }) => {
     }
   };
 
+    const handlePasswordVisibility = () => {
+    setHidePassword(!hidePassword);
+  };
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={styles.main}
-      keyboardVerticalOffset={Platform.select({ ios: 60, android: 60 })}
+      keyboardVerticalOffset={Platform.select({ ios: 60, android: 45 })}
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <ScrollView contentContainerStyle={styles.scrollContainer}>
@@ -110,8 +118,8 @@ const StartAuctionBC = ({ route, navigation }) => {
                 Select Amount
               </Text>
               <TextInput
-                value={""}
-                //   onChangeText={(text) => setEmailMobile(text)}
+                value={AmountPerPerson}
+                  onChangeText={(text) => setAmountPerPerson(text)}
                 //   onChangeText={setEmailMobile}
                 style={styles.input}
                 placeholder="Enter Amount per person"
@@ -120,8 +128,8 @@ const StartAuctionBC = ({ route, navigation }) => {
                 autoCapitalize={"none"}
               />
               <TextInput
-                value={""}
-                //   onChangeText={(text) => setEmailMobile(text)}
+                value={NoOfPeople}
+                  onChangeText={(text) => setNoOfPeople(text)}
                 //   onChangeText={setEmailMobile}
                 style={styles.input}
                 placeholder="Number of people"
@@ -198,14 +206,18 @@ const StartAuctionBC = ({ route, navigation }) => {
                 keyboardType="default"
                 placeholderTextColor={Colors.INPUT_PLACEHOLDER}
                 autoCapitalize="none"
-                secureTextEntry // To hide the password
+                secureTextEntry={hidePassword} // To hide the password
               />
-              <FontAwesome6
-                style={{ position: "absolute", top: 330, right: 40 }}
-                name="eye-slash"
-                size={28}
-                color="rgba(177, 177, 177, 1)"
-              />
+              <TouchableOpacity
+                style={{ position: "absolute", top: 335, right: 40 }}
+                onPress={() => handlePasswordVisibility()}
+              >
+                <FontAwesome6
+                  name={hidePassword ? "eye-slash" : "eye"}
+                  size={28}
+                  color="rgba(177, 177, 177, 1)"
+                />
+              </TouchableOpacity>
               {!isPasswordValid && (
                 <Text
                   style={{
