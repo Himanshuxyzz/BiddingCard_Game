@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@expo/metro-runtime": "~3.2.1",
+    "@jsamr/counter-style": "^2.0.2",
+    "@jsamr/react-native-li": "^2.3.1",
     "@react-native-async-storage/async-storage": "1.23.1",
     "@react-native-community/blur": "^4.4.0",
     "@react-native-community/datetimepicker": "8.0.1",
