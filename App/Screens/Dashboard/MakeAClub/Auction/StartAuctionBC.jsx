@@ -27,9 +27,8 @@ const StartAuctionBC = ({ route, navigation }) => {
   const [password, setPassword] = useState("test@123");
   const [isPasswordValid, setIsPasswordValid] = useState(true); // Initially assuming password is valid
   const [AmountPerPerson, setAmountPerPerson] = useState("");
-   const [NoOfPeople, setNoOfPeople] = useState("");
+  const [NoOfPeople, setNoOfPeople] = useState("");
   const [hidePassword, setHidePassword] = useState(true);
-
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
@@ -67,7 +66,7 @@ const StartAuctionBC = ({ route, navigation }) => {
     }
   };
 
-    const handlePasswordVisibility = () => {
+  const handlePasswordVisibility = () => {
     setHidePassword(!hidePassword);
   };
 
@@ -119,7 +118,7 @@ const StartAuctionBC = ({ route, navigation }) => {
               </Text>
               <TextInput
                 value={AmountPerPerson}
-                  onChangeText={(text) => setAmountPerPerson(text)}
+                onChangeText={(text) => setAmountPerPerson(text)}
                 //   onChangeText={setEmailMobile}
                 style={styles.input}
                 placeholder="Enter Amount per person"
@@ -129,7 +128,7 @@ const StartAuctionBC = ({ route, navigation }) => {
               />
               <TextInput
                 value={NoOfPeople}
-                  onChangeText={(text) => setNoOfPeople(text)}
+                onChangeText={(text) => setNoOfPeople(text)}
                 //   onChangeText={setEmailMobile}
                 style={styles.input}
                 placeholder="Number of people"
@@ -149,7 +148,7 @@ const StartAuctionBC = ({ route, navigation }) => {
         /> */}
               <TextInput
                 style={styles.input}
-                placeholder="D.O.B"
+                placeholder="Date"
                 placeholderTextColor={Colors.INPUT_PLACEHOLDER}
                 autoCapitalize={"none"}
                 value={formatDate(selectedDate)}
@@ -238,6 +237,7 @@ const StartAuctionBC = ({ route, navigation }) => {
                   width: "100%",
                   paddingHorizontal: 30,
                 }}
+                onPress={() => navigation.navigate("forgotPassword")}
               >
                 <Text
                   style={{
@@ -280,7 +280,7 @@ const styles = StyleSheet.create({
     padding: 20,
     alignItems: "center",
     flexDirection: "column",
-    gap:20,
+    gap: 20,
   },
   input: {
     color: Colors.BLACK,
