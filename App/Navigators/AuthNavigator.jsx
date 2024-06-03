@@ -24,16 +24,16 @@ const Stack = createNativeStackNavigator();
 const AuthNavigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Parent"
+      initialRouteName="WelcomePage"
       screenOptions={{ headerShown: false }}
     >
-    {/* samraaat  start */}
-    {/* <Stack.Screen
+      {/* samraaat  start */}
+      {/* <Stack.Screen
       name="padddata"
       component={Passdata}
       options={{ headerShown: false }}
     /> */}
-    <Stack.Screen
+      {/* <Stack.Screen
         name="Parent"
         component={Parent}
         options={{ headerShown: false }}
@@ -43,42 +43,32 @@ const AuthNavigator = () => {
         component={EditProfile}
         options={{ headerShown: false }}
       />
-       <Stack.Screen
+      <Stack.Screen
         name="profile Detail"
         component={ProfileDetail}
         options={{ headerShown: false }}
       />
-        <Stack.Screen
+      <Stack.Screen
         name="Mainpage"
         component={Mainpage}
         options={{ headerShown: false }}
       />
-        <Stack.Screen
-            name="Customedrawer"
-            component={Customedrawer}
-          />
-          <Stack.Screen
-            name="GenerateQuery"
-            component={GenerateQuery}
-          />
-            <Stack.Screen
-            name="CancelQuery"
-            component={CancelQuery}
-            options={{headerShown:false}}
-          />
+      <Stack.Screen name="Customedrawer" component={Customedrawer} />
+      <Stack.Screen name="GenerateQuery" component={GenerateQuery} />
+      <Stack.Screen
+        name="CancelQuery"
+        component={CancelQuery}
+        options={{ headerShown: false }}
+      />
 
-           <Stack.Screen
-            name="Backtdash"
-            component={Backtdash}
-            options={{headerShown:false}}
-          />
+      <Stack.Screen
+        name="Backtdash"
+        component={Backtdash}
+        options={{ headerShown: false }}
+      /> */}
 
+      {/* samraat end */}
 
-
-          {/* samraat end */}
-     
-
-  
       {/* Bhavesh */}
       <Stack.Screen
         name="WelcomePage"

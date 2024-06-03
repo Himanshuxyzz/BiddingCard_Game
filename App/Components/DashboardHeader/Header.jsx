@@ -18,18 +18,21 @@ const Header = () => {
         }}
       >
         <View style={{ flexDirection: "row", alignItems: "center", gap: 15 }}>
-          <View
-            style={{
-              borderRadius: 9999,
-              padding: 2,
-              backgroundColor: "rgba(255, 252, 255, 0.20)",
-            }}
-          >
-            <Image
-              style={{ width: 40, height: 40 }}
-              source={require("../../../assets/Images/usericon.png")}
-            />
-          </View>
+          <TouchableOpacity>
+            <View
+              style={{
+                borderRadius: 9999,
+                padding: 2,
+                backgroundColor: "rgba(255, 252, 255, 0.20)",
+              }}
+            >
+              <Image
+                style={{ width: 40, height: 40 }}
+                source={require("../../../assets/Images/usericon.png")}
+              />
+            </View>
+          </TouchableOpacity>
+
           <Text style={{ color: "#fff", fontSize: 23, fontWeight: "bold" }}>
             Raj
           </Text>
