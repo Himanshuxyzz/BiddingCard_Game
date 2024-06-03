@@ -31,6 +31,8 @@ import CustomSpinWheel from "../Screens/Dashboard/MakeAClub/Simple/CustomSpinWhe
 import AuctionResult from "../Screens/Dashboard/MakeAClub/Auction/AuctionResult";
 import AuctionEntries from "../Screens/Dashboard/MakeAClub/Auction/AuctionEntries";
 import WinnerPage from "../Screens/Dashboard/MakeAClub/Auction/WinnerPage";
+import CustomResult from "../Screens/Dashboard/MakeAClub/Simple/CustomResult";
+import CustomUserEntries from "../Screens/Dashboard/MakeAClub/Simple/CustomUserEntries";
 
 const Stack = createNativeStackNavigator();
 
@@ -110,6 +112,16 @@ const MainDashboardNavigator = () => {
       <Stack.Screen
         name="CustomSpinWheel"
         component={CustomSpinWheel}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="CustomEntries"
+        component={CustomUserEntries}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="CustomResult"
+        component={CustomResult}
         options={{ headerShown: false }}
       />
 

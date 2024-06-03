@@ -14,7 +14,7 @@ import GradientVarientOneBtn from "../../../../Components/Gradient/GradientVaria
 import { useState } from "react";
 
 const StartBC = ({ route, navigation }) => {
-  const { bcAmount, totalAmount } = route.params;
+  const { bcAmount, totalAmount, cardId } = route.params;
   console.log(bcAmount);
   const [password, setPassword] = useState("test@123");
   const [isPasswordValid, setIsPasswordValid] = useState(true); // Initially assuming password is valid
@@ -27,7 +27,7 @@ const StartBC = ({ route, navigation }) => {
     if (password.length >= 8 && hasSpecialCharacter) {
       setIsPasswordValid(true);
       // Proceed with your logic like navigating to the next screen
-      navigation.navigate("SpinWheel", { totalAmount: totalAmount });
+      navigation.navigate("SpinWheel", { totalAmount: totalAmount, cardId });
     } else {
       setIsPasswordValid(false);
     }
@@ -107,7 +107,7 @@ const StartBC = ({ route, navigation }) => {
         <TextInput
           value={password}
           onChangeText={(text) => setPassword(text)}
-          style={[styles.input,{paddingVertical:10}]}
+          style={[styles.input, { paddingVertical: 10 }]}
           placeholder="Password"
           keyboardType="default"
           placeholderTextColor={Colors.INPUT_PLACEHOLDER}
@@ -182,20 +182,19 @@ const styles = StyleSheet.create({
   //   position: "relative",
   //   fontWeight: 800,
   // },
-  
-  input: {
-color: Colors.BLACK,
-minWidth:"85%",
-maxWidth:"85%",
-height:57,
-marginVertical:15,
-paddingHorizontal:20,
-backgroundColor:"#fff",
-fontSize:20,
-borderRadius:10,
-position:"relative",
-fontWeight:"800",
 
+  input: {
+    color: Colors.BLACK,
+    minWidth: "85%",
+    maxWidth: "85%",
+    height: 57,
+    marginVertical: 15,
+    paddingHorizontal: 20,
+    backgroundColor: "#fff",
+    fontSize: 20,
+    borderRadius: 10,
+    position: "relative",
+    fontWeight: "800",
   },
   btn: {
     minWidth: "60%",

@@ -233,6 +233,7 @@ const Card = ({
               navigation.navigate("Startbc", {
                 bcAmount: bcAmount,
                 totalAmount: amount,
+                cardId: cardId,
               })
             }
             // onPress={() =>

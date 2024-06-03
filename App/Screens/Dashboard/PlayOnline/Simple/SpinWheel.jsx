@@ -35,7 +35,7 @@ const initialSegmentOptions = [
 // const initialSegmentOptions = ["Option 1", "Option 2", "Option 3"];
 
 const SpinWheel = ({ route, navigation }) => {
-  const { totalAmount } = route.params;
+  const { totalAmount, cardId } = route.params;
   const [winner, setWinner] = useState(null);
   const [finished, setFinished] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
