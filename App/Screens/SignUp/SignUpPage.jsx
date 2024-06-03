@@ -5,14 +5,18 @@ import {
   View,
   TextInput,
   TouchableOpacity,
+  Dimensions,
+  Modal,
+  Image,
 } from "react-native";
 import React, { useState, useRef } from "react";
 import GradientVarientOneBtn from "../../Components/Gradient/GradientVariantOneBtn";
-import { Modal, Image } from "react-native";
 import WhiteText from "../../Components/WhiteText/WhiteText";
 import { OtpInput } from "react-native-otp-entry";
 import Colors from "../../Utils/Colors";
 import VerifyBtn from "../../Components/Gradient/VerifyBtn";
+
+const { width, height } = Dimensions.get("window");
 
 const SignUpPage = ({ navigation }) => {
   const [ismodalVisible, setModalVisible] = useState(false);
@@ -31,17 +35,14 @@ const SignUpPage = ({ navigation }) => {
   const verifyOtp = (otpValue) => {
     const otpNumber = parseInt(otpValue);
     setOtp(otpNumber);
-    // Check if the parsed value is a valid number
     if (!isNaN(otpNumber)) {
-      // Check if otpNumber matches TestOtp
       setOtpMatched(otpNumber === TestOtp);
     } else {
-      // Handle case where otpValue is not a valid number
       console.log("Invalid OTP:", otpValue);
-      // Optionally, you can handle this case by setting otpMatched to false
       setOtpMatched(false);
     }
   };
+
   return (
     <View style={styles.whole}>
       <Text style={styles.txt}>Sign Up </Text>
@@ -61,9 +62,8 @@ const SignUpPage = ({ navigation }) => {
         placeholder="Phone no."
         placeholderTextColor={Colors.INPUT_PLACEHOLDER}
       />
-      <TouchableOpacity
-        onPress={() => setModalVisible(true)}>
-        <Text style={styles.phonebtn} >verify</Text>
+      <TouchableOpacity onPress={() => setModalVisible(true)}>
+        <Text style={styles.phonebtn}>verify</Text>
       </TouchableOpacity>
       <TextInput
         style={styles.input1}
@@ -77,11 +77,13 @@ const SignUpPage = ({ navigation }) => {
         style={styles.input2}
         placeholder="Password"
         placeholderTextColor={Colors.INPUT_PLACEHOLDER}
+        secureTextEntry={true}
       />
       <TextInput
         style={styles.input2}
         placeholder="Confirm Password"
         placeholderTextColor={Colors.INPUT_PLACEHOLDER}
+        secureTextEntry={true}
       />
       <GradientVarientOneBtn
         btnText={"Submit"}
@@ -99,85 +101,90 @@ const SignUpPage = ({ navigation }) => {
         visible={ismodalVisible}
         backdropOpacity={0.3}
       >
-        <View style={styles.main}>
-          <WhiteText style={styles.subHeading}>
-            Enter OTP, Check your Mail
-          </WhiteText>
-          <View style={styles.otp}>
-            <OtpInput
-              ref={otpInputRef}
-              autoFocus={false}
-              numberOfDigits={4}
-              focusColor={"white"}
-              onFilled={(otp) => verifyOtp(otp)}
-              textInputProps={{
-                accessibilityLabel: "One-Time Password",
-              }}
-              theme={{
-                pinCodeContainerStyle: {
-                  borderRadius: 99,
-                  width: 66,
-                  height: 64,
-                  backgroundColor: "rgba(255,255,255,0.1)",
-                  borderColor: "rgba(199,194,194,0.77)",
-                },
-                pinCodeTextStyle: {
-                  fontSize: 20,
-                  color: Colors.WHITE,
-                  fontWeight: "700",
-                },
-              }}
-            />
-          </View>
-          <View
-            style={{
-              flexDirection: "column",
-              gap: 2.5,
-              alignItems: "center",
-            }}
-          >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <WhiteText style={styles.subHeading}>
+              Enter OTP, Check your Mail
+            </WhiteText>
+            <View style={styles.otp}>
+              <OtpInput
+                ref={otpInputRef}
+                autoFocus={false}
+                numberOfDigits={4}
+                focusColor={"white"}
+                onFilled={(otp) => verifyOtp(otp)}
+                textInputProps={{
+                  accessibilityLabel: "One-Time Password",
+                }}
+                theme={{
+                  pinCodeContainerStyle: {
+                    borderRadius: 99,
+                    width: 66,
+                    height: 64,
+                    backgroundColor: "rgba(255,255,255,0.1)",
+                    borderColor: "rgba(199,194,194,0.77)",
+                  },
+                  pinCodeTextStyle: {
+                    fontSize: 20,
+                    color: Colors.WHITE,
+                    fontWeight: "700",
+                  },
+                }}
+              />
+            </View>
             <View
               style={{
-                flexDirection: "row",
+                flexDirection: "column",
                 gap: 2.5,
                 alignItems: "center",
-                top: 40,
               }}
             >
-              <Text
-                style={{ color: Colors.WHITE, fontSize: 14, fontWeight: "500" }}
+              <View
+                style={{
+                  flexDirection: "row",
+                  gap: 2.5,
+                  alignItems: "center",
+                  marginTop: 40,
+                }}
               >
-                If you didn't receive a code!
-              </Text>
-              <TouchableOpacity onPress={() => setResendText(false)}>
                 <Text
                   style={{
-                    color: Colors.LINK_COLOR,
-                    fontSize: 18,
-                    fontWeight: "700",
-                    textDecorationLine: "underline",
+                    color: Colors.WHITE,
+                    fontSize: 14,
+                    fontWeight: "500",
                   }}
                 >
-                  Resend
+                  If you didn't receive a code!
                 </Text>
-              </TouchableOpacity>
+                <TouchableOpacity onPress={() => setResendText(false)}>
+                  <Text
+                    style={{
+                      color: Colors.LINK_COLOR,
+                      fontSize: 18,
+                      fontWeight: "700",
+                      textDecorationLine: "underline",
+                    }}
+                  >
+                    Resend
+                  </Text>
+                </TouchableOpacity>
+              </View>
             </View>
+            <VerifyBtn
+              btnText={"Verify"}
+              onPress={() => {
+                setOtp(null);
+                otpInputRef.current.clear();
+                if (otp === TestOtp) {
+                  setModal1Visible(true);
+                } else {
+                  setModal2Visible(true);
+                }
+              }}
+              isDisabled={otp == ""}
+              style={styles.btn}
+            />
           </View>
-
-          <VerifyBtn
-            btnText={"Verify"}
-            onPress={() => {
-              setOtp(null);
-              otpInputRef.current.clear();
-               if( otp === TestOtp){
-                    setModal1Visible(true)
-                  } else{
-                    setModal2Visible(true)
-                  } 
-            }}
-            isDisabled={otp == ""}
-            style={styles.btn}
-          />
         </View>
       </Modal>
       <Modal
@@ -187,98 +194,102 @@ const SignUpPage = ({ navigation }) => {
         visible={ismodal2Visible}
         backdropOpacity={0.9}
       >
-        <View style={styles.main}>
-          <Text
-            style={{
-              fontSize: 32,
-              fontWeight: "800",
-              color: Colors.INVALIDTEXT_COLOR,
-              paddingLeft: 100,
-            }}
-          >
-            Try again!
-          </Text>
-          <Text
-            style={{
-              fontSize: 18,
-              fontWeight: "600",
-              color: Colors.WHITE,
-              paddingLeft: 20,
-            }}
-          >
-            Oops, Seems like something is
-            <Text style={{ color: Colors.INVALIDTEXT_COLOR }}> wrong</Text>
-          </Text>
-          <View style={styles.otp}>
-            <OtpInput
-              autoFocus={false}
-              numberOfDigits={4}
-              // onTextChange={(text) => console.log(text)}
-              focusColor={"white"}
-              // onFilled={(text) => console.log(`OTP is ${text}`)}
-              onFilled={(otp) => verifyOtp(otp)}
-              textInputProps={{
-                accessibilityLabel: "One-Time Password",
-              }}
-              theme={{
-                pinCodeContainerStyle: {
-                  borderRadius: 99,
-                  width: 66,
-                  height: 64,
-                  backgroundColor: "rgba(255,255,255,0.1)",
-                  borderColor: "rgba(199,194,194,0.77)",
-                },
-                pinCodeTextStyle: {
-                  fontSize: 20,
-                  color: Colors.WHITE,
-                  fontWeight: "700",
-                },
-              }}
-            />
-          </View>
-          <View
-            style={{
-              flexDirection: "column",
-              gap: 2.5,
-              alignItems: "center",
-            }}
-          >
-            <View
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Text
               style={{
-                flexDirection: "row",
-                gap: 2.5,
-                alignItems: "center",
-                top: 40,
+                fontSize: 32,
+                fontWeight: "800",
+                color: Colors.INVALIDTEXT_COLOR,
+                textAlign: "center",
               }}
             >
-              <Text
-                style={{ color: Colors.WHITE, fontSize: 14, fontWeight: "500" }}
+              Try again!
+            </Text>
+            <Text
+              style={{
+                fontSize: 18,
+                fontWeight: "600",
+                color: Colors.WHITE,
+                textAlign: "center",
+                marginTop: 10,
+              }}
+            >
+              Oops, Seems like something is
+              <Text style={{ color: Colors.INVALIDTEXT_COLOR }}> wrong</Text>
+            </Text>
+            <View style={styles.otp}>
+              <OtpInput
+                autoFocus={false}
+                numberOfDigits={4}
+                focusColor={"white"}
+                onFilled={(otp) => verifyOtp(otp)}
+                textInputProps={{
+                  accessibilityLabel: "One-Time Password",
+                }}
+                theme={{
+                  pinCodeContainerStyle: {
+                    borderRadius: 99,
+                    width: 66,
+                    height: 64,
+                    backgroundColor: "rgba(255,255,255,0.1)",
+                    borderColor: "rgba(199,194,194,0.77)",
+                  },
+                  pinCodeTextStyle: {
+                    fontSize: 20,
+                    color: Colors.WHITE,
+                    fontWeight: "700",
+                  },
+                }}
+              />
+            </View>
+            <View
+              style={{
+                flexDirection: "column",
+                gap: 2.5,
+                alignItems: "center",
+              }}
+            >
+              <View
+                style={{
+                  flexDirection: "row",
+                  gap: 2.5,
+                  alignItems: "center",
+                  marginTop: 40,
+                }}
               >
-                If you didn't receive a code!
-              </Text>
-              <TouchableOpacity onPress={() => setResendText(false)}>
                 <Text
                   style={{
-                    color: Colors.LINK_COLOR,
-                    fontSize: 18,
-                    fontWeight: "700",
-                    textDecorationLine: "underline",
+                    color: Colors.WHITE,
+                    fontSize: 14,
+                    fontWeight: "500",
                   }}
                 >
-                  Resend
+                  If you didn't receive a code!
                 </Text>
-              </TouchableOpacity>
+                <TouchableOpacity onPress={() => setResendText(false)}>
+                  <Text
+                    style={{
+                      color: Colors.LINK_COLOR,
+                      fontSize: 18,
+                      fontWeight: "700",
+                      textDecorationLine: "underline",
+                    }}
+                  >
+                    Resend
+                  </Text>
+                </TouchableOpacity>
+              </View>
             </View>
+            <VerifyBtn
+              btnText={"Verify"}
+              onPress={() => {
+                setModal1Visible(true);
+              }}
+              isDisabled={otp == ""}
+              style={styles.btn}
+            />
           </View>
-
-          <VerifyBtn
-            btnText={"Verify"}
-            onPress={() => {
-              setModal1Visible(true);
-            }}
-            isDisabled={otp == ""}
-            style={styles.btn}
-          />
         </View>
       </Modal>
       <Modal
@@ -288,42 +299,34 @@ const SignUpPage = ({ navigation }) => {
         visible={ismodal1Visible}
         backdropOpacity={0.3}
       >
-        <View style={styles.main}>
-          <WhiteText style={styles.subHeading}>YAY! OTP verified</WhiteText>
-
-          <View
-            style={{
-              flexDirection: "column",
-              gap: 2.5,
-              alignItems: "center",
-            }}
-          >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <WhiteText style={styles.subHeading}>Yay!</WhiteText>
             <View
               style={{
-                flexDirection: "row",
-                gap: 2.5,
+                flexDirection: "column",
                 alignItems: "center",
-                top: 40,
+                marginTop: 20,
               }}
             >
               <Image
                 style={styles.tinyLogo}
                 source={require("../../../assets/Doneverify.png")}
+                resizeMode="contain"
               />
             </View>
           </View>
           <VerifyBtn
-        btnText={"Next"}
-        onPress={
-         ()=>{ setModal1Visible(false),setModal2Visible(false),setModalVisible(false)}
-                 
-        }
-        style={styles.btn}
-      />
-       
-          </View>
-         
-</Modal>
+            btnText={"Next"}
+            onPress={() => {
+              setModal1Visible(false);
+              setModal2Visible(false);
+              setModalVisible(false);
+            }}
+            style={styles.btn}
+          />
+        </View>
+      </Modal>
     </View>
   );
 };
@@ -334,52 +337,48 @@ const styles = StyleSheet.create({
   whole: {
     flex: 1,
     justifyContent: "center",
-    paddingLeft: 100,
+    alignItems: "center",
     backgroundColor: "#2A2E2E",
-    paddingBottom: 50,
+    padding: 20,
   },
   txt: {
     fontWeight: "bold",
     fontSize: 30,
     color: "white",
-    paddingLeft: 30,
+    textAlign: "center",
   },
   txt1: {
     color: "white",
     fontSize: 20,
+    textAlign: "center",
+    marginVertical: 10,
   },
   input: {
     backgroundColor: "#FFFFFF1A",
-    width: 290,
+    width: width * 0.8,
     height: 57,
     borderRadius: 10,
     paddingLeft: 20,
-    marginTop: 20,
-    right: 60,
+    marginVertical: 10,
   },
   input1: {
     backgroundColor: "#FFFFFF1A",
-    width: 290,
+    width: width * 0.8,
     height: 57,
     borderRadius: 10,
     paddingLeft: 20,
-    marginTop: 20,
-    right: 60,
-    bottom: 40,
+    marginVertical: 10,
   },
   input2: {
     backgroundColor: "#FFFFFF1A",
-    width: 290,
+    width: width * 0.8,
     height: 57,
     borderRadius: 10,
     paddingLeft: 20,
-    marginTop: 20,
-    right: 60,
-    bottom: 80,
+    marginVertical: 10,
   },
   btn1: {
-    right: 40,
-    top: -30,
+    marginVertical: 20,
     minWidth: "70%",
     borderWidth: 1,
     borderColor: "#DDBBE6",
@@ -388,60 +387,57 @@ const styles = StyleSheet.create({
   },
   txt2: {
     color: "white",
-    top: -120,
-    right: 30,
+    marginVertical: 20,
+    top :-20,
+    textAlign: "center",
   },
   txt3: {
     color: "blue",
-    top: -140,
-    right: 30,
-    left: 130,
+    top :-30,
     textDecorationLine: "underline",
+    textAlign: "center",
   },
   phonebtn: {
     backgroundColor: "#2ED813",
-    width: 70,
+    width: width * 0.3,
     textAlign: "center",
     padding: 10,
     borderRadius: 10,
     textTransform: "capitalize",
     color: "#FFFFFF",
-    top: -50,
-    left: 150,
+    marginVertical: 10,
   },
   phonebtn1: {
     backgroundColor: "#2ED813",
-    width: 70,
+    width: width * 0.3,
     textAlign: "center",
     padding: 10,
     borderRadius: 10,
     textTransform: "capitalize",
     color: "#FFFFFF",
-    top: -90,
-    left: 150,
+    marginVertical: 10,
   },
   subHeading: {
     padding: 10,
     fontSize: 18,
     fontWeight: "500",
-    // fontFamily: "Inter-Medium",
     textAlign: "center",
-    top: 20,
+    marginTop: 20,
+    color: "white",
   },
   main: {
     backgroundColor: "#232727",
-    minHeight: 323,
-    top: 200,
-    maxWidth: 340,
-    left: 10,
-    right: 80,
+    minHeight: height * 0.4,
+    marginTop: height * 0.1,
+    maxWidth: width * 0.9,
+    alignSelf: "center",
     borderRadius: 10,
+    padding: 20,
   },
   btn: {
-    width: 300,
-    top: 70,
-    left: 18,
-    minWidth: "80%",
+    width: width * 0.7,
+    marginTop: 30,
+    alignSelf: "center",
     borderWidth: 1,
     borderColor: "#DDBBE6",
     borderRadius: 15,
@@ -449,16 +445,29 @@ const styles = StyleSheet.create({
     backgroundColor: "green",
   },
   otp: {
-    top: 30,
-    left: 10,
-    width: 320,
+    marginTop: 20,
+    width: width * 0.8,
+    alignSelf: "center",
   },
   btnTwoVarientStyle: {
     backgroundColor: "#2ED813",
     padding: 15,
   },
   tinyLogo: {
-    width: 174,
-    height: 140,
+    width: width * 0.5, 
+    height: width * 0.5 * (140 / 174), 
   },
+  modalContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgba(0,0,0,0.5)",
+  },
+  modalContent: {
+    width: width * .9,
+  backgroundColor: "#232727",
+  borderRadius: 10,
+  paddingVertical: 10,
+  paddingHorizontal: 50,
+}
 });
