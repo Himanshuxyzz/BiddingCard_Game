@@ -18,17 +18,19 @@ const FirstPage = ({ navigation }) => {
       >
         <Image source={require("../../../assets/BC.png")} style={styles.img} />
         <Text style={styles.txt}>BC game</Text>
-        <TouchableOpacity onPress={() => navigation.navigate("SignUpPage")}>
-          <View style={[styles.wrapper, styles.simpleButton]}>
-            <Text style={styles.text}>Create Account</Text>
-          </View>
-        </TouchableOpacity>
+        <View style={{ gap: 20 }}>
+          <TouchableOpacity onPress={() => navigation.navigate("SignUpPage")}>
+            <View style={[styles.wrapper, styles.simpleButton]}>
+              <Text style={styles.text}>Create Account</Text>
+            </View>
+          </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => navigation.navigate("LoginPage")}>
-          <View style={[styles.wrap]}>
-            <Text style={styles.text1}>Log In</Text>
-          </View>
-        </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate("LoginPage")}>
+            <View style={[styles.wrapper, styles.simpleButton]}>
+              <Text style={styles.text1}>Log In</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
       </ImageBackground>
     </View>
   );
@@ -51,8 +53,8 @@ const styles = StyleSheet.create({
   img: {
     width: 207,
     height: 247,
-    left: 100,
     top: -120,
+    marginHorizontal: "auto",
   },
   txt: {
     fontFamily: "",
@@ -62,21 +64,23 @@ const styles = StyleSheet.create({
   },
   wrapper: {
     borderRadius: 10,
-    paddingVertical: 10,
+    paddingVertical: 15,
     paddingHorizontal: 20,
-    maxWidth: 250,
+    minWidth: "80%",
+    maxWidth: "80%",
+    marginHorizontal: "auto",
   },
   simpleButton: {
     backgroundColor: "#FFFFFF",
     color: "black",
-    marginLeft: 80,
+    // marginLeft: 80,
     bottom: 70,
   },
 
   text: {
-    justifyContent : 'center',
-    textAlign:'center',
-   fontSize: 20,
+    justifyContent: "center",
+    textAlign: "center",
+    fontSize: 20,
   },
 
   wrap: {
@@ -91,7 +95,7 @@ const styles = StyleSheet.create({
   },
   text1: {
     fontSize: 20,
-    justifyContent : 'center',
-    textAlign:'center',
+    justifyContent: "center",
+    textAlign: "center",
   },
 });

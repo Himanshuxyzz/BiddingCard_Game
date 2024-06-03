@@ -338,46 +338,46 @@ const CustomSpinWheel = ({ route, navigation }) => {
     }, 1000);
   };
 
-    useEffect(() => {
-      const checkInitialSpinTimes = async () => {
-        const lastSpinTime = await AsyncStorage.getItem("lastSpinTime");
-        const nextSpinTime = await AsyncStorage.getItem("nextSpinTime");
+  // useEffect(() => {
+  //   const checkInitialSpinTimes = async () => {
+  //     const lastSpinTime = await AsyncStorage.getItem("lastSpinTime");
+  //     const nextSpinTime = await AsyncStorage.getItem("nextSpinTime");
 
-        if (lastSpinTime && nextSpinTime) {
-          const nextSpinDate = new Date(nextSpinTime);
-          const currentTime = new Date();
+  //     if (lastSpinTime && nextSpinTime) {
+  //       const nextSpinDate = new Date(nextSpinTime);
+  //       const currentTime = new Date();
 
-          if (currentTime < nextSpinDate) {
-            setGameFlow({
-              state: "halted",
-              msg: "Next spin time is in the future. Game is halted.",
-            });
-            return;
-          }
-        }
+  //       if (currentTime < nextSpinDate) {
+  //         setGameFlow({
+  //           state: "halted",
+  //           msg: "Next spin time is in the future. Game is halted.",
+  //         });
+  //         return;
+  //       }
+  //     }
 
-        if (!hasJoinedMembersTriggered.current) {
-          const handleFirstEvent = () => {
-            setGameFlow({
-              state: "allMembersJoined",
-              msg: "All members joined. Game starts in 15 mins.",
-            });
-            animateStateChange();
-            setIsModalVisible(true);
-            startTimer(60);
-            hasJoinedMembersTriggered.current = true;
-          };
+  //     if (!hasJoinedMembersTriggered.current) {
+  //       const handleFirstEvent = () => {
+  //         setGameFlow({
+  //           state: "allMembersJoined",
+  //           msg: "All members joined. Game starts in 15 mins.",
+  //         });
+  //         animateStateChange();
+  //         setIsModalVisible(true);
+  //         startTimer(60);
+  //         hasJoinedMembersTriggered.current = true;
+  //       };
 
-          const timeoutId = setTimeout(handleFirstEvent, 4000);
-          return () => {
-            clearTimeout(timeoutId);
-            clearInterval(timerIntervalRef.current);
-          };
-        }
-      };
+  //       const timeoutId = setTimeout(handleFirstEvent, 4000);
+  //       return () => {
+  //         clearTimeout(timeoutId);
+  //         clearInterval(timerIntervalRef.current);
+  //       };
+  //     }
+  //   };
 
-      checkInitialSpinTimes();
-    }, []);
+  //   checkInitialSpinTimes();
+  // }, []);
 
   useEffect(() => {
     if (timer === 0) {
@@ -529,7 +529,7 @@ const CustomSpinWheel = ({ route, navigation }) => {
         <View style={styles.buttonContainer}>
           <GradientVarientOneBtn
             onPress={() =>
-              navigation.navigate("UserEntries", {
+              navigation.navigate("CustomEntries", {
                 userEntries: initialSegmentOptions,
                 winnerList: winnersList,
               })
@@ -538,7 +538,7 @@ const CustomSpinWheel = ({ route, navigation }) => {
             btnText={"Entries"}
           />
           <GradientVarientOneBtn
-            onPress={() => navigation.navigate("Result", { winnersList })}
+            onPress={() => navigation.navigate("CustomResult", { winnersList })}
             style={styles.button}
             btnText={"Result"}
           />
