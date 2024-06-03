@@ -25,6 +25,12 @@ import Withdraw from "../Screens/WalletScreen/Withdraw";
 import WithdrawAccount from "../Screens/WalletScreen/WithdrawAccount";
 import WithdrawDetails from "../Screens/WalletScreen/WithdrawDetails";
 import WithdrawPassword from "../Screens/WalletScreen/WithdrawPassword";
+import CustomSimple from "../Screens/Dashboard/MakeAClub/Simple";
+import CustomStartBc from "../Screens/Dashboard/MakeAClub/Simple/CustomStartBc";
+import CustomSpinWheel from "../Screens/Dashboard/MakeAClub/Simple/CustomSpinWheel";
+import AuctionResult from "../Screens/Dashboard/MakeAClub/Auction/AuctionResult";
+import AuctionEntries from "../Screens/Dashboard/MakeAClub/Auction/AuctionEntries";
+import WinnerPage from "../Screens/Dashboard/MakeAClub/Auction/WinnerPage";
 
 const Stack = createNativeStackNavigator();
 
@@ -91,6 +97,23 @@ const MainDashboardNavigator = () => {
         options={{ headerShown: false }}
       />
       <Stack.Screen
+        name="CustomSimple"
+        component={CustomSimple}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="CustomStartBc"
+        component={CustomStartBc}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="CustomSpinWheel"
+        component={CustomSpinWheel}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
         name="Auction"
         component={Auction}
         options={{ headerShown: false }}
@@ -115,6 +138,21 @@ const MainDashboardNavigator = () => {
       <Stack.Screen
         name="Bidding"
         component={Bidding}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="AuctionEntries"
+        component={AuctionEntries}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="AuctionResult"
+        component={AuctionResult}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="WinnerPage"
+        component={WinnerPage}
         options={{ headerShown: false }}
       />
 
@@ -183,6 +221,7 @@ const MainDashboardNavigator = () => {
       />
 
       {/* Sakshi end*/}
+      
     </Stack.Navigator>
   );
 };

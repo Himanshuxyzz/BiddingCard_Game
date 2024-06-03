@@ -8,62 +8,70 @@ const WaitingPage = ({navigation}) => {
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={styles.main}
-      keyboardVerticalOffset={Platform.select({ ios: 60, android: 60 })}
+      keyboardVerticalOffset={Platform.select({ ios: 60, android: 45 })}
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <ScrollView contentContainerStyle={styles.scrollContainer}>
-    <View style={styles.container}>
-      <Header />
+          <View style={styles.container}>
+            <Header />
 
-      <Text
-        onPress={() => navigation.navigate("TimeRemaining")}
-        style={{
-          color: "rgba(234, 89, 228, 1)",
-          fontSize: 28,
-          fontWeight: "bold",
-          textAlign: "center",
-          marginTop: "6%",
-        }}
-      >
-        Waiting for the Member to join
-      </Text>
-      <Text
-        style={{
-          color: "#D97D13",
-          fontSize: 23,
-          fontWeight: "bold",
-          textAlign: "center",
-        }}
-      >
-        Action Amount 2.04cr{" "}
-      </Text>
-      <View
-        style={{
-          marginTop: "15%",
-          justifyContent: "center",
-          alignItems: "center",
-          flex: 1,
-        }}
-      >
-        <Image
-          style={{ maxWidth: "90%", minWidth: "90%", height: 400 }}
-          source={require("../../../../../assets/Images/waitingpage.png")}
-        />
-      </View>
-      <View style={styles.inputWrapper}>
-        <TextInput
-          style={styles.input}
-          placeholder="Enter Amount"
-          keyboardType="numeric"
-          placeholderTextColor={Colors.INPUT_PLACEHOLDER}
-          autoCapitalize="none"
-        />
-        <TouchableOpacity>
-          <Text style={styles.bid}>BID</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
-      </ScrollView>
+            <Text
+              onPress={() => navigation.navigate("TimeRemaining")}
+              style={{
+                color: "rgba(234, 89, 228, 1)",
+                fontSize: 28,
+                fontWeight: "bold",
+                textAlign: "center",
+                marginTop: "6%",
+              }}
+            >
+              Waiting for the Member to join
+            </Text>
+            <Text
+              style={{
+                color: "#D97D13",
+                fontSize: 23,
+                fontWeight: "bold",
+                textAlign: "center",
+              }}
+            >
+              Action Amount 2.04cr{" "}
+            </Text>
+            <View
+              style={{
+                marginTop: "15%",
+                justifyContent: "center",
+                alignItems: "center",
+                flex: 1,
+              }}
+            >
+              <Image
+                style={{ maxWidth: "90%", minWidth: "90%", height: 400 }}
+                source={require("../../../../../assets/Images/waitingpage.png")}
+              />
+            </View>
+            <View style={styles.inputWrapper}>
+              <TextInput
+                style={styles.input}
+                placeholder="Enter Amount"
+                keyboardType="numeric"
+                placeholderTextColor={Colors.INPUT_PLACEHOLDER}
+                autoCapitalize="none"
+              />
+              {/* <TouchableOpacity>
+                <Text
+                  style={styles.bid}
+                  onPress={() => navigation.navigate("WinnerPage",{winner: "User2"})}
+                >
+                  BID
+                </Text>
+              </TouchableOpacity> */}
+              <TouchableOpacity>
+                <Text style={styles.bid}>BID</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </ScrollView>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
   );

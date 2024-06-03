@@ -19,17 +19,17 @@ import GradientVarientOneBtn from "../../../../Components/Gradient/GradientVaria
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { useState } from "react";
 
-const StartAuctionBC = ({ route, navigation }) => {
+const CustomStartBc = ({ route, navigation }) => {
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null); // State to store the selected date
   const { bcAmount, totalAmount } = route.params;
   console.log(bcAmount);
+  const [amountPerPerson, setAmountPerPerson] = useState("");
+  const [numberOfPeople, setNumberOfPeople] = useState("");
+  //   const [] = useState("");
   const [password, setPassword] = useState("test@123");
   const [isPasswordValid, setIsPasswordValid] = useState(true); // Initially assuming password is valid
-  const [AmountPerPerson, setAmountPerPerson] = useState("");
-   const [NoOfPeople, setNoOfPeople] = useState("");
   const [hidePassword, setHidePassword] = useState(true);
-
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
@@ -39,7 +39,7 @@ const StartAuctionBC = ({ route, navigation }) => {
   };
 
   const handleConfirm = (date) => {
-    console.warn("A date has been picked: ", date);
+    // console.warn("A date has been picked: ", date);
     hideDatePicker();
     setSelectedDate(date); // Store the selected date in state
   };
@@ -53,6 +53,10 @@ const StartAuctionBC = ({ route, navigation }) => {
     }
     return;
   };
+  const handlePasswordVisibility = () => {
+    setHidePassword(!hidePassword);
+  };
+
   const handlePassword = () => {
     const hasSpecialCharacter = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(
       password
@@ -61,32 +65,29 @@ const StartAuctionBC = ({ route, navigation }) => {
     if (password.length >= 8 && hasSpecialCharacter) {
       setIsPasswordValid(true);
       // Proceed with your logic like navigating to the next screen
-      navigation.navigate("WaitingPage");
+      navigation.navigate("CustomSpinWheel", {
+        isAdmin: true,
+      });
     } else {
       setIsPasswordValid(false);
     }
-  };
-
-    const handlePasswordVisibility = () => {
-    setHidePassword(!hidePassword);
   };
 
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={styles.main}
-      keyboardVerticalOffset={Platform.select({ ios: 60, android: 45 })}
+      keyboardVerticalOffset={Platform.select({ ios: 60, android: 50 })}
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <ScrollView contentContainerStyle={styles.scrollContainer}>
           <View style={styles.container}>
             <Header />
             <Text
-              onPress={() => navigation.navigate("UserEntries")}
               style={{
                 color: "#fff",
                 marginTop: "10%",
-                fontSize: 33,
+                fontSize: 35,
                 fontWeight: "bold",
                 textDecorationLine: "underline",
               }}
@@ -118,9 +119,8 @@ const StartAuctionBC = ({ route, navigation }) => {
                 Select Amount
               </Text>
               <TextInput
-                value={AmountPerPerson}
-                  onChangeText={(text) => setAmountPerPerson(text)}
-                //   onChangeText={setEmailMobile}
+                value={amountPerPerson}
+                onChangeText={(text) => setAmountPerPerson(text)}
                 style={styles.input}
                 placeholder="Enter Amount per person"
                 keyboardType="default"
@@ -128,8 +128,8 @@ const StartAuctionBC = ({ route, navigation }) => {
                 autoCapitalize={"none"}
               />
               <TextInput
-                value={NoOfPeople}
-                  onChangeText={(text) => setNoOfPeople(text)}
+                value={numberOfPeople}
+                onChangeText={(text) => setNumberOfPeople(text)}
                 //   onChangeText={setEmailMobile}
                 style={styles.input}
                 placeholder="Number of people"
@@ -137,16 +137,6 @@ const StartAuctionBC = ({ route, navigation }) => {
                 placeholderTextColor={Colors.INPUT_PLACEHOLDER}
                 autoCapitalize={"none"}
               />
-              {/* <TextInput
-          value={""}
-          //   onChangeText={(text) => setEmailMobile(text)}
-          //   onChangeText={setEmailMobile}
-          style={styles.input}
-          placeholder="Choose a date"
-          keyboardType="default"
-          placeholderTextColor={Colors.INPUT_PLACEHOLDER}
-          autoCapitalize={"none"}
-        /> */}
               <TextInput
                 style={styles.input}
                 placeholder="D.O.B"
@@ -171,12 +161,6 @@ const StartAuctionBC = ({ route, navigation }) => {
                   color="rgba(177, 177, 177, 1)"
                 />
               </TouchableOpacity>
-              {/* <Feather
-          style={{ top: 235, right: 40, position: "absolute" }}
-          name="calendar"
-          size={28}
-          color="black"
-        /> */}
               <View
                 style={{
                   alignItems: "start",
@@ -192,7 +176,7 @@ const StartAuctionBC = ({ route, navigation }) => {
                     textAlign: "left",
                   }}
                 >
-                  Wallet balance -{" "}
+                  Wallet balance -
                   <Text style={{ color: "rgba(176, 255, 164, 1)" }}>
                     ₹ 6000
                   </Text>
@@ -218,6 +202,7 @@ const StartAuctionBC = ({ route, navigation }) => {
                   color="rgba(177, 177, 177, 1)"
                 />
               </TouchableOpacity>
+
               {!isPasswordValid && (
                 <Text
                   style={{
@@ -238,6 +223,7 @@ const StartAuctionBC = ({ route, navigation }) => {
                   width: "100%",
                   paddingHorizontal: 30,
                 }}
+                onPress={() => navigation.navigate("forgotPassword")}
               >
                 <Text
                   style={{
@@ -254,7 +240,6 @@ const StartAuctionBC = ({ route, navigation }) => {
               <GradientVarientOneBtn
                 onPress={handlePassword}
                 btnText={"Submit"}
-                //  onPress={() => navigation.navigate("WaitingPage")}
                 style={styles.btn}
               />
             </View>
@@ -265,7 +250,7 @@ const StartAuctionBC = ({ route, navigation }) => {
   );
 };
 
-export default StartAuctionBC;
+export default CustomStartBc;
 
 const styles = StyleSheet.create({
   main: {
@@ -280,7 +265,7 @@ const styles = StyleSheet.create({
     padding: 20,
     alignItems: "center",
     flexDirection: "column",
-    gap:20,
+    gap: 20,
   },
   input: {
     color: Colors.BLACK,

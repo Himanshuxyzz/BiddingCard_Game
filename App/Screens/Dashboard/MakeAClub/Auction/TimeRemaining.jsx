@@ -45,12 +45,12 @@ const TimeRemaining = ({navigation}) => {
         </Text>
         <View style={{ flexDirection: "row", gap: 20 }}>
           <GradientVarientOneBtn
-            onPress={() => navigation.navigate("UserEntries")}
+            onPress={() => navigation.navigate("AuctionEntries")}
             btnText={"Entries"}
             style={styles.btn}
           />
           <GradientVarientOneBtn
-            onPress={() => navigation.navigate("Result")}
+            onPress={() => navigation.navigate("AuctionResult")}
             btnText={"Result"}
             style={styles.btn}
           />

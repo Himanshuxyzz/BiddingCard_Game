@@ -31,6 +31,16 @@ const CreateUrProfile = ({ navigation }) => {
   const [selectedDate, setSelectedDate] = useState(null); // State to store the selected date
   const [fileSelected, setFileSelected] = useState(null);
 
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [aadhar, setAadhar] = useState("");
+
+  const [phoneError, setPhoneError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [aadharError, setAadharError] = useState("");
+
   const showDatePicker = () => {
     setDatePickerVisibility(true);
   };
@@ -44,13 +54,47 @@ const CreateUrProfile = ({ navigation }) => {
     setSelectedDate(date); // Store the selected date in state
   };
 
+  const validatePhone = (phone) => {
+    const phoneRegex = /^[6-9]\d{9}$/;
+    if (!phoneRegex.test(phone)) {
+      setPhoneError("Invalid phone number");
+    } else {
+      setPhoneError("");
+    }
+  };
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setEmailError("Invalid email address");
+    } else {
+      setEmailError("");
+    }
+  };
+
+  const validatePassword = (password) => {
+    if (password.length < 6) {
+      setPasswordError("Password must be at least 6 characters long");
+    } else {
+      setPasswordError("");
+    }
+  };
+
+  const validateAadhar = (aadhar) => {
+    const aadharRegex = /^\d{12}$/;
+    if (!aadharRegex.test(aadhar)) {
+      setAadharError("Invalid Aadhaar number");
+    } else {
+      setAadharError("");
+    }
+  };
+
   const pickSomething = async () => {
     try {
       const docRes = await DocumentPicker.getDocumentAsync({
         type: "*/*",
         multiple: true,
       });
-      // console.log(docRes.assets[0].name);
       console.log(docRes);
       setFileSelected(docRes.assets);
       setModalVisible(false);
@@ -58,22 +102,22 @@ const CreateUrProfile = ({ navigation }) => {
       console.log("Error while selecting file: ", error);
     }
   };
+
   const pickImageOnly = async () => {
     try {
       const docRes = await DocumentPicker.getDocumentAsync({
         type: "image/*",
       });
       setFileSelected(docRes && docRes?.assets);
-
       setModalVisible(false);
     } catch (error) {
       console.log("Error while selecting file: ", error);
     }
   };
+
   const [image, setImage] = useState(null);
 
   const pickImage = async () => {
-    // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
@@ -81,13 +125,11 @@ const CreateUrProfile = ({ navigation }) => {
       quality: 1,
     });
 
-    // console.log(result);
     setModalVisible(false);
 
     if (!result.canceled) {
       setImage(result.assets[0].uri);
       console.log(result);
-
       setFileSelected(result.assets);
     }
   };
@@ -107,7 +149,16 @@ const CreateUrProfile = ({ navigation }) => {
     return;
   };
 
-  // console.log(formatDate(selectedDate))
+  const handleSaveAndNext = () => {
+    validatePhone(phone);
+    validateEmail(email);
+    validatePassword(password);
+    validateAadhar(aadhar);
+
+    if (!phoneError && !emailError && !passwordError && !aadharError) {
+      navigation.navigate("Addbankdetail");
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -132,7 +183,7 @@ const CreateUrProfile = ({ navigation }) => {
         </Text>
         <View style={styles.inputContainer}>
           <TextInput
-            style={[styles.input,{ position: "relative" }]}
+            style={[styles.input, { position: "relative" }]}
             placeholder="D.O.B"
             placeholderTextColor={Colors.INPUT_PLACEHOLDER}
             autoCapitalize={"none"}
@@ -157,8 +208,14 @@ const CreateUrProfile = ({ navigation }) => {
             keyboardType="phone-pad"
             placeholderTextColor={Colors.INPUT_PLACEHOLDER}
             autoCapitalize={"none"}
+            value={phone}
+            onChangeText={(text) => {
+              setPhone(text);
+              validatePhone(text);
+            }}
           />
         </View>
+        {phoneError ? <Text style={styles.errorText}>{phoneError}</Text> : null}
         <View style={styles.inputContainer}>
           <TextInput
             style={styles.input}
@@ -166,6 +223,11 @@ const CreateUrProfile = ({ navigation }) => {
             keyboardType="email-address"
             placeholderTextColor={Colors.INPUT_PLACEHOLDER}
             autoCapitalize={"none"}
+            value={email}
+            onChangeText={(text) => {
+              setEmail(text);
+              validateEmail(text);
+            }}
           />
           <TextInput
             style={styles.input}
@@ -173,15 +235,32 @@ const CreateUrProfile = ({ navigation }) => {
             secureTextEntry={true}
             placeholderTextColor={Colors.INPUT_PLACEHOLDER}
             autoCapitalize={"none"}
+            value={password}
+            onChangeText={(text) => {
+              setPassword(text);
+              validatePassword(text);
+            }}
           />
         </View>
+        {emailError ? <Text style={styles.errorText}>{emailError}</Text> : null}
+        {passwordError ? (
+          <Text style={styles.errorText}>{passwordError}</Text>
+        ) : null}
         <TextInput
           style={[styles.input, { width: "100%" }]}
           placeholder="Aadhar Number"
           keyboardType="numeric"
           placeholderTextColor={Colors.INPUT_PLACEHOLDER}
           autoCapitalize={"none"}
+          value={aadhar}
+          onChangeText={(text) => {
+            setAadhar(text);
+            validateAadhar(text);
+          }}
         />
+        {aadharError ? (
+          <Text style={styles.errorText}>{aadharError}</Text>
+        ) : null}
         <Text style={styles.uploadText}>Upload Files</Text>
         <View style={styles.noteContainer}>
           <Text style={styles.note}>Note:</Text>
@@ -201,7 +280,6 @@ const CreateUrProfile = ({ navigation }) => {
         <View style={styles.dashedBorder}>
           <Feather name="upload-cloud" size={30} color="white" />
           <View style={{ flexDirection: "row", gap: 5 }}>
-            {/* {image && <Image source={{ uri: image }} style={styles.image} />} */}
             <Text style={{ fontSize: 18, color: "#fff", fontWeight: "bold" }}>
               Drag and Drop or
             </Text>
@@ -225,9 +303,6 @@ const CreateUrProfile = ({ navigation }) => {
           onBackdropPress={() => setModalVisible(false)}
         >
           <View style={{ justifyContent: "center", alignItems: "center" }}>
-            {/* <View>
-                <Text style={{color:"red"}}>Close</Text>
-            </View> */}
             <View
               style={{
                 width: 380,
@@ -351,18 +426,6 @@ const CreateUrProfile = ({ navigation }) => {
             justifyContent: "center",
           }}
         >
-          {/* {fileSelected !== null &&
-            fileSelected !== undefined &&
-            fileSelected?.map((data) => {
-              const uri = data?.uri;
-              const file_Name = uri?.substring(uri?.lastIndexOf("/") + 1);
-              return (
-                <WhiteText key={data?.uri} style={{ fontWeight: "700" }}>
-                  {data?.name !== undefined ? data?.name : file_Name}
-                </WhiteText>
-              );
-            })} */}
-          {/* <WhiteText style={{fontWeight:"700"}}> {fileSelected !== null && fileSelected[0].uri}</WhiteText> */}
           {fileSelected !== null &&
             fileSelected !== undefined &&
             fileSelected?.map((data, index) => {
@@ -374,7 +437,6 @@ const CreateUrProfile = ({ navigation }) => {
                     {data?.name !== undefined ? data?.name : file_Name}
                   </WhiteText>
                   <TouchableOpacity onPress={() => handleClear(index)}>
-                    {/* <FontAwesome name="times-circle" size={20} color="red" /> */}
                     <FontAwesome name="close" size={24} color="red" />
                   </TouchableOpacity>
                 </View>
@@ -384,7 +446,7 @@ const CreateUrProfile = ({ navigation }) => {
 
         <GradientVarientOneBtn
           btnText={"Save & Next"}
-          onPress={() => navigation.navigate("Addbankdetail")}
+          onPress={handleSaveAndNext}
           style={styles.btn}
         />
       </ScrollView>
@@ -489,6 +551,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderRadius: 10,
+    marginBottom: 10,
+  },
+  errorText: {
+    color: "red",
+    fontSize: 14,
     marginBottom: 10,
   },
 });

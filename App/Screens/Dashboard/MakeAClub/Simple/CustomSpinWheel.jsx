@@ -34,14 +34,15 @@ const initialSegmentOptions = [
 
 // const initialSegmentOptions = ["Option 1", "Option 2", "Option 3"];
 
-const SpinWheel = ({ route, navigation }) => {
-  const { totalAmount } = route.params;
+const CustomSpinWheel = ({ route, navigation }) => {
+  const { isAdmin } = route.params;
   const [winner, setWinner] = useState(null);
   const [finished, setFinished] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  //   Tap to spin button for admin and if not admin then Ask admin to start the game should be there
   const [gameFlow, setGameFlow] = useState({
-    state: "waitingForMembers",
-    msg: "Waiting for all the members to join. Check entries.",
+    state: "waitingForAdmin",
+    msg: "Ask admin to start the game",
   });
   const [opacity] = useState(new Animated.Value(0));
   const wheelRef = useRef(null);
@@ -247,53 +248,139 @@ const SpinWheel = ({ route, navigation }) => {
     }, 1000);
   };
 
-  useEffect(() => {
-    const checkInitialSpinTimes = async () => {
-      const lastSpinTime = await AsyncStorage.getItem("lastSpinTime");
-      const nextSpinTime = await AsyncStorage.getItem("nextSpinTime");
+  //   useEffect(() => {
+  //     const checkInitialSpinTimes = async () => {
+  //       const lastSpinTime = await AsyncStorage.getItem("lastSpinTime");
+  //       const nextSpinTime = await AsyncStorage.getItem("nextSpinTime");
 
-      if (lastSpinTime && nextSpinTime) {
-        const nextSpinDate = new Date(nextSpinTime);
-        const currentTime = new Date();
+  //       if (lastSpinTime && nextSpinTime) {
+  //         const nextSpinDate = new Date(nextSpinTime);
+  //         const currentTime = new Date();
 
-        if (currentTime < nextSpinDate) {
-          setGameFlow({
-            state: "halted",
-            msg: "Next spin time is in the future. Game is halted.",
-          });
-          return;
+  //         if (currentTime < nextSpinDate) {
+  //           setGameFlow({
+  //             state: "halted",
+  //             msg: "Next spin time is in the future. Game is halted.",
+  //           });
+  //           return;
+  //         }
+  //       }
+
+  //       if (!hasJoinedMembersTriggered.current) {
+  //         const handleFirstEvent = () => {
+  //           setGameFlow({
+  //             state: "allMembersJoined",
+  //             msg: "All members joined. Game starts in 15 mins.",
+  //           });
+  //           animateStateChange();
+  //           setIsModalVisible(true);
+  //           startTimer(60);
+  //           hasJoinedMembersTriggered.current = true;
+  //         };
+
+  //         const timeoutId = setTimeout(handleFirstEvent, 4000);
+  //         return () => {
+  //           clearTimeout(timeoutId);
+  //           clearInterval(timerIntervalRef.current);
+  //         };
+  //       }
+  //     };
+
+  //     checkInitialSpinTimes();
+  //   }, []);
+
+  //   useEffect(() => {
+  //     if (
+  //       !hasTimerExpiredTriggered.current &&
+  //       timer === 0 &&
+  //       gameFlow.state !== "halted"
+  //     ) {
+  //       setGameFlow({
+  //         state: "PreSpinState",
+  //         msg: "Let's see who is lucky today.",
+  //       });
+  //       animateStateChange();
+  //       setIsModalVisible(true);
+
+  //       setTimeout(() => {
+  //         setIsModalVisible(false);
+  //         setGameFlow({
+  //           state: "SpinState",
+  //           msg: "Spinning",
+  //         });
+  //         spinWheel();
+  //       }, 2000);
+
+  //       hasTimerExpiredTriggered.current = true;
+  //     }
+  //   }, [timer, gameFlow.state]);
+
+  // Function to clear AsyncStorage
+  const clearAsyncStorage = async () => {
+    try {
+      await AsyncStorage.clear();
+      console.log("AsyncStorage cleared successfully.");
+    } catch (error) {
+      console.error("Error clearing AsyncStorage:", error);
+    }
+  };
+
+  const handleClearStorage = () => {
+    clearAsyncStorage();
+  };
+
+  const [adminSpinBtnClicked, setAdminSpinBtnClicked] = useState(false);
+
+  const handleAdminSpin = () => {
+    setTimeout(() => {
+      setAdminSpinBtnClicked(true);
+      startTimer(60);
+    }, 1000);
+  };
+
+    useEffect(() => {
+      const checkInitialSpinTimes = async () => {
+        const lastSpinTime = await AsyncStorage.getItem("lastSpinTime");
+        const nextSpinTime = await AsyncStorage.getItem("nextSpinTime");
+
+        if (lastSpinTime && nextSpinTime) {
+          const nextSpinDate = new Date(nextSpinTime);
+          const currentTime = new Date();
+
+          if (currentTime < nextSpinDate) {
+            setGameFlow({
+              state: "halted",
+              msg: "Next spin time is in the future. Game is halted.",
+            });
+            return;
+          }
         }
-      }
 
-      if (!hasJoinedMembersTriggered.current) {
-        const handleFirstEvent = () => {
-          setGameFlow({
-            state: "allMembersJoined",
-            msg: "All members joined. Game starts in 15 mins.",
-          });
-          animateStateChange();
-          setIsModalVisible(true);
-          startTimer(60);
-          hasJoinedMembersTriggered.current = true;
-        };
+        if (!hasJoinedMembersTriggered.current) {
+          const handleFirstEvent = () => {
+            setGameFlow({
+              state: "allMembersJoined",
+              msg: "All members joined. Game starts in 15 mins.",
+            });
+            animateStateChange();
+            setIsModalVisible(true);
+            startTimer(60);
+            hasJoinedMembersTriggered.current = true;
+          };
 
-        const timeoutId = setTimeout(handleFirstEvent, 4000);
-        return () => {
-          clearTimeout(timeoutId);
-          clearInterval(timerIntervalRef.current);
-        };
-      }
-    };
+          const timeoutId = setTimeout(handleFirstEvent, 4000);
+          return () => {
+            clearTimeout(timeoutId);
+            clearInterval(timerIntervalRef.current);
+          };
+        }
+      };
 
-    checkInitialSpinTimes();
-  }, []);
+      checkInitialSpinTimes();
+    }, []);
 
   useEffect(() => {
-    if (
-      !hasTimerExpiredTriggered.current &&
-      timer === 0 &&
-      gameFlow.state !== "halted"
-    ) {
+    if (timer === 0) {
       setGameFlow({
         state: "PreSpinState",
         msg: "Let's see who is lucky today.",
@@ -309,24 +396,8 @@ const SpinWheel = ({ route, navigation }) => {
         });
         spinWheel();
       }, 2000);
-
-      hasTimerExpiredTriggered.current = true;
     }
-  }, [timer, gameFlow.state]);
-
-  // Function to clear AsyncStorage
-  const clearAsyncStorage = async () => {
-    try {
-      await AsyncStorage.clear();
-      console.log("AsyncStorage cleared successfully.");
-    } catch (error) {
-      console.error("Error clearing AsyncStorage:", error);
-    }
-  };
-
-  const handleClearStorage = () => {
-    clearAsyncStorage();
-  };
+  }, [timer]);
 
   // @TODO to add winners in result screen and also the bc participants in the enteries ✅
 
@@ -350,7 +421,33 @@ const SpinWheel = ({ route, navigation }) => {
             </WhiteText>
           </>
         )}
-        {gameFlow.state === "waitingForMembers" ? (
+        {isAdmin ? (
+          <>
+            {adminSpinBtnClicked ? (
+              <>
+                <WhiteText style={styles.timerText}>
+                  {formatTime(timer)}
+                </WhiteText>
+                <WhiteText style={styles.timeRemainingText}>
+                  Time Remaining
+                </WhiteText>
+              </>
+            ) : (
+              <>
+                <GradientVarientOneBtn
+                  btnText={"Tap to Start"}
+                  style={[styles.button, { zIndex: 9999 }]}
+                  onPress={handleAdminSpin}
+                />
+              </>
+            )}
+          </>
+        ) : (
+          gameFlow.state === "waitingForAdmin" && (
+            <WhiteText style={styles.waitingText}>{gameFlow.msg}</WhiteText>
+          )
+        )}
+        {/* {gameFlow.state === "waitingForAdmin" ? (
           <WhiteText style={styles.waitingText}>{gameFlow.msg}</WhiteText>
         ) : (
           <Animated.View style={{ opacity }}>
@@ -365,10 +462,10 @@ const SpinWheel = ({ route, navigation }) => {
               </>
             )}
           </Animated.View>
-        )}
+        )} */}
         <View style={styles.wheelContainer}>
           <FortuneWheel
-            totalAmount={totalAmount}
+            // totalAmount={totalAmount}
             segmentOptions={segmentOptions}
             onSpinStart={handleSpinStart}
             onSpinEnd={handleSpinEnd}
@@ -376,7 +473,7 @@ const SpinWheel = ({ route, navigation }) => {
           />
           {isModalVisible && (
             <Animated.View style={[styles.modalContainer, { opacity }]}>
-              {gameFlow.state !== "waitingForMembers" && (
+              {gameFlow.state !== "waitingForAdmin" && (
                 <BlurModal style={styles.blurModal} intensity={4}>
                   <WhiteText style={styles.modalText}>{gameFlow.msg}</WhiteText>
                 </BlurModal>
@@ -411,7 +508,8 @@ const SpinWheel = ({ route, navigation }) => {
                   width: "99%",
                 }}
               >
-                Congratulations {winner} Your BC amount is Rs. {totalAmount}
+                Congratulations {winner} Your BC amount is Rs.
+                {/* {totalAmount} */}
               </Text>
 
               <LottieView
@@ -424,9 +522,7 @@ const SpinWheel = ({ route, navigation }) => {
           )}
         </View>
         {/* <WhiteText style={styles.winnerText}>Winner is: {winner}</WhiteText> */}
-        <TouchableOpacity style={{ zIndex: 9999 }} onPress={spinWheel}>
-          <WhiteText>Spin</WhiteText>
-        </TouchableOpacity>
+
         <TouchableOpacity style={{ zIndex: 9999 }} onPress={handleClearStorage}>
           <WhiteText>Clear storage</WhiteText>
         </TouchableOpacity>
@@ -460,7 +556,7 @@ const BlurModal = ({ style, children, intensity }) => (
   </BlurView>
 );
 
-export default SpinWheel;
+export default CustomSpinWheel;
 
 const styles = StyleSheet.create({
   container: {
