@@ -62,7 +62,9 @@ const Header = () => {
             </View>
           </TouchableOpacity>
 
-          <Ionicons name="ellipsis-vertical" size={28} color="#fff" />
+          <TouchableOpacity onPress={() => {}}>
+            <Ionicons name="ellipsis-vertical" size={28} color="#fff" />
+          </TouchableOpacity>
         </View>
       </View>
       {/* header end */}

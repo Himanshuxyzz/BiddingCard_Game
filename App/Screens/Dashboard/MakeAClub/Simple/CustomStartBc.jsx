@@ -31,6 +31,10 @@ const CustomStartBc = ({ route, navigation }) => {
   const [isPasswordValid, setIsPasswordValid] = useState(true); // Initially assuming password is valid
   const [hidePassword, setHidePassword] = useState(true);
 
+  const handlePasswordVisibility = () => {
+    setHidePassword(!hidePassword);
+  };
+
   const showDatePicker = () => {
     setDatePickerVisibility(true);
   };
@@ -52,9 +56,6 @@ const CustomStartBc = ({ route, navigation }) => {
       return finalDate;
     }
     return;
-  };
-  const handlePasswordVisibility = () => {
-    setHidePassword(!hidePassword);
   };
 
   const handlePassword = () => {
@@ -139,7 +140,7 @@ const CustomStartBc = ({ route, navigation }) => {
               />
               <TextInput
                 style={styles.input}
-                placeholder="D.O.B"
+                placeholder="Date"
                 placeholderTextColor={Colors.INPUT_PLACEHOLDER}
                 autoCapitalize={"none"}
                 value={formatDate(selectedDate)}

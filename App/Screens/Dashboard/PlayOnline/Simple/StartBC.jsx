@@ -18,6 +18,11 @@ const StartBC = ({ route, navigation }) => {
   console.log(bcAmount);
   const [password, setPassword] = useState("test@123");
   const [isPasswordValid, setIsPasswordValid] = useState(true); // Initially assuming password is valid
+  const [hidePassword, setHidePassword] = useState(true);
+
+  const handlePasswordVisibility = () => {
+    setHidePassword(!hidePassword);
+  };
 
   const handlePassword = () => {
     const hasSpecialCharacter = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(
@@ -112,14 +117,19 @@ const StartBC = ({ route, navigation }) => {
           keyboardType="default"
           placeholderTextColor={Colors.INPUT_PLACEHOLDER}
           autoCapitalize="none"
-          secureTextEntry // To hide the password
+          secureTextEntry={hidePassword} // To hide the password
         />
-        <FontAwesome6
-          style={{ position: "absolute", top: 195, right: 40 }}
-          name="eye-slash"
-          size={28}
-          color="rgba(177, 177, 177, 1)"
-        />
+        <TouchableOpacity
+          onPress={() => handlePasswordVisibility()}
+          style={{ position: "absolute", top: 200, right: 40 }}
+        >
+          <FontAwesome6
+            name={hidePassword ? "eye-slash" : "eye"}
+            size={28}
+            color="rgba(177, 177, 177, 1)"
+          />
+        </TouchableOpacity>
+
         {!isPasswordValid && (
           <Text
             style={{
