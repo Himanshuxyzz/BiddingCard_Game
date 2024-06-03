@@ -221,7 +221,6 @@ const MainDashboardNavigator = () => {
       />
 
       {/* Sakshi end*/}
-      
     </Stack.Navigator>
   );
 };

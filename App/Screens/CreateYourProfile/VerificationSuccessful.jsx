@@ -1,4 +1,11 @@
-import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React from "react";
 import GradientVarientTwoBtn from "../../Components/Gradient/GradientVariantTwoBtn";
 import Colors from "../../Utils/Colors";
@@ -7,63 +14,63 @@ const VerificationSuccessful = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContent}>
-      <Text
-        style={{
-          color: "rgba(46, 216, 19, 1)",
-          fontSize: 34,
-          fontWeight: "bold",
-          textAlign: "center",
-          marginTop: "10%",
-          textDecorationLine: "underline",
-        }}
-      >
-        Congratulations!
-      </Text>
-      <View style={{ marginTop: "15%", marginBottom: "10%" }}>
-        <Image
-          style={{
-            minWidth: "85%",
-            maxWidth: "85%",
-            minHeight: "40%",
-            marginHorizontal: "auto",
-          }}
-          source={require("../../../assets/Images/verified.png")}
-        />
-      </View>
-      <View
-        style={{
-          width: "95%",
-          paddingVertical: 50,
-          paddingHorizontal: 20,
-        }}
-      >
         <Text
           style={{
-            color: "#fff",
-            fontSize: 30,
+            color: "rgba(46, 216, 19, 1)",
+            fontSize: 34,
+            fontWeight: "bold",
             textAlign: "center",
-            fontWeight: 500,
+            marginTop: "10%",
+            textDecorationLine: "underline",
           }}
         >
-          Your profile is verified, Lets play!
+          Congratulations!
         </Text>
-      </View>
-      <TouchableOpacity
-        style={[styles.btn, styles.btnTwoVarientStyle]}
-        onPress={() => navigation.navigate("")}
-      >
-        <Text
+        <View style={{ marginTop: "15%", marginBottom: "10%" }}>
+          <Image
+            style={{
+              minWidth: "80%",
+              maxWidth: "80%",
+              minHeight: "45%",
+              marginHorizontal: "auto",
+            }}
+            source={require("../../../assets/Images/verified.png")}
+          />
+        </View>
+        <View
           style={{
-            textAlign: "center",
-            fontSize: 20,
-            color: Colors.WHITE,
-            fontWeight: "600",
+            width: "95%",
+            paddingVertical: 50,
+            paddingHorizontal: 20,
           }}
         >
-          Dashboard
-        </Text>
-      </TouchableOpacity>
-     </ScrollView>
+          <Text
+            style={{
+              color: "#fff",
+              fontSize: 30,
+              textAlign: "center",
+              fontWeight: 500,
+            }}
+          >
+            Your profile is verified, Lets play!
+          </Text>
+        </View>
+        <TouchableOpacity
+          style={[styles.btn, styles.btnTwoVarientStyle]}
+          onPress={() => navigation.navigate("")}
+        >
+          <Text
+            style={{
+              textAlign: "center",
+              fontSize: 20,
+              color: Colors.WHITE,
+              fontWeight: "600",
+            }}
+          >
+            Dashboard
+          </Text>
+        </TouchableOpacity>
+      </ScrollView>
     </View>
   );
 };
