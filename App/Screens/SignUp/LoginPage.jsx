@@ -8,6 +8,7 @@ import {
 import React from "react";
 import Colors from "../../Utils/Colors";
 import GradientVarientOneBtn from "../../Components/Gradient/GradientVariantOneBtn";
+
 const LoginPage = ({ navigation }) => {
   return (
     <View style={styles.whole}>
@@ -49,22 +50,21 @@ const styles = StyleSheet.create({
   whole: {
     flex: 1,
     justifyContent: "center",
-    paddingLeft: 100,
+    alignItems: "center",
     backgroundColor: "#2A2E2E",
-    paddingBottom: 100,
   },
   txt: {
     fontSize: 20,
     color: "white",
-    paddingLeft: 20,
     fontWeight: "200",
-    alignItems: "center",
+    textAlign: "center",
   },
   txt1: {
     color: "white",
     fontSize: 20,
     fontWeight: "900",
-    paddingLeft: 20,
+    textAlign: "center",
+    marginTop: 10,
   },
   input: {
     backgroundColor: "#FFFFFF1A",
@@ -73,11 +73,9 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingLeft: 20,
     marginTop: 20,
-    right: 60,
   },
   btn: {
-    right: 50,
-    top: 20,
+    marginTop: 20,
     minWidth: "90%",
     borderWidth: 1,
     borderColor: "#DDBBE6",
@@ -85,8 +83,7 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
   btn1: {
-    right: 50,
-    top: 60,
+    marginTop: 40,
     minWidth: "90%",
     borderWidth: 1,
     borderColor: "#DDBBE6",
@@ -95,13 +92,13 @@ const styles = StyleSheet.create({
   },
   txt2: {
     color: "white",
-    top: 40,
+    marginTop: 40,
+    textAlign: "center",
     width: 300,
-    right: 70,
   },
   forget: {
     textDecorationLine: "underline",
     color: "white",
-    right: 60,
+    marginTop: 10,
   },
 });

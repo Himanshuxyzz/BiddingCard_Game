@@ -4,6 +4,7 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Card from '../../Components/ProgessBar/Card';
 
+
 const Tab = createMaterialTopTabNavigator();
 
 const mainData = [
@@ -111,6 +112,12 @@ const ownClubsData = [
 ];
 
 const MainScreen = ({ navigation }) => {
+  const [selectedCard, setSelectedCard] = useState(null);
+
+  const handleCardPress = (id) => {
+    setSelectedCard(selectedCard === id ? null : id);
+  };
+
   return (
     <FlatList
       data={mainData}
@@ -126,6 +133,8 @@ const MainScreen = ({ navigation }) => {
           cardBgBorder={item.cardBgBorder}
           cardBottom={item.cardBottom}
           cardBottomBorder={item.cardBottomBorder}
+          isCardSelected={selectedCard === item.id}
+          onPress={() => handleCardPress(item.id)}
           navigation={navigation}
         />
       )}

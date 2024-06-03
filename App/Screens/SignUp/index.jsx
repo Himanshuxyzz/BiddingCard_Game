@@ -51,13 +51,13 @@ const styles = StyleSheet.create({
   img: {
     width: 207,
     height: 247,
-    left: 90,
+    left: 100,
     top: -120,
   },
   txt: {
     fontFamily: "",
     fontSize: 25,
-    left: 130,
+    left: 150,
     top: -140,
   },
   wrapper: {
@@ -69,14 +69,16 @@ const styles = StyleSheet.create({
   simpleButton: {
     backgroundColor: "#FFFFFF",
     color: "black",
-    marginLeft: 50,
+    marginLeft: 80,
     bottom: 70,
   },
 
   text: {
-    paddingLeft: 40,
-    fontSize: 20,
+    justifyContent : 'center',
+    textAlign:'center',
+   fontSize: 20,
   },
+
   wrap: {
     borderRadius: 10,
     paddingVertical: 10,
@@ -84,11 +86,12 @@ const styles = StyleSheet.create({
     maxWidth: 250,
     backgroundColor: "#FFFFFF",
     color: "black",
-    marginLeft: 50,
+    marginLeft: 80,
     bottom: 40,
   },
   text1: {
     fontSize: 20,
-    paddingLeft: 70,
+    justifyContent : 'center',
+    textAlign:'center',
   },
 });

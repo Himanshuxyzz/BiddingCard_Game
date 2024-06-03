@@ -1,11 +1,9 @@
-// Card.jsx
 import React from 'react';
 import { StyleSheet, View, TouchableOpacity, Pressable } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import WhiteText from '../WhiteText/WhiteText';
 import GradientTextnBorder from './GradientTextnBorder';
 import ProgressBar from './ProgressBar';
-
 
 const Card = ({
   cardId,
@@ -26,7 +24,7 @@ const Card = ({
       style={[
         styles.card,
         { backgroundColor: cardBg, borderColor: cardBgBorder },
-        isCardSelected && { marginBottom: 35, height: 200 },
+        isCardSelected && { height: 200 },
       ]}
       onPress={onPress}
     >
@@ -38,9 +36,7 @@ const Card = ({
 
       <View style={styles.cardContent}>
         <WhiteText style={styles.personText}>Person:</WhiteText>
-
         <ProgressBar totalSlots={totalSlots} remainingSlots={remainingSlots} />
-
         <View style={styles.slotsInfo}>
           <WhiteText style={styles.remainingSlotsText}>
             {remainingSlots} Slots left
@@ -51,31 +47,33 @@ const Card = ({
         </View>
       </View>
 
-      <View
-        style={[
-          styles.cardFooter,
-          { backgroundColor: cardBottom, borderColor: cardBottomBorder },
-        ]}
-      >
-        <View style={styles.footerLeft}>
-          <Feather name="arrow-left" size={24} color={cardBgBorder} />
-          <WhiteText style={[styles.footerText, { color: cardBg }]}>
-            ₹{bcAmount}
-          </WhiteText>
-        </View>
-
-        <TouchableOpacity
-          style={[styles.playButton, { backgroundColor: cardBg }]}
-          onPress={() =>
-            navigation.navigate('Startbc', {
-              bcAmount: bcAmount,
-              totalAmount: amount,
-            })
-          }
+      {isCardSelected && (
+        <View
+          style={[
+            styles.cardFooter,
+            { backgroundColor: cardBottom, borderColor: cardBottomBorder },
+          ]}
         >
-          <WhiteText style={styles.playButtonText}>Play</WhiteText>
-        </TouchableOpacity>
-      </View>
+          <View style={styles.footerLeft}>
+            <Feather name="arrow-left" size={24} color={cardBgBorder} />
+            <WhiteText style={[styles.footerText, { color: cardBg }]}>
+              ₹{bcAmount}
+            </WhiteText>
+          </View>
+
+          <TouchableOpacity
+            style={[styles.playButton, { backgroundColor: cardBg }]}
+            onPress={() =>
+              navigation.navigate('Startbc', {
+                bcAmount: bcAmount,
+                totalAmount: amount,
+              })
+            }
+          >
+            <WhiteText style={styles.playButtonText}>Play</WhiteText>
+          </TouchableOpacity>
+        </View>
+      )}
     </Pressable>
   );
 };
@@ -84,9 +82,10 @@ const styles = StyleSheet.create({
   card: {
     borderWidth: 1,
     borderRadius: 10,
-    marginBottom: 20,
-    height: 150, // Default height
+    marginBottom: 10, 
+    height: 150,
     overflow: 'hidden',
+    transition: 'height 0.3s', 
   },
   cardHeader: {
     flexDirection: 'row',
