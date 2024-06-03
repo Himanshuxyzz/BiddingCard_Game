@@ -9,7 +9,12 @@ import OtpVerification from "../Screens/ForgotPassword/OtpVerification";
 import NewPassword from "../Screens/ForgotPassword/NewPassword";
 import NotMatchedPassword from "../Screens/ForgotPassword/NotMatchedPassword";
 import CorrectPassword from "../Screens/ForgotPassword/CorrectPassword";
+
+
+
 const Stack = createNativeStackNavigator();
+
+
 
 const AuthNavigator = () => {
   return (

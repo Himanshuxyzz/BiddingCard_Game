@@ -388,10 +388,12 @@ const styles = StyleSheet.create({
   txt2: {
     color: "white",
     marginVertical: 20,
+    top :-20,
     textAlign: "center",
   },
   txt3: {
     color: "blue",
+    top :-30,
     textDecorationLine: "underline",
     textAlign: "center",
   },
