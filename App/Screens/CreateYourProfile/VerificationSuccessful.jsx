@@ -57,7 +57,7 @@ const VerificationSuccessful = ({ navigation }) => {
         </View>
         <TouchableOpacity
           style={[styles.btn, styles.btnTwoVarientStyle]}
-          onPress={() => navigation.navigate("")}
+          onPress={() => navigation.navigate("MainDashboard")}
         >
           <Text
             style={{
