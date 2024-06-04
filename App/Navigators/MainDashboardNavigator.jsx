@@ -1,4 +1,11 @@
-import { StyleSheet, Text, View } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  Image,
+  TouchableOpacity,
+} from "react-native";
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Dashboard from "../Screens/Dashboard";
@@ -33,18 +40,26 @@ import AuctionEntries from "../Screens/Dashboard/MakeAClub/Auction/AuctionEntrie
 import WinnerPage from "../Screens/Dashboard/MakeAClub/Auction/WinnerPage";
 import CustomResult from "../Screens/Dashboard/MakeAClub/Simple/CustomResult";
 import CustomUserEntries from "../Screens/Dashboard/MakeAClub/Simple/CustomUserEntries";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import { useNavigation, useNavigationState } from "@react-navigation/native";
 
 const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
+import {
+  DrawerContentScrollView,
+  DrawerItemList,
+  DrawerItem,
+} from "@react-navigation/drawer";
+import WhiteText from "../Components/WhiteText/WhiteText";
 
-const MainDashboardNavigator = () => {
+const DashboardDrawerContent = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Dashboard"
       screenOptions={{ headerShown: false }}
+      initialRouteName="Home"
     >
-      {/* esha */}
       <Stack.Screen
-        name="Dashboard"
+        name="Home"
         component={Dashboard}
         options={{ headerShown: false }}
       />
@@ -53,26 +68,16 @@ const MainDashboardNavigator = () => {
         component={PlayOnline}
         options={{ headerShown: false }}
       />
-
-      {/* esha end */}
-
-      {/* himanshu */}
       <Stack.Screen
         name="Simple"
         component={Simple}
         options={{ headerShown: false }}
       />
-
-      {/* esha */}
-
       <Stack.Screen
         name="Startbc"
         component={StartBC}
         options={{ headerShown: false }}
       />
-
-      {/* esha end*/}
-
       <Stack.Screen
         name="SpinWheel"
         component={SpinWheel}
@@ -83,16 +88,11 @@ const MainDashboardNavigator = () => {
         component={UserEntries}
         options={{ headerShown: false }}
       />
-
       <Stack.Screen
         name="Result"
         component={Result}
         options={{ headerShown: false }}
       />
-      {/* himanshu end */}
-
-      {/* esha */}
-
       <Stack.Screen
         name="Makeaclub"
         component={MakeAClub}
@@ -103,7 +103,6 @@ const MainDashboardNavigator = () => {
         component={CustomSimple}
         options={{ headerShown: false }}
       />
-
       <Stack.Screen
         name="CustomStartBc"
         component={CustomStartBc}
@@ -124,13 +123,11 @@ const MainDashboardNavigator = () => {
         component={CustomResult}
         options={{ headerShown: false }}
       />
-
       <Stack.Screen
         name="Auction"
         component={Auction}
         options={{ headerShown: false }}
       />
-
       <Stack.Screen
         name="StartAuctionbc"
         component={StartAuctionBC}
@@ -141,7 +138,6 @@ const MainDashboardNavigator = () => {
         component={WaitingPage}
         options={{ headerShown: false }}
       />
-
       <Stack.Screen
         name="TimeRemaining"
         component={TimeRemaining}
@@ -167,10 +163,6 @@ const MainDashboardNavigator = () => {
         component={WinnerPage}
         options={{ headerShown: false }}
       />
-
-      {/* esha end */}
-
-      {/* Sakshi */}
       <Stack.Screen
         name="WalletMainVerified"
         component={WalletMainVerified}
@@ -181,7 +173,6 @@ const MainDashboardNavigator = () => {
         component={NotVerifiedWallet}
         options={{ headerShown: false }}
       />
-
       <Stack.Screen
         name="AddToWallet"
         component={AddToWallet}
@@ -192,7 +183,6 @@ const MainDashboardNavigator = () => {
         component={BankDetails}
         options={{ headerShown: false }}
       />
-
       <Stack.Screen
         name="BankDetailsSecond"
         component={BankDetailsSecond}
@@ -203,7 +193,6 @@ const MainDashboardNavigator = () => {
         component={BankPassword}
         options={{ headerShown: false }}
       />
-
       <Stack.Screen
         name="InsufficientBalance"
         component={InsufficientBalance}
@@ -214,7 +203,6 @@ const MainDashboardNavigator = () => {
         component={Withdraw}
         options={{ headerShown: false }}
       />
-
       <Stack.Screen
         name="WithdrawAccount"
         component={WithdrawAccount}
@@ -225,15 +213,106 @@ const MainDashboardNavigator = () => {
         component={WithdrawDetails}
         options={{ headerShown: false }}
       />
-
       <Stack.Screen
         name="WithdrawPassword"
         component={WithdrawPassword}
         options={{ headerShown: false }}
       />
-
-      {/* Sakshi end*/}
     </Stack.Navigator>
+  );
+};
+
+const CustomDrawerContent = (props) => {
+  return (
+    <DrawerContentScrollView
+      {...props}
+      contentContainerStyle={{ flex: 1, width: "100%" }}
+    >
+      <View
+        style={{
+          padding: 10,
+          marginHorizontal: "auto",
+          flexDirection: "row",
+          alignItems: "center",
+          gap: 10,
+          idth: "100%",
+          justifyContent: "space-between",
+        }}
+      >
+        <Image
+          source={require("../../assets/Images/drawer_dummy.png")}
+          style={{
+            width: 60,
+            height: 60,
+            borderRadius: 9999,
+            backgroundColor: "grey",
+          }}
+        />
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flex: 1,
+          }}
+        >
+          <View style={{ flex: 1, gap: 5 }}>
+            <WhiteText style={{ fontSize: 25, fontWeight: "600" }}>
+              User123
+            </WhiteText>
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+            >
+              <WhiteText style={{ fontSize: 10 }}>ID :154123679545</WhiteText>
+              <TouchableOpacity>
+                <WhiteText style={{ fontSize: 10 }}>Edit</WhiteText>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </View>
+      <DrawerItemList {...props} />
+    </DrawerContentScrollView>
+  );
+};
+
+const MainDashboardNavigator = () => {
+  const screenWidth = Dimensions.get("window").width; // Get the full screen width
+  const navigation = useNavigation(); // Import useNavigation from '@react-navigation/native'
+  // Function to navigate to the Home screen
+  const navigateToHome = () => {
+    navigation.navigate("Dashboard", {
+      screen: "Home",
+    });
+  };
+
+  return (
+    <Drawer.Navigator
+      screenOptions={{
+        headerShown: false,
+        drawerStyle: {
+          width: "85%",
+          backgroundColor: "#2A2E2E",
+        },
+      }}
+      drawerContent={(props) => <CustomDrawerContent {...props} />}
+    >
+      <Drawer.Screen
+        name="Dashboard"
+        component={DashboardDrawerContent}
+        listeners={{
+          drawerItemPress: (e) => {
+            e.preventDefault(); // Prevent default action
+            navigateToHome(); // Navigate to Home using the custom function
+          },
+        }}
+      />
+      <Drawer.Screen name="Wallet" component={WalletMainVerified} />
+    </Drawer.Navigator>
   );
 };
 

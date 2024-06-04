@@ -18,7 +18,7 @@ const Header = () => {
         }}
       >
         <View style={{ flexDirection: "row", alignItems: "center", gap: 15 }}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.openDrawer()}>
             <View
               style={{
                 borderRadius: 9999,
