@@ -1,12 +1,12 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, TextInput } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import Header from '../../Components/DashboardHeader/Header';
+
 
 const EditProfile = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Header />
+     
       <View style={styles.content}>
         <View style={styles.backimg}>
           <Image source={require('../../../assets/lets-icons_back.png')} />
