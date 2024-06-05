@@ -56,11 +56,13 @@ import EditProfile from "../Screens/UserProfile/EditProfile";
 import { Ionicons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { FontAwesome6 } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
 import Bankaccount from "../Screens/UserProfile/Bankaccount";
 import Games from "../Screens/MyGames/Games";
 import Refer from "../Screens/Refer&Termsconditions/Refer";
 import Quicktask from "../Screens/UserProfile/Support/Quicktask";
 import Logout from "../Screens/UserProfile/Logout";
+import ProfileDetail from "../Screens/UserProfile/ProfileDetail";
 
 const DashboardDrawerContent = () => {
   return (
@@ -228,6 +230,11 @@ const DashboardDrawerContent = () => {
         component={WithdrawPassword}
         options={{ headerShown: false }}
       />
+      <Stack.Screen
+        name="EditProfile"
+        component={EditProfile}
+        options={{ headerShown: false }}
+      />
     </Stack.Navigator>
   );
 };
@@ -321,13 +328,18 @@ const CustomDrawerContent = (props) => {
               </WhiteText>
               <TouchableOpacity
                 style={{
-                  paddingHorizontal: 25,
-                  paddingVertical: 6,
+                  paddingHorizontal: 12,
+                  paddingVertical: 7,
                   borderRadius: 25,
                   backgroundColor: "rgba(145, 12, 140, 0.66)",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  gap: 10,
                 }}
+                onPress={() => navigation.navigate("EditProfile")}
               >
-                <WhiteText style={{ fontSize: 10, fontWeight: "600" }}>
+                <AntDesign name="edit" size={12} color="white" />
+                <WhiteText style={{ fontSize: 12, fontWeight: "bold" }}>
                   Edit
                 </WhiteText>
               </TouchableOpacity>
@@ -389,7 +401,7 @@ const MainDashboardNavigator = () => {
           },
         }}
       />
-      <Drawer.Screen name="User Profile" component={EditProfile} />
+      <Drawer.Screen name="User Profile" component={ProfileDetail} />
       <Drawer.Screen name="Wallet" component={WalletMainVerified} />
       <Drawer.Screen name="Bank Account" component={Bankaccount} />
       <Drawer.Screen name="My Games" component={Games} />
