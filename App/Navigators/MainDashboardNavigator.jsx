@@ -51,6 +51,16 @@ import {
   DrawerItem,
 } from "@react-navigation/drawer";
 import WhiteText from "../Components/WhiteText/WhiteText";
+import { FontAwesome } from "@expo/vector-icons";
+import EditProfile from "../Screens/UserProfile/EditProfile";
+import { Ionicons } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
+import { FontAwesome6 } from "@expo/vector-icons";
+import Bankaccount from "../Screens/UserProfile/Bankaccount";
+import Games from "../Screens/MyGames/Games";
+import Refer from "../Screens/Refer&Termsconditions/Refer";
+import Quicktask from "../Screens/UserProfile/Support/Quicktask";
+import Logout from "../Screens/UserProfile/Logout";
 
 const DashboardDrawerContent = () => {
   return (
@@ -223,27 +233,66 @@ const DashboardDrawerContent = () => {
 };
 
 const CustomDrawerContent = (props) => {
+  const { state, navigation } = props;
+
+  const navigateToScreen = (routeName) => {
+    if (routeName === "Dashboard") {
+      console.log("Navigating to Home");
+      navigation.navigate("Home");
+    } else {
+      console.log(`Navigating to: ${routeName}`);
+      navigation.navigate(routeName);
+    }
+  };
+
+  const getIcon = (routeName) => {
+    switch (routeName) {
+      case "Dashboard":
+        return <FontAwesome name="home" size={30} color="white" />;
+      case "Wallet":
+        return <Ionicons name="wallet" size={30} color="white" />;
+      case "User Profile":
+        return <FontAwesome name="user-circle-o" size={30} color="white" />;
+      case "Bank Account":
+        return <FontAwesome name="bank" size={30} color="white" />;
+      case "My Games":
+        return <FontAwesome name="trophy" size={30} color="white" />;
+      case "Refer & Earn":
+        return (
+          <FontAwesome6 name="money-bill-transfer" size={30} color="white" />
+        );
+      case "Support":
+        return <MaterialIcons name="support-agent" size={30} color="white" />;
+      case "Log Out":
+        return <MaterialIcons name="logout" size={30} color="white" />;
+      default:
+        return <Ionicons name="md-alert" size={30} color="white" />;
+    }
+  };
+
   return (
     <DrawerContentScrollView
       {...props}
       contentContainerStyle={{ flex: 1, width: "100%" }}
     >
+      {/* Profile component */}
       <View
         style={{
           padding: 10,
           marginHorizontal: "auto",
           flexDirection: "row",
           alignItems: "center",
-          gap: 10,
-          idth: "100%",
+          gap: 20,
+          width: "100%",
           justifyContent: "space-between",
+          marginVertical: 20,
         }}
       >
         <Image
           source={require("../../assets/Images/drawer_dummy.png")}
           style={{
-            width: 60,
-            height: 60,
+            width: 65,
+            height: 65,
             borderRadius: 9999,
             backgroundColor: "grey",
           }}
@@ -256,7 +305,7 @@ const CustomDrawerContent = (props) => {
             flex: 1,
           }}
         >
-          <View style={{ flex: 1, gap: 5 }}>
+          <View style={{ flex: 1 }}>
             <WhiteText style={{ fontSize: 25, fontWeight: "600" }}>
               User123
             </WhiteText>
@@ -267,28 +316,54 @@ const CustomDrawerContent = (props) => {
                 alignItems: "center",
               }}
             >
-              <WhiteText style={{ fontSize: 10 }}>ID :154123679545</WhiteText>
-              <TouchableOpacity>
-                <WhiteText style={{ fontSize: 10 }}>Edit</WhiteText>
+              <WhiteText style={{ fontSize: 10, fontWeight: "400" }}>
+                ID :154123679545
+              </WhiteText>
+              <TouchableOpacity
+                style={{
+                  paddingHorizontal: 25,
+                  paddingVertical: 6,
+                  borderRadius: 25,
+                  backgroundColor: "rgba(145, 12, 140, 0.66)",
+                }}
+              >
+                <WhiteText style={{ fontSize: 10, fontWeight: "600" }}>
+                  Edit
+                </WhiteText>
               </TouchableOpacity>
             </View>
           </View>
         </View>
       </View>
-      <DrawerItemList {...props} />
+      {/* Profile component end */}
+
+      {/* Drawer items */}
+      {state.routes.map((route, index) => (
+        <DrawerItem
+          key={route.key}
+          label={route.name}
+          focused={state.index === index}
+          onPress={() => navigateToScreen(route.name)}
+          style={{
+            borderRadius: state.index === index ? 12 : 0,
+            backgroundColor: state.index === index ? "#910C8C" : "transparent",
+            justifyContent: "center",
+            marginVertical: 12,
+          }}
+          labelStyle={{
+            color: "white",
+          }}
+          icon={() => getIcon(route.name)}
+        />
+      ))}
+      {/* Drawer items end */}
     </DrawerContentScrollView>
   );
 };
 
 const MainDashboardNavigator = () => {
-  const screenWidth = Dimensions.get("window").width; // Get the full screen width
-  const navigation = useNavigation(); // Import useNavigation from '@react-navigation/native'
-  // Function to navigate to the Home screen
-  const navigateToHome = () => {
-    navigation.navigate("Dashboard", {
-      screen: "Home",
-    });
-  };
+  const screenWidth = Dimensions.get("window").width;
+  const navigation = useNavigation();
 
   return (
     <Drawer.Navigator
@@ -298,6 +373,8 @@ const MainDashboardNavigator = () => {
           width: "85%",
           backgroundColor: "#2A2E2E",
         },
+        drawerActiveTintColor: "white",
+        drawerInactiveTintColor: "white",
       }}
       drawerContent={(props) => <CustomDrawerContent {...props} />}
     >
@@ -306,12 +383,19 @@ const MainDashboardNavigator = () => {
         component={DashboardDrawerContent}
         listeners={{
           drawerItemPress: (e) => {
-            e.preventDefault(); // Prevent default action
-            navigateToHome(); // Navigate to Home using the custom function
+            e.preventDefault();
+            console.log("Navigating to Home");
+            navigation.navigate("Home");
           },
         }}
       />
+      <Drawer.Screen name="User Profile" component={EditProfile} />
       <Drawer.Screen name="Wallet" component={WalletMainVerified} />
+      <Drawer.Screen name="Bank Account" component={Bankaccount} />
+      <Drawer.Screen name="My Games" component={Games} />
+      <Drawer.Screen name="Refer & Earn" component={Refer} />
+      <Drawer.Screen name="Support" component={Quicktask} />
+      <Drawer.Screen name="Log Out" component={Logout} />
     </Drawer.Navigator>
   );
 };
