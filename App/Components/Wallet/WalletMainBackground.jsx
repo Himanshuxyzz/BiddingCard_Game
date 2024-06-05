@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View, Dimensions, Platform } from 'react-native';
 import { AntDesign, Ionicons } from '@expo/vector-icons';
 import WhiteText from '../WhiteText/WhiteText'; 
+import Header from "../../Components/DashboardHeader/Header";
 
 const { width } = Dimensions.get('window');
 
@@ -20,9 +21,10 @@ const WalletMainBackground = ({
 }) => {
   return (
     <View style={[styles.container, containerStyle]}>
+      <Header />
       <View style={[styles.header, headerStyle]}>
-      <TouchableOpacity style={styles.backButton} onPress={onBackPress}>
-          <AntDesign name="back" size={24} color="white" />
+        <TouchableOpacity style={styles.backButton} onPress={onBackPress}>
+          <AntDesign name="arrowleft" size={24} color="white" />
         </TouchableOpacity>
         <Text style={styles.title}>{title}</Text>
       </View>
@@ -66,15 +68,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingTop: Platform.OS === 'ios' ? 60 : 40, //  for iOS status bar
+    paddingTop: Platform.OS === 'ios' ? 60 : 40, // Adjust for iOS status bar
     paddingHorizontal: 20,
   },
   title: {
     fontSize: 24,
     color: 'white',
     fontWeight: 'bold',
-    flex: 1,
     textAlign: 'center',
+    flex: 1,
   },
   backButton: {
     position: 'absolute',
