@@ -32,7 +32,7 @@ const WalletMainVerified = ({ navigation, route }) => {
       <BlurView intensity={10} tint="light" style={styles.subcontainer}>
         <View>
           <GradientVarientOneBtn
-            btnText={"Add To Wallet"}
+            btnText={"Add Money To Wallet"}
             style={styles.btn1}
             onPress={() => navigation.navigate("AddToWallet", { currentBalance })}
           />

@@ -1,9 +1,21 @@
-import { Image, KeyboardAvoidingView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, View,Platform,Keyboard} from 'react-native'
-import Header from '../../../../Components/DashboardHeader/Header'
-import React from 'react'
-import Colors from '../../../../Utils/Colors';
+import {
+  Image,
+  KeyboardAvoidingView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  View,
+  Platform,
+  Keyboard,
+} from "react-native";
+import Header from "../../../../Components/Dashboard/Header";
+import React from "react";
+import Colors from "../../../../Utils/Colors";
 
-const WaitingPage = ({navigation}) => {
+const WaitingPage = ({ navigation }) => {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -75,9 +87,9 @@ const WaitingPage = ({navigation}) => {
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
   );
-}
+};
 
-export default WaitingPage
+export default WaitingPage;
 
 const styles = StyleSheet.create({
   // container: {
@@ -91,19 +103,19 @@ const styles = StyleSheet.create({
   main: {
     flex: 1,
     backgroundColor: "#2A2E2E",
-    height:"100%",
+    height: "100%",
   },
   scrollContainer: {
-    flex:1,
+    flex: 1,
     flexGrow: 1,
-    height:"100%",
+    height: "100%",
   },
   container: {
     flex: 1,
     padding: 20,
-    gap:20,
+    gap: 20,
     flexDirection: "column",
-    height:"100%",
+    height: "100%",
     // position: "relative",
   },
   inputWrapper: {

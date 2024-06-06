@@ -239,6 +239,35 @@ const DashboardDrawerContent = () => {
   );
 };
 
+const iconContainerStyle = {
+  width: 37, // Adjust this width as needed
+  marginRight: 1, // Reduce the space between icon and text
+};
+
+const getIcon = (routeName) => {
+  const iconProps = { size: 30, color: "white", style: iconContainerStyle };
+  switch (routeName) {
+    case "Dashboard":
+      return <FontAwesome name="home" {...iconProps} />;
+    case "Wallet":
+      return <Ionicons name="wallet" {...iconProps} />;
+    case "User Profile":
+      return <FontAwesome name="user-circle-o" {...iconProps} />;
+    case "Bank Account":
+      return <FontAwesome name="bank" {...iconProps} />;
+    case "My Games":
+      return <FontAwesome name="trophy" {...iconProps} />;
+    case "Refer & Earn":
+      return <FontAwesome6 name="money-bill-transfer" {...iconProps} />;
+    case "Support":
+      return <MaterialIcons name="support-agent" {...iconProps} />;
+    case "Log Out":
+      return <MaterialIcons name="logout" {...iconProps} />;
+    default:
+      return <Ionicons name="md-alert" {...iconProps} />;
+  }
+};
+
 const CustomDrawerContent = (props) => {
   const { state, navigation } = props;
 
@@ -249,31 +278,6 @@ const CustomDrawerContent = (props) => {
     } else {
       console.log(`Navigating to: ${routeName}`);
       navigation.navigate(routeName);
-    }
-  };
-
-  const getIcon = (routeName) => {
-    switch (routeName) {
-      case "Dashboard":
-        return <FontAwesome name="home" size={30} color="white" />;
-      case "Wallet":
-        return <Ionicons name="wallet" size={30} color="white" />;
-      case "User Profile":
-        return <FontAwesome name="user-circle-o" size={30} color="white" />;
-      case "Bank Account":
-        return <FontAwesome name="bank" size={30} color="white" />;
-      case "My Games":
-        return <FontAwesome name="trophy" size={30} color="white" />;
-      case "Refer & Earn":
-        return (
-          <FontAwesome6 name="money-bill-transfer" size={30} color="white" />
-        );
-      case "Support":
-        return <MaterialIcons name="support-agent" size={30} color="white" />;
-      case "Log Out":
-        return <MaterialIcons name="logout" size={30} color="white" />;
-      default:
-        return <Ionicons name="md-alert" size={30} color="white" />;
     }
   };
 
@@ -331,7 +335,7 @@ const CustomDrawerContent = (props) => {
                   paddingHorizontal: 12,
                   paddingVertical: 7,
                   borderRadius: 25,
-                  backgroundColor: "rgba(145, 12, 140, 0.66)",
+                  backgroundColor: "#BA61CA",
                   flexDirection: "row",
                   alignItems: "center",
                   gap: 10,
@@ -358,12 +362,16 @@ const CustomDrawerContent = (props) => {
           onPress={() => navigateToScreen(route.name)}
           style={{
             borderRadius: state.index === index ? 12 : 0,
-            backgroundColor: state.index === index ? "#910C8C" : "transparent",
+            backgroundColor: state.index === index ? "#BA61CA" : "transparent",
             justifyContent: "center",
             marginVertical: 12,
+            borderWidth: state.index === index ? 1 : 0,
+            borderColor: state.index === index ? "#662D91" : "transparent",
           }}
           labelStyle={{
             color: "white",
+            marginLeft: 0, // Adjusted to 0 since icon width is fixed
+            textAlign: "left",
           }}
           icon={() => getIcon(route.name)}
         />

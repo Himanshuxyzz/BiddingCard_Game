@@ -1,7 +1,10 @@
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 import React from "react";
-import Header from "../../Components/DashboardHeader/Header";
+import Header from "../../Components/Dashboard/Header";
 import GradientBgFill from "../../Components/Gradient/GradientBgFill";
+import DashboardBtn from "../../Components/Dashboard/DashboardBtn";
+import MoneyIcon from "../../../assets/Images/Money_icon.png";
+import ClubIcon from "../../../assets/Images/Club.png";
 
 const Dashboard = ({ navigation }) => {
   return (
@@ -14,17 +17,18 @@ const Dashboard = ({ navigation }) => {
         {/* header end */}
 
         <View style={styles.buttonContainer}>
-          <TouchableOpacity onPress={() => navigation.navigate("Playonline")}>
-            <View style={styles.button}>
-              <Text style={styles.buttonText}>Play Online</Text>
-            </View>
-          </TouchableOpacity>
-
-          <TouchableOpacity onPress={() => navigation.navigate("Makeaclub")}>
-            <View style={styles.button}>
-              <Text style={styles.buttonText}>Make a Club</Text>
-            </View>
-          </TouchableOpacity>
+          <DashboardBtn
+            btnText={"Play Online"}
+            btnStrokeClr={"9B4EB5"}
+            iconImg={MoneyIcon}
+            navigateTo={"Playonline"}
+          />
+          <DashboardBtn
+            btnText={"Make a Club"}
+            btnStrokeClr={"9B4EB5"}
+            iconImg={ClubIcon}
+            navigateTo={"Makeaclub"}
+          />
         </View>
       </View>
     </View>
@@ -48,25 +52,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    gap: 90,
-  },
-  button: {
-    borderWidth: 4,
-    borderColor: "white",
-    paddingVertical: 32,
-    paddingHorizontal: 50,
-    borderRadius: 12,
-    backgroundColor: "rgba(228, 148, 235, 1)",
-  },
-  buttonText: {
-    color: "rgba(255, 255, 255, 1)",
-    fontSize: 24,
-    fontWeight: "bold",
-    textShadowColor: "rgba(0, 0, 0, 0.5)",
-    textShadowOffset: { width: 0, height: 5 },
-    textShadowRadius: 4,
-    shadowColor: "rgba(0, 0, 0, 0.5)",
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 4,
+    gap: 75,
   },
 });

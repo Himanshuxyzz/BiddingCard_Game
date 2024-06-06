@@ -9,7 +9,7 @@ import {
   View,
 } from "react-native";
 import React, { useEffect, useState } from "react";
-import Header from "../../../../Components/DashboardHeader/Header";
+import Header from "../../../../Components/Dashboard/Header";
 import WhiteText from "../../../../Components/WhiteText/WhiteText";
 import { Feather } from "@expo/vector-icons";
 import { Octicons } from "@expo/vector-icons";
@@ -780,7 +780,7 @@ const Auction = ({ navigation }) => {
         {/* cards container */}
 
         <View style={styles.cardContainer}>
-          <Text style={{ fontSize: 25, fontWeight: "600",color:"#fff", }}>
+          <Text style={{ fontSize: 25, fontWeight: "600", color: "#fff" }}>
             Create your Auction Card
           </Text>
 

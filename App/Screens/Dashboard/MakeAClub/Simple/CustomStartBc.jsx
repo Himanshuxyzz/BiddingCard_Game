@@ -11,7 +11,7 @@ import {
   ScrollView,
 } from "react-native";
 import React from "react";
-import Header from "../../../../Components/DashboardHeader/Header";
+import Header from "../../../../Components/Dashboard/Header";
 import Colors from "../../../../Utils/Colors";
 import { Feather } from "@expo/vector-icons";
 import { FontAwesome6 } from "@expo/vector-icons";

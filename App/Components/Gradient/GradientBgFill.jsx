@@ -7,10 +7,10 @@ const GradientBgFill = ({ btnText, style, isDisabled, ...props }) => {
   return (
     <View style={{ ...style }} {...props}>
       <LinearGradient
-        colors={["#EA59E4", "#C508BD", "#910C8C", "#910C8C"]}
-        locations={[0.03, 0.64, 1, 1]}
-        start={{ x: 0, y: 1 }} // Start from the top-left corner
-        end={{ x: 0, y: 0 }} // End at the top-right corner
+        colors={["#662D91", "#EE82EE"]}
+        locations={[0.3, 1]}
+        start={{ x: 0, y: 0 }} // Start from the top-left corner
+        end={{ x: 1, y: 1 }} // End at the bottom-right corner
         style={{ flex: 1, minWidth: "100%", minHeight: "100%" }}
       >
         <Text
