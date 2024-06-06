@@ -11,7 +11,7 @@ import {
 import { BlurView } from "expo-blur";
 import LottieView from "lottie-react-native";
 import WhiteText from "../../../../Components/WhiteText/WhiteText";
-import Header from "../../../../Components/DashboardHeader/Header";
+import Header from "../../../../Components/Dashboard/Header";
 import FortuneWheel from "../../../../Components/FortuneWheel/FortuneWheel";
 import GradientVarientOneBtn from "../../../../Components/Gradient/GradientVariantOneBtn";
 import AsyncStorage from "@react-native-async-storage/async-storage";

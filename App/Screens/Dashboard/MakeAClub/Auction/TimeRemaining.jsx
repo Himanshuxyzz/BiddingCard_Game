@@ -1,9 +1,9 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
-import Header from '../../../../Components/DashboardHeader/Header'
-import GradientVarientOneBtn from '../../../../Components/Gradient/GradientVariantOneBtn'
-import React from 'react'
+import { Image, StyleSheet, Text, View } from "react-native";
+import Header from "../../../../Components/Dashboard/Header";
+import GradientVarientOneBtn from "../../../../Components/Gradient/GradientVariantOneBtn";
+import React from "react";
 
-const TimeRemaining = ({navigation}) => {
+const TimeRemaining = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Header />
@@ -16,7 +16,7 @@ const TimeRemaining = ({navigation}) => {
         }}
       >
         <Image
-          style={{ maxWidth:"90%",minWidth:"90%", height: 350 }}
+          style={{ maxWidth: "90%", minWidth: "90%", height: 350 }}
           source={require("../../../../../assets/Images/Timeremain.png")}
         />
       </View>
@@ -58,9 +58,9 @@ const TimeRemaining = ({navigation}) => {
       </View>
     </View>
   );
-}
+};
 
-export default TimeRemaining
+export default TimeRemaining;
 
 const styles = StyleSheet.create({
   container: {

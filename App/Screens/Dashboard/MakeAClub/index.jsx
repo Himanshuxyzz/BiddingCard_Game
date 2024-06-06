@@ -1,7 +1,10 @@
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import React from "react";
-import Header from "../../../Components/DashboardHeader/Header";
+import Header from "../../../Components/Dashboard/Header";
 import GradientBgFill from "../../../Components/Gradient/GradientBgFill";
+import DashboardBtn from "../../../Components/Dashboard/DashboardBtn";
+import SimpleIcon from "../../../../assets/Images/Simple_bid.png";
+import AuctionIcon from "../../../../assets/Images/AuctionMallet.png";
 
 const MakeAClub = ({ navigation }) => {
   return (
@@ -14,18 +17,9 @@ const MakeAClub = ({ navigation }) => {
         {/* header end */}
 
         <View style={styles.buttonContainer}>
-          <TouchableOpacity onPress={() => navigation.navigate("CustomSimple")}>
-            {/* this will be different simple bc so make sure to ensure everything */}
-            <View style={styles.button}>
-              <Text style={styles.buttonText}>Simple BC</Text>
-            </View>
-          </TouchableOpacity>
+          <DashboardBtn btnText={"Simple BC"} iconImg={SimpleIcon} navigateTo={"CustomSimple"} />
 
-          <TouchableOpacity onPress={() => navigation.navigate("Auction")}>
-            <View style={styles.button}>
-              <Text style={styles.buttonText}>Auction BC</Text>
-            </View>
-          </TouchableOpacity>
+          <DashboardBtn btnText={"Auction BC"} iconImg={AuctionIcon} navigateTo={"Auction"} />
         </View>
       </View>
     </View>

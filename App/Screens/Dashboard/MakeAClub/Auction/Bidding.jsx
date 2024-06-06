@@ -12,7 +12,7 @@ import {
   ScrollView,
   TouchableOpacity,
 } from "react-native";
-import Header from "../../../../Components/DashboardHeader/Header";
+import Header from "../../../../Components/Dashboard/Header";
 import Colors from "../../../../Utils/Colors";
 import WhiteText from "../../../../Components/WhiteText/WhiteText";
 
@@ -39,7 +39,7 @@ const Bidding = ({ navigation }) => {
     modalTimers.push(secondModalTimer);
 
     return () => {
-      modalTimers.forEach(timer => clearTimeout(timer));
+      modalTimers.forEach((timer) => clearTimeout(timer));
     };
   }, []);
 

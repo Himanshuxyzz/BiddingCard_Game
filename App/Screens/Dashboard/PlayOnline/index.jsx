@@ -1,7 +1,10 @@
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import React from "react";
-import Header from "../../../Components/DashboardHeader/Header";
+import Header from "../../../Components/Dashboard/Header";
 import GradientBgFill from "../../../Components/Gradient/GradientBgFill";
+import DashboardBtn from "../../../Components/Dashboard/DashboardBtn";
+import SimpleIcon from "../../../../assets/Images/Simple_bid.png";
+
 
 const PlayOnline = ({ navigation }) => {
   return (
@@ -14,11 +17,7 @@ const PlayOnline = ({ navigation }) => {
         {/* header end */}
 
         <View style={styles.buttonContainer}>
-          <TouchableOpacity onPress={() => navigation.navigate("Simple")}>
-            <View style={styles.button}>
-              <Text style={styles.buttonText}>Simple BC</Text>
-            </View>
-          </TouchableOpacity>
+          <DashboardBtn btnText={"Simple BC"} iconImg={SimpleIcon} navigateTo={"Simple"} />
         </View>
       </View>
     </View>
