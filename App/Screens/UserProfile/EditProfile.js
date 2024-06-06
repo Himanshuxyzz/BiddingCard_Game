@@ -1,168 +1,163 @@
-import {
-     View, 
-     Text,
-     StyleSheet,
-     TouchableOpacity,
-     Image,
-     ScrollView,
-     TextInput, 
-    } from 'react-native'
-import React from 'react'
-import { LinearGradient } from 'expo-linear-gradient'
+import React from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Image, TextInput } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 
-const EditProfile = ({navigation}) => {
+
+const EditProfile = ({ navigation }) => {
   return (
     <View style={styles.container}>
-    {/* <ScrollView> */}
-    <View style={styles.backimg}>
-    <Image source={require('../../../assets/lets-icons_back.png')}/>  
-    </View>
-    <View style={styles.tstprofile}>
-      <Text style={styles.tstprofile}>User Profile</Text>
-    </View>
-    <View style={styles.inputcontainer}>
-      <View style={styles.inputname}>
-        <Text style={{color:"white", fontSize:18, marginBottom:-5,}}>Name</Text>
-          <TextInput
-            placeholder=''
-             placeholderTextColor={"#ffffff"}
-             keyboardType='default'
-             style ={{borderBottomColor:"rgba(255, 255, 255, 0.5)",width:280 , borderBottomWidth:1, color:"white", fontSize:18, paddingBottom:10}}
-                   />
-      <View style={styles.email}>
-          <Text style={{color:"white", fontSize:18,}}>Email</Text>
-            <View style={styles.emailflex}>
-              <TextInput
+     
+      <View style={styles.content}>
+        <View style={styles.backimg}>
+          <Image source={require('../../../assets/lets-icons_back.png')} />
+        </View>
+        <View style={styles.tstprofile}>
+          <Text style={styles.tstprofileText}>User Profile</Text>
+        </View>
+        <View style={styles.inputcontainer}>
+          <View style={styles.inputSection}>
+            <Text style={styles.label}>Name</Text>
+            <TextInput
               placeholder=''
-              placeholderTextColor={"#FFFFFF"}
-                 style ={{borderBottomColor:"rgba(255, 255, 255, 0.5)",width:280, borderBottomWidth:1, color:"white", fontSize:15}}
+              placeholderTextColor={'#ffffff'}
+              keyboardType='default'
+              style={styles.input}
+            />
+            <View style={styles.inputSection}>
+              <Text style={styles.label}>Email</Text>
+              <View style={styles.emailInput}>
+                <TextInput
+                  placeholder=''
+                  placeholderTextColor={'#FFFFFF'}
+                  style={styles.input}
                 />
-                  <View>
-          
-                   <Image style={{top:-10 , right:30 }} source={require('../../../assets/verifynumber.png')}/>
-                   </View>
-           </View> 
-        </View>
-        <View style={styles.Phone}>
-          <Text style={{color:"white", fontSize:18,}}>Phone</Text>
-            <View style={styles.phoneflex}>
+                <Image style={styles.icon} source={require('../../../assets/verifynumber.png')} />
+              </View>
+            </View>
+            <View style={styles.inputSection}>
+              <Text style={styles.label}>Phone</Text>
+              <View style={styles.phoneInput}>
+                <TextInput
+                  placeholder=''
+                  placeholderTextColor={'#FFFFFF'}
+                  style={styles.input}
+                />
+                <Image style={styles.icon} source={require('../../../assets/verifynumber.png')} />
+              </View>
+            </View>
+            <View style={styles.inputSection}>
+              <Text style={styles.label}>Date</Text>
               <TextInput
-                 placeholder=''
-                 placeholderTextColor={"#FFFFFF"}
-                 style ={{borderBottomColor:"rgba(255, 255, 255, 0.5)",width:280, borderBottomWidth:1, color:"white"}}
-                />
-                  <View>
-                  <Image style={{top:-40, right:-250}} source={require('../../../assets/verifynumber.png')}/>
-                   </View>
-           </View> 
-           
+                placeholder=''
+                placeholderTextColor={'#ffffff'}
+                keyboardType='default'
+                style={styles.input}
+              />
+            </View>
+            <View style={styles.inputSection}>
+              <Text style={styles.label}>AdharCard No.</Text>
+              <TextInput
+                placeholder=''
+                placeholderTextColor={'#ffffff'}
+                keyboardType='default'
+                style={styles.input}
+              />
+            </View>
+          </View>
+          <View>
+            <Text style={styles.termsText}>Terms & Conditions</Text>
+          </View>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('profile Detail')}>
+            <LinearGradient
+              colors={['#EA59E4', '#C508BD', '#910C8C']}
+              style={styles.btnStyle}
+              start={{ x: 0.0, y: 0.0 }}
+              end={{ x: 0.5, y: 0.15 }}>
+              <Text style={styles.btnText}>Edit Details</Text>
+            </LinearGradient>
+          </TouchableOpacity>
         </View>
-        <View style={styles.dateofbirth}>
-              <Text style={{color:"white", fontSize:18, marginTop:10,}}>Date</Text>
-                    <TextInput
-                     placeholder=''
-                     placeholderTextColor={"#ffffff"}
-                     keyboardType='default'
-                     style ={{borderBottomColor:"rgba(255, 255, 255, 0.5)",width:280 , borderBottomWidth:1, color:"white", fontSize:18, paddingBottom:0}}
-               />
-        </View>
-        <View style={styles.adharcard}>
-              <Text style={{color:"white", fontSize:18, marginTop:10,}}>AdharCard No.</Text>
-                    <TextInput
-                     placeholder=''
-                     placeholderTextColor={"#ffffff"}
-                     keyboardType='default'
-                     style ={{borderBottomColor:"rgba(255, 255, 255, 0.5)",width:280, borderBottomWidth:1, color:"white", fontSize:18, paddingBottom:10}}
-               />
-        </View>
-       </View>
-        <View>
-          <Text style={{color:"#FFFFFF" , fontSize:15,fontWeight:"700", marginVertical:0, textAlign:"center"}}>Terms & Conditions</Text>
-        </View>
-        <TouchableOpacity
-         onPress={() => navigation.navigate('profile Detail')}
-        >
-        <LinearGradient
-         colors = {['#EA59E4','#C508BD','#910C8C']}
-         style={styles.btnstyle}
-         start = {{x :0.0 , y : 0.0}}
-         end = {{x:0.5 , y : 0.15}}
-         >
-          <Text style={{textAlign:"center", color:"#FFFFFF",padding:6, fontSize:18}}>Edit Details</Text>
-        </LinearGradient>
-        </TouchableOpacity>
+      </View>
     </View>
-    <View>
-    </View>
-    {/* </ScrollView> */}
-  </View>
-  )
-}
+  );
+};
 
-export default EditProfile
+export default EditProfile;
 
 const styles = StyleSheet.create({
-    container: {
-      backgroundColor:"black",
-      flex : 1,
-    },
-    backimg : {
-      marginHorizontal:20,
-      marginVertical:20
-    },
-    tstprofile :{
-      color:"#FFFFFF",
-      fontSize:25,
-      fontWeight:"700",
-      textAlign:"center",
-      top:-15
-    },
-    inputcontainer:{
-      alignSelf:"center",
-      top:-15
-    },
-    email:{
-      marginVertical:20
-    },
-    emailbox:{
-      width:70,
-      textAlign:"center",
-      padding:10,
-      borderRadius:10,
-      textTransform:"capitalize",
-      color:"#FFFFFF",
-      backgroundColor:"#2ED813",
-      top:-10,
-      left:-70,
-    },
-    emailflex:{
-      flexDirection:"row",
-    },
-    phonebtn:{
-      backgroundColor:"#2ED813",
-      width:70,
-      textAlign:"center",
-      padding:10,
-      borderRadius:10,
-      textTransform:"capitalize",
-      color:"#FFFFFF",
-      top:-50,
-      left:210,
-    },
-    dateofbirth:{
-      marginVertical:-30 
-    },
-    adharcard:{
-      marginVertical:30 
-    },
-    btnstyle:{
-      width:300,
-      marginVertical:100,
-      alignSelf:"center",
-      borderWidth:1,
-      padding:10,
-      borderColor:"#FFFFFF",
-      borderRadius:15,
-  
-    }
-  })
+  container: {
+    flex: 1,
+    backgroundColor: 'black',
+  },
+  content: {
+    marginTop: 30, 
+    flex: 1,
+  },
+  backimg: {
+    marginHorizontal: 20,
+    marginVertical: 20
+  },
+  tstprofile: {
+    top: -15
+  },
+  tstprofileText: {
+    color: '#FFFFFF',
+    fontSize: 25,
+    fontWeight: '700',
+    textAlign: 'center',
+  },
+  inputcontainer: {
+    alignSelf: 'center',
+    top: 15
+  },
+  inputSection: {
+    marginBottom: 20,
+  },
+  label: {
+    color: '#FFFFFF',
+    fontSize: 18,
+    marginBottom: -5,
+  },
+  input: {
+    borderBottomColor: 'rgba(255, 255, 255, 0.5)',
+    width: 280,
+    borderBottomWidth: 1,
+    color: '#FFFFFF',
+    fontSize: 18,
+    paddingBottom: 10
+  },
+  emailInput: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  phoneInput: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  icon: {
+    marginLeft: 10,
+  },
+  termsText: {
+    color: '#910C8C',
+    fontSize: 15,
+    fontWeight: '700',
+    marginVertical: 10,
+    textAlign: 'center',
+    textDecorationLine: 'underline',
+  },
+  btnStyle: {
+    width: 300,
+    alignSelf: 'center',
+    borderWidth: 1,
+    padding: 10,
+    borderColor: '#FFFFFF',
+    borderRadius: 15,
+  },
+  btnText: {
+    textAlign: 'center',
+    color: '#FFFFFF',
+    padding: 6,
+    fontSize: 18
+  }
+});

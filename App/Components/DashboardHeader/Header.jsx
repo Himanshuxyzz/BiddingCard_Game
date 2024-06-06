@@ -28,7 +28,7 @@ const Header = () => {
             >
               <Image
                 style={{ width: 40, height: 40 }}
-                source={require("../../../assets/Images/usericon.png")}
+                source={require("../../../assets/Images/icon.png")}
               />
             </View>
           </TouchableOpacity>
