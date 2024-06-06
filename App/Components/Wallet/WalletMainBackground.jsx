@@ -51,16 +51,18 @@ const WalletMainBackground = ({
           </Text>
         </View>
       </View>
-      {amountAdded > 0 && (
-        <View style={[styles.amountSection, styles.amountAdded]}>
-          <Text style={styles.amountText}>Added: ₹{amountAdded}</Text>
-        </View>
-      )}
-      {amountDeducted > 0 && (
-        <View style={[styles.amountSection, styles.amountDeducted]}>
-          <Text style={styles.amountText}>Deducted: ₹{amountDeducted}</Text>
-        </View>
-      )}
+      <View style={styles.amountDetailsContainer}>
+        {amountAdded > 0 && (
+          <View style={[styles.amountSection, styles.amountAdded]}>
+            <Text style={styles.amountAddedText}>Added: ₹{amountAdded}</Text>
+          </View>
+        )}
+        {amountDeducted > 0 && (
+          <View style={[styles.amountSection, styles.amountDeducted]}>
+            <Text style={styles.amountDeductedText}>Deducted: ₹{amountDeducted}</Text>
+          </View>
+        )}
+      </View>
       {children}
     </View>
   );
@@ -77,7 +79,7 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
+    justifyContent: "center",
     paddingTop: Platform.OS === "ios" ? 60 : 40, // Adjust for iOS status bar
     paddingHorizontal: 20,
   },
@@ -104,10 +106,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: width - 40,
     marginHorizontal: 20,
-    marginVertical: 20,
     paddingVertical: 15,
     backgroundColor: "#808080",
     borderRadius: 10,
+    marginBottom: 20,
   },
   icon: {
     marginRight: 10,
@@ -127,20 +129,31 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginTop: 5,
   },
+  amountDetailsContainer: {
+    marginHorizontal: 20,
+    marginTop: -10,
+  },
   amountSection: {
     flexDirection: "row",
     alignItems: "center",
     marginTop: 10,
+    padding: 10,
+    borderRadius: 10,
   },
   amountAdded: {
-    color: "green",
+    backgroundColor: "#DFF0D8",
   },
   amountDeducted: {
-    color: "red",
+    backgroundColor: "#F2DEDE",
   },
-  amountText: {
+  amountAddedText: {
     fontSize: 18,
     fontWeight: "bold",
-    color: "white",
+    color: "green",
+  },
+  amountDeductedText: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "red",
   },
 });
