@@ -19,7 +19,7 @@ import Customedrawer from "../Screens/UserProfile/Drawer/Customedrawer";
 import GenerateQuery from "../Screens/UserProfile/Support/GenerateQuery";
 import CancelQuery from "../Screens/UserProfile/Support/CancelQuery";
 import Backtdash from "../Screens/UserProfile/Support/Backtdash";
-import Passdata from "../Screens/UserProfile/passdata/Passdata";
+
 
 const Stack = createNativeStackNavigator();
 

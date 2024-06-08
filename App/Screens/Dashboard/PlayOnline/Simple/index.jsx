@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import Header from "../../../../Components/Dashboard/Header";
+import Storysection from "../../../UserProfile/Storysection";
 import WhiteText from "../../../../Components/WhiteText/WhiteText";
 import { Feather } from "@expo/vector-icons";
 import { Octicons } from "@expo/vector-icons";
@@ -764,7 +765,7 @@ const Simple = ({ navigation }) => {
         </View>
 
         {/* here i've added height explicitly in order to fix the issue with flatlist in which it does takes full height and push the below content outside the view */}
-        <View style={{ height: 45 }}>
+        {/* <View style={{ height: 45 }}>
           <FlatList
             data={data}
             horizontal
@@ -773,6 +774,9 @@ const Simple = ({ navigation }) => {
             keyExtractor={(item) => item.key}
             contentContainerStyle={styles.winnerStoriesContianer}
           />
+        </View> */}
+        <View style={{height:100}}>
+          <Storysection/>
         </View>
 
         {/* cards container */}
