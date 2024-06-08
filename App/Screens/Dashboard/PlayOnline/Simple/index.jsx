@@ -775,7 +775,7 @@ const Simple = ({ navigation }) => {
             contentContainerStyle={styles.winnerStoriesContianer}
           />
         </View> */}
-        <View style={{height:100}}>
+        <View style={{height:70}}>
           <Storysection/>
         </View>
 
