@@ -54,7 +54,7 @@ export const Data = [
     },
     {
         id : 5,
-        userRank:4,
+        userRank:5,
         image : nothing,
         userName:"Samar Kumar",
         totalWinnings:13000000,
@@ -66,7 +66,7 @@ export const Data = [
     },
     {
         id : 6,
-        userRank:3,
+        userRank:6,
         image : goyal2,
         userName:"Goyal Dhakate",
         totalWinnings:12500000,
@@ -78,7 +78,7 @@ export const Data = [
     },
     {
         id : 7,
-        userRank:1,
+        userRank:7,
         image : garima,
         userName:"Garima Rathore",
         totalWinnings:12000000,

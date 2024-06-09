@@ -17,7 +17,6 @@ const Storypost = ({route}) => {
     </View>
     <Text style={styles.userName}>{selectedItem.userName}</Text>
     <Text style={styles.totalWinnings}>Total Winnings: {selectedItem.totalWinnings}</Text>
-    {/* <Image source={require('../../../../assets/money.png')} style={styles.coinsImage} /> */}
     <Image source={require('../../../assets/money.png')} style={styles.coinsImage} />
     <Text style={styles.infoText}>Total Games: {selectedItem.totalGames}</Text>
     <Text style={styles.infoText}>System Generated Clubs: {selectedItem.systemGeneratedClubs}</Text>
