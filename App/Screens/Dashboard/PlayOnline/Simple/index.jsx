@@ -16,6 +16,7 @@ import { Feather } from "@expo/vector-icons";
 import { Octicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import GradientVarientOneBtn from "../../../../Components/Gradient/GradientVariantOneBtn";
+import { Data } from "../../../UserProfile/Storydata/Data";
 
 // month selector button
 
@@ -776,7 +777,7 @@ const Simple = ({ navigation }) => {
           />
         </View> */}
         <View style={{height:70}}>
-          <Storysection/>
+          <Storysection data={Data} />
         </View>
 
         {/* cards container */}

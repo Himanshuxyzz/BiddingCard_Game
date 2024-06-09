@@ -1,14 +1,14 @@
-import { StyleSheet, Text, Image, View, ScrollView, TouchableOpacity } from 'react-native'
+import { StyleSheet, FlatList, Text, Image, View, ScrollView, TouchableOpacity } from 'react-native'
 import React from 'react'
-import { Data } from './Storydata/Data'
+// import { Data } from './Storydata/Data'
 import { useNavigation } from '@react-navigation/native'
 
-const Storysection = () => {
+
+const Storysection = ({data}) => {
     const navigation = useNavigation();
   return (
     <>
-       <ScrollView horizontal>
-         {Data.map(item =>(
+         {/* {Data.map(item =>(
             <View key={item.id} style={styles.fullcontainer}>
                  <TouchableOpacity
                 onPress={()=> navigation.navigate("Storypost",{item})}
@@ -16,8 +16,29 @@ const Storysection = () => {
                      <Image style={styles.image} source={item.image}/>
                  </TouchableOpacity>
              </View>
-         ))}
-      </ScrollView> 
+         ))} */}
+         {/* {data.map((item)=>{
+          console.log(item)
+         })} */}
+         <FlatList
+          data={data}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          renderItem={({item})=> {
+            return(
+              <View  style={styles.fullcontainer}>
+                 <TouchableOpacity
+                onPress={()=> navigation.navigate("Storypost",{item})}
+                      style={styles.catogery} >
+                     <Image style={styles.image} source={item.image}/>
+                 </TouchableOpacity>
+             </View> 
+            )
+
+          }
+          }
+          keyExtractor={item => item.id}
+         />
     </>
   )
 }
