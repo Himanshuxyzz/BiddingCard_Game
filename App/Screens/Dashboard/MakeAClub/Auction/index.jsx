@@ -15,6 +15,8 @@ import { Feather } from "@expo/vector-icons";
 import { Octicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import GradientVarientOneBtn from "../../../../Components/Gradient/GradientVariantOneBtn";
+import Storysection from "../../../UserProfile/Storysection";
+import { Data } from "../../../UserProfile/Storydata/Data";
 
 // month selector button
 
@@ -766,15 +768,16 @@ const Auction = ({ navigation }) => {
         </View> */}
 
         {/* here i've added height explicitly in order to fix the issue with flatlist in which it does takes full height and push the below content outside the view */}
-        <View style={{ height: 45 }}>
-          <FlatList
+        <View style={{ height: 70 }}>
+          {/* <FlatList
             data={data}
             horizontal
             showsHorizontalScrollIndicator={false}
             renderItem={({ item }) => <Story text={item.text} />}
             keyExtractor={(item) => item.key}
             contentContainerStyle={styles.winnerStoriesContianer}
-          />
+          /> */}
+          <Storysection data={Data}/> 
         </View>
 
         {/* cards container */}
