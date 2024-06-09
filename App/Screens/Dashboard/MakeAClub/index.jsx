@@ -17,9 +17,17 @@ const MakeAClub = ({ navigation }) => {
         {/* header end */}
 
         <View style={styles.buttonContainer}>
-          <DashboardBtn btnText={"Simple BC"} iconImg={SimpleIcon} navigateTo={"CustomSimple"} />
+          <DashboardBtn
+            btnText={"Auction Bidding Card"}
+            iconImg={AuctionIcon}
+            navigateTo={"Auction"}
+          />
 
-          <DashboardBtn btnText={"Auction BC"} iconImg={AuctionIcon} navigateTo={"Auction"} />
+          <DashboardBtn
+            btnText={"Simple Bidding Card"}
+            iconImg={SimpleIcon}
+            navigateTo={"CustomSimple"}
+          />
         </View>
       </View>
     </View>
@@ -43,7 +51,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    gap: 90,
+    gap: 75,
   },
   button: {
     borderWidth: 4,
