@@ -17,7 +17,11 @@ const PlayOnline = ({ navigation }) => {
         {/* header end */}
 
         <View style={styles.buttonContainer}>
-          <DashboardBtn btnText={"Simple BC"} iconImg={SimpleIcon} navigateTo={"Simple"} />
+          <DashboardBtn
+            btnText={"Simple Bidding Card"}
+            iconImg={SimpleIcon}
+            navigateTo={"Simple"}
+          />
         </View>
       </View>
     </View>
