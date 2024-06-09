@@ -13,6 +13,8 @@ import Header from "../../../../Components/Dashboard/Header";
 import WhiteText from "../../../../Components/WhiteText/WhiteText";
 import { Octicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
+import { Data } from "../../../UserProfile/Storydata/Data";
+import Storysection from "../../../UserProfile/Storysection";
 
 const Story = ({ imgSrc, text }) => (
   <TouchableOpacity
@@ -274,15 +276,16 @@ const CustomSimple = ({ navigation }) => {
       <Header />
       <View style={styles.subContainer}>
         {/* here i've added height explicitly in order to fix the issue with flatlist in which it does takes full height and push the below content outside the view */}
-        <View style={{ height: 45 }}>
-          <FlatList
+        <View style={{ height: 70 }}>
+          {/* <FlatList
             data={data}
             horizontal
             showsHorizontalScrollIndicator={false}
             renderItem={({ item }) => <Story text={item.text} />}
             keyExtractor={(item) => item.key}
             contentContainerStyle={styles.winnerStoriesContianer}
-          />
+          /> */}
+          <Storysection data={Data}/> 
         </View>
 
         {/* cards container */}

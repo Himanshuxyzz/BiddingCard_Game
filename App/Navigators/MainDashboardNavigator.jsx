@@ -63,6 +63,7 @@ import Refer from "../Screens/Refer&Termsconditions/Refer";
 import Quicktask from "../Screens/UserProfile/Support/Quicktask";
 import Logout from "../Screens/UserProfile/Logout";
 import ProfileDetail from "../Screens/UserProfile/ProfileDetail";
+import Storypost from "../Screens/UserProfile/Storypost";
 
 const DashboardDrawerContent = () => {
   return (
@@ -85,6 +86,13 @@ const DashboardDrawerContent = () => {
         component={Simple}
         options={{ headerShown: false }}
       />
+      {/* {samraat story post section start} */}
+      <Stack.Screen
+        name="Storypost"
+        component={Storypost}
+        options={{ headerShown: false }}
+      />
+       {/* {samraat story post section end} */}
       <Stack.Screen
         name="Startbc"
         component={StartBC}
