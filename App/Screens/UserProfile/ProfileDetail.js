@@ -173,7 +173,7 @@ const ProfileDetail = ({navigation}) => {
            }}
            theme={{
              pinCodeContainerStyle: {
-               borderRadius: 100,
+               borderRadius: 50,
                width: 50,
                height: 50,
                marginVertical:80,
@@ -540,6 +540,9 @@ const styles = StyleSheet.create({
    right:0,
 
  },
+ otp:{
+ paddingHorizontal:20,
+ },
  
  phonebtn:{
    backgroundColor:"#2ED813",
@@ -578,8 +581,8 @@ const styles = StyleSheet.create({
    alignSelf:"center"
  },
  Otpbox3:{
-   width:305,
-   height:280,
+   width:355,
+   height:200,
    borderRadius:15,
    backgroundColor:"rgba(35, 39, 39,.9)",
    position:"relative",
