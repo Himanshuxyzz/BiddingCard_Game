@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     flex: 1,
+    padding :10,
   },
   subcontainer: {
     width: "100%",
