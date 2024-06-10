@@ -18,13 +18,13 @@ const MakeAClub = ({ navigation }) => {
 
         <View style={styles.buttonContainer}>
           <DashboardBtn
-            btnText={"Auction Bidding Card"}
+            btnText={"Auction Bidding"}
             iconImg={AuctionIcon}
             navigateTo={"Auction"}
           />
 
           <DashboardBtn
-            btnText={"Simple Bidding Card"}
+            btnText={"Simple Bidding"}
             iconImg={SimpleIcon}
             navigateTo={"CustomSimple"}
           />
