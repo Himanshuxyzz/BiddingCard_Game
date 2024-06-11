@@ -5,6 +5,7 @@ import nothing from '../../../../assets/nothing.png'
 import nitish from '../../../../assets/nitish.png'
 
 
+
 export const Data = [
     {
         id : 1,
@@ -16,6 +17,7 @@ export const Data = [
         systemGeneratedClubs:12,
         privateClubs:8,
         completedBC:5,
+      
     },
     {
         id : 2,
@@ -27,6 +29,7 @@ export const Data = [
         systemGeneratedClubs:11,
         privateClubs:8,
         completedBC:5,
+     
     },
     {
         id : 3,
@@ -38,6 +41,7 @@ export const Data = [
         systemGeneratedClubs:11,
         privateClubs:7,
         completedBC:6,
+      
        
     },
     {
@@ -50,6 +54,7 @@ export const Data = [
         systemGeneratedClubs:11,
         privateClubs:6,
         completedBC:6,
+     
        
     },
     {
@@ -62,6 +67,7 @@ export const Data = [
         systemGeneratedClubs:9,
         privateClubs:6,
         completedBC:2,
+      
        
     },
     {
@@ -75,6 +81,7 @@ export const Data = [
         privateClubs:7,
         completedBC:6,
        
+       
     },
     {
         id : 7,
@@ -86,6 +93,7 @@ export const Data = [
         systemGeneratedClubs:12,
         privateClubs:8,
         completedBC:5,
+       
     },
     {
         id : 8,
@@ -97,6 +105,7 @@ export const Data = [
         systemGeneratedClubs:9,
         privateClubs:6,
         completedBC:2,
+      
     },
     {
         id : 9,
@@ -108,6 +117,7 @@ export const Data = [
         systemGeneratedClubs:11,
         privateClubs:7,
         completedBC:6,
+      
     },
     {
         id : 10,
@@ -118,6 +128,7 @@ export const Data = [
         totalGames:18,
         systemGeneratedClubs:11,
         privateClubs:7,
-        completedBC:6,  
+        completedBC:6, 
+      
     }
 ]
