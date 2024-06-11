@@ -3,10 +3,7 @@ import vibha from '../../../../assets/vibha.png'
 import goyal2 from '../../../../assets/goyal2.png'
 import nothing from '../../../../assets/nothing.png'
 import nitish from '../../../../assets/nitish.png'
-import vibhaimage from '../../../../assets/vibhaimage.png'
-import goyalimage from '../../../../assets/goyaliamge.png'
-import nitishimage from '../../../../assets/nitshimage.png'
-import garimaimage from '../../../../assets/garimaimage.png'
+
 
 
 export const Data = [
@@ -20,7 +17,6 @@ export const Data = [
         systemGeneratedClubs:12,
         privateClubs:8,
         completedBC:5,
-        imagecoin:garimaimage,
       
     },
     {
@@ -33,7 +29,7 @@ export const Data = [
         systemGeneratedClubs:11,
         privateClubs:8,
         completedBC:5,
-        imagecoin:vibhaimage,
+     
     },
     {
         id : 3,
@@ -45,7 +41,7 @@ export const Data = [
         systemGeneratedClubs:11,
         privateClubs:7,
         completedBC:6,
-        imagecoin:goyalimage,
+      
        
     },
     {
@@ -58,7 +54,7 @@ export const Data = [
         systemGeneratedClubs:11,
         privateClubs:6,
         completedBC:6,
-        imagecoin:nitishimage,
+     
        
     },
     {
@@ -71,7 +67,7 @@ export const Data = [
         systemGeneratedClubs:9,
         privateClubs:6,
         completedBC:2,
-        imagecoin:nitishimage,
+      
        
     },
     {
@@ -84,7 +80,7 @@ export const Data = [
         systemGeneratedClubs:11,
         privateClubs:7,
         completedBC:6,
-        imagecoin:goyalimage,
+       
        
     },
     {
@@ -97,7 +93,7 @@ export const Data = [
         systemGeneratedClubs:12,
         privateClubs:8,
         completedBC:5,
-        imagecoin:garimaimage,
+       
     },
     {
         id : 8,
@@ -109,7 +105,7 @@ export const Data = [
         systemGeneratedClubs:9,
         privateClubs:6,
         completedBC:2,
-        imagecoin:nitishimage,
+      
     },
     {
         id : 9,
@@ -121,7 +117,7 @@ export const Data = [
         systemGeneratedClubs:11,
         privateClubs:7,
         completedBC:6,
-        imagecoin:goyalimage,
+      
     },
     {
         id : 10,
@@ -133,6 +129,6 @@ export const Data = [
         systemGeneratedClubs:11,
         privateClubs:7,
         completedBC:6, 
-        imagecoin:nitishimage, 
+      
     }
 ]

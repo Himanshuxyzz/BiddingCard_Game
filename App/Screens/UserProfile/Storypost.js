@@ -7,6 +7,7 @@ const Storypost = ({route}) => {
   // console.log(route.params);
   const selectedItem = route.params.item
   const navigation = useNavigation();
+
   return (
      <>
     <View style={styles.container}>
@@ -27,11 +28,33 @@ const Storypost = ({route}) => {
     <View style={styles.profiledetail}>
     <Text style={styles.userName}>{selectedItem.userName}</Text>
     <Text style={styles.totalWinnings}>Total Winnings: {selectedItem.totalWinnings}</Text>
-    <Image source={selectedItem.imagecoin} style={styles.coinsImage} />
+    {/* <Image source={selectedItem.imagecoin} style={styles.coinsImage} /> */}
+    <View style={styles.coinsImage}>
+  {selectedItem.totalWinnings >= 20000000 &&  (
+    <Image source={require('../../../assets/garimaimage.png')} />
+  )}
+  {selectedItem.totalWinnings < 20000000 && selectedItem.totalWinnings >= 18000000 && (
+    <Image source={require('../../../assets/vibhaimage.png')}/>
+  )}
+  {selectedItem.totalWinnings < 18000000 && selectedItem.totalWinnings >= 16000000 && (
+    <Image source={require('../../../assets/goyaliamge.png')}/>
+  )}
+  {selectedItem.totalWinnings < 16000000 && selectedItem.totalWinnings >= 14000000 && (
+    <Image style={styles.bagmoney} source={require('../../../assets/nitshimage.png')}/>
+  )}
+  {selectedItem.totalWinnings < 14000000 && selectedItem.totalWinnings >= 12000000 && (
+    <Image style={styles.bagmoney} source={require('../../../assets/nitshimage.png')}/>
+  )}
+  {selectedItem.totalWinnings < 12000000 && selectedItem.totalWinnings >= 10000000 && (
+    <Image source={require('../../../assets/vibhaimage.png')}/>
+  )}
+</View>
+       <View style={styles.textcontent}>
     <Text style={styles.infoText}>Total Games: {selectedItem.totalGames}</Text>
     <Text style={styles.infoText}>System Generated Clubs: {selectedItem.systemGeneratedClubs}</Text>
     <Text style={styles.infoText}>Private Clubs: {selectedItem.privateClubs}</Text>
     <Text style={styles.infoText}>Completed BC: {selectedItem.completedBC}</Text>
+    </View>
     </View>
     </TouchableOpacity>
     </ScrollView>
@@ -102,14 +125,20 @@ const styles = StyleSheet.create({
   },
   coinsImage: {
     width: 120,
-    height: 130,
+    height: 170,
+    alignSelf:"center"
+  },
+  bagmoney:{
     alignSelf:"center"
   },
   infoText: {
     fontSize: 16,
     color: 'white',
     fontWeight: 'bold',
-
+  },
+  textcontent:{
+    flexDirection:"column",
+    gap:10,
   },
 
 })
