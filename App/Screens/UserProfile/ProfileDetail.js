@@ -51,7 +51,7 @@ const ProfileDetail = ({navigation}) => {
  
  return (
  
-   <View style={styles.container}>
+  <View style={styles.container}>
      <ScrollView>
      <TouchableOpacity 
      style={styles.backimg}
@@ -59,7 +59,7 @@ const ProfileDetail = ({navigation}) => {
      <Image source={require('../../../assets/lets-icons_back.png')}/> 
      </TouchableOpacity>
 
-     <View style={styles.tstprofile}>
+     <View>
        <Text style={styles.tstprofile}>User Profile</Text>
      </View>
      <View style={styles.inputcontainer}>
@@ -72,7 +72,7 @@ const ProfileDetail = ({navigation}) => {
               style ={{borderBottomColor:"rgba(255, 255, 255, 0.5)" , borderBottomWidth:1, color:"white", fontSize:18, paddingBottom:10}}
                     />
        <View style={styles.email}>
-           <Text style={{color:"white", fontSize:18,}}>Email</Text>
+           <Text style={{color:"white", fontSize:18, bottom:20}}>Email</Text>
              <View style={styles.emailflex}>
             
                <TextInput
@@ -89,7 +89,7 @@ const ProfileDetail = ({navigation}) => {
             </View> 
          </View>
          <View style={styles.Phone}>
-           <Text style={{color:"white", fontSize:18,}}>Phone</Text>
+           <Text style={{color:"white", fontSize:18, bottom:20}}>Phone</Text>
              <View style={styles.phoneflex}>
                <TextInput
                
@@ -107,7 +107,7 @@ const ProfileDetail = ({navigation}) => {
             
          </View>
          <View style={styles.dateofbirth}>
-               <Text style={{color:"white", fontSize:18, marginBottom:10,}}>Date</Text>
+               <Text style={{color:"white", fontSize:18,bottom:10,}}>Date</Text>
                      <TextInput
                       placeholder=''
                       placeholderTextColor={"#ffffff"}
@@ -116,7 +116,7 @@ const ProfileDetail = ({navigation}) => {
                 />
          </View>
          <View style={styles.adharcard}>
-               <Text style={{color:"white", fontSize:18, marginBottom:10,}}>AdharCard No.</Text>
+               <Text style={{color:"white", fontSize:18, marginBottom:0, bottom:10}}>AdharCard No.</Text>
                      <TextInput
                       placeholder=''
                       placeholderTextColor={"#ffffff"}
@@ -144,7 +144,7 @@ const ProfileDetail = ({navigation}) => {
          <View>
            <Text style={{color:"#FFFFFF" , fontSize:9,fontWeight:"600", marginVertical:0, textAlign:"center"}}>For security purpose only specific fields can be changed</Text>
          </View>
-     </View>
+  </View>
    {/* this modeel is working on otp box */}
      <Modal
        theme={
@@ -504,6 +504,7 @@ const styles = StyleSheet.create({
  container: {
    backgroundColor:"black",
    flex : 1,
+  
  },
 
  backimg : {
@@ -512,17 +513,19 @@ const styles = StyleSheet.create({
  },
  tstprofile :{
    color:"#FFFFFF",
-   fontSize:25,
+   fontSize:28,
    fontWeight:"700",
    textAlign:"center",
-   top:-10
+   marginTop:30,
+   position:"relative",
+   top:30
  },
  inputcontainer:{
-   marginHorizontal:40,
-   alignSelf:"center"
+   alignSelf:"center",
+   marginVertical:60
  },
  email:{
-   marginVertical:20,
+   marginVertical:30,
    position:"relative"
 
 
@@ -536,7 +539,7 @@ const styles = StyleSheet.create({
    color:"#FFFFFF",
    backgroundColor:"#2ED813",
    position:"absolute",
-   bottom:15,
+   bottom:10,
    right:0,
 
  },
