@@ -24,7 +24,7 @@ const EditProfile = ({ navigation }) => {
               style={styles.input}
             />
             <View style={styles.inputSection}>
-              <Text style={styles.label}>Email</Text>
+              <Text style={styles.label} >Email</Text>
               <View style={styles.emailInput}>
                 <TextInput
                   placeholder=''
@@ -91,7 +91,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
   },
   content: {
-    marginTop: 30, 
     flex: 1,
   },
   backimg: {
@@ -99,7 +98,8 @@ const styles = StyleSheet.create({
     marginVertical: 20
   },
   tstprofile: {
-    top: -15
+   textAlign:"center",
+   marginVertical:50
   },
   tstprofileText: {
     color: '#FFFFFF',
@@ -109,15 +109,15 @@ const styles = StyleSheet.create({
   },
   inputcontainer: {
     alignSelf: 'center',
-    top: 15
+    justifyContent:"center"
   },
   inputSection: {
-    marginBottom: 20,
+    marginBottom: 10,
   },
   label: {
     color: '#FFFFFF',
     fontSize: 18,
-    marginBottom: -5,
+    bottom:0
   },
   input: {
     borderBottomColor: 'rgba(255, 255, 255, 0.5)',
@@ -129,14 +129,12 @@ const styles = StyleSheet.create({
   },
   emailInput: {
     flexDirection: 'row',
-    alignItems: 'center',
   },
   phoneInput: {
     flexDirection: 'row',
-    alignItems: 'center',
   },
   icon: {
-    marginLeft: 10,
+    marginLeft:-30
   },
   termsText: {
     color: '#910C8C',
