@@ -64,7 +64,7 @@ const ProfileDetail = ({navigation}) => {
      </View>
      <View style={styles.inputcontainer}>
        <View style={styles.inputname}>
-         <Text style={{color:"white", fontSize:18, marginBottom:0,}}>Name</Text>
+         <Text style={{color:"white", fontSize:22, marginBottom:0,}}>Name</Text>
            <TextInput
              placeholder=''
               placeholderTextColor={"#ffffff"}
@@ -72,11 +72,11 @@ const ProfileDetail = ({navigation}) => {
               style ={{borderBottomColor:"rgba(255, 255, 255, 0.5)" , borderBottomWidth:1, color:"white", fontSize:18, paddingBottom:10}}
                     />
        <View style={styles.email}>
-           <Text style={{color:"white", fontSize:18, bottom:20}}>Email</Text>
+           <Text style={{color:"white", fontSize:22, bottom:20}}>Email</Text>
              <View style={styles.emailflex}>
             
                <TextInput
-                  style ={{borderBottomColor:"rgba(255, 255, 255, 0.5)",width:280, borderBottomWidth:1, color:"white"}}
+                  style ={{borderBottomColor:"rgba(255, 255, 255, 0.5)",width:320, borderBottomWidth:1, color:"white"}}
                  />
                  
                    <View>
@@ -89,11 +89,11 @@ const ProfileDetail = ({navigation}) => {
             </View> 
          </View>
          <View style={styles.Phone}>
-           <Text style={{color:"white", fontSize:18, bottom:20}}>Phone</Text>
+           <Text style={{color:"white", fontSize:22, bottom:20}}>Phone</Text>
              <View style={styles.phoneflex}>
                <TextInput
                
-                  style ={{borderBottomColor:"rgba(255, 255, 255, 0.5)",width:280, borderBottomWidth:1, color:"white"}}
+                  style ={{borderBottomColor:"rgba(255, 255, 255, 0.5)",width:320, borderBottomWidth:1, color:"white"}}
                  />
                    <View>
                      <TouchableOpacity 
@@ -107,7 +107,7 @@ const ProfileDetail = ({navigation}) => {
             
          </View>
          <View style={styles.dateofbirth}>
-               <Text style={{color:"white", fontSize:18,bottom:10,}}>Date</Text>
+               <Text style={{color:"white", fontSize:22,bottom:20,}}>Date</Text>
                      <TextInput
                       placeholder=''
                       placeholderTextColor={"#ffffff"}
@@ -116,7 +116,7 @@ const ProfileDetail = ({navigation}) => {
                 />
          </View>
          <View style={styles.adharcard}>
-               <Text style={{color:"white", fontSize:18, marginBottom:0, bottom:10}}>AdharCard No.</Text>
+               <Text style={{color:"white", fontSize:22, marginBottom:0, bottom:10}}>AdharCard No.</Text>
                      <TextInput
                       placeholder=''
                       placeholderTextColor={"#ffffff"}
@@ -138,7 +138,7 @@ const ProfileDetail = ({navigation}) => {
           
          >
            <Text 
-           style={{textAlign:"center" , color:"#FFFFFF", fontSize:18 , textTransform:"capitalize"}}>SAVE</Text>
+           style={{textAlign:"center" , color:"#FFFFFF", fontSize:30 , textTransform:"capitalize"}}>SAVE</Text>
          </LinearGradient>
          </TouchableOpacity>
          <View>
@@ -516,16 +516,16 @@ const styles = StyleSheet.create({
    fontSize:28,
    fontWeight:"700",
    textAlign:"center",
-   marginTop:30,
+  //  marginTop:20,
    position:"relative",
-   top:30
  },
  inputcontainer:{
    alignSelf:"center",
-   marginVertical:60
+   justifyContent:"center",
+   marginTop:50
  },
  email:{
-   marginVertical:30,
+   marginVertical:40,
    position:"relative"
 
 
@@ -556,21 +556,21 @@ const styles = StyleSheet.create({
    textTransform:"capitalize",
    color:"#FFFFFF",
    top:-50,
-   left:210,
+   left:250,
  },
  dateofbirth:{
-   marginVertical:-27 
+   marginVertical:-5 
  },
  adharcard:{
-   marginVertical:40 
+   marginVertical:30 
  },
  btnstyle:{
-   width:280,
+   width:320,
    marginVertical:10,
    alignContent:"center",
    alignSelf:"center",
    borderWidth:1,
-   padding:12,
+   padding:10,
    borderColor:"#FFFFFF",
    borderRadius:15,
 
