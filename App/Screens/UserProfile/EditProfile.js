@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image, TextInput ,} from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, TextInput, ScrollView} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 
@@ -8,8 +8,9 @@ import { useNavigation } from '@react-navigation/native';
 const EditProfile = () => {
   const navigation = useNavigation();
   return (
-    <View style={styles.container}>
-     
+    <View style={{flex:1 , backgroundColor:"black"}}>
+    <ScrollView> 
+    <View style={styles.container}> 
       <View style={styles.content}>
         <View style={styles.backimg}>
         <TouchableOpacity 
@@ -88,6 +89,9 @@ const EditProfile = () => {
         </View>
       </View>
     </View>
+    </ScrollView>
+    </View>
+  
   );
 };
 
@@ -161,10 +165,10 @@ const styles = StyleSheet.create({
     width: 320,
     alignSelf: 'center',
     borderWidth: 1,
-    padding: 10,
+    padding: 6,
     borderColor: '#FFFFFF',
     borderRadius: 15,
-    top:130
+    marginVertical:100
   },
   btnText: {
     textAlign: 'center',

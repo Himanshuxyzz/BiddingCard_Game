@@ -12,12 +12,15 @@ import Modal from 'react-native-modal'
 import Colors from '../../Utils/Colors'
 import { OtpInput } from 'react-native-otp-entry'
 import VerifyBtn from '../../Components/Gradient/VerifyBtn'
+import { useNavigation } from '@react-navigation/native';
 
 
 
 // backimg
 
-const ProfileDetail = ({navigation}) => {
+const ProfileDetail = () => {
+
+  const navigation = useNavigation()
  
  const [modelvisible , setModalVisible] = useState(false)
  const [emailverdone , setEmailVerDone] = useState(false)
@@ -55,7 +58,7 @@ const ProfileDetail = ({navigation}) => {
      <ScrollView>
      <TouchableOpacity 
      style={styles.backimg}
-     onPress={()=>navigation.navigate("EditProfile")}>
+     onPress={()=> navigation.goBack()}>
      <Image source={require('../../../assets/lets-icons_back.png')}/> 
      </TouchableOpacity>
 

@@ -13,10 +13,10 @@ const Bankaccount = ({navigation}) => {
   return (
     <View style={styles.fullcontainer}>
     <ScrollView>
-      <Text style={{color:"rgba(255, 255, 255, 1)", fontSize:18, fontWeight:"bold", textAlign:"center", marginVertical:40}}>Your Bank Account Details</Text>
+      <Text style={{color:"rgba(255, 255, 255, 1)", fontSize:22, fontWeight:"bold", textAlign:"center", top:70 }}>Your Bank Account Details</Text>
       <View style={styles.icon_content}>
         <View>
-            <Image source={require('../../../assets/icici logo.png')}/>
+            <Image style={{width:60 , height:60}} source={require('../../../assets/icici logo.png')}/>
         </View>
         <View >
         <Text style={{color:"white", fontSize:22, fontWeight:"700"}}>ICICI Bank</Text>
@@ -24,15 +24,15 @@ const Bankaccount = ({navigation}) => {
       </View>
       <View style={styles.input_box}>
           <View style={styles.nameinput}>
-             <Text style={{color:"#FFFFFF",}}>Account holder name</Text>
+             <Text style={{color:"#FFFFFF", fontSize:18}}>Account holder name</Text>
              <TextInput
                 placeholder=''
-                placeholderTextColor={"#FFFFFF"}
+                placeholderTextColor={"#FFFFFF" }
                 style ={{borderBottomColor:"rgba(255, 255, 255, 0.5)",width:280, borderBottomWidth:1, color:"white", fontSize:18 , paddingBottom:5, textTransform:"capitalize"}}
                 />
           </View>
           <View style={styles.nameinput}>
-             <Text style={{color:"#FFFFFF"}}>Account Number</Text>
+             <Text style={{color:"#FFFFFF", fontSize:18}}>Account Number</Text>
              <TextInput
                 placeholder=''
                 placeholderTextColor={"#FFFFFF"}
@@ -40,7 +40,7 @@ const Bankaccount = ({navigation}) => {
                 />
           </View>
           <View style={styles.nameinput}>
-             <Text style={{color:"#FFFFFF"}}>IFSC Code</Text>
+             <Text style={{color:"#FFFFFF" , fontSize:18}}>IFSC Code</Text>
              <TextInput
                 placeholder=''
                 placeholderTextColor={"#FFFFFF"}
@@ -48,7 +48,7 @@ const Bankaccount = ({navigation}) => {
                 />
           </View>
           <View style={styles.nameinput}>
-             <Text style={{color:"#FFFFFF"}}>Branch Name</Text>
+             <Text style={{color:"#FFFFFF" , fontSize:18}}>Branch Name</Text>
              <TextInput
                 placeholder=''
                 placeholderTextColor={"#FFFFFF"}
@@ -56,11 +56,11 @@ const Bankaccount = ({navigation}) => {
                 />
           </View>
           <View style={styles.nameinput}>
-             <Text style={{color:"#FFFFFF"}}>Bank Name</Text>
+             <Text style={{color:"#FFFFFF" , fontSize:18}}>Bank Name</Text>
              <TextInput
                 placeholder=''
                 placeholderTextColor={"#FFFFFF"}
-                style ={{borderBottomColor:"rgba(255, 255, 255, 0.5)",width:280, borderBottomWidth:1, color:"white", fontSize:18,paddingBottom:5, textTransform:"capitalize"}}
+                style ={{borderBottomColor:"rgba(255, 255, 255, 0.5)",width:280, borderBottomWidth:1, color:"white", fontSize:22,paddingBottom:5, textTransform:"capitalize"}}
                 />
           </View>
       </View>
@@ -72,7 +72,7 @@ const Bankaccount = ({navigation}) => {
          style={styles.btnstyle}
          start = {{x :0.0 , y : 0.0}}
          end = {{x:0.5 , y : 0.15}}>
-         <Text style={{textAlign:"center", color:"#FFFFFF",padding:6, fontSize:20, fontWeight:"bold"}}>Back</Text>
+         <Text style={{textAlign:"center", color:"#FFFFFF",padding:6, fontSize:22, fontWeight:"bold"}}>Back</Text>
         </LinearGradient>
       </TouchableOpacity>
       </ScrollView>
@@ -90,12 +90,13 @@ const styles = StyleSheet.create({
     icon_content:{
         flexDirection:"row",
         alignItems:"center",
-        gap:30,
-        marginHorizontal:50
+        marginHorizontal:70,
+        top:100,
+        gap:20,
     },
     input_box:{
         alignSelf:"center",
-        marginVertical:30,
+        marginVertical:160,
         flexDirection:"column",
         gap:20,
       
@@ -103,7 +104,7 @@ const styles = StyleSheet.create({
     },
     btnstyle:{
       width:300,
-      marginVertical:30,
+      marginVertical:-100,
       alignSelf:"center",
       borderWidth:1,
       padding:8,

@@ -64,6 +64,9 @@ import Quicktask from "../Screens/UserProfile/Support/Quicktask";
 import Logout from "../Screens/UserProfile/Logout";
 import ProfileDetail from "../Screens/UserProfile/ProfileDetail";
 import Storypost from "../Screens/UserProfile/Storypost";
+import GenerateQuery from "../Screens/UserProfile/Support/GenerateQuery";
+import CancelQuery from "../Screens/UserProfile/Support/CancelQuery";
+import Backtdash from "../Screens/UserProfile/Support/Backtdash";
 
 const DashboardDrawerContent = () => {
   return (
@@ -248,6 +251,21 @@ const DashboardDrawerContent = () => {
         component={ProfileDetail}
         options={{ headerShown: false }}
       />
+       <Stack.Screen 
+       name="GenerateQuery" 
+       component={GenerateQuery} />
+
+       <Stack.Screen
+        name="CancelQuery"
+        component={CancelQuery}
+        options={{ headerShown: false }}
+      />  
+
+        <Stack.Screen
+        name="Backtdash"
+        component={Backtdash}
+        options={{ headerShown: false }}
+      />   
     </Stack.Navigator>
   );
 };

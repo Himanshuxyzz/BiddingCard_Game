@@ -13,11 +13,13 @@ import MarkedList from '@jsamr/react-native-li';
 const Quicktask = ({ navigation }) => {
   return (
       <View style={styles.container}>
-          <TouchableOpacity onPress={() => navigation.navigate("Mainpage")}>
+      <View style={{padding:20}}>
+          <TouchableOpacity onPress={() => navigation.navigate("Home")}>
               <Image style={styles.backButton} source={require("../../../../assets/lets-icons_back.png")} />
           </TouchableOpacity>
-          <View>
-              <Text style={styles.heading}>How can we help you?</Text>
+          </View>
+          <View style={{width:300}}>
+             <Text style={styles.heading}>How can we help you?</Text>
           </View>
           <View style={styles.quickTaskContainer}>
               <Text style={styles.quickTaskTitle}>Quick task</Text>
@@ -53,17 +55,15 @@ const styles = StyleSheet.create({
   container: {
       flex: 1,
       backgroundColor: "#000000",
-      paddingHorizontal: 20,
-      paddingTop: 40,
   },
   backButton: {
       width: 30,
       height: 30,
-      marginBottom: 20,
   },
   heading: {
       color: "#FFFFFF",
-      fontSize: 24,
+      fontSize: 28,
+      padding:5,
       fontWeight: "bold",
       textAlign: "center",
       textDecorationLine: "underline",
@@ -71,23 +71,23 @@ const styles = StyleSheet.create({
   },
   quickTaskContainer: {
       width: "100%",
-      alignItems: "center",
+      marginHorizontal:30
   },
   quickTaskTitle: {
       color: "#FFFFFF",
-      fontSize: 25,
+      fontSize: 30,
       fontWeight: "bold",
       paddingBottom: 10,
   },
   quickTaskList: {
-      marginTop: 10,
       alignItems: "flex-start",
   },
   quickTaskItem: {
       color: "rgba(56, 154, 244, 1)",
       textDecorationLine: "underline",
       fontSize: 18,
-      marginBottom: 10,
+    //   padding:20
+     
   },
   contactUs: {
       fontSize: 25,
