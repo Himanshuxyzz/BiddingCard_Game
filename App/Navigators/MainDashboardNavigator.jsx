@@ -243,6 +243,11 @@ const DashboardDrawerContent = () => {
         component={EditProfile}
         options={{ headerShown: false }}
       />
+        <Stack.Screen
+        name="profile"
+        component={ProfileDetail}
+        options={{ headerShown: false }}
+      />
     </Stack.Navigator>
   );
 };

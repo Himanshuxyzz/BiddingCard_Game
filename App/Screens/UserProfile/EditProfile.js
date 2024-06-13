@@ -1,15 +1,22 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image, TextInput } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, TextInput ,} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useNavigation } from '@react-navigation/native';
 
 
-const EditProfile = ({ navigation }) => {
+
+const EditProfile = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
      
       <View style={styles.content}>
         <View style={styles.backimg}>
+        <TouchableOpacity 
+        onPress={()=> navigation.goBack()}
+        >
           <Image source={require('../../../assets/lets-icons_back.png')} />
+          </TouchableOpacity>
         </View>
         <View style={styles.tstprofile}>
           <Text style={styles.tstprofileText}>User Profile</Text>
@@ -24,13 +31,14 @@ const EditProfile = ({ navigation }) => {
               style={styles.input}
             />
             <View style={styles.inputSection}>
-              <Text style={styles.label} >Email</Text>
+              <Text style={styles.labeE} >Email</Text>
               <View style={styles.emailInput}>
                 <TextInput
                   placeholder=''
                   placeholderTextColor={'#FFFFFF'}
                   style={styles.input}
                 />
+                
                 <Image style={styles.icon} source={require('../../../assets/verifynumber.png')} />
               </View>
             </View>
@@ -68,7 +76,7 @@ const EditProfile = ({ navigation }) => {
             <Text style={styles.termsText}>Terms & Conditions</Text>
           </View>
           <TouchableOpacity
-            onPress={() => navigation.navigate('profile Detail')}>
+            onPress={() => navigation.navigate('profile')}>
             <LinearGradient
               colors={['#EA59E4', '#C508BD', '#910C8C']}
               style={styles.btnStyle}
@@ -99,32 +107,37 @@ const styles = StyleSheet.create({
   },
   tstprofile: {
    textAlign:"center",
-   marginVertical:50
+   marginVertical:10
   },
   tstprofileText: {
     color: '#FFFFFF',
-    fontSize: 25,
+    fontSize: 30,
     fontWeight: '700',
     textAlign: 'center',
   },
   inputcontainer: {
     alignSelf: 'center',
-    justifyContent:"center"
+    justifyContent:"center",
+    marginTop:40
   },
   inputSection: {
-    marginBottom: 10,
+    marginBottom: 20,
   },
   label: {
     color: '#FFFFFF',
-    fontSize: 18,
-    bottom:0
+    fontSize: 22,
+  },
+  labeE:{
+    color: '#FFFFFF',
+    fontSize: 22,
+    paddingTop:15
   },
   input: {
     borderBottomColor: 'rgba(255, 255, 255, 0.5)',
-    width: 280,
+    width: 320,
     borderBottomWidth: 1,
     color: '#FFFFFF',
-    fontSize: 18,
+    fontSize: 22,
     paddingBottom: 10
   },
   emailInput: {
@@ -137,25 +150,26 @@ const styles = StyleSheet.create({
     marginLeft:-30
   },
   termsText: {
-    color: '#910C8C',
-    fontSize: 15,
+    color: '#FFF',
+    fontSize: 18,
     fontWeight: '700',
-    marginVertical: 10,
+    marginVertical: 12,
     textAlign: 'center',
     textDecorationLine: 'underline',
   },
   btnStyle: {
-    width: 300,
+    width: 320,
     alignSelf: 'center',
     borderWidth: 1,
     padding: 10,
     borderColor: '#FFFFFF',
     borderRadius: 15,
+    top:130
   },
   btnText: {
     textAlign: 'center',
     color: '#FFFFFF',
-    padding: 6,
-    fontSize: 18
+    padding: 8,
+    fontSize: 22
   }
 });
