@@ -89,6 +89,285 @@ const Bidding = ({ navigation }) => {
         <ScrollView contentContainerStyle={styles.scrollContainer}>
           <View style={styles.container}>
             <Header />
+            {/* <Image
+              style={{
+                maxWidth: "90%",
+                minWidth: "90%",
+                height: 250,
+                position: "absolute",
+                zIndex: -1,
+                top: 350,
+              }}
+              source={require("../../../../../assets/Images/bid.png")}
+            /> */}
+            <View
+              style={{
+                width: "100%",
+                height: "100%",
+                position: "absolute",
+                zIndex: -1,
+                // backgroundColor: "rgba(234, 89, 228, 1)",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Image
+                style={{
+                  maxWidth: "90%",
+                  minWidth: "90%",
+                  height: 200,
+                }}
+                source={require("../../../../../assets/Images/bid.png")}
+              />
+            </View>
+            <View
+              style={{
+                position: "absolute",
+                zIndex: 999,
+                width: "85%",
+                height: "65%",
+                backgroundColor: "rgba(0, 0, 0, 0.6)",
+                top: 100,
+                borderRadius: 12,
+                borderColor: "rgba(0, 0, 0, 1)",
+                borderWidth: 2,
+                paddingVertical: 20,
+                gap: 20,
+              }}
+            >
+              <View
+                style={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  gap: 20,
+                  minWidth: "100%",
+                  maxWidth: "100%",
+                  height: 50,
+                }}
+              >
+                <View
+                  style={{
+                    padding: 10,
+                    flexBasis: "80%",
+                    // backgroundColor: "rgba(187, 187, 187, 0.2)",
+                    borderRadius: 8,
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    gap: 10,
+                  }}
+                >
+                  <Image
+                    style={{
+                      width: 36,
+                      height: 36,
+                      borderRadius: 999,
+                      backgroundColor: "rgba(255, 255, 255, 0.3)",
+                    }}
+                    source={require("../../../../../assets/samraat_icon.png")}
+                  />
+
+                  <View
+                    style={{
+                      width: "100%",
+                      gap: 8,
+                      backgroundColor: "rgba(255, 255, 255, 0.71)",
+                      paddingHorizontal: 10,
+                      borderRadius: 4,
+                    }}
+                  >
+                    <Text
+                      style={{
+                        fontSize: 15,
+                        fontWeight: "bold",
+                        color: "rgba(0, 0, 0, 1)",
+                      }}
+                    >
+                      Goyal
+                    </Text>
+                    <View
+                      style={{
+                        flexDirection: "row",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <WhiteText
+                        style={{
+                          fontWeight: "bold",
+                          fontSize: 16,
+                          color: "rgba(0, 0, 0, 1)",
+                        }}
+                      >
+                        ₹20095001
+                      </WhiteText>
+                      <WhiteText style={{ color: "rgba(0, 0, 0, 1)" }}>
+                        10:35 am
+                      </WhiteText>
+                    </View>
+                  </View>
+                </View>
+              </View>
+              <View
+                style={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  gap: 20,
+                  minWidth: "100%",
+                  maxWidth: "100%",
+                  height: 50,
+                }}
+              >
+                <View
+                  style={{
+                    padding: 10,
+                    flexBasis: "80%",
+                    // backgroundColor: "rgba(187, 187, 187, 0.2)",
+                    borderRadius: 8,
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    gap: 10,
+                  }}
+                >
+                  {/* <Image
+                    style={{
+                      width: 36,
+                      height: 36,
+                      borderRadius: 999,
+                      backgroundColor: "rgba(255, 255, 255, 0.3)",
+                    }}
+                    source={require("../../../../../assets/samraat_icon.png")}
+                  /> */}
+
+                  <View
+                    style={{
+                      width: "100%",
+                      gap: 8,
+                      backgroundColor: "rgba(255, 255, 255, 0.71)",
+                      paddingHorizontal: 10,
+                      borderRadius: 4,
+                    }}
+                  >
+                    <Text
+                      style={{
+                        fontSize: 15,
+                        fontWeight: "bold",
+                        color: "rgba(0, 0, 0, 1)",
+                      }}
+                    >
+                      Garima
+                    </Text>
+                    <View
+                      style={{
+                        flexDirection: "row",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <WhiteText
+                        style={{
+                          fontWeight: "bold",
+                          fontSize: 16,
+                          color: "rgba(0, 0, 0, 1)",
+                        }}
+                      >
+                        ₹20095001
+                      </WhiteText>
+                      <WhiteText style={{ color: "rgba(0, 0, 0, 1)" }}>
+                        10:37 am
+                      </WhiteText>
+                    </View>
+                  </View>
+                  <Image
+                    style={{
+                      width: 36,
+                      height: 36,
+                      borderRadius: 999,
+                      backgroundColor: "rgba(255, 255, 255, 0.3)",
+                    }}
+                    source={require("../../../../../assets/samraat_icon.png")}
+                  />
+                </View>
+              </View>
+              <View
+                style={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  gap: 20,
+                  minWidth: "100%",
+                  maxWidth: "100%",
+                  height: 50,
+                }}
+              >
+                <View
+                  style={{
+                    padding: 10,
+                    flexBasis: "80%",
+                    // backgroundColor: "rgba(187, 187, 187, 0.2)",
+                    borderRadius: 8,
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    gap: 10,
+                  }}
+                >
+                  <Image
+                    style={{
+                      width: 36,
+                      height: 36,
+                      borderRadius: 999,
+                      backgroundColor: "rgba(255, 255, 255, 0.3)",
+                    }}
+                    source={require("../../../../../assets/samraat_icon.png")}
+                  />
+
+                  <View
+                    style={{
+                      width: "100%",
+                      gap: 8,
+                      backgroundColor: "rgba(255, 255, 255, 0.71)",
+                      paddingHorizontal: 10,
+                      borderRadius: 4,
+                    }}
+                  >
+                    <Text
+                      style={{
+                        fontSize: 15,
+                        fontWeight: "bold",
+                        color: "rgba(0, 0, 0, 1)",
+                      }}
+                    >
+                      vibha234
+                    </Text>
+                    <View
+                      style={{
+                        flexDirection: "row",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <WhiteText
+                        style={{
+                          fontWeight: "bold",
+                          fontSize: 16,
+                          color: "rgba(0, 0, 0, 1)",
+                        }}
+                      >
+                        hiii...
+                      </WhiteText>
+                      <WhiteText style={{ color: "rgba(0, 0, 0, 1)" }}>
+                        10:38 am
+                      </WhiteText>
+                    </View>
+                  </View>
+                </View>
+              </View>
+              {/* <TextInput
+                style={styles.input}
+                placeholder="Type here...."
+                keyboardType="default"
+                placeholderTextColor={Colors.INPUT_PLACEHOLDER}
+                autoCapitalize="none"
+              /> */}
+            </View>
 
             {isModalVisible && (
               <View style={styles.modalContainer}>
@@ -250,6 +529,7 @@ const styles = StyleSheet.create({
     height: "100%",
     justifyContent: "center",
     alignItems: "center",
+    marginTop:"6%",
   },
   modal: {
     width: "100%",

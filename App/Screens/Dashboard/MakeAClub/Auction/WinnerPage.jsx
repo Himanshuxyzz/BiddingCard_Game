@@ -38,7 +38,7 @@ const WinnerPage = ({ navigation, route }) => {
         />
         <Image
           style={{ maxWidth: "50%", minWidth: "50%", height: 150,zIndex:1,position:"absolute", bottom:2,right:20 }}
-          source={require("../../../../../assets/Images/giphy.webp")}
+          source={require("../../../../../assets/Images/giphy.gif")}
         />
       </View>
       <View style={{ marginTop: "3%" }}>
