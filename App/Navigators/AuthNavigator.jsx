@@ -58,6 +58,7 @@ const AuthNavigator = () => {
         options={{ headerShown: false }}
       />
       <Stack.Screen name="Customedrawer" component={Customedrawer} />
+      
       <Stack.Screen name="GenerateQuery" component={GenerateQuery} />
       <Stack.Screen
         name="CancelQuery"
