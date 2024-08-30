@@ -268,7 +268,7 @@ const CreateUrProfile = ({ navigation }) => {
           <Text style={styles.note}>Image size: 20Kb to 700Kb</Text>
         </View>
         <View style={styles.listContainer}>
-          <Text style={styles.listItem}>• Aadhar Card Front and Back</Text>
+          <Text style={styles.listItem}>•  Aadhar Card Front and Back</Text>
           <Text style={styles.listItem}>• Passport Size Photo</Text>
           <Text style={styles.noteRed}>
             *(Once you upload any image it can not be changed)
