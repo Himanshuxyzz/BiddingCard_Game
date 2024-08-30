@@ -6,7 +6,7 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Dashboard from "../Screens/Dashboard";
 import PlayOnline from "../Screens/Dashboard/PlayOnline";
@@ -57,6 +57,8 @@ import { Ionicons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { FontAwesome6 } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { SimpleLineIcons } from "@expo/vector-icons";
 import Bankaccount from "../Screens/UserProfile/Bankaccount";
 import Games from "../Screens/MyGames/Games";
 import Refer from "../Screens/Refer&Termsconditions/Refer";
@@ -67,6 +69,8 @@ import Storypost from "../Screens/UserProfile/Storypost";
 import GenerateQuery from "../Screens/UserProfile/Support/GenerateQuery";
 import CancelQuery from "../Screens/UserProfile/Support/CancelQuery";
 import Backtdash from "../Screens/UserProfile/Support/Backtdash";
+import Credited from "../Screens/Transactions/Credited";
+import Withdrawl from "../Screens/Transactions/Withdrawl";
 
 const DashboardDrawerContent = () => {
   return (
@@ -95,7 +99,7 @@ const DashboardDrawerContent = () => {
         component={Storypost}
         options={{ headerShown: false }}
       />
-       {/* {samraat story post section end} */}
+      {/* {samraat story post section end} */}
       <Stack.Screen
         name="Startbc"
         component={StartBC}
@@ -246,26 +250,24 @@ const DashboardDrawerContent = () => {
         component={EditProfile}
         options={{ headerShown: false }}
       />
-        <Stack.Screen
+      <Stack.Screen
         name="profile"
         component={ProfileDetail}
         options={{ headerShown: false }}
       />
-       <Stack.Screen 
-       name="GenerateQuery" 
-       component={GenerateQuery} />
+      <Stack.Screen name="GenerateQuery" component={GenerateQuery} />
 
-       <Stack.Screen
+      <Stack.Screen
         name="CancelQuery"
         component={CancelQuery}
         options={{ headerShown: false }}
-      />  
+      />
 
-        <Stack.Screen
+      <Stack.Screen
         name="Backtdash"
         component={Backtdash}
         options={{ headerShown: false }}
-      />   
+      />
     </Stack.Navigator>
   );
 };
@@ -286,6 +288,12 @@ const getIcon = (routeName) => {
       return <FontAwesome name="user-circle-o" {...iconProps} />;
     case "Bank Account":
       return <FontAwesome name="bank" {...iconProps} />;
+    case "Transaction History":
+      return <MaterialCommunityIcons name="history" {...iconProps} />;
+    case "Credited":
+      return <SimpleLineIcons name="wallet" {...iconProps} />;
+    case "Withdrawl":
+      return <MaterialCommunityIcons name="bank-transfer" {...iconProps} />;
     case "My Games":
       return <FontAwesome name="trophy" {...iconProps} />;
     case "Refer & Earn":
@@ -299,13 +307,20 @@ const getIcon = (routeName) => {
   }
 };
 
-const CustomDrawerContent = (props) => {
+const CustomDrawerContent = ({
+  isTransactionHistoryPressed,
+  setIsTransactionHistoryPressed,
+  ...props
+}) => {
   const { state, navigation } = props;
 
   const navigateToScreen = (routeName) => {
     if (routeName === "Dashboard") {
       console.log("Navigating to Home");
       navigation.navigate("Home");
+    } else if (routeName === "Transaction History") {
+      // navigation.navigate("credited");
+      setIsTransactionHistoryPressed(!isTransactionHistoryPressed);
     } else {
       console.log(`Navigating to: ${routeName}`);
       navigation.navigate(routeName);
@@ -415,6 +430,8 @@ const CustomDrawerContent = (props) => {
 const MainDashboardNavigator = () => {
   const screenWidth = Dimensions.get("window").width;
   const navigation = useNavigation();
+  const [isTransactionHistoryPressed, setIsTransactionHistoryPressed] =
+    useState(false);
 
   return (
     <Drawer.Navigator
@@ -427,7 +444,13 @@ const MainDashboardNavigator = () => {
         drawerActiveTintColor: "white",
         drawerInactiveTintColor: "white",
       }}
-      drawerContent={(props) => <CustomDrawerContent {...props} />}
+      drawerContent={(props) => (
+        <CustomDrawerContent
+          {...props}
+          isTransactionHistoryPressed={isTransactionHistoryPressed}
+          setIsTransactionHistoryPressed={setIsTransactionHistoryPressed}
+        />
+      )}
     >
       <Drawer.Screen
         name="Dashboard"
@@ -443,6 +466,24 @@ const MainDashboardNavigator = () => {
       <Drawer.Screen name="User Profile" component={ProfileDetail} />
       <Drawer.Screen name="Wallet" component={WalletMainVerified} />
       <Drawer.Screen name="Bank Account" component={Bankaccount} />
+      <Drawer.Screen
+        name="Transaction History"
+        component={DummyComponent}
+        listeners={() => ({
+          drawerItemPress: (e) => {
+            e.preventDefault(); // Prevent navigation
+            // Perform your specific action here, such as logging out
+            console.log("Performing log out action");
+            // Example: navigation.navigate('Login'); // Optionally navigate to another screen
+          },
+        })}
+      />
+      {isTransactionHistoryPressed && (
+        <>
+          <Drawer.Screen name="Credited" component={Credited} />
+          <Drawer.Screen name="Withdrawl" component={Withdrawl} />
+        </>
+      )}
       <Drawer.Screen name="My Games" component={Games} />
       <Drawer.Screen name="Refer & Earn" component={Refer} />
       <Drawer.Screen name="Support" component={Quicktask} />
@@ -451,6 +492,8 @@ const MainDashboardNavigator = () => {
   );
 };
 
-export default MainDashboardNavigator;
+// hacky stuff but it works i dont want to give any component in Transaction history drawer item so i kinda made a dummy component
 
-const styles = StyleSheet.create({});
+const DummyComponent = () => null; // A component that renders nothing
+
+export default MainDashboardNavigator;
